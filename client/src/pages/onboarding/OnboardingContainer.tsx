@@ -171,9 +171,7 @@ export const OnboardingContainer: React.FC<Props> = ({
         />
       )
     } else if (progress === 'SETUP_COMPLETED') {
-      return (
-        <SetupCompleted key={progress} title={title} text={text} characterName={currentCharacter?.name ?? 'Unknown'} />
-      )
+      return <SetupCompleted key={progress} title={title} text={text} />
     } else {
       return <BasicSlide title={title} text={text} />
     }
@@ -241,7 +239,7 @@ export const OnboardingContainer: React.FC<Props> = ({
       className="flex flex-row h-full justify-between bg-white dark:bg-bcgov-darkgrey rounded-lg p-2 w-full sxl:w-5/6 shadow"
       style={style}
     >
-      <div className={`flex flex-col grid justify-items-end ${isMobile ? 'w-full' : 'w-2/3'} px-8`}>
+      <div className={`flex flex-col justify-items-end ${isMobile ? 'w-full' : 'w-2/3'} px-8`}>
         <div className="w-full">
           <motion.button onClick={showLeaveModal} variants={fadeDelay}>
             <FiLogOut className="inline h-12 cursor-pointer dark:text-white" />
