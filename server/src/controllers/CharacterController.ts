@@ -1,7 +1,5 @@
-import type { CustomCharacter } from '../content/types'
-
-import { Get, JsonController, NotFoundError, Param, QueryParam } from 'routing-controllers'
-import { Inject, Service } from 'typedi'
+import { Get, JsonController, NotFoundError, Param } from 'routing-controllers'
+import { Service } from 'typedi'
 
 import characters from '../content/Characters'
 

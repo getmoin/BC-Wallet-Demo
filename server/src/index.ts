@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+
 import type { Express } from 'express'
 
 import { json, static as stx } from 'express'
