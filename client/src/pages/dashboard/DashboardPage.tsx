@@ -14,7 +14,6 @@ import { useCurrentCharacter } from '../../slices/characters/charactersSelectors
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { setDemoCompleted } from '../../slices/preferences/preferencesSlice'
-import { useSocket } from '../../slices/socket/socketSelector'
 import { basePath } from '../../utils/BasePath'
 import { Footer } from '../landing/components/Footer'
 import { NavBar } from '../landing/components/Navbar'
@@ -29,8 +28,7 @@ export const DashboardPage: React.FC = () => {
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const socket = useSocket()
-  const { issuedCredentials, revokableCredentials } = useCredentials()
+  const { revokableCredentials } = useCredentials()
   const { completedUseCaseSlugs, demoCompleted, completeCanceled, revocationEnabled, showHiddenUseCases } =
     usePreferences()
   const currentCharacter = {
@@ -89,11 +87,7 @@ export const DashboardPage: React.FC = () => {
         <>
           <div className="flex flex-col lg:flex-row mb-auto">
             <div className="w-full lg:w-2/3 order-last lg:order-first">
-              <UseCaseContainer
-                issuedCredentials={issuedCredentials}
-                completedUseCaseSlugs={completedUseCaseSlugs}
-                currentCharacter={currentCharacter}
-              />
+              <UseCaseContainer completedUseCaseSlugs={completedUseCaseSlugs} currentCharacter={currentCharacter} />
               {revokableCredentials.length > 0 && revocationEnabled && currentCharacter.revocationInfo && (
                 <RevocationContainer
                   revocationInfo={currentCharacter.revocationInfo}

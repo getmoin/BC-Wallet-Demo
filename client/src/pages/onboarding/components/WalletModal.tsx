@@ -22,11 +22,10 @@ export interface Wallet {
 export interface Props {
   isWalletModalOpen: boolean
   setIsWalletModalOpen: (open: boolean) => void
-  wallet: Wallet
   onCompleted(): void
 }
 
-export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletModalOpen, wallet, onCompleted }) => {
+export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletModalOpen, onCompleted }) => {
   function isMobile() {
     return window.innerWidth <= 760
   }
@@ -57,7 +56,7 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
               initial="hidden"
               animate="show"
               exit="exit"
-              className="bg-bcgov-white z-40 dark:bg-bcgov-black inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition transition-all duration-300 sm:my-8 sm:align-middle sm:max-w-xl sm:w-full dark:text-white"
+              className="bg-bcgov-white z-40 dark:bg-bcgov-black inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all duration-300 sm:my-8 sm:align-middle sm:max-w-xl sm:w-full dark:text-white"
             >
               <div style={{ display: 'flex', alignItems: 'flex-start' }}>
                 <div className="px-2 md:px-6 pt-2 sm:mt-4 sm:pb-4">

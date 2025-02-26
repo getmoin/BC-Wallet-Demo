@@ -107,7 +107,6 @@ export const UseCasePage: React.FC = () => {
                 stepCount={stepCount}
                 credentials={issuedCredentials}
                 proof={proof}
-                proofUrl={proofUrl}
               />
             </motion.div>
           ) : (

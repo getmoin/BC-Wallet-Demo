@@ -1,8 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
 
 import { standardFade, dropIn } from '../../../FramerAnimations'
-import { Button } from '../../../components/Button'
 import { SmallButton } from '../../../components/SmallButton'
 import { SmallButtonText } from '../../../components/SmallButtonText'
 export interface Props {
@@ -11,8 +9,6 @@ export interface Props {
 }
 
 export const DemoCompletedModal: React.FC<Props> = ({ action, cancel }) => {
-  const navigate = useNavigate()
-
   const TITLE = 'Showcase Completed!'
   const DESCRIPTION = 'Looking to leave some feedback? Take our survey and connect with us!'
 
@@ -36,7 +32,7 @@ export const DemoCompletedModal: React.FC<Props> = ({ action, cancel }) => {
             initial="hidden"
             animate="show"
             exit="exit"
-            className="bg-bcgov-white dark:bg-bcgov-black inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full dark:text-white"
+            className="bg-bcgov-white dark:bg-bcgov-black inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full dark:text-white"
           >
             <div className=" px-4 pt-2 mt-4 sm:pb-4">
               <div className="sm:flex sm:items-start">

@@ -68,7 +68,6 @@ export const ChooseWallet: React.FC<Props> = ({ title, text, addOnboardingProgre
           <WalletModal
             isWalletModalOpen={isChooseWalletModalOpen}
             setIsWalletModalOpen={setIsChooseWalletModalOpen}
-            wallet={selectedWallet}
             onCompleted={onCompleted}
           />
         )}
