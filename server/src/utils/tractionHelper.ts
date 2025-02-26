@@ -24,21 +24,21 @@ export const tractionApiKeyUpdaterInit = async () => {
 }
 
 export const tractionRequest = {
-  get: (url: string, config?: AxiosRequestConfig<any>) => {
+  get: (url: string, config?: AxiosRequestConfig) => {
     return axios.get(`${process.env.TRACTION_URL}${url}`, {
       ...config,
       timeout: 80000,
       headers: { ...config?.headers, Authorization: `Bearer ${agentKey}` },
     })
   },
-  delete: (url: string, config?: AxiosRequestConfig<any>) => {
+  delete: (url: string, config?: AxiosRequestConfig) => {
     return axios.delete(`${process.env.TRACTION_URL}${url}`, {
       ...config,
       timeout: 80000,
       headers: { ...config?.headers, Authorization: `Bearer ${agentKey}` },
     })
   },
-  post: (url: string, data: any, config?: AxiosRequestConfig<any>) => {
+  post: (url: string, data: Record<string, unknown> | undefined, config?: AxiosRequestConfig) => {
     return axios.post(`${process.env.TRACTION_URL}${url}`, data, {
       ...config,
       timeout: 80000,
