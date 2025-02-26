@@ -35,10 +35,10 @@
     "ws": "^8.18.0"
   },
   "scripts": {
-    "start": "GENERATE_SOURCEMAP=false react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "GENERATE_SOURCEMAP=false react-scripts test",
-    "eject": "GENERATE_SOURCEMAP=false react-scripts eject"
+    "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "test": "cross-env GENERATE_SOURCEMAP=false react-scripts test",
+    "eject": "cross-env GENERATE_SOURCEMAP=false react-scripts eject"
   },
   "browserslist": {
     "production": [

@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "check-types": "tsc --noEmit",
-    "prettier": "prettier '**/*.+(js|json|ts|md|yml|yaml)'",
+    "prettier": "prettier \"**/*.{js,json,ts,md,yml,yaml}\"",
     "lint": "eslint --ignore-path .gitignore .",
     "format": "yarn prettier --write",
     "prepare": "husky install",
@@ -22,7 +22,7 @@
     "client:build": "yarn workspace client build",
     "server:dev": "yarn workspace server dev",
     "server:build": "yarn workspace server build",
-    "dev": "concurrently -n 'client,server ' -c 'green.bold,red.bold' 'yarn client:start' 'yarn server:dev'",
+    "dev": "concurrently -n \"client,server \" -c \"green.bold,red.bold\" \"yarn client:start\" \"yarn server:dev\"",
     "test": "yarn run cypress open",
     "build": "yarn workspace client build && yarn workspace server build",
     "cy:open": "cypress open",
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
     "cypress": "^9.5.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.7.0",
