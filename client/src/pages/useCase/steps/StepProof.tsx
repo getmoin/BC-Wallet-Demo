@@ -118,7 +118,10 @@ export const StepProof: React.FC<Props> = ({
       return
     }
     const { endpoint, state } = message
-    if (endpoint === 'present_proof' && (state === 'presentation_received' || state === 'verified')) {
+    if (
+      endpoint === 'present_proof' &&
+      (state === 'presentation_received' || state === 'verified' || state === 'done')
+    ) {
       dispatch(fetchProofById(message.presentation_exchange_id))
     }
   }, [message])
