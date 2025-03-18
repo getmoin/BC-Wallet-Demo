@@ -1,12 +1,12 @@
-import type { Credential } from '../../../slices/types'
+import React from 'react'
 
 import { motion } from 'framer-motion'
 import { startCase } from 'lodash'
-import React from 'react'
 
-import { fadeX } from '../../../FramerAnimations'
 import { StateIndicator } from '../../../components/StateIndicator'
+import { fadeX } from '../../../FramerAnimations'
 import { useCredentials } from '../../../slices/credentials/credentialsSelectors'
+import type { Credential } from '../../../slices/types'
 import { prependApiUrl } from '../../../utils/Url'
 
 export interface Props {

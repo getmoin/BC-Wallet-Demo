@@ -11,6 +11,7 @@
  */
 import type { Id } from './Id'
 import type { Persona } from './Persona'
+
 /**
  * @type ShowcasePersonasInner
  *

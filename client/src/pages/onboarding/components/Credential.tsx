@@ -1,11 +1,11 @@
-import type { CredentialData } from '../../../slices/types'
+import React from 'react'
 
 import { motion } from 'framer-motion'
 import { startCase } from 'lodash'
-import React from 'react'
 
-import { fadeX } from '../../../FramerAnimations'
 import { StateIndicator } from '../../../components/StateIndicator'
+import { fadeX } from '../../../FramerAnimations'
+import type { CredentialData } from '../../../slices/types'
 import { isCredIssued } from '../../../utils/Helpers'
 import { prependApiUrl } from '../../../utils/Url'
 

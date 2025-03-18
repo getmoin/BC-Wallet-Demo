@@ -1,7 +1,7 @@
-import type { ActionImpl, ActionId } from 'kbar'
+import { forwardRef, Fragment, useMemo } from 'react'
 
-import { useMatches, KBarResults } from 'kbar'
-import { forwardRef, useMemo, Fragment } from 'react'
+import type { ActionId, ActionImpl } from 'kbar'
+import { KBarResults, useMatches } from 'kbar'
 
 const ResultItem = forwardRef(
   (

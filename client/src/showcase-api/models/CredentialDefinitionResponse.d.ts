@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { CredentialDefinition } from './CredentialDefinition'
+
 /**
  *
  * @export

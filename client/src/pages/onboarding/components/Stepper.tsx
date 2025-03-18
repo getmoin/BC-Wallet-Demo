@@ -1,10 +1,9 @@
-import type { CustomCharacter } from '../../../slices/types'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 
-import { topDown } from '../../../FramerAnimations'
+import { motion } from 'framer-motion'
 
+import { topDown } from '../../../FramerAnimations'
+import type { CustomCharacter } from '../../../slices/types'
 import { StepperItem } from './StepperItem'
 
 export interface Props {

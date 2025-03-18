@@ -1,9 +1,9 @@
-import type { CustomCharacter } from '../../../slices/types'
-
-import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
 
+import { motion } from 'framer-motion'
+
 import { characterFade, fadeExit } from '../../../FramerAnimations'
+import type { CustomCharacter } from '../../../slices/types'
 import { SafeAnimatePresence } from '../../../utils/Helpers'
 import { prependApiUrl } from '../../../utils/Url'
 

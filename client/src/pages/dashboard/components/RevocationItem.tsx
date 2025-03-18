@@ -1,11 +1,10 @@
-import type { RevocationRecord } from '../../../slices/types'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 
-import { rowFadeX } from '../../../FramerAnimations'
-import { prependApiUrl } from '../../../utils/Url'
+import { motion } from 'framer-motion'
 
+import { rowFadeX } from '../../../FramerAnimations'
+import type { RevocationRecord } from '../../../slices/types'
+import { prependApiUrl } from '../../../utils/Url'
 import { StartButton } from './StartButton'
 
 export interface Props {

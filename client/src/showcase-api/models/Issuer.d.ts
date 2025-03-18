@@ -13,6 +13,7 @@ import type { Asset } from './Asset'
 import type { CredentialDefinition } from './CredentialDefinition'
 import type { CredentialSchema } from './CredentialSchema'
 import type { IssuerType } from './IssuerType'
+
 /**
  *
  * @export

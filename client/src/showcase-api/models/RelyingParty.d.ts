@@ -12,6 +12,7 @@
 import type { Asset } from './Asset'
 import type { CredentialDefinition } from './CredentialDefinition'
 import type { RelyingPartyType } from './RelyingPartyType'
+
 /**
  *
  * @export

@@ -1,13 +1,12 @@
-import type { CustomUseCase } from '../../slices/types'
-
-import { trackPageView } from '@snowplow/browser-tracker'
-import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { page } from '../../FramerAnimations'
+import { trackPageView } from '@snowplow/browser-tracker'
+import { motion } from 'framer-motion'
+
 import { Loader } from '../../components/Loader'
 import { Modal } from '../../components/Modal'
+import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
 import { useCurrentCharacter } from '../../slices/characters/charactersSelectors'
@@ -19,11 +18,11 @@ import { useProof } from '../../slices/proof/proofSelectors'
 import { clearProof } from '../../slices/proof/proofSlice'
 import { useSection } from '../../slices/section/sectionSelectors'
 import { setSection } from '../../slices/section/sectionSlice'
+import type { CustomUseCase } from '../../slices/types'
 import { useUseCaseState } from '../../slices/useCases/useCasesSelectors'
 import { nextSection } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
 import { SafeAnimatePresence } from '../../utils/Helpers'
-
 import { Section } from './Section'
 
 export const UseCasePage: React.FC = () => {

@@ -14,6 +14,7 @@ import type { Issuer } from './Issuer'
 import type { Persona } from './Persona'
 import type { ScenarioType } from './ScenarioType'
 import type { Step } from './Step'
+
 /**
  * Scenario specialization for credential issuance
  * @export

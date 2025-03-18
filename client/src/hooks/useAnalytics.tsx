@@ -1,5 +1,6 @@
-import { init, trackPages } from 'insights-js'
 import { useEffect } from 'react'
+
+import { init, trackPages } from 'insights-js'
 
 export const useAnalytics = () => {
   useEffect(() => {

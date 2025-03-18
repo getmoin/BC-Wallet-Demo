@@ -1,10 +1,8 @@
-import type { CustomCharacter } from '../types'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
 import { createSlice } from '@reduxjs/toolkit'
 
 import { getOrCreateCredDefId } from '../../api/CredentialApi'
-
+import type { CustomCharacter } from '../types'
 import { fetchAllCharacters, fetchCharacterById } from './charactersThunks'
 
 interface CharactersState {

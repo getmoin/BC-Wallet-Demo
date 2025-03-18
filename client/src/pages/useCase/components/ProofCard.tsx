@@ -1,8 +1,8 @@
-import type { CredentialRequest } from '../../../slices/types'
-
-import { startCase } from 'lodash'
 import React from 'react'
 
+import { startCase } from 'lodash'
+
+import type { CredentialRequest } from '../../../slices/types'
 import { prependApiUrl } from '../../../utils/Url'
 
 export interface Props {

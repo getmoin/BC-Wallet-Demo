@@ -11,6 +11,7 @@
  */
 import type { AriesProofRequest } from './AriesProofRequest'
 import type { StepAction } from './StepAction'
+
 /**
  *
  * @export

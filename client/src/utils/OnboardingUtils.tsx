@@ -1,4 +1,3 @@
-import type { CustomCharacter } from '../slices/types'
 import type { Dispatch } from 'react'
 
 import { track } from 'insights-js'
@@ -14,6 +13,7 @@ import notificationLight from '../assets/light/icon-notification-light.svg'
 import personLight from '../assets/light/icon-person-light.svg'
 import walletLight from '../assets/light/icon-wallet-light.svg'
 import { setOnboardingStep } from '../slices/onboarding/onboardingSlice'
+import type { CustomCharacter } from '../slices/types'
 
 export enum Progress {
   PICK_CHARACTER = 0,

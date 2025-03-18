@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { AriesOOBActionRequest } from './AriesOOBActionRequest'
+
 /**
  * @type StepRequestActionsInner
  *

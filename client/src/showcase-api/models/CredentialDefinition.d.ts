@@ -15,6 +15,7 @@ import type { CredentialDefinitionRevocation } from './CredentialDefinitionRevoc
 import type { CredentialSchema } from './CredentialSchema'
 import type { CredentialType } from './CredentialType'
 import type { IdentifierType } from './IdentifierType'
+
 /**
  *
  * @export

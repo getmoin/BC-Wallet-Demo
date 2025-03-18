@@ -12,6 +12,7 @@
 import type { CredentialAttributeRequest } from './CredentialAttributeRequest'
 import type { IdentifierType } from './IdentifierType'
 import type { Source } from './Source'
+
 /**
  *
  * @export

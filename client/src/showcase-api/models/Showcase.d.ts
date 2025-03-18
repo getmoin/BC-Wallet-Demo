@@ -14,6 +14,7 @@ import type { CredentialDefinition } from './CredentialDefinition'
 import type { Persona } from './Persona'
 import type { Scenario } from './Scenario'
 import type { ShowcaseStatus } from './ShowcaseStatus'
+
 /**
  *
  * @export

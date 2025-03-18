@@ -1,13 +1,13 @@
-import type { CustomCharacter, TextWithImage } from '../../../slices/types'
+import React from 'react'
 
 import { motion } from 'framer-motion'
 import { track } from 'insights-js'
-import React from 'react'
 
 import { fadeX } from '../../../FramerAnimations'
 import { useAppDispatch } from '../../../hooks/hooks'
 import { useDarkMode } from '../../../hooks/useDarkMode'
 import { setCharacter } from '../../../slices/characters/charactersSlice'
+import type { CustomCharacter, TextWithImage } from '../../../slices/types'
 import { prependApiUrl } from '../../../utils/Url'
 import { StepInformation } from '../components/StepInformation'
 

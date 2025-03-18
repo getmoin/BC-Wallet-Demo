@@ -1,9 +1,10 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 
-import { fadeDelay, fadeExit } from '../../../FramerAnimations'
+import { motion } from 'framer-motion'
+
 import { BackButton } from '../../../components/BackButton'
 import { Button } from '../../../components/Button'
+import { fadeDelay, fadeExit } from '../../../FramerAnimations'
 import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {

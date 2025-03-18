@@ -1,10 +1,11 @@
-import { trackPageView } from '@snowplow/browser-tracker'
-import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { page } from '../../FramerAnimations'
+import { trackPageView } from '@snowplow/browser-tracker'
+import { motion } from 'framer-motion'
+
 import { CustomUpload } from '../../components/CustomUpload'
+import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
 import { useCharacters } from '../../slices/characters/charactersSelectors'
@@ -19,9 +20,8 @@ import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
 import { SafeAnimatePresence } from '../../utils/Helpers'
 import { OnboardingComplete } from '../../utils/OnboardingUtils'
-
-import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
+import { OnboardingContainer } from './OnboardingContainer'
 
 export const OnboardingPage: React.FC = () => {
   useTitle('Get Started | BC Wallet Self-Sovereign Identity Demo')

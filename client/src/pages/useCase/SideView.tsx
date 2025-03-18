@@ -1,12 +1,11 @@
-import type { UseCaseScreen } from '../../slices/types'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { FiLogOut } from 'react-icons/fi'
 
-import { fadeDelay } from '../../FramerAnimations'
+import { motion } from 'framer-motion'
 
+import { fadeDelay } from '../../FramerAnimations'
+import type { UseCaseScreen } from '../../slices/types'
 import { ConnectionCard } from './components/ConnectionCard'
 import { ProofCard } from './components/ProofCard'
 import { StepperCard } from './components/StepperCard'

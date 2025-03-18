@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { StepRequest } from './StepRequest'
+
 /**
  * Workflow specialization for credential issuance
  * @export

@@ -1,9 +1,8 @@
-import type { RevocationRecord } from '../types'
 import type { SerializedError } from '@reduxjs/toolkit'
-
 import { createSlice } from '@reduxjs/toolkit'
 
-import { fetchCredentialById, issueCredential, deleteCredentialById } from './credentialsThunks'
+import type { RevocationRecord } from '../types'
+import { deleteCredentialById, fetchCredentialById, issueCredential } from './credentialsThunks'
 
 interface CredentialState {
   issuedCredentials: string[]

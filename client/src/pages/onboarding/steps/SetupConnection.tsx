@@ -1,11 +1,12 @@
-import { motion } from 'framer-motion'
 import React, { useEffect } from 'react'
 import { isMobile } from 'react-device-detect'
 import { FiExternalLink } from 'react-icons/fi'
 
-import { fade, fadeX } from '../../../FramerAnimations'
+import { motion } from 'framer-motion'
+
 import { Button } from '../../../components/Button'
 import { QRCode } from '../../../components/QRCode'
+import { fade, fadeX } from '../../../FramerAnimations'
 import { useAppDispatch } from '../../../hooks/hooks'
 import { clearConnection, setConnection, setDeepLink } from '../../../slices/connection/connectionSlice'
 import { createInvitation } from '../../../slices/connection/connectionThunks'

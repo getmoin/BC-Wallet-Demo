@@ -1,12 +1,10 @@
-import type { CustomCharacter } from '../slices/types'
-
 import { useEffect, useState } from 'react'
 
 import { useAppDispatch } from '../hooks/hooks'
 import { useCharacters } from '../slices/characters/charactersSelectors'
-import { uploadCharacter, setUploadingStatus } from '../slices/characters/charactersSlice'
+import { setUploadingStatus, uploadCharacter } from '../slices/characters/charactersSlice'
 import { toggleCharacterUpload } from '../slices/preferences/preferencesSlice'
-
+import type { CustomCharacter } from '../slices/types'
 import { Modal } from './Modal'
 
 export const CustomUpload: React.FC = () => {

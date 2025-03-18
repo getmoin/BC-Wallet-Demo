@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Line } from '../assets/Line'
 import { TriangleDark } from '../assets/dark/TriangleDark'
 import { TriangleLight } from '../assets/light/TriangleLight'
+import { Line } from '../assets/Line'
 
 export interface Props {
   darkMode: boolean

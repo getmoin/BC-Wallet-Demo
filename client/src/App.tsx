@@ -1,17 +1,16 @@
-import type { Socket } from 'socket.io-client'
-
-import { AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+
 import { io } from 'socket.io-client'
+import type { Socket } from 'socket.io-client'
 
 import { demoBackendBaseWsUrl, demoBackendSocketPath } from './api/BaseUrl'
 import { useAppDispatch } from './hooks/hooks'
 import { useAnalytics } from './hooks/useAnalytics'
-import { PageNotFound } from './pages/PageNotFound'
 import { DashboardPage } from './pages/dashboard/DashboardPage'
 import { LandingPage } from './pages/landing/LandingPage'
 import { OnboardingPage } from './pages/onboarding/OnboardingPage'
+import { PageNotFound } from './pages/PageNotFound'
 import { UseCasePage } from './pages/useCase/UseCasePage'
 import { useConnection } from './slices/connection/connectionSelectors'
 import { usePreferences } from './slices/preferences/preferencesSelectors'

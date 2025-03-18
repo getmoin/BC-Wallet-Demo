@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { FiExternalLink } from 'react-icons/fi'
+
+import { motion } from 'framer-motion'
 
 import { fade, fadeDelay } from '../FramerAnimations'
 

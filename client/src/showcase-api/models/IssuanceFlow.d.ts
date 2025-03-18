@@ -12,6 +12,7 @@
 import type { Issuer } from './Issuer'
 import type { Persona } from './Persona'
 import type { Step } from './Step'
+
 /**
  * Workflow specialization for credential issuance
  * @export

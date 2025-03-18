@@ -1,19 +1,18 @@
-import type { CredentialRequest, UseCaseScreen } from '../../../slices/types'
-
-import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { FiLogOut } from 'react-icons/fi'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { fadeExit } from '../../../FramerAnimations'
+import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
+import { motion } from 'framer-motion'
+
 import { SmallButton } from '../../../components/SmallButton'
+import { fadeExit } from '../../../FramerAnimations'
 import { useAppDispatch } from '../../../hooks/hooks'
+import type { CredentialRequest, UseCaseScreen } from '../../../slices/types'
 import { nextStep } from '../../../slices/useCases/useCasesSlice'
 import { basePath } from '../../../utils/BasePath'
 import { prependApiUrl } from '../../../utils/Url'
-
 import { StarterInfo } from './StarterInfo'
 
 export interface Props {

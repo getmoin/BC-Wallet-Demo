@@ -1,5 +1,4 @@
 import type { RevocationRecord } from '../slices/types'
-
 import { demoBackendApi } from './BaseUrl'
 
 export const revokeCredential = (record: RevocationRecord) => {

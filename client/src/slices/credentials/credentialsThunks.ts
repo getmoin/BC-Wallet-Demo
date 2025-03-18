@@ -1,8 +1,7 @@
-import type { Credential } from '../types'
-
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import * as Api from '../../api/CredentialApi'
+import type { Credential } from '../types'
 
 export const issueCredential = createAsyncThunk(
   'credentials/issueCredential',

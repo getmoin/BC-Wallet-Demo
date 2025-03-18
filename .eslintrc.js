@@ -8,7 +8,7 @@ module.exports = {
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     'plugin:cypress/recommended',
   ],
-  plugins: ['cypress'],
+  plugins: ['cypress', 'import-helpers'],
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.eslint.json'],
@@ -35,14 +35,13 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'warn',
     '@typescript-eslint/consistent-type-imports': 'error',
     'import/no-cycle': 'error',
-    'import/order': [
+    'import/order': 'off',
+    'import-helpers/order-imports': [
       'error',
       {
-        groups: ['type', ['builtin', 'external'], 'parent', 'sibling', 'index'],
-        alphabetize: {
-          order: 'asc',
-        },
-        'newlines-between': 'always',
+        newlinesBetween: 'always',
+        groups: ['/^react/', 'module', ['parent', 'sibling', 'index'], ['absolute']],
+        alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
     'import/no-extraneous-dependencies': [
@@ -81,4 +80,5 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: ['dist/*', 'build/*', 'client/src/showcase-api', '*.spec.ts'],
 }

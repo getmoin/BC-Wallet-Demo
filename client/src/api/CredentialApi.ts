@@ -1,6 +1,6 @@
-import type { Credential } from '../slices/types'
 import type { AxiosResponse } from 'axios'
 
+import type { Credential } from '../slices/types'
 import { demoBackendApi } from './BaseUrl'
 
 export const issueCredential = async (
