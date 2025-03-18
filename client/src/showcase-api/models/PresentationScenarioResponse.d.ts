@@ -9,26 +9,32 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PresentationScenario } from './PresentationScenario';
+import type { PresentationScenario } from './PresentationScenario'
 /**
  *
  * @export
  * @interface PresentationScenarioResponse
  */
 export interface PresentationScenarioResponse {
-    /**
-     *
-     * @type {PresentationScenario}
-     * @memberof PresentationScenarioResponse
-     */
-    presentationScenario?: PresentationScenario;
+  /**
+   *
+   * @type {PresentationScenario}
+   * @memberof PresentationScenarioResponse
+   */
+  presentationScenario?: PresentationScenario
 }
 /**
  * Check if a given object implements the PresentationScenarioResponse interface.
  */
-export declare function instanceOfPresentationScenarioResponse(value: object): value is PresentationScenarioResponse;
-export declare function PresentationScenarioResponseFromJSON(json: any): PresentationScenarioResponse;
-export declare function PresentationScenarioResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PresentationScenarioResponse;
-export declare function PresentationScenarioResponseToJSON(json: any): PresentationScenarioResponse;
-export declare function PresentationScenarioResponseToJSONTyped(value?: PresentationScenarioResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfPresentationScenarioResponse(value: object): value is PresentationScenarioResponse
+export declare function PresentationScenarioResponseFromJSON(json: any): PresentationScenarioResponse
+export declare function PresentationScenarioResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): PresentationScenarioResponse
+export declare function PresentationScenarioResponseToJSON(json: any): PresentationScenarioResponse
+export declare function PresentationScenarioResponseToJSONTyped(
+  value?: PresentationScenarioResponse | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=PresentationScenarioResponse.d.ts.map

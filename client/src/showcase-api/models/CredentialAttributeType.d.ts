@@ -14,16 +14,22 @@
  * @export
  */
 export declare const CredentialAttributeType: {
-    readonly String: "STRING";
-    readonly Integer: "INTEGER";
-    readonly Float: "FLOAT";
-    readonly Boolean: "BOOLEAN";
-    readonly Date: "DATE";
-};
-export type CredentialAttributeType = typeof CredentialAttributeType[keyof typeof CredentialAttributeType];
-export declare function instanceOfCredentialAttributeType(value: any): boolean;
-export declare function CredentialAttributeTypeFromJSON(json: any): CredentialAttributeType;
-export declare function CredentialAttributeTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialAttributeType;
-export declare function CredentialAttributeTypeToJSON(value?: CredentialAttributeType | null): any;
-export declare function CredentialAttributeTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): CredentialAttributeType;
+  readonly String: 'STRING'
+  readonly Integer: 'INTEGER'
+  readonly Float: 'FLOAT'
+  readonly Boolean: 'BOOLEAN'
+  readonly Date: 'DATE'
+}
+export type CredentialAttributeType = (typeof CredentialAttributeType)[keyof typeof CredentialAttributeType]
+export declare function instanceOfCredentialAttributeType(value: any): boolean
+export declare function CredentialAttributeTypeFromJSON(json: any): CredentialAttributeType
+export declare function CredentialAttributeTypeFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): CredentialAttributeType
+export declare function CredentialAttributeTypeToJSON(value?: CredentialAttributeType | null): any
+export declare function CredentialAttributeTypeToJSONTyped(
+  value: any,
+  ignoreDiscriminator: boolean
+): CredentialAttributeType
 //# sourceMappingURL=CredentialAttributeType.d.ts.map

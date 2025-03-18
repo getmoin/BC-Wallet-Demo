@@ -9,72 +9,72 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { RelyingParty } from './RelyingParty';
-import type { Persona } from './Persona';
-import type { Step } from './Step';
+import type { Persona } from './Persona'
+import type { RelyingParty } from './RelyingParty'
+import type { Step } from './Step'
 /**
  * Workflow specialization for credential presentation
  * @export
  * @interface PresentationFlow
  */
 export interface PresentationFlow {
-    /**
-     * Unique identifier for the workflow
-     * @type {string}
-     * @memberof PresentationFlow
-     */
-    id?: string;
-    /**
-     * Name of the workflow
-     * @type {string}
-     * @memberof PresentationFlow
-     */
-    name: string;
-    /**
-     * Detailed description of the workflow
-     * @type {string}
-     * @memberof PresentationFlow
-     */
-    description?: string;
-    /**
-     * Type of workflow
-     * @type {string}
-     * @memberof PresentationFlow
-     */
-    type: PresentationFlowTypeEnum;
-    /**
-     * Ordered list of steps in the workflow
-     * @type {Array<Step>}
-     * @memberof PresentationFlow
-     */
-    steps?: Array<Step>;
-    /**
-     * References to personas used in this workflow
-     * @type {Array<Persona>}
-     * @memberof PresentationFlow
-     */
-    personas?: Array<Persona>;
-    /**
-     *
-     * @type {RelyingParty}
-     * @memberof PresentationFlow
-     */
-    relyingParty: RelyingParty;
+  /**
+   * Unique identifier for the workflow
+   * @type {string}
+   * @memberof PresentationFlow
+   */
+  id?: string
+  /**
+   * Name of the workflow
+   * @type {string}
+   * @memberof PresentationFlow
+   */
+  name: string
+  /**
+   * Detailed description of the workflow
+   * @type {string}
+   * @memberof PresentationFlow
+   */
+  description?: string
+  /**
+   * Type of workflow
+   * @type {string}
+   * @memberof PresentationFlow
+   */
+  type: PresentationFlowTypeEnum
+  /**
+   * Ordered list of steps in the workflow
+   * @type {Array<Step>}
+   * @memberof PresentationFlow
+   */
+  steps?: Array<Step>
+  /**
+   * References to personas used in this workflow
+   * @type {Array<Persona>}
+   * @memberof PresentationFlow
+   */
+  personas?: Array<Persona>
+  /**
+   *
+   * @type {RelyingParty}
+   * @memberof PresentationFlow
+   */
+  relyingParty: RelyingParty
 }
 /**
  * @export
  */
 export declare const PresentationFlowTypeEnum: {
-    readonly Issuance: "ISSUANCE";
-    readonly Presentation: "PRESENTATION";
-};
-export type PresentationFlowTypeEnum = typeof PresentationFlowTypeEnum[keyof typeof PresentationFlowTypeEnum];
+  readonly Issuance: 'ISSUANCE'
+  readonly Presentation: 'PRESENTATION'
+}
+export type PresentationFlowTypeEnum = (typeof PresentationFlowTypeEnum)[keyof typeof PresentationFlowTypeEnum]
 /**
  * Check if a given object implements the PresentationFlow interface.
  */
-export declare function instanceOfPresentationFlow(value: object): value is PresentationFlow;
-export declare function PresentationFlowFromJSON(json: any): PresentationFlow;
-export declare function PresentationFlowFromJSONTyped(json: any, ignoreDiscriminator: boolean): PresentationFlow;
-export declare function PresentationFlowToJSON(json: any): PresentationFlow;
-export declare function PresentationFlowToJSONTyped(value?: PresentationFlow | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfPresentationFlow(value: object): value is PresentationFlow
+export declare function PresentationFlowFromJSON(json: any): PresentationFlow
+export declare function PresentationFlowFromJSONTyped(json: any, ignoreDiscriminator: boolean): PresentationFlow
+export declare function PresentationFlowToJSON(json: any): PresentationFlow
+export declare function PresentationFlowToJSONTyped(value?: PresentationFlow | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=PresentationFlow.d.ts.map

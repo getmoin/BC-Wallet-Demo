@@ -9,27 +9,27 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AriesProofRequest } from './AriesProofRequest';
-import type { StepAction } from './StepAction';
+import type { AriesProofRequest } from './AriesProofRequest'
+import type { StepAction } from './StepAction'
 /**
  *
  * @export
  * @interface AriesOOBAction
  */
 export interface AriesOOBAction extends StepAction {
-    /**
-     *
-     * @type {AriesProofRequest}
-     * @memberof AriesOOBAction
-     */
-    proofRequest: AriesProofRequest;
+  /**
+   *
+   * @type {AriesProofRequest}
+   * @memberof AriesOOBAction
+   */
+  proofRequest: AriesProofRequest
 }
 /**
  * Check if a given object implements the AriesOOBAction interface.
  */
-export declare function instanceOfAriesOOBAction(value: object): value is AriesOOBAction;
-export declare function AriesOOBActionFromJSON(json: any): AriesOOBAction;
-export declare function AriesOOBActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): AriesOOBAction;
-export declare function AriesOOBActionToJSON(json: any): AriesOOBAction;
-export declare function AriesOOBActionToJSONTyped(value?: AriesOOBAction | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfAriesOOBAction(value: object): value is AriesOOBAction
+export declare function AriesOOBActionFromJSON(json: any): AriesOOBAction
+export declare function AriesOOBActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): AriesOOBAction
+export declare function AriesOOBActionToJSON(json: any): AriesOOBAction
+export declare function AriesOOBActionToJSONTyped(value?: AriesOOBAction | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=AriesOOBAction.d.ts.map

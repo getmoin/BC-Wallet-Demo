@@ -9,16 +9,22 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Id } from './Id';
-import type { Persona } from './Persona';
+import type { Id } from './Id'
+import type { Persona } from './Persona'
 /**
  * @type ShowcasePersonasInner
  *
  * @export
  */
-export type ShowcasePersonasInner = Id | Persona;
-export declare function ShowcasePersonasInnerFromJSON(json: any): ShowcasePersonasInner;
-export declare function ShowcasePersonasInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcasePersonasInner;
-export declare function ShowcasePersonasInnerToJSON(json: any): any;
-export declare function ShowcasePersonasInnerToJSONTyped(value?: ShowcasePersonasInner | null, ignoreDiscriminator?: boolean): any;
+export type ShowcasePersonasInner = Id | Persona
+export declare function ShowcasePersonasInnerFromJSON(json: any): ShowcasePersonasInner
+export declare function ShowcasePersonasInnerFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): ShowcasePersonasInner
+export declare function ShowcasePersonasInnerToJSON(json: any): any
+export declare function ShowcasePersonasInnerToJSONTyped(
+  value?: ShowcasePersonasInner | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=ShowcasePersonasInner.d.ts.map

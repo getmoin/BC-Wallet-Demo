@@ -15,19 +15,25 @@
  * @interface ListIssuanceFlows403Response
  */
 export interface ListIssuanceFlows403Response {
-    /**
-     *
-     * @type {string}
-     * @memberof ListIssuanceFlows403Response
-     */
-    message?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ListIssuanceFlows403Response
+   */
+  message?: string
 }
 /**
  * Check if a given object implements the ListIssuanceFlows403Response interface.
  */
-export declare function instanceOfListIssuanceFlows403Response(value: object): value is ListIssuanceFlows403Response;
-export declare function ListIssuanceFlows403ResponseFromJSON(json: any): ListIssuanceFlows403Response;
-export declare function ListIssuanceFlows403ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListIssuanceFlows403Response;
-export declare function ListIssuanceFlows403ResponseToJSON(json: any): ListIssuanceFlows403Response;
-export declare function ListIssuanceFlows403ResponseToJSONTyped(value?: ListIssuanceFlows403Response | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfListIssuanceFlows403Response(value: object): value is ListIssuanceFlows403Response
+export declare function ListIssuanceFlows403ResponseFromJSON(json: any): ListIssuanceFlows403Response
+export declare function ListIssuanceFlows403ResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): ListIssuanceFlows403Response
+export declare function ListIssuanceFlows403ResponseToJSON(json: any): ListIssuanceFlows403Response
+export declare function ListIssuanceFlows403ResponseToJSONTyped(
+  value?: ListIssuanceFlows403Response | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=ListIssuanceFlows403Response.d.ts.map

@@ -15,37 +15,37 @@
  * @interface AssetRequest
  */
 export interface AssetRequest {
-    /**
-     * Type of asset (e.g., image, document, icon)
-     * @type {string}
-     * @memberof AssetRequest
-     */
-    mediaType: string;
-    /**
-     * Binary data of the asset
-     * @type {string}
-     * @memberof AssetRequest
-     */
-    content: string;
-    /**
-     * Name of the asset file
-     * @type {string}
-     * @memberof AssetRequest
-     */
-    fileName?: string;
-    /**
-     * Description of the asset
-     * @type {string}
-     * @memberof AssetRequest
-     */
-    description?: string;
+  /**
+   * Type of asset (e.g., image, document, icon)
+   * @type {string}
+   * @memberof AssetRequest
+   */
+  mediaType: string
+  /**
+   * Binary data of the asset
+   * @type {string}
+   * @memberof AssetRequest
+   */
+  content: string
+  /**
+   * Name of the asset file
+   * @type {string}
+   * @memberof AssetRequest
+   */
+  fileName?: string
+  /**
+   * Description of the asset
+   * @type {string}
+   * @memberof AssetRequest
+   */
+  description?: string
 }
 /**
  * Check if a given object implements the AssetRequest interface.
  */
-export declare function instanceOfAssetRequest(value: object): value is AssetRequest;
-export declare function AssetRequestFromJSON(json: any): AssetRequest;
-export declare function AssetRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): AssetRequest;
-export declare function AssetRequestToJSON(json: any): AssetRequest;
-export declare function AssetRequestToJSONTyped(value?: AssetRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfAssetRequest(value: object): value is AssetRequest
+export declare function AssetRequestFromJSON(json: any): AssetRequest
+export declare function AssetRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): AssetRequest
+export declare function AssetRequestToJSON(json: any): AssetRequest
+export declare function AssetRequestToJSONTyped(value?: AssetRequest | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=AssetRequest.d.ts.map

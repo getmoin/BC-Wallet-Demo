@@ -14,12 +14,12 @@
  * @export
  */
 export declare const IdentifierType: {
-    readonly Did: "DID";
-};
-export type IdentifierType = typeof IdentifierType[keyof typeof IdentifierType];
-export declare function instanceOfIdentifierType(value: any): boolean;
-export declare function IdentifierTypeFromJSON(json: any): IdentifierType;
-export declare function IdentifierTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): IdentifierType;
-export declare function IdentifierTypeToJSON(value?: IdentifierType | null): any;
-export declare function IdentifierTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): IdentifierType;
+  readonly Did: 'DID'
+}
+export type IdentifierType = (typeof IdentifierType)[keyof typeof IdentifierType]
+export declare function instanceOfIdentifierType(value: any): boolean
+export declare function IdentifierTypeFromJSON(json: any): IdentifierType
+export declare function IdentifierTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): IdentifierType
+export declare function IdentifierTypeToJSON(value?: IdentifierType | null): any
+export declare function IdentifierTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): IdentifierType
 //# sourceMappingURL=IdentifierType.d.ts.map

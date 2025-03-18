@@ -9,96 +9,96 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Persona } from './Persona';
-import type { Issuer } from './Issuer';
-import type { Asset } from './Asset';
-import type { Step } from './Step';
-import type { ScenarioType } from './ScenarioType';
+import type { Asset } from './Asset'
+import type { Issuer } from './Issuer'
+import type { Persona } from './Persona'
+import type { ScenarioType } from './ScenarioType'
+import type { Step } from './Step'
 /**
  * Scenario specialization for credential issuance
  * @export
  * @interface IssuanceScenario
  */
 export interface IssuanceScenario {
-    /**
-     * Unique identifier for the scenario
-     * @type {string}
-     * @memberof IssuanceScenario
-     */
-    id: string;
-    /**
-     * Name of the scenario
-     * @type {string}
-     * @memberof IssuanceScenario
-     */
-    name?: string;
-    /**
-     * URL-friendly identifier for the scenario
-     * @type {string}
-     * @memberof IssuanceScenario
-     */
-    slug?: string;
-    /**
-     * Detailed description of the scenario
-     * @type {string}
-     * @memberof IssuanceScenario
-     */
-    description?: string;
-    /**
-     *
-     * @type {ScenarioType}
-     * @memberof IssuanceScenario
-     */
-    type?: ScenarioType;
-    /**
-     * Ordered list of steps in the scenario
-     * @type {Array<Step>}
-     * @memberof IssuanceScenario
-     */
-    steps?: Array<Step>;
-    /**
-     * References to personas used in this scenario
-     * @type {Array<Persona>}
-     * @memberof IssuanceScenario
-     */
-    personas?: Array<Persona>;
-    /**
-     * Whether the workflow is hidden from the user
-     * @type {boolean}
-     * @memberof IssuanceScenario
-     */
-    hidden?: boolean;
-    /**
-     * Date and time the scenario was created
-     * @type {Date}
-     * @memberof IssuanceScenario
-     */
-    createdAt?: Date;
-    /**
-     * Date and time the scenario was last updated
-     * @type {Date}
-     * @memberof IssuanceScenario
-     */
-    updatedAt?: Date;
-    /**
-     *
-     * @type {Asset}
-     * @memberof IssuanceScenario
-     */
-    bannerImage?: Asset;
-    /**
-     *
-     * @type {Issuer}
-     * @memberof IssuanceScenario
-     */
-    issuer: Issuer;
+  /**
+   * Unique identifier for the scenario
+   * @type {string}
+   * @memberof IssuanceScenario
+   */
+  id: string
+  /**
+   * Name of the scenario
+   * @type {string}
+   * @memberof IssuanceScenario
+   */
+  name?: string
+  /**
+   * URL-friendly identifier for the scenario
+   * @type {string}
+   * @memberof IssuanceScenario
+   */
+  slug?: string
+  /**
+   * Detailed description of the scenario
+   * @type {string}
+   * @memberof IssuanceScenario
+   */
+  description?: string
+  /**
+   *
+   * @type {ScenarioType}
+   * @memberof IssuanceScenario
+   */
+  type?: ScenarioType
+  /**
+   * Ordered list of steps in the scenario
+   * @type {Array<Step>}
+   * @memberof IssuanceScenario
+   */
+  steps?: Array<Step>
+  /**
+   * References to personas used in this scenario
+   * @type {Array<Persona>}
+   * @memberof IssuanceScenario
+   */
+  personas?: Array<Persona>
+  /**
+   * Whether the workflow is hidden from the user
+   * @type {boolean}
+   * @memberof IssuanceScenario
+   */
+  hidden?: boolean
+  /**
+   * Date and time the scenario was created
+   * @type {Date}
+   * @memberof IssuanceScenario
+   */
+  createdAt?: Date
+  /**
+   * Date and time the scenario was last updated
+   * @type {Date}
+   * @memberof IssuanceScenario
+   */
+  updatedAt?: Date
+  /**
+   *
+   * @type {Asset}
+   * @memberof IssuanceScenario
+   */
+  bannerImage?: Asset
+  /**
+   *
+   * @type {Issuer}
+   * @memberof IssuanceScenario
+   */
+  issuer: Issuer
 }
 /**
  * Check if a given object implements the IssuanceScenario interface.
  */
-export declare function instanceOfIssuanceScenario(value: object): value is IssuanceScenario;
-export declare function IssuanceScenarioFromJSON(json: any): IssuanceScenario;
-export declare function IssuanceScenarioFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuanceScenario;
-export declare function IssuanceScenarioToJSON(json: any): IssuanceScenario;
-export declare function IssuanceScenarioToJSONTyped(value?: IssuanceScenario | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfIssuanceScenario(value: object): value is IssuanceScenario
+export declare function IssuanceScenarioFromJSON(json: any): IssuanceScenario
+export declare function IssuanceScenarioFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuanceScenario
+export declare function IssuanceScenarioToJSON(json: any): IssuanceScenario
+export declare function IssuanceScenarioToJSONTyped(value?: IssuanceScenario | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=IssuanceScenario.d.ts.map

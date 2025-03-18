@@ -9,74 +9,74 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ShowcaseStatus } from './ShowcaseStatus';
+import type { ShowcaseStatus } from './ShowcaseStatus'
 /**
  *
  * @export
  * @interface ShowcaseRequest
  */
 export interface ShowcaseRequest {
-    /**
-     * Name of the showcase
-     * @type {string}
-     * @memberof ShowcaseRequest
-     */
-    name: string;
-    /**
-     * Description of the showcase
-     * @type {string}
-     * @memberof ShowcaseRequest
-     */
-    description: string;
-    /**
-     *
-     * @type {ShowcaseStatus}
-     * @memberof ShowcaseRequest
-     */
-    status: ShowcaseStatus;
-    /**
-     * Whether the showcase is hidden from public view
-     * @type {boolean}
-     * @memberof ShowcaseRequest
-     */
-    hidden: boolean;
-    /**
-     * List of scenarios in this showcase
-     * @type {Array<string>}
-     * @memberof ShowcaseRequest
-     */
-    scenarios: Array<string>;
-    /**
-     * List of credential definitions used in this showcase
-     * @type {Array<string>}
-     * @memberof ShowcaseRequest
-     */
-    credentialDefinitions: Array<string>;
-    /**
-     * List of personas involved in this showcase
-     * @type {Array<string>}
-     * @memberof ShowcaseRequest
-     */
-    personas: Array<string>;
-    /**
-     *
-     * @type {string}
-     * @memberof ShowcaseRequest
-     */
-    bannerImage?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof ShowcaseRequest
-     */
-    completionMessage?: string;
+  /**
+   * Name of the showcase
+   * @type {string}
+   * @memberof ShowcaseRequest
+   */
+  name: string
+  /**
+   * Description of the showcase
+   * @type {string}
+   * @memberof ShowcaseRequest
+   */
+  description: string
+  /**
+   *
+   * @type {ShowcaseStatus}
+   * @memberof ShowcaseRequest
+   */
+  status: ShowcaseStatus
+  /**
+   * Whether the showcase is hidden from public view
+   * @type {boolean}
+   * @memberof ShowcaseRequest
+   */
+  hidden: boolean
+  /**
+   * List of scenarios in this showcase
+   * @type {Array<string>}
+   * @memberof ShowcaseRequest
+   */
+  scenarios: Array<string>
+  /**
+   * List of credential definitions used in this showcase
+   * @type {Array<string>}
+   * @memberof ShowcaseRequest
+   */
+  credentialDefinitions: Array<string>
+  /**
+   * List of personas involved in this showcase
+   * @type {Array<string>}
+   * @memberof ShowcaseRequest
+   */
+  personas: Array<string>
+  /**
+   *
+   * @type {string}
+   * @memberof ShowcaseRequest
+   */
+  bannerImage?: string
+  /**
+   *
+   * @type {string}
+   * @memberof ShowcaseRequest
+   */
+  completionMessage?: string
 }
 /**
  * Check if a given object implements the ShowcaseRequest interface.
  */
-export declare function instanceOfShowcaseRequest(value: object): value is ShowcaseRequest;
-export declare function ShowcaseRequestFromJSON(json: any): ShowcaseRequest;
-export declare function ShowcaseRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseRequest;
-export declare function ShowcaseRequestToJSON(json: any): ShowcaseRequest;
-export declare function ShowcaseRequestToJSONTyped(value?: ShowcaseRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfShowcaseRequest(value: object): value is ShowcaseRequest
+export declare function ShowcaseRequestFromJSON(json: any): ShowcaseRequest
+export declare function ShowcaseRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseRequest
+export declare function ShowcaseRequestToJSON(json: any): ShowcaseRequest
+export declare function ShowcaseRequestToJSONTyped(value?: ShowcaseRequest | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=ShowcaseRequest.d.ts.map

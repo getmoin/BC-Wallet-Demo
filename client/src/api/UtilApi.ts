@@ -1,7 +1,7 @@
 import type { AxiosResponse } from 'axios'
 
-import { demoApi } from './BaseUrl'
+import { demoBackendApi } from './BaseUrl'
 
 export const getLastServerReset = (): Promise<AxiosResponse> => {
-  return demoApi.get('/server/last-reset')
+  return demoBackendApi.get('/server/last-reset')
 }

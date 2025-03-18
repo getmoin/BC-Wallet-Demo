@@ -9,15 +9,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AriesOOBActionRequest } from './AriesOOBActionRequest';
+import type { AriesOOBActionRequest } from './AriesOOBActionRequest'
 /**
  * @type StepRequestActionsInner
  *
  * @export
  */
-export type StepRequestActionsInner = AriesOOBActionRequest;
-export declare function StepRequestActionsInnerFromJSON(json: any): StepRequestActionsInner;
-export declare function StepRequestActionsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): StepRequestActionsInner;
-export declare function StepRequestActionsInnerToJSON(json: any): any;
-export declare function StepRequestActionsInnerToJSONTyped(value?: StepRequestActionsInner | null, ignoreDiscriminator?: boolean): any;
+export type StepRequestActionsInner = AriesOOBActionRequest
+export declare function StepRequestActionsInnerFromJSON(json: any): StepRequestActionsInner
+export declare function StepRequestActionsInnerFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): StepRequestActionsInner
+export declare function StepRequestActionsInnerToJSON(json: any): any
+export declare function StepRequestActionsInnerToJSONTyped(
+  value?: StepRequestActionsInner | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=StepRequestActionsInner.d.ts.map

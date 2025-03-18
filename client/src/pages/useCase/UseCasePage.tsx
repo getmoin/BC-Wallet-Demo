@@ -22,9 +22,9 @@ import { setSection } from '../../slices/section/sectionSlice'
 import { useUseCaseState } from '../../slices/useCases/useCasesSelectors'
 import { nextSection } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
+import { SafeAnimatePresence } from '../../utils/Helpers'
 
 import { Section } from './Section'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 
 export const UseCasePage: React.FC = () => {
   const dispatch = useAppDispatch()

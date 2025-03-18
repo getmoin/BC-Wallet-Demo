@@ -9,50 +9,53 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StepRequest } from './StepRequest';
+import type { StepRequest } from './StepRequest'
 /**
  * Workflow specialization for credential issuance
  * @export
  * @interface IssuanceFlowRequest
  */
 export interface IssuanceFlowRequest {
-    /**
-     * Name of the workflow
-     * @type {string}
-     * @memberof IssuanceFlowRequest
-     */
-    name: string;
-    /**
-     * Detailed description of the workflow
-     * @type {string}
-     * @memberof IssuanceFlowRequest
-     */
-    description: string;
-    /**
-     * Ordered list of steps in the workflow
-     * @type {Array<StepRequest>}
-     * @memberof IssuanceFlowRequest
-     */
-    steps?: Array<StepRequest>;
-    /**
-     * References to personas used in this workflow
-     * @type {Array<string>}
-     * @memberof IssuanceFlowRequest
-     */
-    personas?: Array<string>;
-    /**
-     *
-     * @type {string}
-     * @memberof IssuanceFlowRequest
-     */
-    issuer: string;
+  /**
+   * Name of the workflow
+   * @type {string}
+   * @memberof IssuanceFlowRequest
+   */
+  name: string
+  /**
+   * Detailed description of the workflow
+   * @type {string}
+   * @memberof IssuanceFlowRequest
+   */
+  description: string
+  /**
+   * Ordered list of steps in the workflow
+   * @type {Array<StepRequest>}
+   * @memberof IssuanceFlowRequest
+   */
+  steps?: Array<StepRequest>
+  /**
+   * References to personas used in this workflow
+   * @type {Array<string>}
+   * @memberof IssuanceFlowRequest
+   */
+  personas?: Array<string>
+  /**
+   *
+   * @type {string}
+   * @memberof IssuanceFlowRequest
+   */
+  issuer: string
 }
 /**
  * Check if a given object implements the IssuanceFlowRequest interface.
  */
-export declare function instanceOfIssuanceFlowRequest(value: object): value is IssuanceFlowRequest;
-export declare function IssuanceFlowRequestFromJSON(json: any): IssuanceFlowRequest;
-export declare function IssuanceFlowRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuanceFlowRequest;
-export declare function IssuanceFlowRequestToJSON(json: any): IssuanceFlowRequest;
-export declare function IssuanceFlowRequestToJSONTyped(value?: IssuanceFlowRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfIssuanceFlowRequest(value: object): value is IssuanceFlowRequest
+export declare function IssuanceFlowRequestFromJSON(json: any): IssuanceFlowRequest
+export declare function IssuanceFlowRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuanceFlowRequest
+export declare function IssuanceFlowRequestToJSON(json: any): IssuanceFlowRequest
+export declare function IssuanceFlowRequestToJSONTyped(
+  value?: IssuanceFlowRequest | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=IssuanceFlowRequest.d.ts.map

@@ -9,38 +9,44 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialAttributeType } from './CredentialAttributeType';
+import type { CredentialAttributeType } from './CredentialAttributeType'
 /**
  *
  * @export
  * @interface CredentialAttributeRequest
  */
 export interface CredentialAttributeRequest {
-    /**
-     * Name of the attribute
-     * @type {string}
-     * @memberof CredentialAttributeRequest
-     */
-    name: string;
-    /**
-     * Default or example value of the attribute
-     * @type {string}
-     * @memberof CredentialAttributeRequest
-     */
-    value: string;
-    /**
-     *
-     * @type {CredentialAttributeType}
-     * @memberof CredentialAttributeRequest
-     */
-    type: CredentialAttributeType;
+  /**
+   * Name of the attribute
+   * @type {string}
+   * @memberof CredentialAttributeRequest
+   */
+  name: string
+  /**
+   * Default or example value of the attribute
+   * @type {string}
+   * @memberof CredentialAttributeRequest
+   */
+  value: string
+  /**
+   *
+   * @type {CredentialAttributeType}
+   * @memberof CredentialAttributeRequest
+   */
+  type: CredentialAttributeType
 }
 /**
  * Check if a given object implements the CredentialAttributeRequest interface.
  */
-export declare function instanceOfCredentialAttributeRequest(value: object): value is CredentialAttributeRequest;
-export declare function CredentialAttributeRequestFromJSON(json: any): CredentialAttributeRequest;
-export declare function CredentialAttributeRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialAttributeRequest;
-export declare function CredentialAttributeRequestToJSON(json: any): CredentialAttributeRequest;
-export declare function CredentialAttributeRequestToJSONTyped(value?: CredentialAttributeRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfCredentialAttributeRequest(value: object): value is CredentialAttributeRequest
+export declare function CredentialAttributeRequestFromJSON(json: any): CredentialAttributeRequest
+export declare function CredentialAttributeRequestFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): CredentialAttributeRequest
+export declare function CredentialAttributeRequestToJSON(json: any): CredentialAttributeRequest
+export declare function CredentialAttributeRequestToJSONTyped(
+  value?: CredentialAttributeRequest | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=CredentialAttributeRequest.d.ts.map

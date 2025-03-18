@@ -9,26 +9,32 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PresentationFlow } from './PresentationFlow';
+import type { PresentationFlow } from './PresentationFlow'
 /**
  *
  * @export
  * @interface PresentationFlowResponse
  */
 export interface PresentationFlowResponse {
-    /**
-     *
-     * @type {PresentationFlow}
-     * @memberof PresentationFlowResponse
-     */
-    presentationFlow?: PresentationFlow;
+  /**
+   *
+   * @type {PresentationFlow}
+   * @memberof PresentationFlowResponse
+   */
+  presentationFlow?: PresentationFlow
 }
 /**
  * Check if a given object implements the PresentationFlowResponse interface.
  */
-export declare function instanceOfPresentationFlowResponse(value: object): value is PresentationFlowResponse;
-export declare function PresentationFlowResponseFromJSON(json: any): PresentationFlowResponse;
-export declare function PresentationFlowResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PresentationFlowResponse;
-export declare function PresentationFlowResponseToJSON(json: any): PresentationFlowResponse;
-export declare function PresentationFlowResponseToJSONTyped(value?: PresentationFlowResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfPresentationFlowResponse(value: object): value is PresentationFlowResponse
+export declare function PresentationFlowResponseFromJSON(json: any): PresentationFlowResponse
+export declare function PresentationFlowResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): PresentationFlowResponse
+export declare function PresentationFlowResponseToJSON(json: any): PresentationFlowResponse
+export declare function PresentationFlowResponseToJSONTyped(
+  value?: PresentationFlowResponse | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=PresentationFlowResponse.d.ts.map

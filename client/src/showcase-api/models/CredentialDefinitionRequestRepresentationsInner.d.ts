@@ -9,16 +9,24 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialRepresentation } from './CredentialRepresentation';
-import type { OCARepresentation } from './OCARepresentation';
+import type { CredentialRepresentation } from './CredentialRepresentation'
+import type { OCARepresentation } from './OCARepresentation'
 /**
  * @type CredentialDefinitionRequestRepresentationsInner
  *
  * @export
  */
-export type CredentialDefinitionRequestRepresentationsInner = CredentialRepresentation | OCARepresentation;
-export declare function CredentialDefinitionRequestRepresentationsInnerFromJSON(json: any): CredentialDefinitionRequestRepresentationsInner;
-export declare function CredentialDefinitionRequestRepresentationsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialDefinitionRequestRepresentationsInner;
-export declare function CredentialDefinitionRequestRepresentationsInnerToJSON(json: any): any;
-export declare function CredentialDefinitionRequestRepresentationsInnerToJSONTyped(value?: CredentialDefinitionRequestRepresentationsInner | null, ignoreDiscriminator?: boolean): any;
+export type CredentialDefinitionRequestRepresentationsInner = CredentialRepresentation | OCARepresentation
+export declare function CredentialDefinitionRequestRepresentationsInnerFromJSON(
+  json: any
+): CredentialDefinitionRequestRepresentationsInner
+export declare function CredentialDefinitionRequestRepresentationsInnerFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): CredentialDefinitionRequestRepresentationsInner
+export declare function CredentialDefinitionRequestRepresentationsInnerToJSON(json: any): any
+export declare function CredentialDefinitionRequestRepresentationsInnerToJSONTyped(
+  value?: CredentialDefinitionRequestRepresentationsInner | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=CredentialDefinitionRequestRepresentationsInner.d.ts.map

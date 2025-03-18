@@ -14,13 +14,13 @@
  * @export
  */
 export declare const ScenarioType: {
-    readonly Issuance: "ISSUANCE";
-    readonly Presentation: "PRESENTATION";
-};
-export type ScenarioType = typeof ScenarioType[keyof typeof ScenarioType];
-export declare function instanceOfScenarioType(value: any): boolean;
-export declare function ScenarioTypeFromJSON(json: any): ScenarioType;
-export declare function ScenarioTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): ScenarioType;
-export declare function ScenarioTypeToJSON(value?: ScenarioType | null): any;
-export declare function ScenarioTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): ScenarioType;
+  readonly Issuance: 'ISSUANCE'
+  readonly Presentation: 'PRESENTATION'
+}
+export type ScenarioType = (typeof ScenarioType)[keyof typeof ScenarioType]
+export declare function instanceOfScenarioType(value: any): boolean
+export declare function ScenarioTypeFromJSON(json: any): ScenarioType
+export declare function ScenarioTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): ScenarioType
+export declare function ScenarioTypeToJSON(value?: ScenarioType | null): any
+export declare function ScenarioTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): ScenarioType
 //# sourceMappingURL=ScenarioType.d.ts.map

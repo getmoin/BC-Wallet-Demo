@@ -9,56 +9,62 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StepRequest } from './StepRequest';
+import type { StepRequest } from './StepRequest'
 /**
  *
  * @export
  * @interface PresentationScenarioRequest
  */
 export interface PresentationScenarioRequest {
-    /**
-     * Name of the scenario
-     * @type {string}
-     * @memberof PresentationScenarioRequest
-     */
-    name: string;
-    /**
-     * Detailed description of the scenario
-     * @type {string}
-     * @memberof PresentationScenarioRequest
-     */
-    description: string;
-    /**
-     * Ordered list of steps in the scenario
-     * @type {Array<StepRequest>}
-     * @memberof PresentationScenarioRequest
-     */
-    steps: Array<StepRequest>;
-    /**
-     * References to personas used in this scenario
-     * @type {Array<string>}
-     * @memberof PresentationScenarioRequest
-     */
-    personas: Array<string>;
-    /**
-     * Whether the workflow is hidden from the user
-     * @type {boolean}
-     * @memberof PresentationScenarioRequest
-     */
-    hidden?: boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof PresentationScenarioRequest
-     */
-    relyingParty: string;
+  /**
+   * Name of the scenario
+   * @type {string}
+   * @memberof PresentationScenarioRequest
+   */
+  name: string
+  /**
+   * Detailed description of the scenario
+   * @type {string}
+   * @memberof PresentationScenarioRequest
+   */
+  description: string
+  /**
+   * Ordered list of steps in the scenario
+   * @type {Array<StepRequest>}
+   * @memberof PresentationScenarioRequest
+   */
+  steps: Array<StepRequest>
+  /**
+   * References to personas used in this scenario
+   * @type {Array<string>}
+   * @memberof PresentationScenarioRequest
+   */
+  personas: Array<string>
+  /**
+   * Whether the workflow is hidden from the user
+   * @type {boolean}
+   * @memberof PresentationScenarioRequest
+   */
+  hidden?: boolean
+  /**
+   *
+   * @type {string}
+   * @memberof PresentationScenarioRequest
+   */
+  relyingParty: string
 }
 /**
  * Check if a given object implements the PresentationScenarioRequest interface.
  */
-export declare function instanceOfPresentationScenarioRequest(value: object): value is PresentationScenarioRequest;
-export declare function PresentationScenarioRequestFromJSON(json: any): PresentationScenarioRequest;
-export declare function PresentationScenarioRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PresentationScenarioRequest;
-export declare function PresentationScenarioRequestToJSON(json: any): PresentationScenarioRequest;
-export declare function PresentationScenarioRequestToJSONTyped(value?: PresentationScenarioRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfPresentationScenarioRequest(value: object): value is PresentationScenarioRequest
+export declare function PresentationScenarioRequestFromJSON(json: any): PresentationScenarioRequest
+export declare function PresentationScenarioRequestFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): PresentationScenarioRequest
+export declare function PresentationScenarioRequestToJSON(json: any): PresentationScenarioRequest
+export declare function PresentationScenarioRequestToJSONTyped(
+  value?: PresentationScenarioRequest | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=PresentationScenarioRequest.d.ts.map

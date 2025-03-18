@@ -9,16 +9,22 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AnonCredRevocation } from './AnonCredRevocation';
-import type { RevocationInfo } from './RevocationInfo';
+import type { AnonCredRevocation } from './AnonCredRevocation'
+import type { RevocationInfo } from './RevocationInfo'
 /**
  * @type CredentialDefinitionRevocation
  *
  * @export
  */
-export type CredentialDefinitionRevocation = AnonCredRevocation | RevocationInfo;
-export declare function CredentialDefinitionRevocationFromJSON(json: any): CredentialDefinitionRevocation;
-export declare function CredentialDefinitionRevocationFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialDefinitionRevocation;
-export declare function CredentialDefinitionRevocationToJSON(json: any): any;
-export declare function CredentialDefinitionRevocationToJSONTyped(value?: CredentialDefinitionRevocation | null, ignoreDiscriminator?: boolean): any;
+export type CredentialDefinitionRevocation = AnonCredRevocation | RevocationInfo
+export declare function CredentialDefinitionRevocationFromJSON(json: any): CredentialDefinitionRevocation
+export declare function CredentialDefinitionRevocationFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): CredentialDefinitionRevocation
+export declare function CredentialDefinitionRevocationToJSON(json: any): any
+export declare function CredentialDefinitionRevocationToJSONTyped(
+  value?: CredentialDefinitionRevocation | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=CredentialDefinitionRevocation.d.ts.map

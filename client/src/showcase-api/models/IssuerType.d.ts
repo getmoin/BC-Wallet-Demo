@@ -14,12 +14,12 @@
  * @export
  */
 export declare const IssuerType: {
-    readonly Aries: "ARIES";
-};
-export type IssuerType = typeof IssuerType[keyof typeof IssuerType];
-export declare function instanceOfIssuerType(value: any): boolean;
-export declare function IssuerTypeFromJSON(json: any): IssuerType;
-export declare function IssuerTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuerType;
-export declare function IssuerTypeToJSON(value?: IssuerType | null): any;
-export declare function IssuerTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): IssuerType;
+  readonly Aries: 'ARIES'
+}
+export type IssuerType = (typeof IssuerType)[keyof typeof IssuerType]
+export declare function instanceOfIssuerType(value: any): boolean
+export declare function IssuerTypeFromJSON(json: any): IssuerType
+export declare function IssuerTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuerType
+export declare function IssuerTypeToJSON(value?: IssuerType | null): any
+export declare function IssuerTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): IssuerType
 //# sourceMappingURL=IssuerType.d.ts.map

@@ -9,26 +9,26 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Step } from './Step';
+import type { Step } from './Step'
 /**
  *
  * @export
  * @interface StepsResponse
  */
 export interface StepsResponse {
-    /**
-     *
-     * @type {Array<Step>}
-     * @memberof StepsResponse
-     */
-    steps?: Array<Step>;
+  /**
+   *
+   * @type {Array<Step>}
+   * @memberof StepsResponse
+   */
+  steps?: Array<Step>
 }
 /**
  * Check if a given object implements the StepsResponse interface.
  */
-export declare function instanceOfStepsResponse(value: object): value is StepsResponse;
-export declare function StepsResponseFromJSON(json: any): StepsResponse;
-export declare function StepsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): StepsResponse;
-export declare function StepsResponseToJSON(json: any): StepsResponse;
-export declare function StepsResponseToJSONTyped(value?: StepsResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfStepsResponse(value: object): value is StepsResponse
+export declare function StepsResponseFromJSON(json: any): StepsResponse
+export declare function StepsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): StepsResponse
+export declare function StepsResponseToJSON(json: any): StepsResponse
+export declare function StepsResponseToJSONTyped(value?: StepsResponse | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=StepsResponse.d.ts.map

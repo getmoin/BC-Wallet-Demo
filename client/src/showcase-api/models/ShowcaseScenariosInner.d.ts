@@ -9,16 +9,22 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Id } from './Id';
-import type { Scenario } from './Scenario';
+import type { Id } from './Id'
+import type { Scenario } from './Scenario'
 /**
  * @type ShowcaseScenariosInner
  *
  * @export
  */
-export type ShowcaseScenariosInner = Id | Scenario;
-export declare function ShowcaseScenariosInnerFromJSON(json: any): ShowcaseScenariosInner;
-export declare function ShowcaseScenariosInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseScenariosInner;
-export declare function ShowcaseScenariosInnerToJSON(json: any): any;
-export declare function ShowcaseScenariosInnerToJSONTyped(value?: ShowcaseScenariosInner | null, ignoreDiscriminator?: boolean): any;
+export type ShowcaseScenariosInner = Id | Scenario
+export declare function ShowcaseScenariosInnerFromJSON(json: any): ShowcaseScenariosInner
+export declare function ShowcaseScenariosInnerFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): ShowcaseScenariosInner
+export declare function ShowcaseScenariosInnerToJSON(json: any): any
+export declare function ShowcaseScenariosInnerToJSONTyped(
+  value?: ShowcaseScenariosInner | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=ShowcaseScenariosInner.d.ts.map

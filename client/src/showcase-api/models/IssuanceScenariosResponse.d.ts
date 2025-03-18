@@ -9,26 +9,32 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { IssuanceScenario } from './IssuanceScenario';
+import type { IssuanceScenario } from './IssuanceScenario'
 /**
  *
  * @export
  * @interface IssuanceScenariosResponse
  */
 export interface IssuanceScenariosResponse {
-    /**
-     *
-     * @type {Array<IssuanceScenario>}
-     * @memberof IssuanceScenariosResponse
-     */
-    issuanceScenarios?: Array<IssuanceScenario>;
+  /**
+   *
+   * @type {Array<IssuanceScenario>}
+   * @memberof IssuanceScenariosResponse
+   */
+  issuanceScenarios?: Array<IssuanceScenario>
 }
 /**
  * Check if a given object implements the IssuanceScenariosResponse interface.
  */
-export declare function instanceOfIssuanceScenariosResponse(value: object): value is IssuanceScenariosResponse;
-export declare function IssuanceScenariosResponseFromJSON(json: any): IssuanceScenariosResponse;
-export declare function IssuanceScenariosResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuanceScenariosResponse;
-export declare function IssuanceScenariosResponseToJSON(json: any): IssuanceScenariosResponse;
-export declare function IssuanceScenariosResponseToJSONTyped(value?: IssuanceScenariosResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfIssuanceScenariosResponse(value: object): value is IssuanceScenariosResponse
+export declare function IssuanceScenariosResponseFromJSON(json: any): IssuanceScenariosResponse
+export declare function IssuanceScenariosResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): IssuanceScenariosResponse
+export declare function IssuanceScenariosResponseToJSON(json: any): IssuanceScenariosResponse
+export declare function IssuanceScenariosResponseToJSONTyped(
+  value?: IssuanceScenariosResponse | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=IssuanceScenariosResponse.d.ts.map

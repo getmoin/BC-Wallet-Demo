@@ -15,37 +15,45 @@
  * @interface AriesRequestCredentialPredicates
  */
 export interface AriesRequestCredentialPredicates {
-    /**
-     * Name of the attribute for predicate
-     * @type {string}
-     * @memberof AriesRequestCredentialPredicates
-     */
-    name: string;
-    /**
-     * Type of predicate (e.g., >=, <=, etc.)
-     * @type {string}
-     * @memberof AriesRequestCredentialPredicates
-     */
-    type: string;
-    /**
-     * Value to compare against
-     * @type {string}
-     * @memberof AriesRequestCredentialPredicates
-     */
-    value: string;
-    /**
-     * List of restrictions on the predicate
-     * @type {Array<string>}
-     * @memberof AriesRequestCredentialPredicates
-     */
-    restrictions: Array<string>;
+  /**
+   * Name of the attribute for predicate
+   * @type {string}
+   * @memberof AriesRequestCredentialPredicates
+   */
+  name: string
+  /**
+   * Type of predicate (e.g., >=, <=, etc.)
+   * @type {string}
+   * @memberof AriesRequestCredentialPredicates
+   */
+  type: string
+  /**
+   * Value to compare against
+   * @type {string}
+   * @memberof AriesRequestCredentialPredicates
+   */
+  value: string
+  /**
+   * List of restrictions on the predicate
+   * @type {Array<string>}
+   * @memberof AriesRequestCredentialPredicates
+   */
+  restrictions: Array<string>
 }
 /**
  * Check if a given object implements the AriesRequestCredentialPredicates interface.
  */
-export declare function instanceOfAriesRequestCredentialPredicates(value: object): value is AriesRequestCredentialPredicates;
-export declare function AriesRequestCredentialPredicatesFromJSON(json: any): AriesRequestCredentialPredicates;
-export declare function AriesRequestCredentialPredicatesFromJSONTyped(json: any, ignoreDiscriminator: boolean): AriesRequestCredentialPredicates;
-export declare function AriesRequestCredentialPredicatesToJSON(json: any): AriesRequestCredentialPredicates;
-export declare function AriesRequestCredentialPredicatesToJSONTyped(value?: AriesRequestCredentialPredicates | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfAriesRequestCredentialPredicates(
+  value: object
+): value is AriesRequestCredentialPredicates
+export declare function AriesRequestCredentialPredicatesFromJSON(json: any): AriesRequestCredentialPredicates
+export declare function AriesRequestCredentialPredicatesFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): AriesRequestCredentialPredicates
+export declare function AriesRequestCredentialPredicatesToJSON(json: any): AriesRequestCredentialPredicates
+export declare function AriesRequestCredentialPredicatesToJSONTyped(
+  value?: AriesRequestCredentialPredicates | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=AriesRequestCredentialPredicates.d.ts.map

@@ -9,26 +9,32 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { RelyingParty } from './RelyingParty';
+import type { RelyingParty } from './RelyingParty'
 /**
  *
  * @export
  * @interface RelyingPartiesResponse
  */
 export interface RelyingPartiesResponse {
-    /**
-     *
-     * @type {Array<RelyingParty>}
-     * @memberof RelyingPartiesResponse
-     */
-    relyingParties?: Array<RelyingParty>;
+  /**
+   *
+   * @type {Array<RelyingParty>}
+   * @memberof RelyingPartiesResponse
+   */
+  relyingParties?: Array<RelyingParty>
 }
 /**
  * Check if a given object implements the RelyingPartiesResponse interface.
  */
-export declare function instanceOfRelyingPartiesResponse(value: object): value is RelyingPartiesResponse;
-export declare function RelyingPartiesResponseFromJSON(json: any): RelyingPartiesResponse;
-export declare function RelyingPartiesResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): RelyingPartiesResponse;
-export declare function RelyingPartiesResponseToJSON(json: any): RelyingPartiesResponse;
-export declare function RelyingPartiesResponseToJSONTyped(value?: RelyingPartiesResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfRelyingPartiesResponse(value: object): value is RelyingPartiesResponse
+export declare function RelyingPartiesResponseFromJSON(json: any): RelyingPartiesResponse
+export declare function RelyingPartiesResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): RelyingPartiesResponse
+export declare function RelyingPartiesResponseToJSON(json: any): RelyingPartiesResponse
+export declare function RelyingPartiesResponseToJSONTyped(
+  value?: RelyingPartiesResponse | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=RelyingPartiesResponse.d.ts.map

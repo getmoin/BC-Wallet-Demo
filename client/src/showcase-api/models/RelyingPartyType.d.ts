@@ -14,12 +14,12 @@
  * @export
  */
 export declare const RelyingPartyType: {
-    readonly Aries: "ARIES";
-};
-export type RelyingPartyType = typeof RelyingPartyType[keyof typeof RelyingPartyType];
-export declare function instanceOfRelyingPartyType(value: any): boolean;
-export declare function RelyingPartyTypeFromJSON(json: any): RelyingPartyType;
-export declare function RelyingPartyTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): RelyingPartyType;
-export declare function RelyingPartyTypeToJSON(value?: RelyingPartyType | null): any;
-export declare function RelyingPartyTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): RelyingPartyType;
+  readonly Aries: 'ARIES'
+}
+export type RelyingPartyType = (typeof RelyingPartyType)[keyof typeof RelyingPartyType]
+export declare function instanceOfRelyingPartyType(value: any): boolean
+export declare function RelyingPartyTypeFromJSON(json: any): RelyingPartyType
+export declare function RelyingPartyTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): RelyingPartyType
+export declare function RelyingPartyTypeToJSON(value?: RelyingPartyType | null): any
+export declare function RelyingPartyTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): RelyingPartyType
 //# sourceMappingURL=RelyingPartyType.d.ts.map

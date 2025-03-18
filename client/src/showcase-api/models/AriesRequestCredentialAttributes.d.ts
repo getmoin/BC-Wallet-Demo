@@ -15,25 +15,33 @@
  * @interface AriesRequestCredentialAttributes
  */
 export interface AriesRequestCredentialAttributes {
-    /**
-     * List of attribute names to be included in the proof
-     * @type {Array<string>}
-     * @memberof AriesRequestCredentialAttributes
-     */
-    attributes?: Array<string>;
-    /**
-     * List of restrictions on the requested attributes
-     * @type {Array<string>}
-     * @memberof AriesRequestCredentialAttributes
-     */
-    restrictions?: Array<string>;
+  /**
+   * List of attribute names to be included in the proof
+   * @type {Array<string>}
+   * @memberof AriesRequestCredentialAttributes
+   */
+  attributes?: Array<string>
+  /**
+   * List of restrictions on the requested attributes
+   * @type {Array<string>}
+   * @memberof AriesRequestCredentialAttributes
+   */
+  restrictions?: Array<string>
 }
 /**
  * Check if a given object implements the AriesRequestCredentialAttributes interface.
  */
-export declare function instanceOfAriesRequestCredentialAttributes(value: object): value is AriesRequestCredentialAttributes;
-export declare function AriesRequestCredentialAttributesFromJSON(json: any): AriesRequestCredentialAttributes;
-export declare function AriesRequestCredentialAttributesFromJSONTyped(json: any, ignoreDiscriminator: boolean): AriesRequestCredentialAttributes;
-export declare function AriesRequestCredentialAttributesToJSON(json: any): AriesRequestCredentialAttributes;
-export declare function AriesRequestCredentialAttributesToJSONTyped(value?: AriesRequestCredentialAttributes | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfAriesRequestCredentialAttributes(
+  value: object
+): value is AriesRequestCredentialAttributes
+export declare function AriesRequestCredentialAttributesFromJSON(json: any): AriesRequestCredentialAttributes
+export declare function AriesRequestCredentialAttributesFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): AriesRequestCredentialAttributes
+export declare function AriesRequestCredentialAttributesToJSON(json: any): AriesRequestCredentialAttributes
+export declare function AriesRequestCredentialAttributesToJSONTyped(
+  value?: AriesRequestCredentialAttributes | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=AriesRequestCredentialAttributes.d.ts.map

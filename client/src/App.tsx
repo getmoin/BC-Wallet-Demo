@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
 
-import { demoServerBaseWsUrl, demoServerSocketPath } from './api/BaseUrl'
+import { demoBackendBaseWsUrl, demoBackendSocketPath } from './api/BaseUrl'
 import { useAppDispatch } from './hooks/hooks'
 import { useAnalytics } from './hooks/useAnalytics'
 import { PageNotFound } from './pages/PageNotFound'
@@ -20,9 +20,9 @@ import { fetchLastServerReset } from './slices/preferences/preferencesThunks'
 import { setMessage } from './slices/socket/socketSlice'
 import { AuthProvider } from './utils/AuthContext'
 import { basePath } from './utils/BasePath'
+import { SafeAnimatePresence } from './utils/Helpers'
 import { PrivateRoute } from './utils/PrivateRoute'
 import { ThemeProvider } from './utils/ThemeContext'
-import { SafeAnimatePresence } from './utils/Helpers'
 
 function App() {
   useAnalytics()
@@ -58,7 +58,7 @@ function App() {
   }, [connectionDate, lastServerReset])
 
   useEffect(() => {
-    const ws = io(demoServerBaseWsUrl, { path: demoServerSocketPath })
+    const ws = io(demoBackendBaseWsUrl, { path: demoBackendSocketPath })
     ws.on('connect', () => {
       setSocket(ws)
     })

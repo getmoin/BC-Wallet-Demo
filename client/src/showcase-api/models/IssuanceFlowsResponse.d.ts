@@ -9,26 +9,32 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { IssuanceFlow } from './IssuanceFlow';
+import type { IssuanceFlow } from './IssuanceFlow'
 /**
  *
  * @export
  * @interface IssuanceFlowsResponse
  */
 export interface IssuanceFlowsResponse {
-    /**
-     *
-     * @type {Array<IssuanceFlow>}
-     * @memberof IssuanceFlowsResponse
-     */
-    issuanceFlows?: Array<IssuanceFlow>;
+  /**
+   *
+   * @type {Array<IssuanceFlow>}
+   * @memberof IssuanceFlowsResponse
+   */
+  issuanceFlows?: Array<IssuanceFlow>
 }
 /**
  * Check if a given object implements the IssuanceFlowsResponse interface.
  */
-export declare function instanceOfIssuanceFlowsResponse(value: object): value is IssuanceFlowsResponse;
-export declare function IssuanceFlowsResponseFromJSON(json: any): IssuanceFlowsResponse;
-export declare function IssuanceFlowsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuanceFlowsResponse;
-export declare function IssuanceFlowsResponseToJSON(json: any): IssuanceFlowsResponse;
-export declare function IssuanceFlowsResponseToJSONTyped(value?: IssuanceFlowsResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfIssuanceFlowsResponse(value: object): value is IssuanceFlowsResponse
+export declare function IssuanceFlowsResponseFromJSON(json: any): IssuanceFlowsResponse
+export declare function IssuanceFlowsResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): IssuanceFlowsResponse
+export declare function IssuanceFlowsResponseToJSON(json: any): IssuanceFlowsResponse
+export declare function IssuanceFlowsResponseToJSONTyped(
+  value?: IssuanceFlowsResponse | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=IssuanceFlowsResponse.d.ts.map

@@ -9,26 +9,26 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Asset } from './Asset';
+import type { Asset } from './Asset'
 /**
  *
  * @export
  * @interface AssetsResponse
  */
 export interface AssetsResponse {
-    /**
-     *
-     * @type {Array<Asset>}
-     * @memberof AssetsResponse
-     */
-    assets: Array<Asset>;
+  /**
+   *
+   * @type {Array<Asset>}
+   * @memberof AssetsResponse
+   */
+  assets: Array<Asset>
 }
 /**
  * Check if a given object implements the AssetsResponse interface.
  */
-export declare function instanceOfAssetsResponse(value: object): value is AssetsResponse;
-export declare function AssetsResponseFromJSON(json: any): AssetsResponse;
-export declare function AssetsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): AssetsResponse;
-export declare function AssetsResponseToJSON(json: any): AssetsResponse;
-export declare function AssetsResponseToJSONTyped(value?: AssetsResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfAssetsResponse(value: object): value is AssetsResponse
+export declare function AssetsResponseFromJSON(json: any): AssetsResponse
+export declare function AssetsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): AssetsResponse
+export declare function AssetsResponseToJSON(json: any): AssetsResponse
+export declare function AssetsResponseToJSONTyped(value?: AssetsResponse | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=AssetsResponse.d.ts.map

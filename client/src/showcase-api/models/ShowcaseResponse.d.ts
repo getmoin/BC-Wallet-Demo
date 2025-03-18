@@ -9,26 +9,26 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Showcase } from './Showcase';
+import type { Showcase } from './Showcase'
 /**
  *
  * @export
  * @interface ShowcaseResponse
  */
 export interface ShowcaseResponse {
-    /**
-     *
-     * @type {Showcase}
-     * @memberof ShowcaseResponse
-     */
-    showcase?: Showcase;
+  /**
+   *
+   * @type {Showcase}
+   * @memberof ShowcaseResponse
+   */
+  showcase?: Showcase
 }
 /**
  * Check if a given object implements the ShowcaseResponse interface.
  */
-export declare function instanceOfShowcaseResponse(value: object): value is ShowcaseResponse;
-export declare function ShowcaseResponseFromJSON(json: any): ShowcaseResponse;
-export declare function ShowcaseResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseResponse;
-export declare function ShowcaseResponseToJSON(json: any): ShowcaseResponse;
-export declare function ShowcaseResponseToJSONTyped(value?: ShowcaseResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfShowcaseResponse(value: object): value is ShowcaseResponse
+export declare function ShowcaseResponseFromJSON(json: any): ShowcaseResponse
+export declare function ShowcaseResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseResponse
+export declare function ShowcaseResponseToJSON(json: any): ShowcaseResponse
+export declare function ShowcaseResponseToJSONTyped(value?: ShowcaseResponse | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=ShowcaseResponse.d.ts.map

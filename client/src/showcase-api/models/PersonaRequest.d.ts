@@ -15,49 +15,49 @@
  * @interface PersonaRequest
  */
 export interface PersonaRequest {
-    /**
-     * Name of the persona
-     * @type {string}
-     * @memberof PersonaRequest
-     */
-    name: string;
-    /**
-     * Role of the persona in the system
-     * @type {string}
-     * @memberof PersonaRequest
-     */
-    role: string;
-    /**
-     * Detailed description of the persona
-     * @type {string}
-     * @memberof PersonaRequest
-     */
-    description?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof PersonaRequest
-     */
-    headshotImage?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof PersonaRequest
-     */
-    bodyImage?: string;
-    /**
-     * Whether the persona is hidden from the user
-     * @type {boolean}
-     * @memberof PersonaRequest
-     */
-    hidden?: boolean;
+  /**
+   * Name of the persona
+   * @type {string}
+   * @memberof PersonaRequest
+   */
+  name: string
+  /**
+   * Role of the persona in the system
+   * @type {string}
+   * @memberof PersonaRequest
+   */
+  role: string
+  /**
+   * Detailed description of the persona
+   * @type {string}
+   * @memberof PersonaRequest
+   */
+  description?: string
+  /**
+   *
+   * @type {string}
+   * @memberof PersonaRequest
+   */
+  headshotImage?: string
+  /**
+   *
+   * @type {string}
+   * @memberof PersonaRequest
+   */
+  bodyImage?: string
+  /**
+   * Whether the persona is hidden from the user
+   * @type {boolean}
+   * @memberof PersonaRequest
+   */
+  hidden?: boolean
 }
 /**
  * Check if a given object implements the PersonaRequest interface.
  */
-export declare function instanceOfPersonaRequest(value: object): value is PersonaRequest;
-export declare function PersonaRequestFromJSON(json: any): PersonaRequest;
-export declare function PersonaRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PersonaRequest;
-export declare function PersonaRequestToJSON(json: any): PersonaRequest;
-export declare function PersonaRequestToJSONTyped(value?: PersonaRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfPersonaRequest(value: object): value is PersonaRequest
+export declare function PersonaRequestFromJSON(json: any): PersonaRequest
+export declare function PersonaRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PersonaRequest
+export declare function PersonaRequestToJSON(json: any): PersonaRequest
+export declare function PersonaRequestToJSONTyped(value?: PersonaRequest | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=PersonaRequest.d.ts.map

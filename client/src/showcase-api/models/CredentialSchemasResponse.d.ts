@@ -9,26 +9,32 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialSchema } from './CredentialSchema';
+import type { CredentialSchema } from './CredentialSchema'
 /**
  *
  * @export
  * @interface CredentialSchemasResponse
  */
 export interface CredentialSchemasResponse {
-    /**
-     * List of credential schemas
-     * @type {Array<CredentialSchema>}
-     * @memberof CredentialSchemasResponse
-     */
-    credentialSchemas?: Array<CredentialSchema>;
+  /**
+   * List of credential schemas
+   * @type {Array<CredentialSchema>}
+   * @memberof CredentialSchemasResponse
+   */
+  credentialSchemas?: Array<CredentialSchema>
 }
 /**
  * Check if a given object implements the CredentialSchemasResponse interface.
  */
-export declare function instanceOfCredentialSchemasResponse(value: object): value is CredentialSchemasResponse;
-export declare function CredentialSchemasResponseFromJSON(json: any): CredentialSchemasResponse;
-export declare function CredentialSchemasResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialSchemasResponse;
-export declare function CredentialSchemasResponseToJSON(json: any): CredentialSchemasResponse;
-export declare function CredentialSchemasResponseToJSONTyped(value?: CredentialSchemasResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfCredentialSchemasResponse(value: object): value is CredentialSchemasResponse
+export declare function CredentialSchemasResponseFromJSON(json: any): CredentialSchemasResponse
+export declare function CredentialSchemasResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): CredentialSchemasResponse
+export declare function CredentialSchemasResponseToJSON(json: any): CredentialSchemasResponse
+export declare function CredentialSchemasResponseToJSONTyped(
+  value?: CredentialSchemasResponse | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=CredentialSchemasResponse.d.ts.map

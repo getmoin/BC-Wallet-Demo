@@ -14,15 +14,15 @@
  * @export
  */
 export declare const ShowcaseExpand: {
-    readonly Scenarios: "SCENARIOS";
-    readonly CredentialDefinitions: "CREDENTIAL_DEFINITIONS";
-    readonly Personas: "PERSONAS";
-    readonly AssetContent: "ASSET_CONTENT";
-};
-export type ShowcaseExpand = typeof ShowcaseExpand[keyof typeof ShowcaseExpand];
-export declare function instanceOfShowcaseExpand(value: any): boolean;
-export declare function ShowcaseExpandFromJSON(json: any): ShowcaseExpand;
-export declare function ShowcaseExpandFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseExpand;
-export declare function ShowcaseExpandToJSON(value?: ShowcaseExpand | null): any;
-export declare function ShowcaseExpandToJSONTyped(value: any, ignoreDiscriminator: boolean): ShowcaseExpand;
+  readonly Scenarios: 'SCENARIOS'
+  readonly CredentialDefinitions: 'CREDENTIAL_DEFINITIONS'
+  readonly Personas: 'PERSONAS'
+  readonly AssetContent: 'ASSET_CONTENT'
+}
+export type ShowcaseExpand = (typeof ShowcaseExpand)[keyof typeof ShowcaseExpand]
+export declare function instanceOfShowcaseExpand(value: any): boolean
+export declare function ShowcaseExpandFromJSON(json: any): ShowcaseExpand
+export declare function ShowcaseExpandFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseExpand
+export declare function ShowcaseExpandToJSON(value?: ShowcaseExpand | null): any
+export declare function ShowcaseExpandToJSONTyped(value: any, ignoreDiscriminator: boolean): ShowcaseExpand
 //# sourceMappingURL=ShowcaseExpand.d.ts.map

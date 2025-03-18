@@ -15,19 +15,27 @@
  * @interface ListIssuanceScenarios500Response
  */
 export interface ListIssuanceScenarios500Response {
-    /**
-     *
-     * @type {string}
-     * @memberof ListIssuanceScenarios500Response
-     */
-    message?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ListIssuanceScenarios500Response
+   */
+  message?: string
 }
 /**
  * Check if a given object implements the ListIssuanceScenarios500Response interface.
  */
-export declare function instanceOfListIssuanceScenarios500Response(value: object): value is ListIssuanceScenarios500Response;
-export declare function ListIssuanceScenarios500ResponseFromJSON(json: any): ListIssuanceScenarios500Response;
-export declare function ListIssuanceScenarios500ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListIssuanceScenarios500Response;
-export declare function ListIssuanceScenarios500ResponseToJSON(json: any): ListIssuanceScenarios500Response;
-export declare function ListIssuanceScenarios500ResponseToJSONTyped(value?: ListIssuanceScenarios500Response | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfListIssuanceScenarios500Response(
+  value: object
+): value is ListIssuanceScenarios500Response
+export declare function ListIssuanceScenarios500ResponseFromJSON(json: any): ListIssuanceScenarios500Response
+export declare function ListIssuanceScenarios500ResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): ListIssuanceScenarios500Response
+export declare function ListIssuanceScenarios500ResponseToJSON(json: any): ListIssuanceScenarios500Response
+export declare function ListIssuanceScenarios500ResponseToJSONTyped(
+  value?: ListIssuanceScenarios500Response | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=ListIssuanceScenarios500Response.d.ts.map

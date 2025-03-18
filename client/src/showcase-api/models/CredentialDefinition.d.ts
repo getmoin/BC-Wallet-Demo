@@ -9,103 +9,106 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialDefinitionRevocation } from './CredentialDefinitionRevocation';
-import type { CredentialSchema } from './CredentialSchema';
-import type { Asset } from './Asset';
-import type { CredentialType } from './CredentialType';
-import type { CredentialDefinitionRepresentationsInner } from './CredentialDefinitionRepresentationsInner';
-import type { IdentifierType } from './IdentifierType';
+import type { Asset } from './Asset'
+import type { CredentialDefinitionRepresentationsInner } from './CredentialDefinitionRepresentationsInner'
+import type { CredentialDefinitionRevocation } from './CredentialDefinitionRevocation'
+import type { CredentialSchema } from './CredentialSchema'
+import type { CredentialType } from './CredentialType'
+import type { IdentifierType } from './IdentifierType'
 /**
  *
  * @export
  * @interface CredentialDefinition
  */
 export interface CredentialDefinition {
-    /**
-     * Unique identifier for the credential definition
-     * @type {string}
-     * @memberof CredentialDefinition
-     */
-    id: string;
-    /**
-     * Name of the credential definition
-     * @type {string}
-     * @memberof CredentialDefinition
-     */
-    name?: string;
-    /**
-     *
-     * @type {CredentialSchema}
-     * @memberof CredentialDefinition
-     */
-    credentialSchema?: CredentialSchema;
-    /**
-     *
-     * @type {IdentifierType}
-     * @memberof CredentialDefinition
-     */
-    identifierType?: IdentifierType;
-    /**
-     * External identifier of this issuer
-     * @type {string}
-     * @memberof CredentialDefinition
-     */
-    identifier?: string;
-    /**
-     * Version of the credential definition
-     * @type {string}
-     * @memberof CredentialDefinition
-     */
-    version?: string;
-    /**
-     *
-     * @type {CredentialType}
-     * @memberof CredentialDefinition
-     */
-    type?: CredentialType;
-    /**
-     *
-     * @type {Array<CredentialDefinitionRepresentationsInner>}
-     * @memberof CredentialDefinition
-     */
-    representations?: Array<CredentialDefinitionRepresentationsInner>;
-    /**
-     *
-     * @type {CredentialDefinitionRevocation}
-     * @memberof CredentialDefinition
-     */
-    revocation?: CredentialDefinitionRevocation;
-    /**
-     * The asset id
-     * @type {string}
-     * @memberof CredentialDefinition
-     */
-    iconId?: string;
-    /**
-     *
-     * @type {Asset}
-     * @memberof CredentialDefinition
-     */
-    icon?: Asset;
-    /**
-     * Date and time the credential definition was created
-     * @type {Date}
-     * @memberof CredentialDefinition
-     */
-    createdAt?: Date;
-    /**
-     * Date and time the credential definition was last updated
-     * @type {Date}
-     * @memberof CredentialDefinition
-     */
-    updatedAt?: Date;
+  /**
+   * Unique identifier for the credential definition
+   * @type {string}
+   * @memberof CredentialDefinition
+   */
+  id: string
+  /**
+   * Name of the credential definition
+   * @type {string}
+   * @memberof CredentialDefinition
+   */
+  name?: string
+  /**
+   *
+   * @type {CredentialSchema}
+   * @memberof CredentialDefinition
+   */
+  credentialSchema?: CredentialSchema
+  /**
+   *
+   * @type {IdentifierType}
+   * @memberof CredentialDefinition
+   */
+  identifierType?: IdentifierType
+  /**
+   * External identifier of this issuer
+   * @type {string}
+   * @memberof CredentialDefinition
+   */
+  identifier?: string
+  /**
+   * Version of the credential definition
+   * @type {string}
+   * @memberof CredentialDefinition
+   */
+  version?: string
+  /**
+   *
+   * @type {CredentialType}
+   * @memberof CredentialDefinition
+   */
+  type?: CredentialType
+  /**
+   *
+   * @type {Array<CredentialDefinitionRepresentationsInner>}
+   * @memberof CredentialDefinition
+   */
+  representations?: Array<CredentialDefinitionRepresentationsInner>
+  /**
+   *
+   * @type {CredentialDefinitionRevocation}
+   * @memberof CredentialDefinition
+   */
+  revocation?: CredentialDefinitionRevocation
+  /**
+   * The asset id
+   * @type {string}
+   * @memberof CredentialDefinition
+   */
+  iconId?: string
+  /**
+   *
+   * @type {Asset}
+   * @memberof CredentialDefinition
+   */
+  icon?: Asset
+  /**
+   * Date and time the credential definition was created
+   * @type {Date}
+   * @memberof CredentialDefinition
+   */
+  createdAt?: Date
+  /**
+   * Date and time the credential definition was last updated
+   * @type {Date}
+   * @memberof CredentialDefinition
+   */
+  updatedAt?: Date
 }
 /**
  * Check if a given object implements the CredentialDefinition interface.
  */
-export declare function instanceOfCredentialDefinition(value: object): value is CredentialDefinition;
-export declare function CredentialDefinitionFromJSON(json: any): CredentialDefinition;
-export declare function CredentialDefinitionFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialDefinition;
-export declare function CredentialDefinitionToJSON(json: any): CredentialDefinition;
-export declare function CredentialDefinitionToJSONTyped(value?: CredentialDefinition | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfCredentialDefinition(value: object): value is CredentialDefinition
+export declare function CredentialDefinitionFromJSON(json: any): CredentialDefinition
+export declare function CredentialDefinitionFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialDefinition
+export declare function CredentialDefinitionToJSON(json: any): CredentialDefinition
+export declare function CredentialDefinitionToJSONTyped(
+  value?: CredentialDefinition | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=CredentialDefinition.d.ts.map

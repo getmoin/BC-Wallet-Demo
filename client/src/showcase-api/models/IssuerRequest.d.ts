@@ -9,75 +9,75 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { IssuerType } from './IssuerType';
-import type { IdentifierType } from './IdentifierType';
+import type { IdentifierType } from './IdentifierType'
+import type { IssuerType } from './IssuerType'
 /**
  *
  * @export
  * @interface IssuerRequest
  */
 export interface IssuerRequest {
-    /**
-     * Name of the issuer
-     * @type {string}
-     * @memberof IssuerRequest
-     */
-    name: string;
-    /**
-     * Detailed description of the issuer
-     * @type {string}
-     * @memberof IssuerRequest
-     */
-    description: string;
-    /**
-     *
-     * @type {IssuerType}
-     * @memberof IssuerRequest
-     */
-    type: IssuerType;
-    /**
-     *
-     * @type {IdentifierType}
-     * @memberof IssuerRequest
-     */
-    identifierType?: IdentifierType;
-    /**
-     * External identifier of this issuer
-     * @type {string}
-     * @memberof IssuerRequest
-     */
-    identifier?: string;
-    /**
-     * Organization the issuer belongs to
-     * @type {string}
-     * @memberof IssuerRequest
-     */
-    organization?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof IssuerRequest
-     */
-    logo?: string;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof IssuerRequest
-     */
-    credentialDefinitions: Array<string>;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof IssuerRequest
-     */
-    credentialSchemas: Array<string>;
+  /**
+   * Name of the issuer
+   * @type {string}
+   * @memberof IssuerRequest
+   */
+  name: string
+  /**
+   * Detailed description of the issuer
+   * @type {string}
+   * @memberof IssuerRequest
+   */
+  description: string
+  /**
+   *
+   * @type {IssuerType}
+   * @memberof IssuerRequest
+   */
+  type: IssuerType
+  /**
+   *
+   * @type {IdentifierType}
+   * @memberof IssuerRequest
+   */
+  identifierType?: IdentifierType
+  /**
+   * External identifier of this issuer
+   * @type {string}
+   * @memberof IssuerRequest
+   */
+  identifier?: string
+  /**
+   * Organization the issuer belongs to
+   * @type {string}
+   * @memberof IssuerRequest
+   */
+  organization?: string
+  /**
+   *
+   * @type {string}
+   * @memberof IssuerRequest
+   */
+  logo?: string
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof IssuerRequest
+   */
+  credentialDefinitions: Array<string>
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof IssuerRequest
+   */
+  credentialSchemas: Array<string>
 }
 /**
  * Check if a given object implements the IssuerRequest interface.
  */
-export declare function instanceOfIssuerRequest(value: object): value is IssuerRequest;
-export declare function IssuerRequestFromJSON(json: any): IssuerRequest;
-export declare function IssuerRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuerRequest;
-export declare function IssuerRequestToJSON(json: any): IssuerRequest;
-export declare function IssuerRequestToJSONTyped(value?: IssuerRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfIssuerRequest(value: object): value is IssuerRequest
+export declare function IssuerRequestFromJSON(json: any): IssuerRequest
+export declare function IssuerRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuerRequest
+export declare function IssuerRequestToJSON(json: any): IssuerRequest
+export declare function IssuerRequestToJSONTyped(value?: IssuerRequest | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=IssuerRequest.d.ts.map

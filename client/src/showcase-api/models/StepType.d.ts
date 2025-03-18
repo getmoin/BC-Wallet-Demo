@@ -14,14 +14,14 @@
  * @export
  */
 export declare const StepType: {
-    readonly HumanTask: "HUMAN_TASK";
-    readonly Service: "SERVICE";
-    readonly Scenario: "SCENARIO";
-};
-export type StepType = typeof StepType[keyof typeof StepType];
-export declare function instanceOfStepType(value: any): boolean;
-export declare function StepTypeFromJSON(json: any): StepType;
-export declare function StepTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): StepType;
-export declare function StepTypeToJSON(value?: StepType | null): any;
-export declare function StepTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): StepType;
+  readonly HumanTask: 'HUMAN_TASK'
+  readonly Service: 'SERVICE'
+  readonly Scenario: 'SCENARIO'
+}
+export type StepType = (typeof StepType)[keyof typeof StepType]
+export declare function instanceOfStepType(value: any): boolean
+export declare function StepTypeFromJSON(json: any): StepType
+export declare function StepTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): StepType
+export declare function StepTypeToJSON(value?: StepType | null): any
+export declare function StepTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): StepType
 //# sourceMappingURL=StepType.d.ts.map

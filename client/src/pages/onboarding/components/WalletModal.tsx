@@ -1,11 +1,10 @@
-import { AnimatePresence, AnimatePresenceProps, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
-import { standardFade, dropIn } from '../../../FramerAnimations'
-import { demoServerBaseUrl } from '../../../api/BaseUrl'
+import { dropIn, standardFade } from '../../../FramerAnimations'
+import { demoBackendBaseUrl } from '../../../api/BaseUrl'
 import appStore from '../../../assets/light/app-store-badge.svg'
 import playStore from '../../../assets/light/google-play-badge.png'
 import { SmallButton } from '../../../components/SmallButton'
-import { PropsWithChildren } from 'react'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const QRCode = require('qrcode.react')
@@ -25,7 +24,6 @@ export interface Props {
   setIsWalletModalOpen: (open: boolean) => void
   onCompleted(): void
 }
-
 
 export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletModalOpen, onCompleted }) => {
   function isMobile() {
@@ -105,7 +103,7 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
                 </div>
                 {!isMobile() && (
                   <div className="mt-10 mr-10">
-                    <QRCode value={`${demoServerBaseUrl}/qr`} size={125} />
+                    <QRCode value={`${demoBackendBaseUrl}/qr`} size={125} />
                   </div>
                 )}
               </div>

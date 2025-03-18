@@ -9,56 +9,59 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { RelyingPartyType } from './RelyingPartyType';
+import type { RelyingPartyType } from './RelyingPartyType'
 /**
  *
  * @export
  * @interface RelyingPartyRequest
  */
 export interface RelyingPartyRequest {
-    /**
-     * Name of the relying party
-     * @type {string}
-     * @memberof RelyingPartyRequest
-     */
-    name: string;
-    /**
-     * Detailed description of the relying party
-     * @type {string}
-     * @memberof RelyingPartyRequest
-     */
-    description: string;
-    /**
-     *
-     * @type {RelyingPartyType}
-     * @memberof RelyingPartyRequest
-     */
-    type: RelyingPartyType;
-    /**
-     * Organization the relying party belongs to
-     * @type {string}
-     * @memberof RelyingPartyRequest
-     */
-    organization?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof RelyingPartyRequest
-     */
-    logo?: string;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof RelyingPartyRequest
-     */
-    credentialDefinitions: Array<string>;
+  /**
+   * Name of the relying party
+   * @type {string}
+   * @memberof RelyingPartyRequest
+   */
+  name: string
+  /**
+   * Detailed description of the relying party
+   * @type {string}
+   * @memberof RelyingPartyRequest
+   */
+  description: string
+  /**
+   *
+   * @type {RelyingPartyType}
+   * @memberof RelyingPartyRequest
+   */
+  type: RelyingPartyType
+  /**
+   * Organization the relying party belongs to
+   * @type {string}
+   * @memberof RelyingPartyRequest
+   */
+  organization?: string
+  /**
+   *
+   * @type {string}
+   * @memberof RelyingPartyRequest
+   */
+  logo?: string
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof RelyingPartyRequest
+   */
+  credentialDefinitions: Array<string>
 }
 /**
  * Check if a given object implements the RelyingPartyRequest interface.
  */
-export declare function instanceOfRelyingPartyRequest(value: object): value is RelyingPartyRequest;
-export declare function RelyingPartyRequestFromJSON(json: any): RelyingPartyRequest;
-export declare function RelyingPartyRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): RelyingPartyRequest;
-export declare function RelyingPartyRequestToJSON(json: any): RelyingPartyRequest;
-export declare function RelyingPartyRequestToJSONTyped(value?: RelyingPartyRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfRelyingPartyRequest(value: object): value is RelyingPartyRequest
+export declare function RelyingPartyRequestFromJSON(json: any): RelyingPartyRequest
+export declare function RelyingPartyRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): RelyingPartyRequest
+export declare function RelyingPartyRequestToJSON(json: any): RelyingPartyRequest
+export declare function RelyingPartyRequestToJSONTyped(
+  value?: RelyingPartyRequest | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=RelyingPartyRequest.d.ts.map

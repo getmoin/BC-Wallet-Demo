@@ -19,10 +19,10 @@ import { setCredential } from '../../../slices/credentials/credentialsSlice'
 import { issueCredential, issueDeepCredential } from '../../../slices/credentials/credentialsThunks'
 import { useSocket } from '../../../slices/socket/socketSelector'
 import { basePath } from '../../../utils/BasePath'
+import { SafeAnimatePresence } from '../../../utils/Helpers'
 import { FailedRequestModal } from '../components/FailedRequestModal'
 import { StarterCredentials } from '../components/StarterCredentials'
 import { StepInformation } from '../components/StepInformation'
-import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {
   connectionId: string

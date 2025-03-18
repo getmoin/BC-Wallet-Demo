@@ -9,26 +9,26 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Issuer } from './Issuer';
+import type { Issuer } from './Issuer'
 /**
  *
  * @export
  * @interface IssuersResponse
  */
 export interface IssuersResponse {
-    /**
-     *
-     * @type {Array<Issuer>}
-     * @memberof IssuersResponse
-     */
-    issuers?: Array<Issuer>;
+  /**
+   *
+   * @type {Array<Issuer>}
+   * @memberof IssuersResponse
+   */
+  issuers?: Array<Issuer>
 }
 /**
  * Check if a given object implements the IssuersResponse interface.
  */
-export declare function instanceOfIssuersResponse(value: object): value is IssuersResponse;
-export declare function IssuersResponseFromJSON(json: any): IssuersResponse;
-export declare function IssuersResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuersResponse;
-export declare function IssuersResponseToJSON(json: any): IssuersResponse;
-export declare function IssuersResponseToJSONTyped(value?: IssuersResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfIssuersResponse(value: object): value is IssuersResponse
+export declare function IssuersResponseFromJSON(json: any): IssuersResponse
+export declare function IssuersResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuersResponse
+export declare function IssuersResponseToJSON(json: any): IssuersResponse
+export declare function IssuersResponseToJSONTyped(value?: IssuersResponse | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=IssuersResponse.d.ts.map

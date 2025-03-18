@@ -9,37 +9,43 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AriesRequestCredentialAttributes } from './AriesRequestCredentialAttributes';
-import type { AriesRequestCredentialPredicates } from './AriesRequestCredentialPredicates';
+import type { AriesRequestCredentialAttributes } from './AriesRequestCredentialAttributes'
+import type { AriesRequestCredentialPredicates } from './AriesRequestCredentialPredicates'
 /**
  *
  * @export
  * @interface AriesProofRequestRequest
  */
 export interface AriesProofRequestRequest {
-    /**
-     * Map of attribute groups requested in the proof
-     * @type {{ [key: string]: AriesRequestCredentialAttributes; }}
-     * @memberof AriesProofRequestRequest
-     */
-    attributes: {
-        [key: string]: AriesRequestCredentialAttributes;
-    };
-    /**
-     * Map of predicate groups requested in the proof
-     * @type {{ [key: string]: AriesRequestCredentialPredicates; }}
-     * @memberof AriesProofRequestRequest
-     */
-    predicates: {
-        [key: string]: AriesRequestCredentialPredicates;
-    };
+  /**
+   * Map of attribute groups requested in the proof
+   * @type {{ [key: string]: AriesRequestCredentialAttributes; }}
+   * @memberof AriesProofRequestRequest
+   */
+  attributes: {
+    [key: string]: AriesRequestCredentialAttributes
+  }
+  /**
+   * Map of predicate groups requested in the proof
+   * @type {{ [key: string]: AriesRequestCredentialPredicates; }}
+   * @memberof AriesProofRequestRequest
+   */
+  predicates: {
+    [key: string]: AriesRequestCredentialPredicates
+  }
 }
 /**
  * Check if a given object implements the AriesProofRequestRequest interface.
  */
-export declare function instanceOfAriesProofRequestRequest(value: object): value is AriesProofRequestRequest;
-export declare function AriesProofRequestRequestFromJSON(json: any): AriesProofRequestRequest;
-export declare function AriesProofRequestRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): AriesProofRequestRequest;
-export declare function AriesProofRequestRequestToJSON(json: any): AriesProofRequestRequest;
-export declare function AriesProofRequestRequestToJSONTyped(value?: AriesProofRequestRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfAriesProofRequestRequest(value: object): value is AriesProofRequestRequest
+export declare function AriesProofRequestRequestFromJSON(json: any): AriesProofRequestRequest
+export declare function AriesProofRequestRequestFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): AriesProofRequestRequest
+export declare function AriesProofRequestRequestToJSON(json: any): AriesProofRequestRequest
+export declare function AriesProofRequestRequestToJSONTyped(
+  value?: AriesProofRequestRequest | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=AriesProofRequestRequest.d.ts.map

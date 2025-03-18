@@ -18,8 +18,8 @@ import {
 import { fetchWallets } from '../slices/wallets/walletsThunks'
 
 import { basePath } from './BasePath'
-import { RenderResults } from './RenderResults'
 import { SafeAnimatePresence } from './Helpers'
+import { RenderResults } from './RenderResults'
 
 interface Props {
   children?: React.ReactNode

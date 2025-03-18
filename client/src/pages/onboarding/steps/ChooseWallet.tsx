@@ -6,10 +6,10 @@ import { isBrowser } from 'react-device-detect'
 
 import { fadeX, rowContainer } from '../../../FramerAnimations'
 import { useWallets } from '../../../slices/wallets/walletsSelectors'
+import { SafeAnimatePresence } from '../../../utils/Helpers'
 import { StepInformation } from '../components/StepInformation'
 import { WalletItem } from '../components/WalletItem'
 import { WalletModal } from '../components/WalletModal'
-import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {
   title: string

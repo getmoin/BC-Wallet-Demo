@@ -9,77 +9,83 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialType } from './CredentialType';
-import type { CredentialDefinitionRequestRevocation } from './CredentialDefinitionRequestRevocation';
-import type { CredentialDefinitionRepresentationsInner } from './CredentialDefinitionRepresentationsInner';
-import type { IdentifierType } from './IdentifierType';
+import type { CredentialDefinitionRepresentationsInner } from './CredentialDefinitionRepresentationsInner'
+import type { CredentialDefinitionRequestRevocation } from './CredentialDefinitionRequestRevocation'
+import type { CredentialType } from './CredentialType'
+import type { IdentifierType } from './IdentifierType'
 /**
  *
  * @export
  * @interface CredentialDefinitionRequest
  */
 export interface CredentialDefinitionRequest {
-    /**
-     * Name of the credential definition
-     * @type {string}
-     * @memberof CredentialDefinitionRequest
-     */
-    name: string;
-    /**
-     *
-     * @type {IdentifierType}
-     * @memberof CredentialDefinitionRequest
-     */
-    identifierType?: IdentifierType;
-    /**
-     * External identifier of this schema
-     * @type {string}
-     * @memberof CredentialDefinitionRequest
-     */
-    identifier?: string;
-    /**
-     * Version of the credential definition
-     * @type {string}
-     * @memberof CredentialDefinitionRequest
-     */
-    version: string;
-    /**
-     *
-     * @type {CredentialType}
-     * @memberof CredentialDefinitionRequest
-     */
-    type: CredentialType;
-    /**
-     * Reference to the associated credential schema
-     * @type {string}
-     * @memberof CredentialDefinitionRequest
-     */
-    credentialSchema: string;
-    /**
-     * List of representations for this credential definition
-     * @type {Array<CredentialDefinitionRepresentationsInner>}
-     * @memberof CredentialDefinitionRequest
-     */
-    representations?: Array<CredentialDefinitionRepresentationsInner>;
-    /**
-     *
-     * @type {CredentialDefinitionRequestRevocation}
-     * @memberof CredentialDefinitionRequest
-     */
-    revocation?: CredentialDefinitionRequestRevocation;
-    /**
-     *
-     * @type {string}
-     * @memberof CredentialDefinitionRequest
-     */
-    icon: string;
+  /**
+   * Name of the credential definition
+   * @type {string}
+   * @memberof CredentialDefinitionRequest
+   */
+  name: string
+  /**
+   *
+   * @type {IdentifierType}
+   * @memberof CredentialDefinitionRequest
+   */
+  identifierType?: IdentifierType
+  /**
+   * External identifier of this schema
+   * @type {string}
+   * @memberof CredentialDefinitionRequest
+   */
+  identifier?: string
+  /**
+   * Version of the credential definition
+   * @type {string}
+   * @memberof CredentialDefinitionRequest
+   */
+  version: string
+  /**
+   *
+   * @type {CredentialType}
+   * @memberof CredentialDefinitionRequest
+   */
+  type: CredentialType
+  /**
+   * Reference to the associated credential schema
+   * @type {string}
+   * @memberof CredentialDefinitionRequest
+   */
+  credentialSchema: string
+  /**
+   * List of representations for this credential definition
+   * @type {Array<CredentialDefinitionRepresentationsInner>}
+   * @memberof CredentialDefinitionRequest
+   */
+  representations?: Array<CredentialDefinitionRepresentationsInner>
+  /**
+   *
+   * @type {CredentialDefinitionRequestRevocation}
+   * @memberof CredentialDefinitionRequest
+   */
+  revocation?: CredentialDefinitionRequestRevocation
+  /**
+   *
+   * @type {string}
+   * @memberof CredentialDefinitionRequest
+   */
+  icon: string
 }
 /**
  * Check if a given object implements the CredentialDefinitionRequest interface.
  */
-export declare function instanceOfCredentialDefinitionRequest(value: object): value is CredentialDefinitionRequest;
-export declare function CredentialDefinitionRequestFromJSON(json: any): CredentialDefinitionRequest;
-export declare function CredentialDefinitionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialDefinitionRequest;
-export declare function CredentialDefinitionRequestToJSON(json: any): CredentialDefinitionRequest;
-export declare function CredentialDefinitionRequestToJSONTyped(value?: CredentialDefinitionRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfCredentialDefinitionRequest(value: object): value is CredentialDefinitionRequest
+export declare function CredentialDefinitionRequestFromJSON(json: any): CredentialDefinitionRequest
+export declare function CredentialDefinitionRequestFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): CredentialDefinitionRequest
+export declare function CredentialDefinitionRequestToJSON(json: any): CredentialDefinitionRequest
+export declare function CredentialDefinitionRequestToJSONTyped(
+  value?: CredentialDefinitionRequest | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=CredentialDefinitionRequest.d.ts.map

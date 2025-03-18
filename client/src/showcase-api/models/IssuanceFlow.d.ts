@@ -9,72 +9,72 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Persona } from './Persona';
-import type { Issuer } from './Issuer';
-import type { Step } from './Step';
+import type { Issuer } from './Issuer'
+import type { Persona } from './Persona'
+import type { Step } from './Step'
 /**
  * Workflow specialization for credential issuance
  * @export
  * @interface IssuanceFlow
  */
 export interface IssuanceFlow {
-    /**
-     * Unique identifier for the workflow
-     * @type {string}
-     * @memberof IssuanceFlow
-     */
-    id?: string;
-    /**
-     * Name of the workflow
-     * @type {string}
-     * @memberof IssuanceFlow
-     */
-    name: string;
-    /**
-     * Detailed description of the workflow
-     * @type {string}
-     * @memberof IssuanceFlow
-     */
-    description?: string;
-    /**
-     * Type of workflow
-     * @type {string}
-     * @memberof IssuanceFlow
-     */
-    type: IssuanceFlowTypeEnum;
-    /**
-     * Ordered list of steps in the workflow
-     * @type {Array<Step>}
-     * @memberof IssuanceFlow
-     */
-    steps?: Array<Step>;
-    /**
-     * References to personas used in this workflow
-     * @type {Array<Persona>}
-     * @memberof IssuanceFlow
-     */
-    personas?: Array<Persona>;
-    /**
-     *
-     * @type {Issuer}
-     * @memberof IssuanceFlow
-     */
-    issuer: Issuer;
+  /**
+   * Unique identifier for the workflow
+   * @type {string}
+   * @memberof IssuanceFlow
+   */
+  id?: string
+  /**
+   * Name of the workflow
+   * @type {string}
+   * @memberof IssuanceFlow
+   */
+  name: string
+  /**
+   * Detailed description of the workflow
+   * @type {string}
+   * @memberof IssuanceFlow
+   */
+  description?: string
+  /**
+   * Type of workflow
+   * @type {string}
+   * @memberof IssuanceFlow
+   */
+  type: IssuanceFlowTypeEnum
+  /**
+   * Ordered list of steps in the workflow
+   * @type {Array<Step>}
+   * @memberof IssuanceFlow
+   */
+  steps?: Array<Step>
+  /**
+   * References to personas used in this workflow
+   * @type {Array<Persona>}
+   * @memberof IssuanceFlow
+   */
+  personas?: Array<Persona>
+  /**
+   *
+   * @type {Issuer}
+   * @memberof IssuanceFlow
+   */
+  issuer: Issuer
 }
 /**
  * @export
  */
 export declare const IssuanceFlowTypeEnum: {
-    readonly Issuance: "ISSUANCE";
-    readonly Presentation: "PRESENTATION";
-};
-export type IssuanceFlowTypeEnum = typeof IssuanceFlowTypeEnum[keyof typeof IssuanceFlowTypeEnum];
+  readonly Issuance: 'ISSUANCE'
+  readonly Presentation: 'PRESENTATION'
+}
+export type IssuanceFlowTypeEnum = (typeof IssuanceFlowTypeEnum)[keyof typeof IssuanceFlowTypeEnum]
 /**
  * Check if a given object implements the IssuanceFlow interface.
  */
-export declare function instanceOfIssuanceFlow(value: object): value is IssuanceFlow;
-export declare function IssuanceFlowFromJSON(json: any): IssuanceFlow;
-export declare function IssuanceFlowFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuanceFlow;
-export declare function IssuanceFlowToJSON(json: any): IssuanceFlow;
-export declare function IssuanceFlowToJSONTyped(value?: IssuanceFlow | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfIssuanceFlow(value: object): value is IssuanceFlow
+export declare function IssuanceFlowFromJSON(json: any): IssuanceFlow
+export declare function IssuanceFlowFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuanceFlow
+export declare function IssuanceFlowToJSON(json: any): IssuanceFlow
+export declare function IssuanceFlowToJSONTyped(value?: IssuanceFlow | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=IssuanceFlow.d.ts.map

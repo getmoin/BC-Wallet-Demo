@@ -15,43 +15,43 @@
  * @interface RevocationInfo
  */
 export interface RevocationInfo {
-    /**
-     * Id of the revocation information
-     * @type {string}
-     * @memberof RevocationInfo
-     */
-    id: string;
-    /**
-     * Title of the revocation information
-     * @type {string}
-     * @memberof RevocationInfo
-     */
-    title: string;
-    /**
-     * Detailed description of the revocation process or requirements
-     * @type {string}
-     * @memberof RevocationInfo
-     */
-    description: string;
-    /**
-     * Date and time the Revocation info was created
-     * @type {Date}
-     * @memberof RevocationInfo
-     */
-    createdAt: Date;
-    /**
-     * Date and time the Revocation info was last updated
-     * @type {Date}
-     * @memberof RevocationInfo
-     */
-    updatedAt: Date;
+  /**
+   * Id of the revocation information
+   * @type {string}
+   * @memberof RevocationInfo
+   */
+  id: string
+  /**
+   * Title of the revocation information
+   * @type {string}
+   * @memberof RevocationInfo
+   */
+  title: string
+  /**
+   * Detailed description of the revocation process or requirements
+   * @type {string}
+   * @memberof RevocationInfo
+   */
+  description: string
+  /**
+   * Date and time the Revocation info was created
+   * @type {Date}
+   * @memberof RevocationInfo
+   */
+  createdAt: Date
+  /**
+   * Date and time the Revocation info was last updated
+   * @type {Date}
+   * @memberof RevocationInfo
+   */
+  updatedAt: Date
 }
 /**
  * Check if a given object implements the RevocationInfo interface.
  */
-export declare function instanceOfRevocationInfo(value: object): value is RevocationInfo;
-export declare function RevocationInfoFromJSON(json: any): RevocationInfo;
-export declare function RevocationInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): RevocationInfo;
-export declare function RevocationInfoToJSON(json: any): RevocationInfo;
-export declare function RevocationInfoToJSONTyped(value?: RevocationInfo | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfRevocationInfo(value: object): value is RevocationInfo
+export declare function RevocationInfoFromJSON(json: any): RevocationInfo
+export declare function RevocationInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): RevocationInfo
+export declare function RevocationInfoToJSON(json: any): RevocationInfo
+export declare function RevocationInfoToJSONTyped(value?: RevocationInfo | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=RevocationInfo.d.ts.map

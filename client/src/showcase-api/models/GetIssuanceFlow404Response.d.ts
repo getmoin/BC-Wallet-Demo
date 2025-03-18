@@ -15,19 +15,25 @@
  * @interface GetIssuanceFlow404Response
  */
 export interface GetIssuanceFlow404Response {
-    /**
-     *
-     * @type {string}
-     * @memberof GetIssuanceFlow404Response
-     */
-    message?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof GetIssuanceFlow404Response
+   */
+  message?: string
 }
 /**
  * Check if a given object implements the GetIssuanceFlow404Response interface.
  */
-export declare function instanceOfGetIssuanceFlow404Response(value: object): value is GetIssuanceFlow404Response;
-export declare function GetIssuanceFlow404ResponseFromJSON(json: any): GetIssuanceFlow404Response;
-export declare function GetIssuanceFlow404ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetIssuanceFlow404Response;
-export declare function GetIssuanceFlow404ResponseToJSON(json: any): GetIssuanceFlow404Response;
-export declare function GetIssuanceFlow404ResponseToJSONTyped(value?: GetIssuanceFlow404Response | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfGetIssuanceFlow404Response(value: object): value is GetIssuanceFlow404Response
+export declare function GetIssuanceFlow404ResponseFromJSON(json: any): GetIssuanceFlow404Response
+export declare function GetIssuanceFlow404ResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): GetIssuanceFlow404Response
+export declare function GetIssuanceFlow404ResponseToJSON(json: any): GetIssuanceFlow404Response
+export declare function GetIssuanceFlow404ResponseToJSONTyped(
+  value?: GetIssuanceFlow404Response | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=GetIssuanceFlow404Response.d.ts.map

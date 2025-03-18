@@ -14,13 +14,13 @@
  * @export
  */
 export declare const Source: {
-    readonly Imported: "IMPORTED";
-    readonly Created: "CREATED";
-};
-export type Source = typeof Source[keyof typeof Source];
-export declare function instanceOfSource(value: any): boolean;
-export declare function SourceFromJSON(json: any): Source;
-export declare function SourceFromJSONTyped(json: any, ignoreDiscriminator: boolean): Source;
-export declare function SourceToJSON(value?: Source | null): any;
-export declare function SourceToJSONTyped(value: any, ignoreDiscriminator: boolean): Source;
+  readonly Imported: 'IMPORTED'
+  readonly Created: 'CREATED'
+}
+export type Source = (typeof Source)[keyof typeof Source]
+export declare function instanceOfSource(value: any): boolean
+export declare function SourceFromJSON(json: any): Source
+export declare function SourceFromJSONTyped(json: any, ignoreDiscriminator: boolean): Source
+export declare function SourceToJSON(value?: Source | null): any
+export declare function SourceToJSONTyped(value: any, ignoreDiscriminator: boolean): Source
 //# sourceMappingURL=Source.d.ts.map

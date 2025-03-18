@@ -14,14 +14,14 @@
  * @export
  */
 export declare const ShowcaseStatus: {
-    readonly Pending: "PENDING";
-    readonly Active: "ACTIVE";
-    readonly Archived: "ARCHIVED";
-};
-export type ShowcaseStatus = typeof ShowcaseStatus[keyof typeof ShowcaseStatus];
-export declare function instanceOfShowcaseStatus(value: any): boolean;
-export declare function ShowcaseStatusFromJSON(json: any): ShowcaseStatus;
-export declare function ShowcaseStatusFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseStatus;
-export declare function ShowcaseStatusToJSON(value?: ShowcaseStatus | null): any;
-export declare function ShowcaseStatusToJSONTyped(value: any, ignoreDiscriminator: boolean): ShowcaseStatus;
+  readonly Pending: 'PENDING'
+  readonly Active: 'ACTIVE'
+  readonly Archived: 'ARCHIVED'
+}
+export type ShowcaseStatus = (typeof ShowcaseStatus)[keyof typeof ShowcaseStatus]
+export declare function instanceOfShowcaseStatus(value: any): boolean
+export declare function ShowcaseStatusFromJSON(json: any): ShowcaseStatus
+export declare function ShowcaseStatusFromJSONTyped(json: any, ignoreDiscriminator: boolean): ShowcaseStatus
+export declare function ShowcaseStatusToJSON(value?: ShowcaseStatus | null): any
+export declare function ShowcaseStatusToJSONTyped(value: any, ignoreDiscriminator: boolean): ShowcaseStatus
 //# sourceMappingURL=ShowcaseStatus.d.ts.map

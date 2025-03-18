@@ -9,76 +9,76 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialAttribute } from './CredentialAttribute';
-import type { IdentifierType } from './IdentifierType';
-import type { Source } from './Source';
+import type { CredentialAttribute } from './CredentialAttribute'
+import type { IdentifierType } from './IdentifierType'
+import type { Source } from './Source'
 /**
  *
  * @export
  * @interface CredentialSchema
  */
 export interface CredentialSchema {
-    /**
-     * Unique identifier for the credential schema
-     * @type {string}
-     * @memberof CredentialSchema
-     */
-    id: string;
-    /**
-     * Name of the credential schema
-     * @type {string}
-     * @memberof CredentialSchema
-     */
-    name: string;
-    /**
-     * Version of the credential schema
-     * @type {string}
-     * @memberof CredentialSchema
-     */
-    version: string;
-    /**
-     *
-     * @type {IdentifierType}
-     * @memberof CredentialSchema
-     */
-    identifierType?: IdentifierType;
-    /**
-     * External identifier of this schema
-     * @type {string}
-     * @memberof CredentialSchema
-     */
-    identifier?: string;
-    /**
-     *
-     * @type {Source}
-     * @memberof CredentialSchema
-     */
-    source?: Source;
-    /**
-     *
-     * @type {Array<CredentialAttribute>}
-     * @memberof CredentialSchema
-     */
-    attributes?: Array<CredentialAttribute>;
-    /**
-     * Date and time the credential attribute was created
-     * @type {Date}
-     * @memberof CredentialSchema
-     */
-    createdAt: Date;
-    /**
-     * Date and time the credential attribute was last updated
-     * @type {Date}
-     * @memberof CredentialSchema
-     */
-    updatedAt: Date;
+  /**
+   * Unique identifier for the credential schema
+   * @type {string}
+   * @memberof CredentialSchema
+   */
+  id: string
+  /**
+   * Name of the credential schema
+   * @type {string}
+   * @memberof CredentialSchema
+   */
+  name: string
+  /**
+   * Version of the credential schema
+   * @type {string}
+   * @memberof CredentialSchema
+   */
+  version: string
+  /**
+   *
+   * @type {IdentifierType}
+   * @memberof CredentialSchema
+   */
+  identifierType?: IdentifierType
+  /**
+   * External identifier of this schema
+   * @type {string}
+   * @memberof CredentialSchema
+   */
+  identifier?: string
+  /**
+   *
+   * @type {Source}
+   * @memberof CredentialSchema
+   */
+  source?: Source
+  /**
+   *
+   * @type {Array<CredentialAttribute>}
+   * @memberof CredentialSchema
+   */
+  attributes?: Array<CredentialAttribute>
+  /**
+   * Date and time the credential attribute was created
+   * @type {Date}
+   * @memberof CredentialSchema
+   */
+  createdAt: Date
+  /**
+   * Date and time the credential attribute was last updated
+   * @type {Date}
+   * @memberof CredentialSchema
+   */
+  updatedAt: Date
 }
 /**
  * Check if a given object implements the CredentialSchema interface.
  */
-export declare function instanceOfCredentialSchema(value: object): value is CredentialSchema;
-export declare function CredentialSchemaFromJSON(json: any): CredentialSchema;
-export declare function CredentialSchemaFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialSchema;
-export declare function CredentialSchemaToJSON(json: any): CredentialSchema;
-export declare function CredentialSchemaToJSONTyped(value?: CredentialSchema | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfCredentialSchema(value: object): value is CredentialSchema
+export declare function CredentialSchemaFromJSON(json: any): CredentialSchema
+export declare function CredentialSchemaFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialSchema
+export declare function CredentialSchemaToJSON(json: any): CredentialSchema
+export declare function CredentialSchemaToJSONTyped(value?: CredentialSchema | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=CredentialSchema.d.ts.map

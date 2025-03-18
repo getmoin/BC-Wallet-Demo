@@ -15,49 +15,49 @@
  * @interface StepAction
  */
 export interface StepAction {
-    /**
-     * Unique identifier for the action
-     * @type {string}
-     * @memberof StepAction
-     */
-    id: string;
-    /**
-     * Type of action
-     * @type {string}
-     * @memberof StepAction
-     */
-    actionType: string;
-    /**
-     * Title of the action
-     * @type {string}
-     * @memberof StepAction
-     */
-    title: string;
-    /**
-     * Descriptive text for the action
-     * @type {string}
-     * @memberof StepAction
-     */
-    text: string;
-    /**
-     * Date and time the step action was created
-     * @type {Date}
-     * @memberof StepAction
-     */
-    createdAt: Date;
-    /**
-     * Date and time the step action was last updated
-     * @type {Date}
-     * @memberof StepAction
-     */
-    updatedAt: Date;
+  /**
+   * Unique identifier for the action
+   * @type {string}
+   * @memberof StepAction
+   */
+  id: string
+  /**
+   * Type of action
+   * @type {string}
+   * @memberof StepAction
+   */
+  actionType: string
+  /**
+   * Title of the action
+   * @type {string}
+   * @memberof StepAction
+   */
+  title: string
+  /**
+   * Descriptive text for the action
+   * @type {string}
+   * @memberof StepAction
+   */
+  text: string
+  /**
+   * Date and time the step action was created
+   * @type {Date}
+   * @memberof StepAction
+   */
+  createdAt: Date
+  /**
+   * Date and time the step action was last updated
+   * @type {Date}
+   * @memberof StepAction
+   */
+  updatedAt: Date
 }
 /**
  * Check if a given object implements the StepAction interface.
  */
-export declare function instanceOfStepAction(value: object): value is StepAction;
-export declare function StepActionFromJSON(json: any): StepAction;
-export declare function StepActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): StepAction;
-export declare function StepActionToJSON(json: any): StepAction;
-export declare function StepActionToJSONTyped(value?: StepAction | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfStepAction(value: object): value is StepAction
+export declare function StepActionFromJSON(json: any): StepAction
+export declare function StepActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): StepAction
+export declare function StepActionToJSON(json: any): StepAction
+export declare function StepActionToJSONTyped(value?: StepAction | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=StepAction.d.ts.map

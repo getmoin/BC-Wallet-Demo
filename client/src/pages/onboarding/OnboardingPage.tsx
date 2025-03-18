@@ -17,11 +17,11 @@ import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
+import { SafeAnimatePresence } from '../../utils/Helpers'
 import { OnboardingComplete } from '../../utils/OnboardingUtils'
 
 import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 
 export const OnboardingPage: React.FC = () => {
   useTitle('Get Started | BC Wallet Self-Sovereign Identity Demo')

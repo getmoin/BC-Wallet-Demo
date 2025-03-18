@@ -9,26 +9,26 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Persona } from './Persona';
+import type { Persona } from './Persona'
 /**
  *
  * @export
  * @interface PersonasResponse
  */
 export interface PersonasResponse {
-    /**
-     *
-     * @type {Array<Persona>}
-     * @memberof PersonasResponse
-     */
-    personas?: Array<Persona>;
+  /**
+   *
+   * @type {Array<Persona>}
+   * @memberof PersonasResponse
+   */
+  personas?: Array<Persona>
 }
 /**
  * Check if a given object implements the PersonasResponse interface.
  */
-export declare function instanceOfPersonasResponse(value: object): value is PersonasResponse;
-export declare function PersonasResponseFromJSON(json: any): PersonasResponse;
-export declare function PersonasResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PersonasResponse;
-export declare function PersonasResponseToJSON(json: any): PersonasResponse;
-export declare function PersonasResponseToJSONTyped(value?: PersonasResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfPersonasResponse(value: object): value is PersonasResponse
+export declare function PersonasResponseFromJSON(json: any): PersonasResponse
+export declare function PersonasResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PersonasResponse
+export declare function PersonasResponseToJSON(json: any): PersonasResponse
+export declare function PersonasResponseToJSONTyped(value?: PersonasResponse | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=PersonasResponse.d.ts.map

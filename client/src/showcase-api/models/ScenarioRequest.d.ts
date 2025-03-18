@@ -9,50 +9,50 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StepRequest } from './StepRequest';
+import type { StepRequest } from './StepRequest'
 /**
  *
  * @export
  * @interface ScenarioRequest
  */
 export interface ScenarioRequest {
-    /**
-     * Name of the scenario
-     * @type {string}
-     * @memberof ScenarioRequest
-     */
-    name: string;
-    /**
-     * Detailed description of the scenario
-     * @type {string}
-     * @memberof ScenarioRequest
-     */
-    description: string;
-    /**
-     * Ordered list of steps in the scenario
-     * @type {Array<StepRequest>}
-     * @memberof ScenarioRequest
-     */
-    steps: Array<StepRequest>;
-    /**
-     * References to personas used in this scenario
-     * @type {Array<string>}
-     * @memberof ScenarioRequest
-     */
-    personas: Array<string>;
-    /**
-     * Whether the workflow is hidden from the user
-     * @type {boolean}
-     * @memberof ScenarioRequest
-     */
-    hidden?: boolean;
+  /**
+   * Name of the scenario
+   * @type {string}
+   * @memberof ScenarioRequest
+   */
+  name: string
+  /**
+   * Detailed description of the scenario
+   * @type {string}
+   * @memberof ScenarioRequest
+   */
+  description: string
+  /**
+   * Ordered list of steps in the scenario
+   * @type {Array<StepRequest>}
+   * @memberof ScenarioRequest
+   */
+  steps: Array<StepRequest>
+  /**
+   * References to personas used in this scenario
+   * @type {Array<string>}
+   * @memberof ScenarioRequest
+   */
+  personas: Array<string>
+  /**
+   * Whether the workflow is hidden from the user
+   * @type {boolean}
+   * @memberof ScenarioRequest
+   */
+  hidden?: boolean
 }
 /**
  * Check if a given object implements the ScenarioRequest interface.
  */
-export declare function instanceOfScenarioRequest(value: object): value is ScenarioRequest;
-export declare function ScenarioRequestFromJSON(json: any): ScenarioRequest;
-export declare function ScenarioRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): ScenarioRequest;
-export declare function ScenarioRequestToJSON(json: any): ScenarioRequest;
-export declare function ScenarioRequestToJSONTyped(value?: ScenarioRequest | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfScenarioRequest(value: object): value is ScenarioRequest
+export declare function ScenarioRequestFromJSON(json: any): ScenarioRequest
+export declare function ScenarioRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): ScenarioRequest
+export declare function ScenarioRequestToJSON(json: any): ScenarioRequest
+export declare function ScenarioRequestToJSONTyped(value?: ScenarioRequest | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=ScenarioRequest.d.ts.map

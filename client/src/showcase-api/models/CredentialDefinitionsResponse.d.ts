@@ -9,26 +9,32 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialDefinition } from './CredentialDefinition';
+import type { CredentialDefinition } from './CredentialDefinition'
 /**
  *
  * @export
  * @interface CredentialDefinitionsResponse
  */
 export interface CredentialDefinitionsResponse {
-    /**
-     * List of credential definitions
-     * @type {Array<CredentialDefinition>}
-     * @memberof CredentialDefinitionsResponse
-     */
-    credentialDefinitions?: Array<CredentialDefinition>;
+  /**
+   * List of credential definitions
+   * @type {Array<CredentialDefinition>}
+   * @memberof CredentialDefinitionsResponse
+   */
+  credentialDefinitions?: Array<CredentialDefinition>
 }
 /**
  * Check if a given object implements the CredentialDefinitionsResponse interface.
  */
-export declare function instanceOfCredentialDefinitionsResponse(value: object): value is CredentialDefinitionsResponse;
-export declare function CredentialDefinitionsResponseFromJSON(json: any): CredentialDefinitionsResponse;
-export declare function CredentialDefinitionsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialDefinitionsResponse;
-export declare function CredentialDefinitionsResponseToJSON(json: any): CredentialDefinitionsResponse;
-export declare function CredentialDefinitionsResponseToJSONTyped(value?: CredentialDefinitionsResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfCredentialDefinitionsResponse(value: object): value is CredentialDefinitionsResponse
+export declare function CredentialDefinitionsResponseFromJSON(json: any): CredentialDefinitionsResponse
+export declare function CredentialDefinitionsResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): CredentialDefinitionsResponse
+export declare function CredentialDefinitionsResponseToJSON(json: any): CredentialDefinitionsResponse
+export declare function CredentialDefinitionsResponseToJSONTyped(
+  value?: CredentialDefinitionsResponse | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=CredentialDefinitionsResponse.d.ts.map

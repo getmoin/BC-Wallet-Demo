@@ -9,16 +9,24 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialRepresentation } from './CredentialRepresentation';
-import type { OCARepresentation } from './OCARepresentation';
+import type { CredentialRepresentation } from './CredentialRepresentation'
+import type { OCARepresentation } from './OCARepresentation'
 /**
  * @type ListCredentialRepresentations200ResponseInner
  *
  * @export
  */
-export type ListCredentialRepresentations200ResponseInner = CredentialRepresentation | OCARepresentation;
-export declare function ListCredentialRepresentations200ResponseInnerFromJSON(json: any): ListCredentialRepresentations200ResponseInner;
-export declare function ListCredentialRepresentations200ResponseInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListCredentialRepresentations200ResponseInner;
-export declare function ListCredentialRepresentations200ResponseInnerToJSON(json: any): any;
-export declare function ListCredentialRepresentations200ResponseInnerToJSONTyped(value?: ListCredentialRepresentations200ResponseInner | null, ignoreDiscriminator?: boolean): any;
+export type ListCredentialRepresentations200ResponseInner = CredentialRepresentation | OCARepresentation
+export declare function ListCredentialRepresentations200ResponseInnerFromJSON(
+  json: any
+): ListCredentialRepresentations200ResponseInner
+export declare function ListCredentialRepresentations200ResponseInnerFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): ListCredentialRepresentations200ResponseInner
+export declare function ListCredentialRepresentations200ResponseInnerToJSON(json: any): any
+export declare function ListCredentialRepresentations200ResponseInnerToJSONTyped(
+  value?: ListCredentialRepresentations200ResponseInner | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=ListCredentialRepresentations200ResponseInner.d.ts.map

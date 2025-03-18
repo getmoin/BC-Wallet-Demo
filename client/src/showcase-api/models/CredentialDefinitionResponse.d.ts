@@ -9,26 +9,32 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { CredentialDefinition } from './CredentialDefinition';
+import type { CredentialDefinition } from './CredentialDefinition'
 /**
  *
  * @export
  * @interface CredentialDefinitionResponse
  */
 export interface CredentialDefinitionResponse {
-    /**
-     *
-     * @type {CredentialDefinition}
-     * @memberof CredentialDefinitionResponse
-     */
-    credentialDefinition?: CredentialDefinition;
+  /**
+   *
+   * @type {CredentialDefinition}
+   * @memberof CredentialDefinitionResponse
+   */
+  credentialDefinition?: CredentialDefinition
 }
 /**
  * Check if a given object implements the CredentialDefinitionResponse interface.
  */
-export declare function instanceOfCredentialDefinitionResponse(value: object): value is CredentialDefinitionResponse;
-export declare function CredentialDefinitionResponseFromJSON(json: any): CredentialDefinitionResponse;
-export declare function CredentialDefinitionResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CredentialDefinitionResponse;
-export declare function CredentialDefinitionResponseToJSON(json: any): CredentialDefinitionResponse;
-export declare function CredentialDefinitionResponseToJSONTyped(value?: CredentialDefinitionResponse | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfCredentialDefinitionResponse(value: object): value is CredentialDefinitionResponse
+export declare function CredentialDefinitionResponseFromJSON(json: any): CredentialDefinitionResponse
+export declare function CredentialDefinitionResponseFromJSONTyped(
+  json: any,
+  ignoreDiscriminator: boolean
+): CredentialDefinitionResponse
+export declare function CredentialDefinitionResponseToJSON(json: any): CredentialDefinitionResponse
+export declare function CredentialDefinitionResponseToJSONTyped(
+  value?: CredentialDefinitionResponse | null,
+  ignoreDiscriminator?: boolean
+): any
 //# sourceMappingURL=CredentialDefinitionResponse.d.ts.map

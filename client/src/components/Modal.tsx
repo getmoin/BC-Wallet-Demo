@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { dropIn, standardFade } from '../FramerAnimations'
+import { SafeAnimatePresence } from '../utils/Helpers'
 
 import { SmallButton } from './SmallButton'
 import { SmallButtonText } from './SmallButtonText'
-import { SafeAnimatePresence } from '../utils/Helpers'
 
 export interface Props {
   onOk(): void

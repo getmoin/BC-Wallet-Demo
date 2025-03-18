@@ -9,65 +9,65 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Persona } from './Persona';
-import type { Step } from './Step';
+import type { Persona } from './Persona'
+import type { Step } from './Step'
 /**
  *
  * @export
  * @interface Workflow
  */
 export interface Workflow {
-    /**
-     * Unique identifier for the workflow
-     * @type {string}
-     * @memberof Workflow
-     */
-    id?: string;
-    /**
-     * Name of the workflow
-     * @type {string}
-     * @memberof Workflow
-     */
-    name: string;
-    /**
-     * Detailed description of the workflow
-     * @type {string}
-     * @memberof Workflow
-     */
-    description?: string;
-    /**
-     * Type of workflow
-     * @type {string}
-     * @memberof Workflow
-     */
-    type: WorkflowTypeEnum;
-    /**
-     * Ordered list of steps in the workflow
-     * @type {Array<Step>}
-     * @memberof Workflow
-     */
-    steps?: Array<Step>;
-    /**
-     * References to personas used in this workflow
-     * @type {Array<Persona>}
-     * @memberof Workflow
-     */
-    personas?: Array<Persona>;
+  /**
+   * Unique identifier for the workflow
+   * @type {string}
+   * @memberof Workflow
+   */
+  id?: string
+  /**
+   * Name of the workflow
+   * @type {string}
+   * @memberof Workflow
+   */
+  name: string
+  /**
+   * Detailed description of the workflow
+   * @type {string}
+   * @memberof Workflow
+   */
+  description?: string
+  /**
+   * Type of workflow
+   * @type {string}
+   * @memberof Workflow
+   */
+  type: WorkflowTypeEnum
+  /**
+   * Ordered list of steps in the workflow
+   * @type {Array<Step>}
+   * @memberof Workflow
+   */
+  steps?: Array<Step>
+  /**
+   * References to personas used in this workflow
+   * @type {Array<Persona>}
+   * @memberof Workflow
+   */
+  personas?: Array<Persona>
 }
 /**
  * @export
  */
 export declare const WorkflowTypeEnum: {
-    readonly Issuance: "ISSUANCE";
-    readonly Presentation: "PRESENTATION";
-};
-export type WorkflowTypeEnum = typeof WorkflowTypeEnum[keyof typeof WorkflowTypeEnum];
+  readonly Issuance: 'ISSUANCE'
+  readonly Presentation: 'PRESENTATION'
+}
+export type WorkflowTypeEnum = (typeof WorkflowTypeEnum)[keyof typeof WorkflowTypeEnum]
 /**
  * Check if a given object implements the Workflow interface.
  */
-export declare function instanceOfWorkflow(value: object): value is Workflow;
-export declare function WorkflowFromJSON(json: any): Workflow;
-export declare function WorkflowFromJSONTyped(json: any, ignoreDiscriminator: boolean): Workflow;
-export declare function WorkflowToJSON(json: any): Workflow;
-export declare function WorkflowToJSONTyped(value?: Workflow | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfWorkflow(value: object): value is Workflow
+export declare function WorkflowFromJSON(json: any): Workflow
+export declare function WorkflowFromJSONTyped(json: any, ignoreDiscriminator: boolean): Workflow
+export declare function WorkflowToJSON(json: any): Workflow
+export declare function WorkflowToJSONTyped(value?: Workflow | null, ignoreDiscriminator?: boolean): any
 //# sourceMappingURL=Workflow.d.ts.map

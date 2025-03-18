@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
 
 import { characterFade, fadeExit } from '../../../FramerAnimations'
-import { prependApiUrl } from '../../../utils/Url'
 import { SafeAnimatePresence } from '../../../utils/Helpers'
+import { prependApiUrl } from '../../../utils/Url'
 
 export interface Props {
   character?: CustomCharacter
