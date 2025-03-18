@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
 
-import { baseWsUrl, socketPath } from './api/BaseUrl'
+import { demoServerBaseWsUrl, demoServerSocketPath } from './api/BaseUrl'
 import { useAppDispatch } from './hooks/hooks'
 import { useAnalytics } from './hooks/useAnalytics'
 import { PageNotFound } from './pages/PageNotFound'
@@ -22,6 +22,7 @@ import { AuthProvider } from './utils/AuthContext'
 import { basePath } from './utils/BasePath'
 import { PrivateRoute } from './utils/PrivateRoute'
 import { ThemeProvider } from './utils/ThemeContext'
+import { SafeAnimatePresence } from './utils/Helpers'
 
 function App() {
   useAnalytics()
@@ -57,7 +58,7 @@ function App() {
   }, [connectionDate, lastServerReset])
 
   useEffect(() => {
-    const ws = io(baseWsUrl, { path: socketPath })
+    const ws = io(demoServerBaseWsUrl, { path: demoServerSocketPath })
     ws.on('connect', () => {
       setSocket(ws)
     })
@@ -74,7 +75,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <AnimatePresence mode="wait">
+        <SafeAnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             {basePath !== '/' && <Route path="/" element={<Navigate to={basePath} />}></Route>}
             <Route path={`${basePath}/`} element={<LandingPage />} />
@@ -99,7 +100,7 @@ function App() {
             />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        </AnimatePresence>
+        </SafeAnimatePresence>
       </AuthProvider>
     </ThemeProvider>
   )

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { fadeDelay, fadeExit } from '../../../FramerAnimations'
 import { BackButton } from '../../../components/BackButton'
 import { Button } from '../../../components/Button'
+import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {
   onboardingStep: string
@@ -46,7 +47,7 @@ export const OnboardingBottomNav: React.FC<Props> = ({
       <div className="flex self-center">
         <BackButton onClick={removeOnboardingStep} disabled={backDisabled} data-cy="prev-onboarding-step" />
       </div>
-      <AnimatePresence mode="wait">
+      <SafeAnimatePresence mode="wait">
         <motion.div variants={fadeExit} initial="hidden" animate="show" exit="exit" data-cy="next-onboarding-step">
           <Button
             onClick={isCompleted ? onboardingCompleted : addOnboardingStep}
@@ -54,7 +55,7 @@ export const OnboardingBottomNav: React.FC<Props> = ({
             disabled={forwardDisabled}
           />
         </motion.div>
-      </AnimatePresence>
+      </SafeAnimatePresence>
     </motion.div>
   )
 }

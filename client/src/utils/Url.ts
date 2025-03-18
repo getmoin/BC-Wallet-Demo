@@ -1,7 +1,7 @@
-import { baseUrl } from '../api/BaseUrl'
+import { demoServerBaseUrl } from '../api/BaseUrl'
 
 export function prependApiUrl(path: string) {
-  let fullPath = `${baseUrl}${path}`
+  let fullPath = `${demoServerBaseUrl}${path}`
 
   if (path.startsWith('data:')) {
     // path is a data url treat it as is

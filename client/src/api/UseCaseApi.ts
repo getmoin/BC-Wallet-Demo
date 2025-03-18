@@ -1,11 +1,11 @@
 import type { AxiosResponse } from 'axios'
 
-import { apiCall } from './BaseUrl'
+import { demoApi } from './BaseUrl'
 
 export const getUseCasesByCharType = (type: string): Promise<AxiosResponse> => {
-  return apiCall.get(`/demo/usecases/character/${type}`, {})
+  return demoApi.get(`/demo/usecases/character/${type}`, {})
 }
 
 export const getUseCaseBySlug = (slug: string): Promise<AxiosResponse> => {
-  return apiCall.get(`/demo/usecases/${slug}`)
+  return demoApi.get(`/demo/usecases/${slug}`)
 }

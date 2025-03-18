@@ -21,6 +21,7 @@ import { OnboardingComplete } from '../../utils/OnboardingUtils'
 
 import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
+import { SafeAnimatePresence } from '../../utils/Helpers'
 
 export const OnboardingPage: React.FC = () => {
   useTitle('Get Started | BC Wallet Self-Sovereign Identity Demo')
@@ -73,7 +74,7 @@ export const OnboardingPage: React.FC = () => {
         className="container flex flex-col items-center p-4"
       >
         <Stepper currentCharacter={currentCharacter} onboardingStep={onboardingStep} />
-        <AnimatePresence mode="wait">
+        <SafeAnimatePresence mode="wait">
           {mounted && (
             <OnboardingContainer
               characters={allCharacters}
@@ -84,7 +85,7 @@ export const OnboardingPage: React.FC = () => {
               invitationUrl={invitationUrl}
             />
           )}
-        </AnimatePresence>
+        </SafeAnimatePresence>
       </motion.div>
     </>
   )

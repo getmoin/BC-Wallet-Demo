@@ -22,6 +22,7 @@ import { basePath } from '../../../utils/BasePath'
 import { FailedRequestModal } from '../components/FailedRequestModal'
 import { StarterCredentials } from '../components/StarterCredentials'
 import { StepInformation } from '../components/StepInformation'
+import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {
   connectionId: string
@@ -146,11 +147,11 @@ export const AcceptCredential: React.FC<Props> = ({
       <StepInformation title={title} text={text} />
       <div className="flex flex-row m-auto content-center">
         {credentials.length ? (
-          <AnimatePresence mode="wait">
+          <SafeAnimatePresence mode="wait">
             <motion.div className={`flex flex-1 flex-col m-auto`} variants={fade} animate="show" exit="exit">
               <StarterCredentials credentials={credentials} />
             </motion.div>
-          </AnimatePresence>
+          </SafeAnimatePresence>
         ) : (
           <motion.div className="flex flex-col h-full m-auto">
             <Loader />

@@ -22,6 +22,7 @@ import { DemoCompletedModal } from './components/DemoCompletedModal'
 import { ProfileCard } from './components/ProfileCard'
 import { RevocationContainer } from './components/RevocationContainer'
 import { UseCaseContainer } from './components/UseCaseContainer'
+import { SafeAnimatePresence } from '../../utils/Helpers'
 
 export const DashboardPage: React.FC = () => {
   useTitle('Dashboard | BC Wallet Self-Sovereign Identity Demo')
@@ -101,9 +102,9 @@ export const DashboardPage: React.FC = () => {
           </div>
         </>
       ) : (
-        <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        <SafeAnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
           <Modal title={ERROR_TITLE} description={ERROR_DESCRIPTION} onOk={routeError} />
-        </AnimatePresence>
+        </SafeAnimatePresence>
       )}
       {demoCompleted && <DemoCompletedModal action={completeDemo} cancel={cancelCompleteDemo} />}
       <Footer />

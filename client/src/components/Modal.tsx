@@ -4,6 +4,7 @@ import { dropIn, standardFade } from '../FramerAnimations'
 
 import { SmallButton } from './SmallButton'
 import { SmallButtonText } from './SmallButtonText'
+import { SafeAnimatePresence } from '../utils/Helpers'
 
 export interface Props {
   onOk(): void
@@ -29,7 +30,7 @@ export const Modal: React.FC<Props> = ({
   loadingText,
 }) => {
   return (
-    <AnimatePresence>
+    <SafeAnimatePresence>
       <motion.div
         variants={standardFade}
         initial="hidden"
@@ -69,6 +70,6 @@ export const Modal: React.FC<Props> = ({
           </motion.div>
         </div>
       </motion.div>
-    </AnimatePresence>
+    </SafeAnimatePresence>
   )
 }

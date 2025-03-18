@@ -1,7 +1,7 @@
 import type { ProofRequestData } from '../slices/types'
 import type { AxiosResponse } from 'axios'
 
-import { apiCall } from './BaseUrl'
+import { demoApi } from './BaseUrl'
 
 export const createProofRequest = (data: ProofRequestData): Promise<AxiosResponse> => {
   const proofRequest = {
@@ -11,7 +11,7 @@ export const createProofRequest = (data: ProofRequestData): Promise<AxiosRespons
     name: data.requestOptions?.name,
   }
 
-  return apiCall.post(`/demo/proofs/requestProof`, {
+  return demoApi.post(`/demo/proofs/requestProof`, {
     connection_id: data.connectionId,
     comment: data.requestOptions?.comment,
     proof_request: proofRequest,
@@ -27,7 +27,7 @@ export const createDeepProofRequest = (data: ProofRequestData): Promise<AxiosRes
     name: data.requestOptions?.name,
   }
 
-  return apiCall.post(`/demo/deeplink/requestProof`, {
+  return demoApi.post(`/demo/deeplink/requestProof`, {
     connection_id: data.connectionId,
     proof_request: proofRequest,
     comment: data.requestOptions?.comment ?? '',
@@ -45,16 +45,16 @@ export const createOOBProofRequest = (data: ProofRequestData): Promise<AxiosResp
     auto_present: true,
   }
 
-  return apiCall.post(`/demo/proofs/requestProofOOB`, {
+  return demoApi.post(`/demo/proofs/requestProofOOB`, {
     proof_request: proofRequest,
     comment: data.requestOptions?.comment,
   })
 }
 
 export const getProofById = (proofId: string): Promise<AxiosResponse> => {
-  return apiCall.get(`/demo/proofs/${proofId}`)
+  return demoApi.get(`/demo/proofs/${proofId}`)
 }
 
 export const deleteProofById = (proofId: string): Promise<AxiosResponse> => {
-  return apiCall.delete(`/demo/proofs/${proofId}`)
+  return demoApi.delete(`/demo/proofs/${proofId}`)
 }

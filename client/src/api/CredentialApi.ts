@@ -1,14 +1,14 @@
 import type { Credential } from '../slices/types'
 import type { AxiosResponse } from 'axios'
 
-import { apiCall } from './BaseUrl'
+import { demoApi } from './BaseUrl'
 
 export const issueCredential = async (
   connectionId: string,
   cred: Credential,
   credDefId: string
 ): Promise<AxiosResponse> => {
-  return apiCall.post(`/demo/credentials/offerCredential`, {
+  return demoApi.post(`/demo/credentials/offerCredential`, {
     connection_id: connectionId,
     cred_def_id: credDefId,
     credential_proposal: {
@@ -23,7 +23,7 @@ export const issueDeepCredential = async (
   cred: Credential,
   credDefId: string
 ): Promise<AxiosResponse> => {
-  return apiCall.post(`/demo/deeplink/offerCredential`, {
+  return demoApi.post(`/demo/deeplink/offerCredential`, {
     connection_id: connectionId,
     cred_def_id: credDefId,
     credential_proposal: {
@@ -34,17 +34,17 @@ export const issueDeepCredential = async (
 }
 
 export const getOrCreateCredDefId = async (credential: Credential) => {
-  return apiCall.post(`/demo/credentials/getOrCreateCredDef`, credential)
+  return demoApi.post(`/demo/credentials/getOrCreateCredDef`, credential)
 }
 
 export const getDemoCredentialsByConnectionId = async (connectionId: string) => {
-  return apiCall.get(`/demo/credentials/connId/${connectionId}`)
+  return demoApi.get(`/demo/credentials/connId/${connectionId}`)
 }
 
 export const getCredentialById = (credentialId: string): Promise<AxiosResponse> => {
-  return apiCall.get(`/demo/credentials/${credentialId}`)
+  return demoApi.get(`/demo/credentials/${credentialId}`)
 }
 
 export const deleteCredentialById = (credentialId: string): Promise<AxiosResponse> => {
-  return apiCall.delete(`/demo/credentials/${credentialId}`)
+  return demoApi.delete(`/demo/credentials/${credentialId}`)
 }

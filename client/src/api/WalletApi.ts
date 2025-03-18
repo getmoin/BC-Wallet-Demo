@@ -1,7 +1,7 @@
 import type { AxiosResponse } from 'axios'
 
-import { apiCall } from './BaseUrl'
+import { demoApi } from './BaseUrl'
 
 export const getWallets = (): Promise<AxiosResponse> => {
-  return apiCall.get('/demo/wallets')
+  return demoApi.get('/demo/wallets')
 }

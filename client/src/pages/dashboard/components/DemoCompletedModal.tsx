@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { standardFade, dropIn } from '../../../FramerAnimations'
 import { SmallButton } from '../../../components/SmallButton'
 import { SmallButtonText } from '../../../components/SmallButtonText'
+import { SafeAnimatePresence } from '../../../utils/Helpers'
 export interface Props {
   action(): void
   cancel?(): void
@@ -13,7 +14,7 @@ export const DemoCompletedModal: React.FC<Props> = ({ action, cancel }) => {
   const DESCRIPTION = 'Looking to leave some feedback? Take our survey and connect with us!'
 
   return (
-    <AnimatePresence>
+    <SafeAnimatePresence>
       <motion.div
         variants={standardFade}
         initial="hidden"
@@ -85,6 +86,6 @@ export const DemoCompletedModal: React.FC<Props> = ({ action, cancel }) => {
           </motion.div>
         </div>
       </motion.div>
-    </AnimatePresence>
+    </SafeAnimatePresence>
   )
 }
