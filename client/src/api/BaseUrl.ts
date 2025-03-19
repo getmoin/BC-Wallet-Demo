@@ -1,10 +1,22 @@
 import axios from 'axios'
+import { setupCache } from 'axios-cache-adapter'
 
-export const baseRoute = process.env.REACT_APP_BASE_ROUTE ?? '/digital-trust/showcase'
-export const baseUrl = (process.env.REACT_APP_HOST_BACKEND ?? '') + baseRoute
-export const baseWsUrl = process.env.REACT_APP_HOST_BACKEND ?? ''
-export const socketPath = `${baseRoute}/demo/socket/`
+const cache = setupCache({
+  maxAge: 30 * 24 * 60 * 60 * 1000, // keep 30 days
+  exclude: { query: true },
+})
 
-export const apiCall = axios.create({ baseURL: baseUrl }) //baseUrl
+export const demoBackendBaseRoute = process.env.REACT_APP_BASE_ROUTE ?? '/digital-trust/showcase'
+export const demoBackendBaseWsUrl = process.env.REACT_APP_HOST_BACKEND ?? 'http://127.0.0.1:5000'
+export const demoBackendBaseUrl = demoBackendBaseWsUrl + demoBackendBaseRoute
+export const demoBackendSocketPath = `${demoBackendBaseRoute}/demo/socket/`
+export const demoBackendApi = axios.create({
+  baseURL: demoBackendBaseUrl,
+  adapter: cache.adapter,
+})
 
-export const apiCall2 = axios.create({ baseURL: 'http://localhost:3001' }) //baseUrl
+export const showcaseServerBaseUrl = process.env.REACT_APP_SHOWCASE_BACKEND ?? 'http://127.0.0.1:5005'
+export const showcaseApi = axios.create({
+  baseURL: showcaseServerBaseUrl,
+  adapter: cache.adapter,
+})

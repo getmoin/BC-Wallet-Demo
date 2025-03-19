@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { standardFade, dropIn } from '../../../FramerAnimations'
-import { baseUrl } from '../../../api/BaseUrl'
+import { dropIn, standardFade } from '../../../FramerAnimations'
+import { demoBackendBaseUrl } from '../../../api/BaseUrl'
 import appStore from '../../../assets/light/app-store-badge.svg'
 import playStore from '../../../assets/light/google-play-badge.png'
 import { SmallButton } from '../../../components/SmallButton'
@@ -103,7 +103,7 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
                 </div>
                 {!isMobile() && (
                   <div className="mt-10 mr-10">
-                    <QRCode value={`${baseUrl}/qr`} size={125} />
+                    <QRCode value={`${demoBackendBaseUrl}/qr`} size={125} />
                   </div>
                 )}
               </div>
