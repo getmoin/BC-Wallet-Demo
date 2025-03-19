@@ -8,9 +8,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { buttonHover, fade, fadeDelay, landingTitle } from '../../../FramerAnimations'
 import landingScreen from '../../../assets/light/landing-screen.svg'
 import { basePath } from '../../../utils/BasePath'
+import { useSlugOrDefault } from '../../../utils/SlugUtils'
 
 export const MainSection: React.FC = () => {
-  const { slug } = useParams()
+  const slug = useSlugOrDefault()
 
   const navigate = useNavigate()
 

@@ -1,7 +1,7 @@
 import { trackPageView } from '@snowplow/browser-tracker'
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useEffect, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { page } from '../../FramerAnimations'
 import { CustomUpload } from '../../components/CustomUpload'
@@ -21,6 +21,7 @@ import { OnboardingComplete } from '../../utils/OnboardingUtils'
 
 import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
+import { useSlugOrDefault } from '../../utils/SlugUtils'
 
 export const OnboardingPage: React.FC = () => {
   useTitle('Get Started | BC Wallet Self-Sovereign Identity Demo')
@@ -33,8 +34,9 @@ export const OnboardingPage: React.FC = () => {
     uploadedCharacter,
 
     showcase,
-    currentPersona
+    currentPersona,
   } = useShowcases()
+  const slug = useSlugOrDefault()
 
   console.log(`PERSONAS: ${JSON.stringify(showcase?.personas)}`)
 
@@ -55,14 +57,15 @@ export const OnboardingPage: React.FC = () => {
   // }, [characters, uploadedCharacter, showHiddenUseCases])
 
   useEffect(() => {
-    if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) { //currentCharacter
+    if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) {
+      //currentCharacter
       dispatch(completeOnboarding())
       dispatch(clearCredentials())
       dispatch(clearConnection())
       navigate(`${basePath}/dashboard`)
     } else {
       dispatch(fetchWallets())
-      dispatch(fetchShowcaseBySlug('best-bc-college-7y4zip'))
+      dispatch(fetchShowcaseBySlug(slug))
       setMounted(true)
     }
   }, [dispatch, showHiddenUseCases])
