@@ -6,18 +6,18 @@ import { useDarkMode } from '../../../hooks/useDarkMode'
 import { prependApiUrl } from '../../../utils/Url'
 
 export interface Props {
-  currentCharacter: CustomCharacter
-  item: ProgressBarStep
+  scenario: any
+  step: any//ProgressBarStep
   currentStep: string
 }
 
-export const StepperItem: React.FC<Props> = ({ item, currentStep, currentCharacter }) => {
+export const StepperItem: React.FC<Props> = ({ step, currentStep, scenario }) => {
   const darkMode = useDarkMode()
-  const stepNames = currentCharacter.onboarding.map((item) => item.screenId)
-  const currentStepIsEqual = item.onboardingStep === currentStep
-  const currentStepIsNotEqual = item.onboardingStep !== currentStep
-  const currentStepIsHigher = stepNames.indexOf(currentStep) > stepNames.indexOf(item.onboardingStep)
-  const currentStepIsLower = stepNames.indexOf(currentStep) < stepNames.indexOf(item.onboardingStep)
+  const stepNames = scenario.steps.map((step: any) => step.screenId)
+  const currentStepIsEqual = step.screenId === currentStep
+  const currentStepIsNotEqual = step.screenId !== currentStep
+  const currentStepIsHigher = stepNames.indexOf(currentStep) > stepNames.indexOf(step.screenId)
+  const currentStepIsLower = stepNames.indexOf(currentStep) < stepNames.indexOf(step.screenId)
   return (
     <>
       <div className="flex text-grey dark:text-white relative">
@@ -33,13 +33,13 @@ export const StepperItem: React.FC<Props> = ({ item, currentStep, currentCharact
           } `}
         >
           <img
-            alt={item.name}
-            src={darkMode ? prependApiUrl(item.iconDark) : prependApiUrl(item.iconLight)}
+            alt={step.title}
+            src={darkMode ? `http://localhost:3001/assets/${step.iconDark}/file` : `http://localhost:3001/assets/${step.iconLight}/file`}
             className="m-auto h-5"
           />
         </div>
       </div>
-      {item.onboardingStep !== 'SETUP_COMPLETED' && (
+      {step.screenId !== 'SETUP_COMPLETED' && (
         <div
           className={`flex-auto  transition duration-300 ease-in-out  ${
             currentStepIsHigher && currentStepIsNotEqual

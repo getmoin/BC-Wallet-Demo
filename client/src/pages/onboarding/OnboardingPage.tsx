@@ -42,7 +42,7 @@ export const OnboardingPage: React.FC = () => {
       navigate(`${basePath}/dashboard`)
     } else {
       dispatch(fetchWallets())
-      dispatch(fetchShowcaseBySlug('best-bc-college-OkhidL'))
+      dispatch(fetchShowcaseBySlug('best-bc-college-OyMDSu'))
       setMounted(true)
     }
   }, [dispatch, showHiddenUseCases])
@@ -61,11 +61,11 @@ export const OnboardingPage: React.FC = () => {
         exit="exit"
         className="container flex flex-col items-center p-4"
       >
-        <Stepper persona={currentPersona} onboardingStep={onboardingStep} />
+        <Stepper scenario={showcase?.scenarios.find((scenario: any) => scenario.persona.id ===  currentPersona?.id)} onboardingStep={onboardingStep} />
         <AnimatePresence mode="wait">
           {mounted && (
             <OnboardingContainer
-              scenarios={showcase.scenarios}
+              scenarios={showcase?.scenarios}
               currentPersona={currentPersona}
               onboardingStep={onboardingStep}
               connectionId={id}
