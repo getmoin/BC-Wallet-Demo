@@ -35,7 +35,7 @@ export const OnboardingPage: React.FC = () => {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) { //currentCharacter
+    if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) {
       dispatch(completeOnboarding())
       dispatch(clearCredentials())
       dispatch(clearConnection())

@@ -1,9 +1,5 @@
-import type { CustomCharacter, ProgressBarStep } from '../../../slices/types'
-
 import React from 'react'
-
 import { useDarkMode } from '../../../hooks/useDarkMode'
-import { prependApiUrl } from '../../../utils/Url'
 
 export interface Props {
   scenario: any
