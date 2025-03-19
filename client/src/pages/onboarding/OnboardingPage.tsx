@@ -1,8 +1,7 @@
 import { trackPageView } from '@snowplow/browser-tracker'
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import { page } from '../../FramerAnimations'
 import { CustomUpload } from '../../components/CustomUpload'
 import { useAppDispatch } from '../../hooks/hooks'
@@ -18,7 +17,6 @@ import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
 import { OnboardingComplete } from '../../utils/OnboardingUtils'
-
 import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
 
@@ -28,31 +26,13 @@ export const OnboardingPage: React.FC = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const {
-    characters,
-    currentCharacter,
-    uploadedCharacter,
-
     showcase,
     currentPersona
   } = useShowcases()
-
-  console.log(`PERSONAS: ${JSON.stringify(showcase?.personas)}`)
-
   const { onboardingStep, isCompleted } = useOnboarding()
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled, showHiddenUseCases } = usePreferences()
-
   const [mounted, setMounted] = useState(false)
-
-  // const allCharacters = useMemo(() => {
-  //   const allChars = [...characters].filter((char) => !char.hidden || showHiddenUseCases)
-  //
-  //   if (uploadedCharacter) {
-  //     allChars.push(uploadedCharacter)
-  //   }
-  //
-  //   return allChars
-  // }, [characters, uploadedCharacter, showHiddenUseCases])
 
   useEffect(() => {
     if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) { //currentCharacter
@@ -62,7 +42,7 @@ export const OnboardingPage: React.FC = () => {
       navigate(`${basePath}/dashboard`)
     } else {
       dispatch(fetchWallets())
-      dispatch(fetchShowcaseBySlug('best-bc-college-7y4zip'))
+      dispatch(fetchShowcaseBySlug('best-bc-college-OkhidL'))
       setMounted(true)
     }
   }, [dispatch, showHiddenUseCases])
@@ -85,8 +65,8 @@ export const OnboardingPage: React.FC = () => {
         <AnimatePresence mode="wait">
           {mounted && (
             <OnboardingContainer
-              personas={showcase.personas} //showcase.personas characters
-              currentPersona={currentPersona} //currentPersona currentCharacter
+              scenarios={showcase.scenarios}
+              currentPersona={currentPersona}
               onboardingStep={onboardingStep}
               connectionId={id}
               connectionState={state}

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { useAppDispatch } from '../hooks/hooks'
 import { useShowcases } from '../slices/showcases/showcasesSelectors'
-import { uploadCharacter, setUploadingStatus } from '../slices/showcases/showcasesSlice'
+import { uploadShowcase, setUploadingStatus } from '../slices/showcases/showcasesSlice'
 import { toggleCharacterUpload } from '../slices/preferences/preferencesSlice'
 
 import { Modal } from './Modal'
@@ -25,8 +25,8 @@ export const CustomUpload: React.FC = () => {
     reader.onload = (evt: any) => {
       const uploadedChar: CustomCharacter = JSON.parse(evt.target.result)
       dispatch(
-        uploadCharacter({
-          character: uploadedChar,
+          uploadShowcase({
+          showcase: uploadedChar,
           callback: () => {
             dispatch(setUploadingStatus(false))
           },

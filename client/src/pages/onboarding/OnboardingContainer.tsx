@@ -1,12 +1,9 @@
-import type { CustomCharacter } from '../../slices/types'
-
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { FiLogOut } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
-
 import { fadeDelay, fadeExit } from '../../FramerAnimations'
 import { Modal } from '../../components/Modal'
 import { useAppDispatch } from '../../hooks/hooks'
@@ -18,7 +15,6 @@ import { basePath } from '../../utils/BasePath'
 import { isConnected } from '../../utils/Helpers'
 import { addOnboardingProgress, removeOnboardingProgress } from '../../utils/OnboardingUtils'
 import { prependApiUrl } from '../../utils/Url'
-
 import { PersonaContent } from './components/PersonaContent'
 import { OnboardingBottomNav } from './components/OnboardingBottomNav'
 import { AcceptCredential } from './steps/AcceptCredential'
@@ -30,8 +26,8 @@ import { SetupConnection } from './steps/SetupConnection'
 import { SetupStart } from './steps/SetupStart'
 
 export interface Props {
-  personas: any[]//CustomCharacter[]
-  currentPersona?: any//CustomCharacter
+  scenarios: any[]
+  currentPersona?: any
   connectionId?: string
   connectionState?: string
   invitationUrl?: string
@@ -39,7 +35,7 @@ export interface Props {
 }
 
 export const OnboardingContainer: React.FC<Props> = ({
-  personas,
+  scenarios,
   currentPersona,
   onboardingStep,
   connectionId,
@@ -50,14 +46,12 @@ export const OnboardingContainer: React.FC<Props> = ({
   const { issuedCredentials } = useCredentials()
   const idToTitle: Record<string, string> = {}
 
-  console.log(`HELLO??? ${JSON.stringify(currentPersona)}`)
-
-  currentPersona?.onboarding.forEach((item: any) => { // TODO we need scenario steps
+  scenarios.find(scenario => scenario.persona?.id ===  currentPersona?.id)?.steps.forEach((item: any) => {
     idToTitle[item.screenId] = item.title
   })
 
   const connectionCompleted = isConnected(connectionState as string)
-  const credentials = currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
+  const credentials: any[] = []//currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
   const credentialsAccepted = credentials?.every((cred: any) => issuedCredentials.includes(cred.name))
 
   const isBackDisabled = ['PICK_CHARACTER', 'ACCEPT_CREDENTIAL'].includes(onboardingStep)
@@ -82,43 +76,47 @@ export const OnboardingContainer: React.FC<Props> = ({
   }
 
   const nextOnboardingPage = () => {
+    const scenario = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)
+
     trackSelfDescribingEvent({
       event: {
         schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
         data: {
           action: 'next',
-          path: currentPersona?.type.toLowerCase(),
+          path: currentPersona?.role.toLowerCase(),
           step: idToTitle[onboardingStep],
         },
       },
     })
-    addOnboardingProgress(dispatch, onboardingStep, currentPersona)
+    addOnboardingProgress(dispatch, onboardingStep, scenario)
   }
 
   const prevOnboardingPage = () => {
+    const scenario = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)
+
     trackSelfDescribingEvent({
       event: {
         schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
         data: {
           action: 'back',
-          path: currentPersona?.type.toLowerCase(),
+          path: currentPersona?.role.toLowerCase(),
           step: idToTitle[onboardingStep],
         },
       },
     })
-    removeOnboardingProgress(dispatch, onboardingStep, currentPersona)
+    removeOnboardingProgress(dispatch, onboardingStep, scenario)
   }
 
   //override title and text content to make them character dependant
   const getCharacterContent = (progress: string) => {
-    const characterContent = currentPersona?.onboarding.find((screen: any) => screen.screenId === progress) // TODO
-    if (characterContent) {
+    const stepContent = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)?.steps.find((screen: any) => screen.screenId === progress)
+    if (stepContent) {
       return {
-        title: characterContent.title,
-        text: characterContent.text,
-        credentials: characterContent.credentials,
-        issuer_name: characterContent.issuer_name,
-        image: characterContent.image,
+        title: stepContent.title,
+        text: stepContent.description,
+        credentials: stepContent.credentials,
+        issuer_name: stepContent.issuer_name,
+        asset: stepContent.asset,
       }
     }
     return { title: '', text: '' }
@@ -130,14 +128,13 @@ export const OnboardingContainer: React.FC<Props> = ({
   }, [connectionState])
 
   const getComponentToRender = (progress: string) => {
-    console.log(`progress: ${progress}`)
     const { text, title, credentials, issuer_name } = getCharacterContent(progress)
     if (progress === 'PICK_CHARACTER') {
       return (
         <PickPersona
           key={progress}
           currentPersona={currentPersona}
-          personas={personas}
+          personas={scenarios.map((scenario) => scenario.persona)}
           title={title}
           text={text}
         />
@@ -182,7 +179,7 @@ export const OnboardingContainer: React.FC<Props> = ({
   }
 
   const getImageToRender = (progress: string) => {
-    const { image } = getCharacterContent(progress)
+    const { asset } = getCharacterContent(progress)
     if (progress === 'PICK_CHARACTER') {
       return <PersonaContent key={progress} persona={currentPersona} />
     } else {
@@ -194,7 +191,7 @@ export const OnboardingContainer: React.FC<Props> = ({
           exit="exit"
           className="p-4"
           key={progress}
-          src={prependApiUrl(image ?? '')}
+          src={`http://localhost:3001/assets/${asset}/file`}
           alt={progress}
         />
       )
