@@ -14,7 +14,6 @@ import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
 import { basePath } from '../../utils/BasePath'
 import { isConnected } from '../../utils/Helpers'
 import { addOnboardingProgress, removeOnboardingProgress } from '../../utils/OnboardingUtils'
-import { prependApiUrl } from '../../utils/Url'
 import { PersonaContent } from './components/PersonaContent'
 import { OnboardingBottomNav } from './components/OnboardingBottomNav'
 import { AcceptCredential } from './steps/AcceptCredential'
@@ -24,6 +23,7 @@ import { PickPersona } from './steps/PickPersona'
 import { SetupCompleted } from './steps/SetupCompleted'
 import { SetupConnection } from './steps/SetupConnection'
 import { SetupStart } from './steps/SetupStart'
+import { showcaseServerBaseUrl } from '../../api/BaseUrl'
 
 export interface Props {
   scenarios: any[]
@@ -46,12 +46,14 @@ export const OnboardingContainer: React.FC<Props> = ({
   const { issuedCredentials } = useCredentials()
   const idToTitle: Record<string, string> = {}
 
-  scenarios.find(scenario => scenario.persona?.id ===  currentPersona?.id)?.steps.forEach((item: any) => {
-    idToTitle[item.screenId] = item.title
-  })
+  scenarios
+    .find((scenario) => scenario.persona?.id === currentPersona?.id)
+    ?.steps.forEach((item: any) => {
+      idToTitle[item.screenId] = item.title
+    })
 
   const connectionCompleted = isConnected(connectionState as string)
-  const credentials: any[] = []//currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
+  const credentials: any[] = [] //currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
   const credentialsAccepted = credentials?.every((cred: any) => issuedCredentials.includes(cred.name))
 
   const isBackDisabled = ['PICK_CHARACTER', 'ACCEPT_CREDENTIAL'].includes(onboardingStep)
@@ -76,7 +78,7 @@ export const OnboardingContainer: React.FC<Props> = ({
   }
 
   const nextOnboardingPage = () => {
-    const scenario = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)
+    const scenario = scenarios.find((scenario) => scenario.persona.id === currentPersona?.id)
 
     trackSelfDescribingEvent({
       event: {
@@ -92,7 +94,7 @@ export const OnboardingContainer: React.FC<Props> = ({
   }
 
   const prevOnboardingPage = () => {
-    const scenario = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)
+    const scenario = scenarios.find((scenario) => scenario.persona.id === currentPersona?.id)
 
     trackSelfDescribingEvent({
       event: {
@@ -109,7 +111,9 @@ export const OnboardingContainer: React.FC<Props> = ({
 
   //override title and text content to make them character dependant
   const getCharacterContent = (progress: string) => {
-    const stepContent = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)?.steps.find((screen: any) => screen.screenId === progress)
+    const stepContent = scenarios
+      .find((scenario) => scenario.persona.id === currentPersona?.id)
+      ?.steps.find((screen: any) => screen.screenId === progress)
     if (stepContent) {
       return {
         title: stepContent.title,
@@ -182,7 +186,7 @@ export const OnboardingContainer: React.FC<Props> = ({
     const { asset } = getCharacterContent(progress)
     if (progress === 'PICK_CHARACTER') {
       return <PersonaContent key={progress} persona={currentPersona} />
-    } else {
+    } else if (asset) {
       return (
         <motion.img
           variants={fadeExit}
@@ -191,7 +195,7 @@ export const OnboardingContainer: React.FC<Props> = ({
           exit="exit"
           className="p-4"
           key={progress}
-          src={`http://localhost:3001/assets/${asset}/file`}
+          src={`${showcaseServerBaseUrl}/assets/${asset}/file`}
           alt={progress}
         />
       )

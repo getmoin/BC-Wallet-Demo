@@ -4,6 +4,7 @@ import React from 'react'
 
 import { useDarkMode } from '../../../hooks/useDarkMode'
 import { prependApiUrl } from '../../../utils/Url'
+import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
 
 export interface Props {
   scenario: any
@@ -34,7 +35,7 @@ export const StepperItem: React.FC<Props> = ({ step, currentStep, scenario }) =>
         >
           <img
             alt={step.title}
-            src={darkMode ? `http://localhost:3001/assets/${step.iconDark}/file` : `http://localhost:3001/assets/${step.iconLight}/file`}
+            src={darkMode ? `${showcaseServerBaseUrl}/assets/${step.iconDark}/file` : `${showcaseServerBaseUrl}/assets/${step.iconLight}/file`}
             className="m-auto h-5"
           />
         </div>
