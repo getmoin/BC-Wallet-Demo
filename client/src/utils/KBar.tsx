@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { confettiFade } from '../FramerAnimations'
 import { useAppDispatch } from '../hooks/hooks'
-import { fetchAllCharacters } from '../slices/characters/charactersThunks'
+import { fetchAllCharacters } from '../slices/showcases/showcasesThunks'
 import { usePreferences } from '../slices/preferences/preferencesSelectors'
 import {
   resetDashboard,

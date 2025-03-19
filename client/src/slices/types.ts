@@ -162,3 +162,19 @@ export interface Wallet {
   android: string
   ledgerImage?: string
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

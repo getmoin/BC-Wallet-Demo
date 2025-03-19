@@ -10,7 +10,7 @@ import { page } from '../../FramerAnimations'
 import { Modal } from '../../components/Modal'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useCurrentCharacter } from '../../slices/characters/charactersSelectors'
+import { useCurrentCharacter } from '../../slices/showcases/showcasesSelectors'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { setDemoCompleted } from '../../slices/preferences/preferencesSlice'
@@ -33,7 +33,7 @@ export const DashboardPage: React.FC = () => {
     usePreferences()
   const currentCharacter = {
     ...useCurrentCharacter(),
-    useCases: useCurrentCharacter()?.useCases.filter((item) => !item.hidden || showHiddenUseCases) ?? [],
+    useCases: useCurrentCharacter()?.useCases.filter((item: any) => !item.hidden || showHiddenUseCases) ?? [],
   } as CustomCharacter
   const useCases = currentCharacter?.useCases
 
@@ -42,6 +42,7 @@ export const DashboardPage: React.FC = () => {
       dispatch(setDemoCompleted(true))
     }
   }, [completedUseCaseSlugs])
+
 
   useEffect(() => {
     trackPageView()

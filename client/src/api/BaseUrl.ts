@@ -5,4 +5,6 @@ export const baseUrl = (process.env.REACT_APP_HOST_BACKEND ?? '') + baseRoute
 export const baseWsUrl = process.env.REACT_APP_HOST_BACKEND ?? ''
 export const socketPath = `${baseRoute}/demo/socket/`
 
-export const apiCall = axios.create({ baseURL: baseUrl })
+export const apiCall = axios.create({ baseURL: baseUrl }) //baseUrl
+
+export const apiCall2 = axios.create({ baseURL: 'http://localhost:3001' }) //baseUrl

@@ -3,8 +3,8 @@ import type { CustomCharacter } from '../slices/types'
 import { useEffect, useState } from 'react'
 
 import { useAppDispatch } from '../hooks/hooks'
-import { useCharacters } from '../slices/characters/charactersSelectors'
-import { uploadCharacter, setUploadingStatus } from '../slices/characters/charactersSlice'
+import { useShowcases } from '../slices/showcases/showcasesSelectors'
+import { uploadCharacter, setUploadingStatus } from '../slices/showcases/showcasesSlice'
 import { toggleCharacterUpload } from '../slices/preferences/preferencesSlice'
 
 import { Modal } from './Modal'
@@ -12,7 +12,7 @@ import { Modal } from './Modal'
 export const CustomUpload: React.FC = () => {
   const dispatch = useAppDispatch()
   const [uploadFile, setUploadFile] = useState<any>()
-  const { isUploading } = useCharacters()
+  const { isUploading } = useShowcases()
   const [uploadPressed, setUploadPressed] = useState<boolean>(false)
 
   const onChangeHandler = (event: any) => {

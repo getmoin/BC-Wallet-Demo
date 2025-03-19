@@ -26,7 +26,7 @@ import { StepInformation } from '../components/StepInformation'
 export interface Props {
   connectionId: string
   credentials: Credential[]
-  currentCharacter?: CustomCharacter
+  currentPersona?: CustomCharacter
   title: string
   text: string
   onCredentialAccepted?: () => void
@@ -35,7 +35,7 @@ export interface Props {
 export const AcceptCredential: React.FC<Props> = ({
   connectionId,
   credentials,
-  currentCharacter,
+  currentPersona,
   title,
   text,
   onCredentialAccepted,
@@ -79,7 +79,7 @@ export const AcceptCredential: React.FC<Props> = ({
       })
       setCredentialsIssued(true)
     }
-  }, [currentCharacter, connectionId])
+  }, [currentPersona, connectionId])
 
   useEffect(() => {
     if (credentialsAccepted && onCredentialAccepted) {
@@ -171,7 +171,7 @@ export const AcceptCredential: React.FC<Props> = ({
               schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
               data: {
                 action: 'cred_not_received',
-                path: currentCharacter?.type.toLowerCase(),
+                path: currentPersona?.type.toLowerCase(),
                 step: title,
               },
             },

@@ -9,12 +9,12 @@ import { StepperItem } from './StepperItem'
 
 export interface Props {
   onboardingStep: string
-  currentCharacter?: CustomCharacter
+  persona?: CustomCharacter
 }
 
-export const Stepper: React.FC<Props> = ({ currentCharacter, onboardingStep }) => {
-  const renderSteps = currentCharacter?.progressBar?.map((item) => {
-    return <StepperItem key={item.name} item={item} currentStep={onboardingStep} currentCharacter={currentCharacter} />
+export const Stepper: React.FC<Props> = ({ persona, onboardingStep }) => {
+  const renderSteps = persona?.progressBar?.map((item) => {
+    return <StepperItem key={item.name} item={item} currentStep={onboardingStep} currentCharacter={persona} />
   })
 
   return (
