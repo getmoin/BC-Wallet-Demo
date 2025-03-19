@@ -21,6 +21,7 @@ import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
 import { useSlug } from '../../utils/SlugUtils'
 import { clearShowcase } from '../../slices/showcases/showcasesSlice'
+import { PageNotFound } from '../PageNotFound'
 
 export const OnboardingPage: React.FC = () => {
   useTitle('Get Started | BC Wallet Self-Sovereign Identity Demo')
@@ -57,27 +58,7 @@ export const OnboardingPage: React.FC = () => {
   }, [])
 
   if (mounted && currentSlug === slug && !showcase) {
-    return (
-      <motion.div
-        variants={page}
-        initial="hidden"
-        animate="show"
-        exit="exit"
-        className="container flex flex-col items-center justify-center min-h-screen p-4"
-      >
-        <div className="w-full max-w-2xl text-center">
-          <h1 className="text-4xl font-bold mb-4">404</h1>
-          <h2 className="text-2xl font-semibold mb-6">Showcase Not Found</h2>
-          <p className="mb-4">A showcase named "{slug}" could not be found.</p>
-          <button
-            onClick={() => navigate(`${basePath}/`)}
-            className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
-            Return to Home
-          </button>
-        </div>
-      </motion.div>
-    )
+    return <PageNotFound resourceType="Showcase" resourceName={slug} />
   }
 
   return (
