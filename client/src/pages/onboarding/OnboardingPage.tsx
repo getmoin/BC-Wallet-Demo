@@ -43,14 +43,13 @@ export const OnboardingPage: React.FC = () => {
       dispatch(clearCredentials())
       dispatch(clearConnection())
       navigate(`${basePath}/dashboard`)
-      return
+    } else {
+      dispatch(clearShowcase())
+      dispatch(fetchWallets())
+      dispatch(fetchShowcaseBySlug(slug))
+      setCurrentSlug(slug)
+      setMounted(true)
     }
-
-    dispatch(clearShowcase())
-    dispatch(fetchWallets())
-    dispatch(fetchShowcaseBySlug(slug))
-    setCurrentSlug(slug)
-    setMounted(true)
   }, [dispatch, slug, onboardingStep, isCompleted])
 
   useEffect(() => {
