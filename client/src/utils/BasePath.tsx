@@ -1,3 +1,3 @@
-import { baseRoute } from '../api/BaseUrl'
+import { demoBackendBaseRoute } from '../api/BaseUrl'
 
-export const basePath: string = baseRoute ?? ''
+export const basePath: string = demoBackendBaseRoute ?? ''

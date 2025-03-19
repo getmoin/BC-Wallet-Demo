@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
 
-import { baseWsUrl, socketPath } from './api/BaseUrl'
+import { demoBackendBaseWsUrl, demoBackendSocketPath } from './api/BaseUrl'
 import { useAppDispatch } from './hooks/hooks'
 import { useAnalytics } from './hooks/useAnalytics'
 import { PageNotFound } from './pages/PageNotFound'
@@ -57,7 +57,7 @@ function App() {
   }, [connectionDate, lastServerReset])
 
   useEffect(() => {
-    const ws = io(baseWsUrl, { path: socketPath })
+    const ws = io(demoBackendBaseWsUrl, { path: demoBackendSocketPath })
     ws.on('connect', () => {
       setSocket(ws)
     })

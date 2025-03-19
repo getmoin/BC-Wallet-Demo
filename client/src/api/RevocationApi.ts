@@ -1,9 +1,9 @@
 import type { RevocationRecord } from '../slices/types'
 
-import { apiCall } from './BaseUrl'
+import { demoBackendApi } from './BaseUrl'
 
 export const revokeCredential = (record: RevocationRecord) => {
-  return apiCall.post('/demo/revoke', {
+  return demoBackendApi.post('/demo/revoke', {
     comment: 'Credential Revoked',
     connection_id: record.connectionId,
     cred_rev_id: record.credRevocationId,
