@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 
 import { confettiFade } from '../FramerAnimations'
 import { useAppDispatch } from '../hooks/hooks'
-import { fetchAllCharacters } from '../slices/showcases/showcasesThunks'
 import { usePreferences } from '../slices/preferences/preferencesSelectors'
 import {
   resetDashboard,
@@ -94,7 +93,7 @@ export const KBar: React.FC<Props> = ({ children }) => {
         navigate(`${basePath}/`)
         dispatch({ type: 'demo/RESET' })
         dispatch(fetchWallets())
-        dispatch(fetchAllCharacters())
+        //dispatch(fetchAllCharacters())
       },
     },
     {

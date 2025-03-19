@@ -1,11 +1,6 @@
-import type { CustomCharacter } from '../types'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
 import { createSlice } from '@reduxjs/toolkit'
-
-import { getOrCreateCredDefId } from '../../api/CredentialApi'
-
-import { fetchAllCharacters, fetchCharacterById, fetchShowcaseBySlug } from './showcasesThunks'
+import { fetchShowcaseBySlug } from './showcasesThunks'
 
 interface ShowcasesState {
   showcase?: any // TODO type

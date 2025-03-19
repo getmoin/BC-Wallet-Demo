@@ -1,17 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
 import * as Api from '../../api/ShowcaseApi'
-import {getDateInt} from 'server/src/utils/dateint';
-
-export const fetchAllCharacters = createAsyncThunk('characters/fetchAll', async () => {
-  const response = await Api.getCharacters()
-  return response.data
-})
-
-export const fetchCharacterById = createAsyncThunk('characters/fetchById', async (id: string) => {
-  const response = await Api.getCharacterById(id)
-  return response.data
-})
 
 export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async (slug: string) => {
   const response = await Api.getShowcaseBySlug(slug)
