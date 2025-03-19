@@ -51,11 +51,11 @@ export const StepperItems = [
 export const addOnboardingProgress = (
   dispatch: Dispatch<any>,
   onboardingStep: string,
-  currentCharacter?: CustomCharacter,
+  scenario: any,
   step?: number
 ) => {
   const inc = step ?? 1
-  const steps = currentCharacter?.onboarding.map((screen) => screen.screenId)
+  const steps = scenario.steps.map((step: any) => step.screenId)
   const currentIndex = steps?.indexOf(onboardingStep)
   if (currentIndex !== undefined && steps && currentIndex >= 0 && currentIndex < steps.length - 1) {
     dispatch(setOnboardingStep(steps[currentIndex + inc]))
@@ -71,9 +71,9 @@ export const addOnboardingProgress = (
 export const removeOnboardingProgress = (
   dispatch: Dispatch<any>,
   onboardingStep: string,
-  currentCharacter?: CustomCharacter
+  scenario: any
 ) => {
-  const steps = currentCharacter?.onboarding.map((screen) => screen.screenId)
+  const steps = scenario.steps.map((step: any) => step.screenId)
   const currentIndex = steps?.indexOf(onboardingStep)
   if (currentIndex && steps && currentIndex > 0 && currentIndex < steps.length) {
     dispatch(setOnboardingStep(steps[currentIndex - 1]))

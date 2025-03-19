@@ -28,7 +28,6 @@ export const PickPersona: React.FC<Props> = ({ currentPersona, personas, title, 
   const mainText = text
 
   const PersonaClickHandler = (char: CustomCharacter) => {
-    console.log(`CLICK CHAR: ${JSON.stringify(char)}`)
     dispatch(setPersona(char))
     track({
       id: 'persona-selected', //'character-selected'
