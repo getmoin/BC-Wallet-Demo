@@ -15,7 +15,7 @@ import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { clearCredentials } from '../../slices/credentials/credentialsSlice'
 import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
 import { basePath } from '../../utils/BasePath'
-import { isConnected, SafeAnimatePresence } from '../../utils/Helpers'
+import { isConnected } from '../../utils/Helpers'
 import { addOnboardingProgress, removeOnboardingProgress } from '../../utils/OnboardingUtils'
 import { prependApiUrl } from '../../utils/Url'
 
@@ -245,7 +245,7 @@ export const OnboardingContainer: React.FC<Props> = ({
             <FiLogOut className="inline h-12 cursor-pointer dark:text-white" />
           </motion.button>
         </div>
-        <SafeAnimatePresence mode="wait">{getComponentToRender(onboardingStep)}</SafeAnimatePresence>
+        <AnimatePresence mode="wait">{getComponentToRender(onboardingStep)}</AnimatePresence>
         <OnboardingBottomNav
           onboardingStep={onboardingStep}
           addOnboardingStep={nextOnboardingPage}
@@ -257,7 +257,7 @@ export const OnboardingContainer: React.FC<Props> = ({
       </div>
       {!isMobile && (
         <div className="bg-bcgov-white dark:bg-bcgov-black hidden lg:flex lg:w-1/3 rounded-r-lg flex-col justify-center h-full select-none">
-          <SafeAnimatePresence mode="wait">{getImageToRender(onboardingStep)}</SafeAnimatePresence>
+          <AnimatePresence mode="wait">{getImageToRender(onboardingStep)}</AnimatePresence>
         </div>
       )}
       {leaveModal && (

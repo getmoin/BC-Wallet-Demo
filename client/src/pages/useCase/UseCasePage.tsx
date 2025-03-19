@@ -22,7 +22,6 @@ import { setSection } from '../../slices/section/sectionSlice'
 import { useUseCaseState } from '../../slices/useCases/useCasesSelectors'
 import { nextSection } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 
 import { Section } from './Section'
 
@@ -90,7 +89,7 @@ export const UseCasePage: React.FC = () => {
           <Loader />
         </div>
       ) : (
-        <SafeAnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           {currentCharacter && section && currentUseCase ? (
             <motion.div
               key={'sectionDiv' + section.screenId}
@@ -113,7 +112,7 @@ export const UseCasePage: React.FC = () => {
           ) : (
             <Modal key="errorModal" title={ERROR_TITLE} description={ERROR_DESCRIPTION} onOk={routeError} />
           )}
-        </SafeAnimatePresence>
+        </AnimatePresence>
       )}
     </motion.div>
   )

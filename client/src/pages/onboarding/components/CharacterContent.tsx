@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
 
 import { characterFade, fadeExit } from '../../../FramerAnimations'
-import { SafeAnimatePresence } from '../../../utils/Helpers'
 import { prependApiUrl } from '../../../utils/Url'
 
 export interface Props {
@@ -15,7 +14,7 @@ export const CharacterContent: React.FC<Props> = ({ character }) => {
   return (
     <motion.div variants={fadeExit} initial="hidden" animate="show" exit="exit" className="h-full">
       {character ? (
-        <SafeAnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           <motion.div
             key={character.type}
             variants={characterFade}
@@ -29,7 +28,7 @@ export const CharacterContent: React.FC<Props> = ({ character }) => {
             </div>
             <img className="h-72" src={prependApiUrl(character.image)} alt={character.name} />
           </motion.div>
-        </SafeAnimatePresence>
+        </AnimatePresence>
       ) : (
         <p className="flex h-full items-center justify-center text-grey">SELECT YOUR CHARACTER</p>
       )}

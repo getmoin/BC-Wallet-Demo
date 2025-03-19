@@ -19,7 +19,6 @@ import { setCredential } from '../../../slices/credentials/credentialsSlice'
 import { issueCredential, issueDeepCredential } from '../../../slices/credentials/credentialsThunks'
 import { useSocket } from '../../../slices/socket/socketSelector'
 import { basePath } from '../../../utils/BasePath'
-import { SafeAnimatePresence } from '../../../utils/Helpers'
 import { FailedRequestModal } from '../components/FailedRequestModal'
 import { StarterCredentials } from '../components/StarterCredentials'
 import { StepInformation } from '../components/StepInformation'
@@ -147,11 +146,11 @@ export const AcceptCredential: React.FC<Props> = ({
       <StepInformation title={title} text={text} />
       <div className="flex flex-row m-auto content-center">
         {credentials.length ? (
-          <SafeAnimatePresence mode="wait">
+          <AnimatePresence mode="wait">
             <motion.div className={`flex flex-1 flex-col m-auto`} variants={fade} animate="show" exit="exit">
               <StarterCredentials credentials={credentials} />
             </motion.div>
-          </SafeAnimatePresence>
+          </AnimatePresence>
         ) : (
           <motion.div className="flex flex-col h-full m-auto">
             <Loader />

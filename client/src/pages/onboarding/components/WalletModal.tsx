@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { dropIn, standardFade } from '../../../FramerAnimations'
 import { demoBackendBaseUrl } from '../../../api/BaseUrl'
@@ -30,7 +30,7 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
     return window.innerWidth <= 760
   }
   return (
-    <SafeAnimatePresence>
+    <AnimatePresence>
       {isWalletModalOpen && (
         <motion.div
           variants={standardFade}
@@ -114,6 +114,6 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
           </div>
         </motion.div>
       )}
-    </SafeAnimatePresence>
+    </AnimatePresence>
   )
 }

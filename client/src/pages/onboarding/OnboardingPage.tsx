@@ -17,7 +17,6 @@ import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 import { OnboardingComplete } from '../../utils/OnboardingUtils'
 
 import { OnboardingContainer } from './OnboardingContainer'
@@ -74,7 +73,7 @@ export const OnboardingPage: React.FC = () => {
         className="container flex flex-col items-center p-4"
       >
         <Stepper currentCharacter={currentCharacter} onboardingStep={onboardingStep} />
-        <SafeAnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           {mounted && (
             <OnboardingContainer
               characters={allCharacters}
@@ -85,7 +84,7 @@ export const OnboardingPage: React.FC = () => {
               invitationUrl={invitationUrl}
             />
           )}
-        </SafeAnimatePresence>
+        </AnimatePresence>
       </motion.div>
     </>
   )
