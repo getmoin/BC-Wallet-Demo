@@ -5,7 +5,7 @@ import type { Persona, Showcase } from '../types'
 import { fetchShowcaseBySlug } from './showcasesThunks'
 
 interface ShowcasesState {
-  showcase?: Showcase
+  showcase: Showcase | null | undefined
   uploadedShowcase?: Showcase
   currentPersona?: Persona
   isUploading: boolean
@@ -15,6 +15,7 @@ interface ShowcasesState {
 const initialState: ShowcasesState = {
   isUploading: false,
   isLoading: false,
+  showcase: undefined,
 }
 
 const showcaseSlice = createSlice({
