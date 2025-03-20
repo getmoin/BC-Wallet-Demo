@@ -68,7 +68,7 @@ export const PickPersona: React.FC<Props> = ({ currentPersona, personas, title, 
   })
 
   return (
-    <motion.div variants={fadeX} initial="hidden" animate="show" exit="exit">
+    <motion.div className="h-full" variants={fadeX} initial="hidden" animate="show" exit="exit">
       <StepInformation
         title={titleText === '' ? defaultTitle : titleText}
         text={mainText === '' ? defaultText : mainText}

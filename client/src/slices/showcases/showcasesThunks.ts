@@ -30,7 +30,6 @@ export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async
       steps: scenario.steps.map((step: Step) => ({
         title: step.title,
         description: step.description,
-        screenId: step.screenId ?? 'MISSING_SCREEN_ID',
         order: step.order,
         ...(step.asset && {asset: step.asset.id}),
       }))
