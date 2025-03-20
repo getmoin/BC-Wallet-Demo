@@ -62,7 +62,7 @@ export const OnboardingContainer: React.FC<Props> = ({
   const credentials: any[] = [] //currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
   const credentialsAccepted = credentials?.every((cred: any) => issuedCredentials.includes(cred.name))
 
-  const isBackDisabled = currentStep === 0
+  const isBackDisabled = currentStep === 0 || currentStep === 1
   const isForwardDisabled = currentScenario?.steps.length === currentStep
 
   // const jumpOnboardingPage = (): void => {
@@ -154,7 +154,7 @@ export const OnboardingContainer: React.FC<Props> = ({
       title,
     } = getStepContent(step)
 
-    if (step === 0) {
+    if (step === 0 || step === 1) {
       return <PickPersona
           key={step}
           currentPersona={currentPersona}
@@ -220,7 +220,7 @@ export const OnboardingContainer: React.FC<Props> = ({
   const getImageToRender = (step: number) => {
     const { asset } = getStepContent(step)
 
-    if (step === 0) {
+    if (step === 0 || step === 1) {
       return <PersonaContent key={step} persona={currentPersona} />
     } else {
       return <motion.img
