@@ -3,7 +3,6 @@ import React from 'react'
 import { characterFade, fadeExit } from '../../../FramerAnimations'
 import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
 import { Persona } from '../../../slices/types'
-import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
 
 export interface Props {
   persona?: Persona
