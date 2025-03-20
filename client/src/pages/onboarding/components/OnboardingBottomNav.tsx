@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-
 import { motion } from 'framer-motion'
-
 import { BackButton } from '../../../components/BackButton'
 import { Button } from '../../../components/Button'
 import { fadeDelay, fadeExit } from '../../../FramerAnimations'
 import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {
-  onboardingStep: string
+  currentStep: number
+  maxSteps?: number
   addOnboardingStep(): void
   removeOnboardingStep(): void
   forwardDisabled: boolean
@@ -17,7 +16,8 @@ export interface Props {
 }
 
 export const OnboardingBottomNav: React.FC<Props> = ({
-  onboardingStep,
+  currentStep,
+  maxSteps,
   addOnboardingStep,
   removeOnboardingStep,
   forwardDisabled,
@@ -25,17 +25,17 @@ export const OnboardingBottomNav: React.FC<Props> = ({
   onboardingCompleted,
 }) => {
   const [label, setLabel] = useState('NEXT')
-  const isCompleted = onboardingStep === 'SETUP_COMPLETED'
+  const isCompleted = maxSteps && currentStep === maxSteps
 
   useEffect(() => {
     if (isCompleted) {
       setLabel('FINISH')
-    } else if (onboardingStep === 'CHOOSE_WALLET') {
-      setLabel('SKIP')
+    // } else if (onboardingStep === 'CHOOSE_WALLET') {
+    //   setLabel('SKIP')
     } else {
       setLabel('NEXT')
     }
-  }, [isCompleted, onboardingStep])
+  }, [currentStep])
 
   return (
     <motion.div

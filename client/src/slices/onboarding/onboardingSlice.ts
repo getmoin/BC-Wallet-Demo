@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { Scenario } from '../types'
 
 interface OnboardingState {
-  onboardingStep: string
-  connectionId?: string
+  scenario?: Scenario
+  currentStep: number
   isCompleted: boolean
 }
 
 const initialState: OnboardingState = {
-  onboardingStep: 'PICK_CHARACTER',
-  connectionId: undefined,
+  currentStep: 0,
   isCompleted: false,
 }
 
@@ -20,20 +20,23 @@ const onboardingSlice = createSlice({
       state.isCompleted = true
     },
     setOnboardingStep(state, action) {
-      state.onboardingStep = action.payload
+      state.currentStep = action.payload
     },
-    setOnboardingConnectionId(state, action) {
-      state.connectionId = action.payload
+    setScenario(state, action) {
+      state.scenario = action.payload
     },
     resetOnboarding(state) {
-      state.connectionId = undefined
-      state.onboardingStep = 'PICK_CHARACTER'
+      state.scenario = undefined
+      state.currentStep = 0
       state.isCompleted = false
     },
   },
 })
 
-export const { completeOnboarding, setOnboardingStep, setOnboardingConnectionId, resetOnboarding } =
-  onboardingSlice.actions
+export const {
+  completeOnboarding,
+  setOnboardingStep,
+  setScenario,
+} = onboardingSlice.actions
 
 export default onboardingSlice.reducer
