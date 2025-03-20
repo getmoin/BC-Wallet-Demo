@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDarkMode } from '../../../hooks/useDarkMode'
-import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
 import { Step } from '../../../slices/types'
 
 export interface Props {
