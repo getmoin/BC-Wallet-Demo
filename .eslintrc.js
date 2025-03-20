@@ -80,5 +80,5 @@ module.exports = {
       },
     },
   ],
-  ignorePatterns: ['dist/*', 'build/*', 'client/src/showcase-api', '*.spec.ts'],
+  ignorePatterns: ['dist/*', 'build/*', 'client/src/showcase-api', '*.spec.ts', 'node_modules/*'],
 }
