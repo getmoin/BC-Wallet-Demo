@@ -189,7 +189,5 @@ export interface Step {
   description: string,
   screenId: string,
   asset?: string,
-  iconDark?: string,
-  iconLight?: string,
   order: number
 }

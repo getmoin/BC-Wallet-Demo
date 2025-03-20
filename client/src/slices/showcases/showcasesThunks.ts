@@ -33,8 +33,6 @@ export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async
         screenId: step.screenId ?? 'MISSING_SCREEN_ID',
         order: step.order,
         ...(step.asset && {asset: step.asset.id}),
-        ...(step.iconDark && {iconDark: step.iconDark.id}),
-        ...(step.iconLight && {iconLight: step.iconLight.id}),
       }))
     }
   })
