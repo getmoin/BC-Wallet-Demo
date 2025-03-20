@@ -9,13 +9,12 @@ import { Modal } from '../../components/Modal'
 import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useCurrentCharacter } from '../../slices/characters/charactersSelectors'
+import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { setDemoCompleted } from '../../slices/preferences/preferencesSlice'
 import type { CustomCharacter } from '../../slices/types'
 import { basePath } from '../../utils/BasePath'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 import { Footer } from '../landing/components/Footer'
 import { NavBar } from '../landing/components/Navbar'
 import { DemoCompletedModal } from './components/DemoCompletedModal'
@@ -32,8 +31,8 @@ export const DashboardPage: React.FC = () => {
   const { completedUseCaseSlugs, demoCompleted, completeCanceled, revocationEnabled, showHiddenUseCases } =
     usePreferences()
   const currentCharacter = {
-    ...useCurrentCharacter(),
-    useCases: useCurrentCharacter()?.useCases.filter((item) => !item.hidden || showHiddenUseCases) ?? [],
+    ...useCurrentPersona(),
+    useCases: useCurrentPersona()?.useCases.filter((item: any) => !item.hidden || showHiddenUseCases) ?? [],
   } as CustomCharacter
   const useCases = currentCharacter?.useCases
 
@@ -42,6 +41,7 @@ export const DashboardPage: React.FC = () => {
       dispatch(setDemoCompleted(true))
     }
   }, [completedUseCaseSlugs])
+
 
   useEffect(() => {
     trackPageView()
@@ -101,9 +101,9 @@ export const DashboardPage: React.FC = () => {
           </div>
         </>
       ) : (
-        <SafeAnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
           <Modal title={ERROR_TITLE} description={ERROR_DESCRIPTION} onOk={routeError} />
-        </SafeAnimatePresence>
+        </AnimatePresence>
       )}
       {demoCompleted && <DemoCompletedModal action={completeDemo} cancel={cancelCompleteDemo} />}
       <Footer />

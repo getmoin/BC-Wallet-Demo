@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { demoBackendBaseUrl } from '../../../api/BaseUrl'
 import appStore from '../../../assets/light/app-store-badge.svg'
@@ -31,7 +31,7 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
     return window.innerWidth <= 760
   }
   return (
-    <SafeAnimatePresence>
+    <AnimatePresence>
       {isWalletModalOpen && (
         <motion.div
           variants={standardFade}
@@ -115,6 +115,6 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
           </div>
         </motion.div>
       )}
-    </SafeAnimatePresence>
+    </AnimatePresence>
   )
 }

@@ -15,7 +15,7 @@ export const DemoCompletedModal: React.FC<Props> = ({ action, cancel }) => {
   const DESCRIPTION = 'Looking to leave some feedback? Take our survey and connect with us!'
 
   return (
-    <SafeAnimatePresence>
+    <AnimatePresence>
       <motion.div
         variants={standardFade}
         initial="hidden"
@@ -87,6 +87,6 @@ export const DemoCompletedModal: React.FC<Props> = ({ action, cancel }) => {
           </motion.div>
         </div>
       </motion.div>
-    </SafeAnimatePresence>
+    </AnimatePresence>
   )
 }

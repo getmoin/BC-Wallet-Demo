@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import charactersSlice from './characters/charactersSlice'
+import showcasesSlice from './showcases/showcasesSlice'
 import connectionSlice from './connection/connectionSlice'
 import credentialsSlice from './credentials/credentialsSlice'
 import onboardingSlice from './onboarding/onboardingSlice'
@@ -16,7 +16,7 @@ export const VERSION = 4
 const rootReducer = combineReducers({
   socket: socketSlice,
   wallets: walletsSlice,
-  characters: charactersSlice,
+  showcases: showcasesSlice,
   connection: connectionSlice,
   credentials: credentialsSlice,
   onboarding: onboardingSlice,

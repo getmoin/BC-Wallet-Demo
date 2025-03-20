@@ -176,6 +176,6 @@ export const businessCustom: CustomCharacter = {
           image: '/public/student/student-accepted.svg',
         },
       ],
-    },
+    }
   ],
 }

@@ -14,7 +14,7 @@ export const FailedRequestModal: React.FC<Props> = ({ action, close, proof }) =>
   const MODAL_TITLE = `That's not what we expected.`
 
   return (
-    <SafeAnimatePresence>
+    <AnimatePresence>
       <motion.div
         variants={standardFade}
         initial="hidden"
@@ -62,6 +62,6 @@ export const FailedRequestModal: React.FC<Props> = ({ action, close, proof }) =>
           </motion.div>
         </div>
       </motion.div>
-    </SafeAnimatePresence>
+    </AnimatePresence>
   )
 }

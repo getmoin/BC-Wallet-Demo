@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import type {Credential, Persona} from '../../../slices/types'
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
 import { motion } from 'framer-motion'
 import { track } from 'insights-js'
 import { startCase } from 'lodash'
-
 import { getOrCreateCredDefId } from '../../../api/CredentialApi'
 import { ActionCTA } from '../../../components/ActionCTA'
 import { Loader } from '../../../components/Loader'
@@ -19,7 +19,6 @@ import { issueCredential, issueDeepCredential } from '../../../slices/credential
 import { useSocket } from '../../../slices/socket/socketSelector'
 import type { Credential, CustomCharacter } from '../../../slices/types'
 import { basePath } from '../../../utils/BasePath'
-import { SafeAnimatePresence } from '../../../utils/Helpers'
 import { FailedRequestModal } from '../components/FailedRequestModal'
 import { StarterCredentials } from '../components/StarterCredentials'
 import { StepInformation } from '../components/StepInformation'
@@ -27,7 +26,7 @@ import { StepInformation } from '../components/StepInformation'
 export interface Props {
   connectionId: string
   credentials: Credential[]
-  currentCharacter?: CustomCharacter
+  currentPersona?: Persona
   title: string
   text: string
   onCredentialAccepted?: () => void
@@ -36,7 +35,7 @@ export interface Props {
 export const AcceptCredential: React.FC<Props> = ({
   connectionId,
   credentials,
-  currentCharacter,
+  currentPersona,
   title,
   text,
   onCredentialAccepted,
@@ -80,7 +79,7 @@ export const AcceptCredential: React.FC<Props> = ({
       })
       setCredentialsIssued(true)
     }
-  }, [currentCharacter, connectionId])
+  }, [currentPersona, connectionId])
 
   useEffect(() => {
     if (credentialsAccepted && onCredentialAccepted) {
@@ -147,11 +146,11 @@ export const AcceptCredential: React.FC<Props> = ({
       <StepInformation title={title} text={text} />
       <div className="flex flex-row m-auto content-center">
         {credentials.length ? (
-          <SafeAnimatePresence mode="wait">
+          <AnimatePresence mode="wait">
             <motion.div className={`flex flex-1 flex-col m-auto`} variants={fade} animate="show" exit="exit">
               <StarterCredentials credentials={credentials} />
             </motion.div>
-          </SafeAnimatePresence>
+          </AnimatePresence>
         ) : (
           <motion.div className="flex flex-col h-full m-auto">
             <Loader />
@@ -172,7 +171,7 @@ export const AcceptCredential: React.FC<Props> = ({
               schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
               data: {
                 action: 'cred_not_received',
-                path: currentCharacter?.type.toLowerCase(),
+                path: currentPersona?.role.toLowerCase(),
                 step: title,
               },
             },

@@ -19,7 +19,6 @@ import { fetchLastServerReset } from './slices/preferences/preferencesThunks'
 import { setMessage } from './slices/socket/socketSlice'
 import { AuthProvider } from './utils/AuthContext'
 import { basePath } from './utils/BasePath'
-import { SafeAnimatePresence } from './utils/Helpers'
 import { PrivateRoute } from './utils/PrivateRoute'
 import { ThemeProvider } from './utils/ThemeContext'
 
@@ -74,13 +73,11 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <SafeAnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             {basePath !== '/' && <Route path="/" element={<Navigate to={basePath} />}></Route>}
             <Route path={`${basePath}/`} element={<LandingPage />} />
-            <Route path={`${basePath}/:slug`} element={<LandingPage />} />
-            <Route path={`${basePath}/demo`} element={<OnboardingPage />} />
-            <Route path={`${basePath}/demo/:slug`} element={<OnboardingPage />} />
+            <Route path={`${basePath}/:slug`} element={<OnboardingPage />} />
             <Route
               path={`${basePath}/dashboard`}
               element={
@@ -99,7 +96,7 @@ function App() {
             />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        </SafeAnimatePresence>
+        </AnimatePresence>
       </AuthProvider>
     </ThemeProvider>
   )

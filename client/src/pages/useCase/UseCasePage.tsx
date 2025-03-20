@@ -9,7 +9,7 @@ import { Modal } from '../../components/Modal'
 import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useCurrentCharacter } from '../../slices/characters/charactersSelectors'
+import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import { useConnection } from '../../slices/connection/connectionSelectors'
 import { clearConnection } from '../../slices/connection/connectionSlice'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
@@ -22,14 +22,13 @@ import type { CustomUseCase } from '../../slices/types'
 import { useUseCaseState } from '../../slices/useCases/useCasesSelectors'
 import { nextSection } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 import { Section } from './Section'
 
 export const UseCasePage: React.FC = () => {
   const dispatch = useAppDispatch()
   const { slug } = useParams()
   const { stepCount, sectionCount, isLoading } = useUseCaseState()
-  const currentCharacter = useCurrentCharacter()
+  const currentCharacter = useCurrentPersona()
   const { section } = useSection()
   const connection = useConnection()
   const { issuedCredentials } = useCredentials()
@@ -41,7 +40,7 @@ export const UseCasePage: React.FC = () => {
 
   useEffect(() => {
     if (currentCharacter && slug) {
-      setCurrentUseCase(currentCharacter.useCases.find((item) => item.id === slug))
+      setCurrentUseCase(currentCharacter.useCases.find((item: any) => item.id === slug))
     }
   }, [])
 
@@ -89,7 +88,7 @@ export const UseCasePage: React.FC = () => {
           <Loader />
         </div>
       ) : (
-        <SafeAnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           {currentCharacter && section && currentUseCase ? (
             <motion.div
               key={'sectionDiv' + section.screenId}
@@ -112,7 +111,7 @@ export const UseCasePage: React.FC = () => {
           ) : (
             <Modal key="errorModal" title={ERROR_TITLE} description={ERROR_DESCRIPTION} onOk={routeError} />
           )}
-        </SafeAnimatePresence>
+        </AnimatePresence>
       )}
     </motion.div>
   )

@@ -7,7 +7,6 @@ import { KBarAnimator, KBarPortal, KBarPositioner, KBarProvider, KBarSearch } fr
 
 import { confettiFade } from '../FramerAnimations'
 import { useAppDispatch } from '../hooks/hooks'
-import { fetchAllCharacters } from '../slices/characters/charactersThunks'
 import { usePreferences } from '../slices/preferences/preferencesSelectors'
 import {
   resetDashboard,
@@ -18,7 +17,6 @@ import {
 } from '../slices/preferences/preferencesSlice'
 import { fetchWallets } from '../slices/wallets/walletsThunks'
 import { basePath } from './BasePath'
-import { SafeAnimatePresence } from './Helpers'
 import { RenderResults } from './RenderResults'
 
 interface Props {
@@ -95,7 +93,6 @@ export const KBar: React.FC<Props> = ({ children }) => {
         navigate(`${basePath}/`)
         dispatch({ type: 'demo/RESET' })
         dispatch(fetchWallets())
-        dispatch(fetchAllCharacters())
       },
     },
     {
@@ -151,7 +148,7 @@ export const KBar: React.FC<Props> = ({ children }) => {
 
   return (
     <div>
-      <SafeAnimatePresence>
+      <AnimatePresence>
         {confettiPieces > 0 && (
           <motion.div variants={confettiFade} initial="hidden" animate="show" exit="exit">
             <Confetti
@@ -162,7 +159,7 @@ export const KBar: React.FC<Props> = ({ children }) => {
             />
           </motion.div>
         )}
-      </SafeAnimatePresence>
+      </AnimatePresence>
       <KBarProvider actions={actions} options={{ enableHistory: true, disableScrollbarManagement: true }}>
         <KBarPortal>
           <KBarPositioner>
