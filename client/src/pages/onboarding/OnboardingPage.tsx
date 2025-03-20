@@ -29,14 +29,15 @@ export const OnboardingPage: React.FC = () => {
 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const { showcase, currentPersona } = useShowcases()
+  const { showcase: savedShowcase, currentPersona } = useShowcases()
+  const [showcase, setShowcase] = useState(savedShowcase)
   const slug = useSlug()
 
   const { onboardingStep, isCompleted } = useOnboarding()
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled, showHiddenUseCases } = usePreferences()
   const [mounted, setMounted] = useState(false)
-  const [currentSlug, setCurrentSlug] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if ((!OnboardingComplete(onboardingStep) && !isCompleted) || !showcase) {
@@ -45,9 +46,16 @@ export const OnboardingPage: React.FC = () => {
       }
       dispatch(fetchWallets())
       dispatch(fetchShowcaseBySlug(slug))
-      setMounted(true)
     }
   }, [dispatch, slug])
+
+  useEffect(() => {
+    if (showcase) {
+      setMounted(true)
+      setShowcase(showcase)
+      setIsLoading(false)
+    }
+  }, [showcase, slug])
 
   useEffect(() => {
     if (OnboardingComplete(onboardingStep) || isCompleted) {
@@ -62,7 +70,7 @@ export const OnboardingPage: React.FC = () => {
     trackPageView()
   }, [])
 
-  if (mounted && currentSlug !== slug && !showcase) {
+  if (!isLoading  && mounted && !showcase) {
     return <PageNotFound resourceType="Showcase" resourceName={slug} />
   }
 
