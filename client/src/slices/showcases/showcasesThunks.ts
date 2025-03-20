@@ -1,8 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import * as Api from '../../api/ShowcaseApi'
+import { Showcase } from '../types'
 
-export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async (slug: string) => {
+export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async (slug: string): Promise<Showcase> => {
   const response = await Api.getShowcaseBySlug(slug)
+
+  if (!response.data.showcase) {
+    return Promise.reject(Error('No showcase found in response'))
+  }
 
   const scenarios = response.data.showcase.scenarios.map((scenario: any) => ({
     persona: {

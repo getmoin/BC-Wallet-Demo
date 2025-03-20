@@ -163,18 +163,34 @@ export interface Wallet {
   ledgerImage?: string
 }
 
+export interface Showcase {
+  id: string
+  name: string
+  slug: string
+  description: string
+  scenarios: Scenario[]
+}
 
+export interface Scenario {
+  persona: Persona
+  steps: Step[]
+}
 
+export interface Persona {
+  id: string
+  name: string
+  slug: string
+  description: string
+  role: string
+  headshotImage: string
+  bodyImage: string
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+export interface Step {
+  title: string,
+  description: string,
+  screenId: string,
+  asset?: string,
+  iconDark: string,
+  iconLight: string,
+}
