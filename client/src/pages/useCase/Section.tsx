@@ -230,7 +230,7 @@ export const Section: React.FC<Props> = ({ connection, section, stepCount, secti
                         schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
                         data: {
                           action: 'back',
-                          path: ``,// FIXME? `${currentCharacter?.type.toLowerCase()}_${slug}`,
+                          path: ``, // FIXME? `${currentCharacter?.type.toLowerCase()}_${slug}`,
                           step: step.title,
                         },
                       },

@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { trackPageView } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
 
 import { CustomUpload } from '../../components/CustomUpload'
-import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
 import { useConnection } from '../../slices/connection/connectionSelectors'
@@ -41,59 +39,56 @@ export const OnboardingPage: React.FC = () => {
   const [currentSlug, setCurrentSlug] = useState<string | null>(null)
 
   useEffect(() => {
-    if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) {
+    if ((!OnboardingComplete(onboardingStep) && !isCompleted) || !showcase) {
+      if (showcase) {
+        dispatch(clearShowcase())
+      }
+      dispatch(fetchWallets())
+      dispatch(fetchShowcaseBySlug(slug))
+      setMounted(true)
+    }
+  }, [dispatch, slug])
+
+  useEffect(() => {
+    if (OnboardingComplete(onboardingStep) || isCompleted) {
       dispatch(completeOnboarding())
       dispatch(clearCredentials())
       dispatch(clearConnection())
       navigate(`${basePath}/dashboard`)
-    } else {
-      dispatch(clearShowcase())
-      dispatch(fetchWallets())
-      dispatch(fetchShowcaseBySlug(slug))
-      setCurrentSlug(slug)
-      setMounted(true)
     }
-  }, [dispatch, slug, onboardingStep, isCompleted])
+  }, [dispatch, onboardingStep, isCompleted, showcase, navigate])
 
   useEffect(() => {
     trackPageView()
   }, [])
 
-  if (mounted && currentSlug === slug && !showcase) {
+  if (mounted && currentSlug !== slug && !showcase) {
     return <PageNotFound resourceType="Showcase" resourceName={slug} />
   }
+
+  const scenario = showcase?.scenarios?.find((s: any) => s.persona.id === currentPersona?.id)
 
   return (
     <>
       {characterUploadEnabled && <CustomUpload />}
-      <motion.div
-        variants={page}
-        initial="hidden"
-        animate="show"
-        exit="exit"
-        className="container flex flex-col items-center p-4"
-      >
-        {showcase && (
-          <>
-            <Stepper
-              scenario={showcase.scenarios?.find((scenario: any) => scenario.persona.id === currentPersona?.id)}
+
+      <div className="container flex flex-col items-center p-4">
+        {scenario && <Stepper scenario={scenario} onboardingStep={onboardingStep} />}
+
+        <SafeAnimatePresence mode="wait">
+          {mounted && showcase && (
+            <OnboardingContainer
+              key="onboarding-container"
+              scenarios={showcase.scenarios}
+              currentPersona={currentPersona}
               onboardingStep={onboardingStep}
+              connectionId={id}
+              connectionState={state}
+              invitationUrl={invitationUrl}
             />
-            <SafeAnimatePresence mode="wait">
-              {mounted && showcase && (
-                <OnboardingContainer
-                  scenarios={showcase.scenarios}
-                  currentPersona={currentPersona}
-                  onboardingStep={onboardingStep}
-                  connectionId={id}
-                  connectionState={state}
-                  invitationUrl={invitationUrl}
-                />
-              )}
-            </SafeAnimatePresence>
-          </>
-        )}
-      </motion.div>
+          )}
+        </SafeAnimatePresence>
+      </div>
     </>
   )
 }
