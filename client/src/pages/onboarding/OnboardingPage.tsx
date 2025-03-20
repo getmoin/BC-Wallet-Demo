@@ -37,7 +37,7 @@ export const OnboardingPage: React.FC = () => {
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled, showHiddenUseCases } = usePreferences()
   const [mounted, setMounted] = useState(false)
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     if ((!OnboardingComplete(onboardingStep) && !isCompleted) || !showcase) {
@@ -70,7 +70,7 @@ export const OnboardingPage: React.FC = () => {
     trackPageView()
   }, [])
 
-  if (!isLoading  && mounted && !showcase) {
+  if (!isLoading && mounted && !showcase) {
     return <PageNotFound resourceType="Showcase" resourceName={slug} />
   }
 
