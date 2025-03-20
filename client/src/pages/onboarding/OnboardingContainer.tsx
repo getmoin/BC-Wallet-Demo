@@ -23,8 +23,8 @@ import { PickPersona } from './steps/PickPersona'
 import { SetupCompleted } from './steps/SetupCompleted'
 import { SetupConnection } from './steps/SetupConnection'
 import { SetupStart } from './steps/SetupStart'
+import { showcaseServerBaseUrl } from '../../api/BaseUrl'
 import { Persona, Scenario } from '../../slices/types'
-import {showcaseServerBaseUrl} from '../../api/BaseUrl';
 
 export interface Props {
   scenarios: Scenario[]
@@ -48,11 +48,11 @@ export const OnboardingContainer: React.FC<Props> = ({
   const idToTitle: Record<string, string> = {}
 
   scenarios.find(scenario => scenario.persona?.id ===  currentPersona?.id)?.steps.forEach((item: any) => {
-    idToTitle[item.screenId] = item.title
-  })
+      idToTitle[item.screenId] = item.title
+    })
 
   const connectionCompleted = isConnected(connectionState as string)
-  const credentials: any[] = []//currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
+  const credentials: any[] = [] //currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
   const credentialsAccepted = credentials?.every((cred: any) => issuedCredentials.includes(cred.name))
 
   const isBackDisabled = ['PICK_CHARACTER', 'ACCEPT_CREDENTIAL'].includes(onboardingStep)
@@ -183,7 +183,7 @@ export const OnboardingContainer: React.FC<Props> = ({
     const { asset } = getCharacterContent(progress)
     if (progress === 'PICK_CHARACTER') {
       return <PersonaContent key={progress} persona={currentPersona} />
-    } else {
+    } else if (asset) {
       return (
         <motion.img
           variants={fadeExit}

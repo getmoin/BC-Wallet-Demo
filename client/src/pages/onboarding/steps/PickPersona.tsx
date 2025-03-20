@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../../hooks/hooks'
 import { useDarkMode } from '../../../hooks/useDarkMode'
 import { setPersona } from '../../../slices/showcases/showcasesSlice'
 import { StepInformation } from '../components/StepInformation'
-import { showcaseServerBaseUrl } from '../../../api/BaseUrl';
+import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
 
 export interface Props {
   currentPersona?: Persona
@@ -48,12 +48,12 @@ export const PickPersona: React.FC<Props> = ({ currentPersona, personas, title, 
         data-cy="select-char"
       >
         {persona.headshotImage &&
-            <motion.img
-                whileHover={{ scale: 1.05 }}
-                className={`m-auto h-16 w-16 p-2 sm:h-20 sm:w-20 md:h-24 md:w-24 md:p-4 lg:h-36 lg:w-36 lg:p-8 rounded-full bg-bcgov-white dark:bg-bcgov-black my-6 shadow ${
-                    currentPersona?.role === persona.role ? cardStyleSelected : cardStyleUnselected
-                }`}
-                src={`${showcaseServerBaseUrl}/assets/${persona.headshotImage}/file`}
+        <motion.img
+          whileHover={{ scale: 1.05 }}
+          className={`m-auto h-16 w-16 p-2 sm:h-20 sm:w-20 md:h-24 md:w-24 md:p-4 lg:h-36 lg:w-36 lg:p-8 rounded-full bg-bcgov-white dark:bg-bcgov-black my-6 shadow ${
+            currentPersona?.role === persona.role ? cardStyleSelected : cardStyleUnselected
+          }`}
+          src={`${showcaseServerBaseUrl}/assets/${persona.headshotImage}/file`}
                 alt={persona.name}
             />
         }

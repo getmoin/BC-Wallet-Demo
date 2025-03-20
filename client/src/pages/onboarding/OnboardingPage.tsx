@@ -19,20 +19,23 @@ import { basePath } from '../../utils/BasePath'
 import { OnboardingComplete } from '../../utils/OnboardingUtils'
 import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
+import { useSlug } from '../../utils/SlugUtils'
+import { clearShowcase } from '../../slices/showcases/showcasesSlice'
+import { PageNotFound } from '../PageNotFound'
 
 export const OnboardingPage: React.FC = () => {
   useTitle('Get Started | BC Wallet Self-Sovereign Identity Demo')
 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const {
-    showcase,
-    currentPersona
-  } = useShowcases()
+  const { showcase, currentPersona } = useShowcases()
+  const slug = useSlug()
+
   const { onboardingStep, isCompleted } = useOnboarding()
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled, showHiddenUseCases } = usePreferences()
   const [mounted, setMounted] = useState(false)
+  const [currentSlug, setCurrentSlug] = useState<string | null>(null)
 
   useEffect(() => {
     if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) {
@@ -41,15 +44,21 @@ export const OnboardingPage: React.FC = () => {
       dispatch(clearConnection())
       navigate(`${basePath}/dashboard`)
     } else {
+      dispatch(clearShowcase())
       dispatch(fetchWallets())
-      dispatch(fetchShowcaseBySlug('best-bc-college-OyMDSu'))
+      dispatch(fetchShowcaseBySlug(slug))
+      setCurrentSlug(slug)
       setMounted(true)
     }
-  }, [dispatch, showHiddenUseCases])
+  }, [dispatch, slug, onboardingStep, isCompleted])
 
   useEffect(() => {
     trackPageView()
   }, [])
+
+  if (mounted && currentSlug === slug && !showcase) {
+    return <PageNotFound resourceType="Showcase" resourceName={slug} />
+  }
 
   return (
     <>
@@ -63,11 +72,14 @@ export const OnboardingPage: React.FC = () => {
       >
         {showcase &&
           <>
-            <Stepper scenario={showcase.scenarios.find((scenario: any) => scenario.persona.id ===  currentPersona?.id)} onboardingStep={onboardingStep} />
+            <Stepper
+          scenario={showcase.scenarios?.find((scenario: any) => scenario.persona.id === currentPersona?.id)}
+          onboardingStep={onboardingStep}
+        />
             <AnimatePresence mode="wait">
-              {mounted && (
+          {mounted && showcase && (
                   <OnboardingContainer
-                      scenarios={showcase.scenarios}
+              scenarios={showcase.scenarios}
                       currentPersona={currentPersona}
                       onboardingStep={onboardingStep}
                       connectionId={id}

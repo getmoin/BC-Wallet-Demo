@@ -2,16 +2,14 @@ import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
 import { motion } from 'framer-motion'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
-import { FiExternalLink, FiArrowRight } from 'react-icons/fi'
-import { useNavigate, useParams } from 'react-router-dom'
+import { FiArrowRight, FiExternalLink } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
 
 import { buttonHover, fade, fadeDelay, landingTitle } from '../../../FramerAnimations'
 import landingScreen from '../../../assets/light/landing-screen.svg'
 import { basePath } from '../../../utils/BasePath'
 
 export const MainSection: React.FC = () => {
-  const { slug } = useParams()
-
   const navigate = useNavigate()
 
   const handleStart = () => {
@@ -25,11 +23,7 @@ export const MainSection: React.FC = () => {
         },
       },
     })
-    if (slug) {
-      navigate(`${basePath}/demo/${slug}`)
-    } else {
-      navigate(`${basePath}/demo`)
-    }
+    navigate(`${basePath}/${process.env.REACT_APP_DEFAULT_SLUG}`)
   }
 
   const renderMobileTitle = (

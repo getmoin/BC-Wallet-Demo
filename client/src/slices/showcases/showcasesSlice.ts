@@ -20,6 +20,9 @@ const showcaseSlice = createSlice({
   name: 'showcase',
   initialState,
   reducers: {
+    clearShowcase: (state) => {
+      state.showcase = undefined
+    },
     uploadShowcase: (state, action: PayloadAction<{ showcase: Showcase; callback?: () => void }>) => {
       state.uploadedShowcase = action.payload.showcase
       const promises: Promise<any>[] = []
@@ -59,7 +62,8 @@ export const {
   setPersona,
   removePersona,
   uploadShowcase,
-  setUploadingStatus
+  setUploadingStatus,
+  clearShowcase
 } = showcaseSlice.actions
 
 export default showcaseSlice.reducer

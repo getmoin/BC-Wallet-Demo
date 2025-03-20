@@ -78,9 +78,7 @@ function App() {
           <Routes location={location} key={location.pathname}>
             {basePath !== '/' && <Route path="/" element={<Navigate to={basePath} />}></Route>}
             <Route path={`${basePath}/`} element={<LandingPage />} />
-            <Route path={`${basePath}/:slug`} element={<LandingPage />} />
-            <Route path={`${basePath}/demo`} element={<OnboardingPage />} />
-            <Route path={`${basePath}/demo/:slug`} element={<OnboardingPage />} />
+            <Route path={`${basePath}/:slug`} element={<OnboardingPage />} />
             <Route
               path={`${basePath}/dashboard`}
               element={
