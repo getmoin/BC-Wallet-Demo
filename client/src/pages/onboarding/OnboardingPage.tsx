@@ -70,22 +70,26 @@ export const OnboardingPage: React.FC = () => {
         exit="exit"
         className="container flex flex-col items-center p-4"
       >
-        <Stepper
-          scenario={showcase?.scenarios?.find((scenario: any) => scenario.persona.id === currentPersona?.id)}
+        {showcase &&
+          <>
+            <Stepper
+          scenario={showcase.scenarios?.find((scenario: any) => scenario.persona.id === currentPersona?.id)}
           onboardingStep={onboardingStep}
         />
-        <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait">
           {mounted && showcase && (
-            <OnboardingContainer
+                  <OnboardingContainer
               scenarios={showcase.scenarios}
-              currentPersona={currentPersona}
-              onboardingStep={onboardingStep}
-              connectionId={id}
-              connectionState={state}
-              invitationUrl={invitationUrl}
-            />
-          )}
-        </AnimatePresence>
+                      currentPersona={currentPersona}
+                      onboardingStep={onboardingStep}
+                      connectionId={id}
+                      connectionState={state}
+                      invitationUrl={invitationUrl}
+                  />
+              )}
+            </AnimatePresence>
+          </>
+        }
       </motion.div>
     </>
   )

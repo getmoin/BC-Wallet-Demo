@@ -1,20 +1,17 @@
-import type { CustomCharacter, TextWithImage } from '../../../slices/types'
-
+import type { CustomCharacter, Persona, TextWithImage } from '../../../slices/types'
 import { motion } from 'framer-motion'
 import { track } from 'insights-js'
 import React from 'react'
-
 import { fadeX } from '../../../FramerAnimations'
 import { useAppDispatch } from '../../../hooks/hooks'
 import { useDarkMode } from '../../../hooks/useDarkMode'
 import { setPersona } from '../../../slices/showcases/showcasesSlice'
-import { prependApiUrl } from '../../../utils/Url'
 import { StepInformation } from '../components/StepInformation'
-import { showcaseApi, showcaseServerBaseUrl } from '../../../api/BaseUrl'
+import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
 
 export interface Props {
-  currentPersona?: any//CustomCharacter
-  personas: any[] //CustomCharacter
+  currentPersona?: Persona
+  personas: Persona[]
   title: string
   text: string
   textWithImage?: TextWithImage[]
@@ -50,14 +47,16 @@ export const PickPersona: React.FC<Props> = ({ currentPersona, personas, title, 
         className="flex md:flex-row lg:flex-col"
         data-cy="select-char"
       >
+        {persona.headshotImage &&
         <motion.img
           whileHover={{ scale: 1.05 }}
           className={`m-auto h-16 w-16 p-2 sm:h-20 sm:w-20 md:h-24 md:w-24 md:p-4 lg:h-36 lg:w-36 lg:p-8 rounded-full bg-bcgov-white dark:bg-bcgov-black my-6 shadow ${
             currentPersona?.role === persona.role ? cardStyleSelected : cardStyleUnselected
           }`}
           src={`${showcaseServerBaseUrl}/assets/${persona.headshotImage}/file`}
-          alt={persona.name}
-        />
+                alt={persona.name}
+            />
+        }
         <div className="m-auto p-4 flex flex-1 flex-col text-left lg:text-center dark:text-white">
           <h2 className="font-bold">{persona.name}</h2>
           <p>{persona.role}</p>

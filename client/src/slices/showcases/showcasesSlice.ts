@@ -1,11 +1,12 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import { fetchShowcaseBySlug } from './showcasesThunks'
+import { Persona, Showcase } from '../types';
 
 interface ShowcasesState {
-  showcase?: any // TODO type
-  uploadedShowcase?: any
-  currentPersona?: any
+  showcase?: Showcase
+  uploadedShowcase?: Showcase
+  currentPersona?: Persona
   isUploading: boolean
   isLoading: boolean
 }
@@ -22,7 +23,7 @@ const showcaseSlice = createSlice({
     clearShowcase: (state) => {
       state.showcase = undefined
     },
-    uploadShowcase: (state, action: PayloadAction<{ showcase: any; callback?: () => void }>) => {
+    uploadShowcase: (state, action: PayloadAction<{ showcase: Showcase; callback?: () => void }>) => {
       state.uploadedShowcase = action.payload.showcase
       const promises: Promise<any>[] = []
       state.isUploading = true

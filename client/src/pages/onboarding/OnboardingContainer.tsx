@@ -24,10 +24,11 @@ import { SetupCompleted } from './steps/SetupCompleted'
 import { SetupConnection } from './steps/SetupConnection'
 import { SetupStart } from './steps/SetupStart'
 import { showcaseServerBaseUrl } from '../../api/BaseUrl'
+import { Persona, Scenario } from '../../slices/types'
 
 export interface Props {
-  scenarios: any[]
-  currentPersona?: any
+  scenarios: Scenario[]
+  currentPersona?: Persona
   connectionId?: string
   connectionState?: string
   invitationUrl?: string
@@ -67,7 +68,7 @@ export const OnboardingContainer: React.FC<Props> = ({
         schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
         data: {
           action: 'skip_credential',
-          path: currentPersona?.type.toLowerCase(),
+          path: currentPersona?.role.toLowerCase(),
           step: idToTitle[onboardingStep],
         },
       },
@@ -114,8 +115,8 @@ export const OnboardingContainer: React.FC<Props> = ({
       return {
         title: stepContent.title,
         text: stepContent.description,
-        credentials: stepContent.credentials,
-        issuer_name: stepContent.issuer_name,
+        credentials: [],//stepContent.credentials,
+        issuer_name: '',//stepContent.issuer_name,
         asset: stepContent.asset,
       }
     }
@@ -157,7 +158,7 @@ export const OnboardingContainer: React.FC<Props> = ({
           connectionState={connectionState}
           title={title}
           text={text}
-          backgroundImage={currentPersona?.image}
+          backgroundImage={currentPersona?.bodyImage}
         />
       )
     } else if (progress.startsWith('ACCEPT') && credentials && connectionId) {
@@ -226,7 +227,7 @@ export const OnboardingContainer: React.FC<Props> = ({
         schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
         data: {
           action: 'leave',
-          path: currentPersona?.type.toLowerCase(),
+          path: currentPersona?.role.toLowerCase(),
           step: idToTitle[onboardingStep],
         },
       },

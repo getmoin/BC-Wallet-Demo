@@ -2,10 +2,11 @@ import { motion } from 'framer-motion'
 import React from 'react'
 import { topDown } from '../../../FramerAnimations'
 import { StepperItem } from './StepperItem'
+import { Scenario } from '../../../slices/types'
 
 export interface Props {
   onboardingStep: string
-  scenario?: any
+  scenario?: Scenario
 }
 
 export const Stepper: React.FC<Props> = ({ scenario, onboardingStep }) => {

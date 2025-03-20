@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDarkMode } from '../../../hooks/useDarkMode'
-import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
+import { Step } from '../../../slices/types'
 
 export interface Props {
   scenario: any
-  step: any //ProgressBarStep
+  step: Step
   currentStep: string
 }
 
@@ -29,11 +29,11 @@ export const StepperItem: React.FC<Props> = ({ step, currentStep, scenario }) =>
               : ''
           } `}
         >
-          <img
-            alt={step.title}
-            src={darkMode ? `${showcaseServerBaseUrl}/assets/${step.iconDark}/file` : `${showcaseServerBaseUrl}/assets/${step.iconLight}/file`}
-            className="m-auto h-5"
-          />
+          <div
+              className={`flex items-center justify-center h-full text-bcgov-gold`}
+          >
+            {step.order}
+          </div>
         </div>
       </div>
       {step.screenId !== 'SETUP_COMPLETED' && (
