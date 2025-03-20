@@ -4,7 +4,7 @@ import { FiLogOut } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import { showcaseServerBaseUrl } from '../../api/BaseUrl'
 import { Modal } from '../../components/Modal'
@@ -55,6 +55,7 @@ export const OnboardingContainer: React.FC<Props> = ({
       idToTitle[item.screenId] = item.title
     })
 
+  const currentScenario = scenarios.find((scenario) => scenario.persona?.id === currentPersona?.id)
   const connectionCompleted = isConnected(connectionState as string)
   const credentials: any[] = [] //currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
   const credentialsAccepted = credentials?.every((cred: any) => issuedCredentials.includes(cred.name))
@@ -77,7 +78,7 @@ export const OnboardingContainer: React.FC<Props> = ({
         },
       },
     })
-    addOnboardingProgress(dispatch, onboardingStep, currentPersona, 2)
+    addOnboardingProgress(dispatch, onboardingStep, currentScenario!, 2) // FIXME !
   }
 
   const nextOnboardingPage = () => {
@@ -93,7 +94,7 @@ export const OnboardingContainer: React.FC<Props> = ({
         },
       },
     })
-    addOnboardingProgress(dispatch, onboardingStep, scenario)
+    addOnboardingProgress(dispatch, onboardingStep, scenario!) // FIXME !
   }
 
   const prevOnboardingPage = () => {
@@ -109,7 +110,7 @@ export const OnboardingContainer: React.FC<Props> = ({
         },
       },
     })
-    removeOnboardingProgress(dispatch, onboardingStep, scenario)
+    removeOnboardingProgress(dispatch, onboardingStep, scenario!) // FIXME !
   }
 
   //override title and text content to make them character dependant

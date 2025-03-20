@@ -13,7 +13,7 @@ import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { setDemoCompleted } from '../../slices/preferences/preferencesSlice'
 import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
-import type { CustomCharacter } from '../../slices/types'
+import { CustomCharacter, CustomUseCase } from '../../slices/types'
 import { basePath } from '../../utils/BasePath'
 import { SafeAnimatePresence } from '../../utils/Helpers'
 import { Footer } from '../landing/components/Footer'
@@ -33,7 +33,7 @@ export const DashboardPage: React.FC = () => {
     usePreferences()
   const currentCharacter = {
     ...useCurrentPersona(),
-    useCases: useCurrentPersona()?.useCases.filter((item: any) => !item.hidden || showHiddenUseCases) ?? [],
+    useCases: [] as CustomUseCase[],
   } as CustomCharacter
   const useCases = currentCharacter?.useCases
 

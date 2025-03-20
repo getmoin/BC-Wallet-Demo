@@ -18,8 +18,8 @@ import { StepTypeFromJSON, StepTypeToJSON } from './StepType'
 import type { Asset } from './Asset'
 import { AssetFromJSON, AssetToJSON } from './Asset'
 
-importtype { StepType } from './StepType'
-;
+import { StepType } from './StepType'
+
 
 /**
  *

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { BackButton } from '../../../components/BackButton'
 import { Button } from '../../../components/Button'
 import { fadeDelay, fadeExit } from '../../../FramerAnimations'
+import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {
   onboardingStep: string
