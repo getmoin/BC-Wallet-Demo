@@ -13,7 +13,6 @@ import { useOnboarding } from '../../slices/onboarding/onboardingSelectors'
 import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { useShowcases } from '../../slices/showcases/showcasesSelectors'
-import { clearShowcase } from '../../slices/showcases/showcasesSlice'
 import { fetchShowcaseBySlug } from '../../slices/showcases/showcasesThunks'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
@@ -38,41 +37,22 @@ export const OnboardingPage: React.FC = () => {
   const [mounted, setMounted] = useState(false)
   const [hasFetched, setHasFetched] = useState(false)
 
-  console.log('Rendering OnboardingPage with showcase:', showcase)
-
   useEffect(() => {
-    console.log('useEffect: showcase changed', showcase)
     if (showcase !== undefined) {
       setMounted(true)
-      console.log('Mounted set to true')
     }
   }, [showcase])
 
   useEffect(() => {
-    console.log('useEffect: fetching showcase if needed', {
-      onboardingStep,
-      isCompleted,
-      hasFetched,
-    })
-    if ((!OnboardingComplete(onboardingStep) && !isCompleted) && !hasFetched) {
-      console.log('Dispatching fetchWallets and fetchShowcaseBySlug with slug:', slug)
+    if (!OnboardingComplete(onboardingStep) && !isCompleted && !hasFetched) {
       dispatch(fetchWallets())
       dispatch(fetchShowcaseBySlug(slug))
-        .then((result: any) => {
-          if (result.error) {
-            console.error('Failed to fetch showcase:', result.error)
-          } else {
-            console.log('Successfully fetched showcase:', result.payload)
-    }
-        })
       setHasFetched(true)
     }
   }, [dispatch, slug, onboardingStep, isCompleted, hasFetched])
 
   useEffect(() => {
-    console.log('useEffect: checking onboarding completion', { onboardingStep, isCompleted })
     if (OnboardingComplete(onboardingStep) || isCompleted) {
-      console.log('Onboarding complete; navigating to dashboard')
       dispatch(completeOnboarding())
       dispatch(clearCredentials())
       dispatch(clearConnection())
@@ -81,22 +61,18 @@ export const OnboardingPage: React.FC = () => {
   }, [dispatch, onboardingStep, isCompleted, navigate])
 
   useEffect(() => {
-    console.log('Tracking page view')
     trackPageView()
   }, [])
 
   if (showcase === undefined) {
-    console.log('Render: showcase undefined, showing loading')
     return <div>Loading...</div>
   }
 
   if (showcase === null) {
-    console.log('Render: showcase null, showing PageNotFound')
     return <PageNotFound resourceType="Showcase" resourceName={slug} />
   }
 
   const scenario = showcase.scenarios?.find((s: any) => s.persona.id === currentPersona?.id)
-  console.log('Render: scenario determined', scenario)
 
   return (
     <>
