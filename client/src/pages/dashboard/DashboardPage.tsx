@@ -9,12 +9,13 @@ import { Modal } from '../../components/Modal'
 import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { setDemoCompleted } from '../../slices/preferences/preferencesSlice'
+import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import type { CustomCharacter } from '../../slices/types'
 import { basePath } from '../../utils/BasePath'
+import { SafeAnimatePresence } from '../../utils/Helpers'
 import { Footer } from '../landing/components/Footer'
 import { NavBar } from '../landing/components/Navbar'
 import { DemoCompletedModal } from './components/DemoCompletedModal'
@@ -41,7 +42,6 @@ export const DashboardPage: React.FC = () => {
       dispatch(setDemoCompleted(true))
     }
   }, [completedUseCaseSlugs])
-
 
   useEffect(() => {
     trackPageView()
@@ -101,9 +101,9 @@ export const DashboardPage: React.FC = () => {
           </div>
         </>
       ) : (
-        <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        <SafeAnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
           <Modal title={ERROR_TITLE} description={ERROR_DESCRIPTION} onOk={routeError} />
-        </AnimatePresence>
+        </SafeAnimatePresence>
       )}
       {demoCompleted && <DemoCompletedModal action={completeDemo} cancel={cancelCompleteDemo} />}
       <Footer />

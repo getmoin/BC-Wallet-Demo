@@ -14,3 +14,5 @@ export const isDataUrl = (value?: string) => {
 export const isCredIssued = (state: string) => {
   return state === 'credential_issued' || state === 'done' || state === 'credential_acked'
 }
+
+export const SafeAnimatePresence = AnimatePresence as React.FC<PropsWithChildren<AnimatePresenceProps>>

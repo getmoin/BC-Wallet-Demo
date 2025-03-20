@@ -1,7 +1,7 @@
 import React from 'react'
+
 import { useDarkMode } from '../../../hooks/useDarkMode'
-import type { CustomCharacter, ProgressBarStep } from '../../../slices/types'
-import { Step } from '../../../slices/types'
+import type { Step } from '../../../slices/types'
 
 export interface Props {
   scenario: any
@@ -30,11 +30,7 @@ export const StepperItem: React.FC<Props> = ({ step, currentStep, scenario }) =>
               : ''
           } `}
         >
-          <div
-              className={`flex items-center justify-center h-full text-bcgov-gold`}
-          >
-            {step.order}
-          </div>
+          <div className={`flex items-center justify-center h-full text-bcgov-gold`}>{step.order}</div>
         </div>
       </div>
       {step.screenId !== 'SETUP_COMPLETED' && (

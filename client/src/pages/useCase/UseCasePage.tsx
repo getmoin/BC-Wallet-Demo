@@ -9,7 +9,6 @@ import { Modal } from '../../components/Modal'
 import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import { useConnection } from '../../slices/connection/connectionSelectors'
 import { clearConnection } from '../../slices/connection/connectionSlice'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
@@ -18,10 +17,12 @@ import { useProof } from '../../slices/proof/proofSelectors'
 import { clearProof } from '../../slices/proof/proofSlice'
 import { useSection } from '../../slices/section/sectionSelectors'
 import { setSection } from '../../slices/section/sectionSlice'
+import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import type { CustomUseCase } from '../../slices/types'
 import { useUseCaseState } from '../../slices/useCases/useCasesSelectors'
 import { nextSection } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
+import { SafeAnimatePresence } from '../../utils/Helpers'
 import { Section } from './Section'
 
 export const UseCasePage: React.FC = () => {
@@ -88,7 +89,7 @@ export const UseCasePage: React.FC = () => {
           <Loader />
         </div>
       ) : (
-        <AnimatePresence mode="wait">
+        <SafeAnimatePresence mode="wait">
           {currentCharacter && section && currentUseCase ? (
             <motion.div
               key={'sectionDiv' + section.screenId}
@@ -111,7 +112,7 @@ export const UseCasePage: React.FC = () => {
           ) : (
             <Modal key="errorModal" title={ERROR_TITLE} description={ERROR_DESCRIPTION} onOk={routeError} />
           )}
-        </AnimatePresence>
+        </SafeAnimatePresence>
       )}
     </motion.div>
   )

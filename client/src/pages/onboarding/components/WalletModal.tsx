@@ -31,7 +31,7 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
     return window.innerWidth <= 760
   }
   return (
-    <AnimatePresence>
+    <SafeAnimatePresence>
       {isWalletModalOpen && (
         <motion.div
           variants={standardFade}
@@ -115,6 +115,6 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
           </div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </SafeAnimatePresence>
   )
 }

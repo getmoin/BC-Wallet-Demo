@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { fadeX, rowContainer } from '../../../FramerAnimations'
 import type { Wallet } from '../../../slices/types'
 import { useWallets } from '../../../slices/wallets/walletsSelectors'
+import { SafeAnimatePresence } from '../../../utils/Helpers'
 import { StepInformation } from '../components/StepInformation'
 import { WalletItem } from '../components/WalletItem'
 import { WalletModal } from '../components/WalletModal'
@@ -63,7 +64,7 @@ export const ChooseWallet: React.FC<Props> = ({ title, text, addOnboardingProgre
       >
         {renderWallets}
       </motion.div>
-      <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+      <SafeAnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
         {selectedWallet && (
           <WalletModal
             isWalletModalOpen={isChooseWalletModalOpen}
@@ -71,7 +72,7 @@ export const ChooseWallet: React.FC<Props> = ({ title, text, addOnboardingProgre
             onCompleted={onCompleted}
           />
         )}
-      </AnimatePresence>
+      </SafeAnimatePresence>
     </motion.div>
   )
 }

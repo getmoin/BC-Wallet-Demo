@@ -1,12 +1,10 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 
 import { motion } from 'framer-motion'
 
 import { topDown } from '../../../FramerAnimations'
-import type { CustomCharacter } from '../../../slices/types'
+import type { Scenario } from '../../../slices/types'
 import { StepperItem } from './StepperItem'
-import { Scenario } from '../../../slices/types'
 
 export interface Props {
   onboardingStep: string

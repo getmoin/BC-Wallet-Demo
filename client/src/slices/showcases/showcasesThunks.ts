@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+
 import * as Api from '../../api/ShowcaseApi'
-import { Showcase } from '../types'
-import { Scenario, Step } from '../../showcase-api';
+import type { Scenario, Step } from '../../showcase-api'
+import type { Showcase } from '../types'
 
 export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async (slug: string): Promise<Showcase> => {
   const response = await Api.getShowcaseBySlug(slug)
@@ -32,8 +33,8 @@ export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async
         description: step.description,
         screenId: step.screenId ?? 'MISSING_SCREEN_ID',
         order: step.order,
-        ...(step.asset && {asset: step.asset.id}),
-      }))
+        ...(step.asset && { asset: step.asset.id }),
+      })),
     }
   })
 

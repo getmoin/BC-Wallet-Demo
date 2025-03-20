@@ -17,6 +17,7 @@ import {
 } from '../slices/preferences/preferencesSlice'
 import { fetchWallets } from '../slices/wallets/walletsThunks'
 import { basePath } from './BasePath'
+import { SafeAnimatePresence } from './Helpers'
 import { RenderResults } from './RenderResults'
 
 interface Props {
@@ -148,7 +149,7 @@ export const KBar: React.FC<Props> = ({ children }) => {
 
   return (
     <div>
-      <AnimatePresence>
+      <SafeAnimatePresence>
         {confettiPieces > 0 && (
           <motion.div variants={confettiFade} initial="hidden" animate="show" exit="exit">
             <Confetti
@@ -159,7 +160,7 @@ export const KBar: React.FC<Props> = ({ children }) => {
             />
           </motion.div>
         )}
-      </AnimatePresence>
+      </SafeAnimatePresence>
       <KBarProvider actions={actions} options={{ enableHistory: true, disableScrollbarManagement: true }}>
         <KBarPortal>
           <KBarPositioner>

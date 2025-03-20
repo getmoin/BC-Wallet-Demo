@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { setupCache } from 'axios-cache-interceptor'
-import { CacheOptions } from 'axios-cache-interceptor/src/cache/create'
+import type { CacheOptions } from 'axios-cache-interceptor/src/cache/create'
 
 const cacheOptions: CacheOptions = {
   ttl: 30 * 24 * 60 * 60 * 1000, // keep 30 days

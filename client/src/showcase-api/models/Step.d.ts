@@ -12,29 +12,15 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
-import type { StepAction } from './StepAction';
-import {
-  StepActionFromJSON,
-  StepActionFromJSONTyped,
-  StepActionToJSON,
-  StepActionToJSONTyped,
-} from './StepAction';
+import type { StepAction } from './StepAction'
+import { StepActionFromJSON, StepActionToJSON } from './StepAction'
+import { StepTypeFromJSON, StepTypeToJSON } from './StepType'
+import type { Asset } from './Asset'
+import { AssetFromJSON, AssetToJSON } from './Asset'
+
 importtype { StepType } from './StepType'
 ;
-import {
-  StepTypeFromJSON,
-  StepTypeFromJSONTyped,
-  StepTypeToJSON,
-  StepTypeToJSONTyped,
-} from './StepType';
-import type { Asset } from './Asset';
-import {
-  AssetFromJSON,
-  AssetFromJSONTyped,
-  AssetToJSON,
-  AssetToJSONTyped,
-} from './Asset';
+
 /**
  *
  * @export

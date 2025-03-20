@@ -1,7 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
+
+import type { Persona, Showcase } from '../types'
 import { fetchShowcaseBySlug } from './showcasesThunks'
-import { Persona, Showcase } from '../types';
 
 interface ShowcasesState {
   showcase?: Showcase
@@ -58,12 +59,6 @@ const showcaseSlice = createSlice({
   },
 })
 
-export const {
-  setPersona,
-  removePersona,
-  uploadShowcase,
-  setUploadingStatus,
-  clearShowcase
-} = showcaseSlice.actions
+export const { setPersona, removePersona, uploadShowcase, setUploadingStatus, clearShowcase } = showcaseSlice.actions
 
 export default showcaseSlice.reducer

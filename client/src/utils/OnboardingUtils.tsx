@@ -1,6 +1,7 @@
-import type { Scenario } from '../slices/types'
 import type { Dispatch } from 'react'
+
 import { track } from 'insights-js'
+
 import balloonDark from '../assets/dark/icon-balloon-dark.svg'
 import moonDark from '../assets/dark/icon-moon-dark.svg'
 import notificationDark from '../assets/dark/icon-notification-dark.svg'
@@ -12,7 +13,7 @@ import notificationLight from '../assets/light/icon-notification-light.svg'
 import personLight from '../assets/light/icon-person-light.svg'
 import walletLight from '../assets/light/icon-wallet-light.svg'
 import { setOnboardingStep } from '../slices/onboarding/onboardingSlice'
-import type { CustomCharacter } from '../slices/types'
+import type { Scenario } from '../slices/types'
 
 export enum Progress {
   PICK_CHARACTER = 0,
@@ -67,11 +68,7 @@ export const addOnboardingProgress = (
   })
 }
 
-export const removeOnboardingProgress = (
-  dispatch: Dispatch<any>,
-  onboardingStep: string,
-  scenario: Scenario
-) => {
+export const removeOnboardingProgress = (dispatch: Dispatch<any>, onboardingStep: string, scenario: Scenario) => {
   const steps = scenario.steps.map((step: any) => step.screenId)
   const currentIndex = steps?.indexOf(onboardingStep)
   if (currentIndex && steps && currentIndex > 0 && currentIndex < steps.length) {

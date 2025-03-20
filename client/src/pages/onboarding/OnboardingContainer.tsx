@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
-import { AnimatePresence, motion } from 'framer-motion'
 import { isMobile } from 'react-device-detect'
 import { FiLogOut } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
+
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+
+import { showcaseServerBaseUrl } from '../../api/BaseUrl'
 import { Modal } from '../../components/Modal'
 import { fadeDelay, fadeExit } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
@@ -13,12 +14,12 @@ import { clearConnection } from '../../slices/connection/connectionSlice'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { clearCredentials } from '../../slices/credentials/credentialsSlice'
 import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
-import type { CustomCharacter } from '../../slices/types'
+import type { Persona, Scenario } from '../../slices/types'
 import { basePath } from '../../utils/BasePath'
-import { isConnected } from '../../utils/Helpers'
+import { isConnected, SafeAnimatePresence } from '../../utils/Helpers'
 import { addOnboardingProgress, removeOnboardingProgress } from '../../utils/OnboardingUtils'
-import { PersonaContent } from './components/PersonaContent'
 import { OnboardingBottomNav } from './components/OnboardingBottomNav'
+import { PersonaContent } from './components/PersonaContent'
 import { AcceptCredential } from './steps/AcceptCredential'
 import { BasicSlide } from './steps/BasicSlide'
 import { ChooseWallet } from './steps/ChooseWallet'
@@ -26,8 +27,6 @@ import { PickPersona } from './steps/PickPersona'
 import { SetupCompleted } from './steps/SetupCompleted'
 import { SetupConnection } from './steps/SetupConnection'
 import { SetupStart } from './steps/SetupStart'
-import { showcaseServerBaseUrl } from '../../api/BaseUrl'
-import { Persona, Scenario } from '../../slices/types'
 
 export interface Props {
   scenarios: Scenario[]
@@ -50,7 +49,9 @@ export const OnboardingContainer: React.FC<Props> = ({
   const { issuedCredentials } = useCredentials()
   const idToTitle: Record<string, string> = {}
 
-  scenarios.find(scenario => scenario.persona?.id ===  currentPersona?.id)?.steps.forEach((item: any) => {
+  scenarios
+    .find((scenario) => scenario.persona?.id === currentPersona?.id)
+    ?.steps.forEach((item: any) => {
       idToTitle[item.screenId] = item.title
     })
 
@@ -80,7 +81,7 @@ export const OnboardingContainer: React.FC<Props> = ({
   }
 
   const nextOnboardingPage = () => {
-    const scenario = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)
+    const scenario = scenarios.find((scenario) => scenario.persona.id === currentPersona?.id)
 
     trackSelfDescribingEvent({
       event: {
@@ -96,7 +97,7 @@ export const OnboardingContainer: React.FC<Props> = ({
   }
 
   const prevOnboardingPage = () => {
-    const scenario = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)
+    const scenario = scenarios.find((scenario) => scenario.persona.id === currentPersona?.id)
 
     trackSelfDescribingEvent({
       event: {
@@ -113,13 +114,15 @@ export const OnboardingContainer: React.FC<Props> = ({
 
   //override title and text content to make them character dependant
   const getCharacterContent = (progress: string) => {
-    const stepContent = scenarios.find(scenario => scenario.persona.id ===  currentPersona?.id)?.steps.find((screen: any) => screen.screenId === progress)
+    const stepContent = scenarios
+      .find((scenario) => scenario.persona.id === currentPersona?.id)
+      ?.steps.find((screen: any) => screen.screenId === progress)
     if (stepContent) {
       return {
         title: stepContent.title,
         text: stepContent.description,
-        credentials: [],//stepContent.credentials,
-        issuer_name: '',//stepContent.issuer_name,
+        credentials: [], //stepContent.credentials,
+        issuer_name: '', //stepContent.issuer_name,
         asset: stepContent.asset,
       }
     }
@@ -250,7 +253,7 @@ export const OnboardingContainer: React.FC<Props> = ({
             <FiLogOut className="inline h-12 cursor-pointer dark:text-white" />
           </motion.button>
         </div>
-        <AnimatePresence mode="wait">{getComponentToRender(onboardingStep)}</AnimatePresence>
+        <SafeAnimatePresence mode="wait">{getComponentToRender(onboardingStep)}</SafeAnimatePresence>
         <OnboardingBottomNav
           onboardingStep={onboardingStep}
           addOnboardingStep={nextOnboardingPage}
@@ -262,7 +265,7 @@ export const OnboardingContainer: React.FC<Props> = ({
       </div>
       {!isMobile && (
         <div className="bg-bcgov-white dark:bg-bcgov-black hidden lg:flex lg:w-1/3 rounded-r-lg flex-col justify-center h-full select-none">
-          <AnimatePresence mode="wait">{getImageToRender(onboardingStep)}</AnimatePresence>
+          <SafeAnimatePresence mode="wait">{getImageToRender(onboardingStep)}</SafeAnimatePresence>
         </div>
       )}
       {leaveModal && (

@@ -11,13 +11,13 @@ import { Modal } from '../../components/Modal'
 import { SmallButton } from '../../components/SmallButton'
 import { fadeExit } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
-import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import type { ConnectionState } from '../../slices/connection/connectionSlice'
 import { useCaseCompleted } from '../../slices/preferences/preferencesSlice'
+import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import type { UseCaseScreen } from '../../slices/types'
 import { nextStep, prevStep, resetStep } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
-import { isConnected, isCredIssued } from '../../utils/Helpers'
+import { isConnected, isCredIssued, SafeAnimatePresence } from '../../utils/Helpers'
 import { EndContainer } from './components/EndContainer'
 import { StartContainer } from './components/StartContainer'
 import { SideView } from './SideView'
@@ -203,7 +203,7 @@ export const Section: React.FC<Props> = ({ connection, section, stepCount, secti
               style={style}
               data-cy="section"
             >
-              <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+              <SafeAnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
                 {step.screenId.startsWith('INFO') && <StepInformation key={step.screenId} step={step} />}
                 {step.screenId.startsWith('CONNECTION') && (
                   <StepConnection newConnection={true} key={step.screenId} step={step} connection={connection} />
@@ -220,7 +220,7 @@ export const Section: React.FC<Props> = ({ connection, section, stepCount, secti
                   />
                 )}
                 {step.screenId.startsWith('STEP_END') && <StepEnd key={step.screenId} step={step} />}
-              </AnimatePresence>
+              </SafeAnimatePresence>
               <div className="flex justify-between items-center">
                 <BackButton
                   onClick={() => {
@@ -271,5 +271,5 @@ export const Section: React.FC<Props> = ({ connection, section, stepCount, secti
     }
   }
 
-  return <AnimatePresence mode="wait">{step && renderStepItem()}</AnimatePresence>
+  return <SafeAnimatePresence mode="wait">{step && renderStepItem()}</SafeAnimatePresence>
 }
