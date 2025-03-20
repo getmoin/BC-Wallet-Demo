@@ -223,7 +223,7 @@ export const OnboardingContainer: React.FC<Props> = ({
     if (step === 0) {
       return <PersonaContent key={step} persona={currentPersona} />
     } else {
-      <motion.img
+      return <motion.img
           variants={fadeExit}
           initial="hidden"
           animate="show"
