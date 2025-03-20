@@ -43,13 +43,13 @@ export const OnboardingPage: React.FC = () => {
       dispatch(clearCredentials())
       dispatch(clearConnection())
       navigate(`${basePath}/dashboard`)
-    } else if (!currentSlug || slug !== currentSlug) {
+    } else {
       dispatch(clearShowcase())
       dispatch(fetchWallets())
       dispatch(fetchShowcaseBySlug(slug))
       setCurrentSlug(slug)
     }
-  }, [dispatch, slug, isCompleted, showcase, navigate])
+  }, [dispatch, slug, isCompleted])
 
   useEffect(() => {
     trackPageView()
