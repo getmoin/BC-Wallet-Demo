@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import * as Api from '../../api/ShowcaseApi'
 import { Showcase } from '../types'
+import { Scenario, Step } from '../../showcase-api';
 
 export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async (slug: string): Promise<Showcase> => {
   const response = await Api.getShowcaseBySlug(slug)
@@ -9,31 +10,40 @@ export const fetchShowcaseBySlug = createAsyncThunk('showcases/fetchById', async
     return Promise.reject(Error('No showcase found in response'))
   }
 
-  const scenarios = response.data.showcase.scenarios.map((scenario: any) => ({
-    persona: {
-      id: scenario.personas[0].id,
-      name: scenario.personas[0].name,
-      slug: scenario.personas[0].slug,
-      description: scenario.personas[0].description,
-      role: scenario.personas[0].role,
-      headshotImage: scenario.personas[0].headshotImage.id,
-      bodyImage: scenario.personas[0].bodyImage.id,
-    },
-    steps: scenario.steps.map((step: any) => ({
-      title: step.title,
-      description: step.description,
-      screenId: step.screenId,
-      ...(step.asset && { asset: step.asset.id }),
-      iconDark: step.iconDark.id,
-      iconLight: step.iconLight.id,
-    }))
-  }))
+  const scenarios = response.data.showcase.scenarios.map((scenario: Scenario) => {
+    if (scenario.personas === undefined || scenario.personas?.length === 0) {
+      throw new Error('No personas found in scenario')
+    }
+
+    if (scenario.steps === undefined || scenario.steps?.length === 0) {
+      throw new Error('No steps found in scenario')
+    }
+
+    return {
+      persona: {
+        id: scenario.personas[0].id,
+        name: scenario.personas[0].name ?? 'UNKNOWN',
+        role: scenario.personas[0].role ?? 'UNKNOWN',
+        ...(scenario.personas[0].headshotImage && { headshotImage: scenario.personas[0].headshotImage?.id }),
+        ...(scenario.personas[0].bodyImage && { bodyImage: scenario.personas[0].bodyImage?.id }),
+      },
+      steps: scenario.steps.map((step: Step) => ({
+        title: step.title,
+        description: step.description,
+        screenId: step.screenId ?? 'MISSING_SCREEN_ID',
+        order: step.order,
+        ...(step.asset && {asset: step.asset.id}),
+        ...(step.iconDark && {iconDark: step.iconDark.id}),
+        ...(step.iconLight && {iconLight: step.iconLight.id}),
+      }))
+    }
+  })
 
   return {
     id: response.data.showcase.id,
     name: response.data.showcase.name,
     slug: response.data.showcase.slug,
     description: response.data.showcase.description,
-    scenarios: scenarios,
+    scenarios,
   }
 })

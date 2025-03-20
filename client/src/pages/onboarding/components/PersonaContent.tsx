@@ -24,7 +24,9 @@ export const PersonaContent: React.FC<Props> = ({ persona }) => {
             <div className="p-2 bg-bcgov-blue dark:bg-bcgov-gold text-white rounded-l-lg flex px-4 self-end">
               <p>{persona.role}</p>
             </div>
-            <img className="h-72" src={`${showcaseServerBaseUrl}/assets/${persona.bodyImage}/file`} alt={persona.name} />
+            {persona.bodyImage &&
+                <img className="h-72" src={`${showcaseServerBaseUrl}/assets/${persona.bodyImage}/file`} alt={persona.name} />
+            }
           </motion.div>
         </AnimatePresence>
       ) : (

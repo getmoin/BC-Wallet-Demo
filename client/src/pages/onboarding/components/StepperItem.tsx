@@ -30,11 +30,13 @@ export const StepperItem: React.FC<Props> = ({ step, currentStep, scenario }) =>
               : ''
           } `}
         >
-          <img
-            alt={step.title}
-            src={darkMode ? `${showcaseServerBaseUrl}/assets/${step.iconDark}/file` : `${showcaseServerBaseUrl}/assets/${step.iconLight}/file`}
-            className="m-auto h-5"
-          />
+          {(step.iconDark && step.iconLight) &&
+              <img
+                  alt={step.title}
+                  src={darkMode ? `${showcaseServerBaseUrl}/assets/${step.iconDark}/file` : `${showcaseServerBaseUrl}/assets/${step.iconLight}/file`}
+                  className="m-auto h-5"
+              />
+          }
         </div>
       </div>
       {step.screenId !== 'SETUP_COMPLETED' && (

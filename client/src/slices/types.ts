@@ -179,11 +179,9 @@ export interface Scenario {
 export interface Persona {
   id: string
   name: string
-  slug: string
-  description: string
   role: string
-  headshotImage: string
-  bodyImage: string
+  headshotImage?: string
+  bodyImage?: string
 }
 
 export interface Step {
@@ -191,6 +189,7 @@ export interface Step {
   description: string,
   screenId: string,
   asset?: string,
-  iconDark: string,
-  iconLight: string,
+  iconDark?: string,
+  iconLight?: string,
+  order: number
 }
