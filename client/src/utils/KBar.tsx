@@ -93,7 +93,6 @@ export const KBar: React.FC<Props> = ({ children }) => {
         navigate(`${basePath}/`)
         dispatch({ type: 'demo/RESET' })
         dispatch(fetchWallets())
-        //dispatch(fetchAllCharacters())
       },
     },
     {

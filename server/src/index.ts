@@ -6,7 +6,6 @@ import { json, static as stx } from 'express'
 import * as http from 'http'
 import { createExpressServer } from 'routing-controllers'
 import { Server } from 'socket.io'
-const cors = require("cors");
 
 import { tractionApiKeyUpdaterInit, tractionGarbageCollection, tractionRequest } from './utils/tractionHelper'
 
@@ -17,12 +16,6 @@ const app: Express = createExpressServer({
   cors: true,
   routePrefix: `${baseRoute}/demo`,
 })
-
-app.use(cors({
-  origin: "http://localhost:3000", // Allow only frontend to access
-  methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
-  credentials: true // If using cookies or sessions
-}));
 
 const server = http.createServer(app)
 

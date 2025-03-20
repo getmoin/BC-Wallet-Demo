@@ -1,8 +1,6 @@
-import type { CustomCharacter } from '../slices/types'
+import type { Scenario } from '../slices/types'
 import type { Dispatch } from 'react'
-
 import { track } from 'insights-js'
-
 import balloonDark from '../assets/dark/icon-balloon-dark.svg'
 import moonDark from '../assets/dark/icon-moon-dark.svg'
 import notificationDark from '../assets/dark/icon-notification-dark.svg'
@@ -51,7 +49,7 @@ export const StepperItems = [
 export const addOnboardingProgress = (
   dispatch: Dispatch<any>,
   onboardingStep: string,
-  scenario: any,
+  scenario: Scenario,
   step?: number
 ) => {
   const inc = step ?? 1
@@ -71,7 +69,7 @@ export const addOnboardingProgress = (
 export const removeOnboardingProgress = (
   dispatch: Dispatch<any>,
   onboardingStep: string,
-  scenario: any
+  scenario: Scenario
 ) => {
   const steps = scenario.steps.map((step: any) => step.screenId)
   const currentIndex = steps?.indexOf(onboardingStep)

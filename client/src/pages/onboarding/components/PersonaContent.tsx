@@ -1,13 +1,11 @@
-import type { CustomCharacter } from '../../../slices/types'
-
 import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
-
 import { characterFade, fadeExit } from '../../../FramerAnimations'
-import { prependApiUrl } from '../../../utils/Url'
+import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
+import { Persona } from '../../../slices/types'
 
 export interface Props {
-  persona?: any//CustomCharacter
+  persona?: Persona
 }
 
 export const PersonaContent: React.FC<Props> = ({ persona }) => {
@@ -26,7 +24,7 @@ export const PersonaContent: React.FC<Props> = ({ persona }) => {
             <div className="p-2 bg-bcgov-blue dark:bg-bcgov-gold text-white rounded-l-lg flex px-4 self-end">
               <p>{persona.role}</p>
             </div>
-            <img className="h-72" src={`http://localhost:3001/assets/${persona.bodyImage}/file`} alt={persona.name} />
+            <img className="h-72" src={`${showcaseServerBaseUrl}/assets/${persona.bodyImage}/file`} alt={persona.name} />
           </motion.div>
         </AnimatePresence>
       ) : (
@@ -35,6 +33,3 @@ export const PersonaContent: React.FC<Props> = ({ persona }) => {
     </motion.div>
   )
 }
-
-//prependApiUrl(character.image)
-

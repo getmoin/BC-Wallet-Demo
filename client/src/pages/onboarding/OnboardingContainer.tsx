@@ -24,6 +24,7 @@ import { SetupCompleted } from './steps/SetupCompleted'
 import { SetupConnection } from './steps/SetupConnection'
 import { SetupStart } from './steps/SetupStart'
 import { Persona, Scenario } from '../../slices/types'
+import {showcaseServerBaseUrl} from '../../api/BaseUrl';
 
 export interface Props {
   scenarios: Scenario[]
@@ -191,7 +192,7 @@ export const OnboardingContainer: React.FC<Props> = ({
           exit="exit"
           className="p-4"
           key={progress}
-          src={`http://localhost:3001/assets/${asset}/file`}
+          src={`${showcaseServerBaseUrl}/assets/${asset}/file`}
           alt={progress}
         />
       )
