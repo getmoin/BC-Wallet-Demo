@@ -1,4 +1,4 @@
-import type { CustomCharacter } from '../../slices/types'
+import { CustomCharacter, CustomUseCase } from '../../slices/types'
 
 import { trackPageView } from '@snowplow/browser-tracker'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -33,7 +33,7 @@ export const DashboardPage: React.FC = () => {
     usePreferences()
   const currentCharacter = {
     ...useCurrentPersona(),
-    useCases: useCurrentPersona()?.useCases.filter((item: any) => !item.hidden || showHiddenUseCases) ?? [],
+    useCases: [] as CustomUseCase[],
   } as CustomCharacter
   const useCases = currentCharacter?.useCases
 
