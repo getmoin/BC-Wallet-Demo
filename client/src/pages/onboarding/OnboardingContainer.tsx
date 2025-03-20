@@ -28,7 +28,6 @@ export interface Props {
   connectionId?: string
   connectionState?: string
   invitationUrl?: string
-  //onboardingStep: string // TODO remove
   currentStep: number
 }
 
@@ -37,55 +36,24 @@ export const OnboardingContainer: React.FC<Props> = ({
   currentPersona,
   currentStep,
   connectionId,
-  // connectionState,
-  // invitationUrl,
+  connectionState,
+  invitationUrl,
 }) => {
   const dispatch = useAppDispatch()
   const { issuedCredentials } = useCredentials()
-  // const idToTitle: Record<string, string> = {}
-
-  console.log(`CURRENT STEP: ${currentStep}`)
-
   const currentScenario = scenarios.find(scenario => scenario.persona?.id ===  currentPersona?.id) // TODO could be turned into useEffect
 
   useEffect((): void => {
     dispatch(setScenario(currentScenario))
   }, [currentScenario])
 
-
-
-  // currentScenario?.steps.forEach((item: any) => {
-  //     idToTitle[item.screenId] = item.title
-  //   })
-
-  //const connectionCompleted = isConnected(connectionState as string)
-  const credentials: any[] = [] //currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
-  const credentialsAccepted = credentials?.every((cred: any) => issuedCredentials.includes(cred.name))
-
+  //onst credentials: any[] = [] //currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
+  //const credentialsAccepted = credentials?.every((cred: any) => issuedCredentials.includes(cred.name))
   const isBackDisabled = currentStep === 0 || currentStep === 1
   const isForwardDisabled = currentScenario?.steps.length === currentStep
 
-  // const jumpOnboardingPage = (): void => {
-  //   if (!currentScenario) {
-  //     return
-  //   }
-  //
-  //   trackSelfDescribingEvent({
-  //     event: {
-  //       schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
-  //       data: {
-  //         action: 'skip_credential',
-  //         path: currentPersona?.role.toLowerCase(),
-  //         step: currentStep//idToTitle[onboardingStep],
-  //       },
-  //     },
-  //   })
-  //   addOnboardingProgress(dispatch, onboardingStep, currentScenario, 2)
-  // }
-
   const nextOnboardingPage = (): void => {
     if (!currentScenario) {
-      console.log('NEXT PAGE NO SCENARIO')
       return
     }
 
@@ -95,42 +63,31 @@ export const OnboardingContainer: React.FC<Props> = ({
         data: {
           action: 'next',
           path: currentPersona?.role.toLowerCase(),
-          step: currentStep//idToTitle[onboardingStep],
+          step: currentStep
         },
       },
     })
 
     if (!isForwardDisabled) {
-      const xx = currentStep + 1
-      console.log(`NEXT PAGE step number ${xx}`)
-
-      setOnboardingProgress(dispatch, xx)
-    } else {
-      console.log('NEXT PAGE isForwardDisabled')
+      setOnboardingProgress(dispatch, currentStep + 1)
     }
-
-    // addOnboardingProgress(dispatch, onboardingStep, currentScenario)
   }
 
   const prevOnboardingPage = (): void => {
-    // if (!currentScenario) {
-    //   return
-    // }
-
     trackSelfDescribingEvent({
       event: {
         schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
         data: {
           action: 'back',
           path: currentPersona?.role.toLowerCase(),
-          step: currentStep//idToTitle[onboardingStep],
+          step: currentStep
         },
       },
     })
+
     if (!isBackDisabled) {
       setOnboardingProgress(dispatch, currentStep - 1)
     }
-    //removeOnboardingProgress(dispatch, onboardingStep, currentScenario)
   }
 
   //override title and text content to make them character dependant
@@ -167,54 +124,6 @@ export const OnboardingContainer: React.FC<Props> = ({
     } else {
       return <BasicSlide title={title} text={text} />
     }
-
-    // if (step === 'PICK_CHARACTER') {
-    //   return (
-    //     <PickPersona
-    //       key={progress}
-    //       currentPersona={currentPersona}
-    //       personas={scenarios.map((scenario) => scenario.persona)}
-    //       title={title}
-    //       text={text}
-    //     />
-    //   )
-    // } else if (progress === 'SETUP_START') {
-    //   return <SetupStart key={progress} title={title} text={text} />
-    // } else if (progress === 'CHOOSE_WALLET') {
-    //   return <ChooseWallet key={progress} title={title} text={text} addOnboardingProgress={nextOnboardingPage} />
-    // } else if (progress.startsWith('CONNECT')) {
-    //   return (
-    //     <SetupConnection
-    //       key={progress}
-    //       connectionId={connectionId}
-    //       skipIssuance={jumpOnboardingPage}
-    //       nextSlide={nextOnboardingPage}
-    //       invitationUrl={invitationUrl}
-    //       issuerName={issuer_name ?? 'Unknown'}
-    //       newConnection
-    //       disableSkipConnection={false}
-    //       connectionState={connectionState}
-    //       title={title}
-    //       text={text}
-    //       backgroundImage={currentPersona?.bodyImage}
-    //     />
-    //   )
-    // } else if (progress.startsWith('ACCEPT') && credentials && connectionId) {
-    //   return (
-    //     <AcceptCredential
-    //       key={progress}
-    //       connectionId={connectionId}
-    //       credentials={credentials}
-    //       currentPersona={currentPersona}
-    //       title={title}
-    //       text={text}
-    //     />
-    //   )
-    // } else if (progress === 'SETUP_COMPLETED') {
-    //   return <SetupCompleted key={progress} title={title} text={text} />
-    // } else {
-    //   return <BasicSlide title={title} text={text} />
-    // }
   }
 
   const getImageToRender = (step: number) => {
