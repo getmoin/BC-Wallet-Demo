@@ -1,22 +1,20 @@
-import type { CustomCharacter } from '../../../slices/types'
-
 import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
-
 import { characterFade, fadeExit } from '../../../FramerAnimations'
-import { prependApiUrl } from '../../../utils/Url'
+import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
+import { Persona } from '../../../slices/types'
 
 export interface Props {
-  character?: CustomCharacter
+  persona?: Persona
 }
 
-export const CharacterContent: React.FC<Props> = ({ character }) => {
+export const PersonaContent: React.FC<Props> = ({ persona }) => {
   return (
     <motion.div variants={fadeExit} initial="hidden" animate="show" exit="exit" className="h-full">
-      {character ? (
+      {persona ? (
         <AnimatePresence mode="wait">
           <motion.div
-            key={character.type}
+            key={persona.role}
             variants={characterFade}
             initial="hidden"
             animate="show"
@@ -24,13 +22,15 @@ export const CharacterContent: React.FC<Props> = ({ character }) => {
             className="flex flex-col h-full justify-around"
           >
             <div className="p-2 bg-bcgov-blue dark:bg-bcgov-gold text-white rounded-l-lg flex px-4 self-end">
-              <p>{character.type}</p>
+              <p>{persona.role}</p>
             </div>
-            <img className="h-72" src={prependApiUrl(character.image)} alt={character.name} />
+            {persona.bodyImage &&
+                <img className="h-72" src={`${showcaseServerBaseUrl}/assets/${persona.bodyImage}/file`} alt={persona.name} />
+            }
           </motion.div>
         </AnimatePresence>
       ) : (
-        <p className="flex h-full items-center justify-center text-grey">SELECT YOUR CHARACTER</p>
+        <p className="flex h-full items-center justify-center text-grey">SELECT YOUR PERSONA</p>
       )}
     </motion.div>
   )

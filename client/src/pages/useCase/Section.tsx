@@ -13,7 +13,7 @@ import { Button } from '../../components/Button'
 import { Modal } from '../../components/Modal'
 import { SmallButton } from '../../components/SmallButton'
 import { useAppDispatch } from '../../hooks/hooks'
-import { useCurrentCharacter } from '../../slices/characters/charactersSelectors'
+import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import { useCaseCompleted } from '../../slices/preferences/preferencesSlice'
 import { nextStep, prevStep, resetStep } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
@@ -68,7 +68,7 @@ export const Section: React.FC<Props> = ({ connection, section, stepCount, secti
   const { slug } = useParams()
 
   const verifier = section.find((x) => x.verifier !== undefined)?.verifier ?? { name: 'Unkown' }
-  const currentCharacter = useCurrentCharacter()
+  const currentCharacter = useCurrentPersona()
 
   const leave = () => {
     trackSelfDescribingEvent({

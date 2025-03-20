@@ -162,3 +162,32 @@ export interface Wallet {
   android: string
   ledgerImage?: string
 }
+
+export interface Showcase {
+  id: string
+  name: string
+  slug: string
+  description: string
+  scenarios: Scenario[]
+}
+
+export interface Scenario {
+  persona: Persona
+  steps: Step[]
+}
+
+export interface Persona {
+  id: string
+  name: string
+  role: string
+  headshotImage?: string
+  bodyImage?: string
+}
+
+export interface Step {
+  title: string,
+  description: string,
+  screenId: string,
+  asset?: string,
+  order: number
+}

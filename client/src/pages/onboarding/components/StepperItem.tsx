@@ -1,23 +1,20 @@
-import type { CustomCharacter, ProgressBarStep } from '../../../slices/types'
-
 import React from 'react'
-
 import { useDarkMode } from '../../../hooks/useDarkMode'
-import { prependApiUrl } from '../../../utils/Url'
+import { Step } from '../../../slices/types'
 
 export interface Props {
-  currentCharacter: CustomCharacter
-  item: ProgressBarStep
+  scenario: any
+  step: Step
   currentStep: string
 }
 
-export const StepperItem: React.FC<Props> = ({ item, currentStep, currentCharacter }) => {
+export const StepperItem: React.FC<Props> = ({ step, currentStep, scenario }) => {
   const darkMode = useDarkMode()
-  const stepNames = currentCharacter.onboarding.map((item) => item.screenId)
-  const currentStepIsEqual = item.onboardingStep === currentStep
-  const currentStepIsNotEqual = item.onboardingStep !== currentStep
-  const currentStepIsHigher = stepNames.indexOf(currentStep) > stepNames.indexOf(item.onboardingStep)
-  const currentStepIsLower = stepNames.indexOf(currentStep) < stepNames.indexOf(item.onboardingStep)
+  const stepNames = scenario.steps.map((step: any) => step.screenId)
+  const currentStepIsEqual = step.screenId === currentStep
+  const currentStepIsNotEqual = step.screenId !== currentStep
+  const currentStepIsHigher = stepNames.indexOf(currentStep) > stepNames.indexOf(step.screenId)
+  const currentStepIsLower = stepNames.indexOf(currentStep) < stepNames.indexOf(step.screenId)
   return (
     <>
       <div className="flex text-grey dark:text-white relative">
@@ -32,14 +29,14 @@ export const StepperItem: React.FC<Props> = ({ item, currentStep, currentCharact
               : ''
           } `}
         >
-          <img
-            alt={item.name}
-            src={darkMode ? prependApiUrl(item.iconDark) : prependApiUrl(item.iconLight)}
-            className="m-auto h-5"
-          />
+          <div
+              className={`flex items-center justify-center h-full text-bcgov-gold`}
+          >
+            {step.order}
+          </div>
         </div>
       </div>
-      {item.onboardingStep !== 'SETUP_COMPLETED' && (
+      {step.screenId !== 'SETUP_COMPLETED' && (
         <div
           className={`flex-auto  transition duration-300 ease-in-out  ${
             currentStepIsHigher && currentStepIsNotEqual

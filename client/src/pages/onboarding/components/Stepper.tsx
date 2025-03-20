@@ -1,20 +1,17 @@
-import type { CustomCharacter } from '../../../slices/types'
-
 import { motion } from 'framer-motion'
 import React from 'react'
-
 import { topDown } from '../../../FramerAnimations'
-
 import { StepperItem } from './StepperItem'
+import { Scenario } from '../../../slices/types'
 
 export interface Props {
   onboardingStep: string
-  currentCharacter?: CustomCharacter
+  scenario?: Scenario
 }
 
-export const Stepper: React.FC<Props> = ({ currentCharacter, onboardingStep }) => {
-  const renderSteps = currentCharacter?.progressBar?.map((item) => {
-    return <StepperItem key={item.name} item={item} currentStep={onboardingStep} currentCharacter={currentCharacter} />
+export const Stepper: React.FC<Props> = ({ scenario, onboardingStep }) => {
+  const renderSteps = scenario?.steps?.map((step: any) => {
+    return <StepperItem key={step.title} step={step} currentStep={onboardingStep} scenario={scenario} />
   })
 
   return (

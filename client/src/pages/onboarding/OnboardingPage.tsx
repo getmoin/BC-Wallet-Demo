@@ -1,14 +1,13 @@
 import { trackPageView } from '@snowplow/browser-tracker'
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import { page } from '../../FramerAnimations'
 import { CustomUpload } from '../../components/CustomUpload'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useCharacters } from '../../slices/characters/charactersSelectors'
-import { fetchAllCharacters } from '../../slices/characters/charactersThunks'
+import { useShowcases } from '../../slices/showcases/showcasesSelectors'
+import { fetchShowcaseBySlug } from '../../slices/showcases/showcasesThunks'
 import { useConnection } from '../../slices/connection/connectionSelectors'
 import { clearConnection } from '../../slices/connection/connectionSlice'
 import { clearCredentials } from '../../slices/credentials/credentialsSlice'
@@ -18,7 +17,6 @@ import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
 import { OnboardingComplete } from '../../utils/OnboardingUtils'
-
 import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
 
@@ -27,33 +25,24 @@ export const OnboardingPage: React.FC = () => {
 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const { characters, currentCharacter, uploadedCharacter } = useCharacters()
-
+  const {
+    showcase,
+    currentPersona
+  } = useShowcases()
   const { onboardingStep, isCompleted } = useOnboarding()
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled, showHiddenUseCases } = usePreferences()
-
   const [mounted, setMounted] = useState(false)
 
-  const allCharacters = useMemo(() => {
-    const allChars = [...characters].filter((char) => !char.hidden || showHiddenUseCases)
-
-    if (uploadedCharacter) {
-      allChars.push(uploadedCharacter)
-    }
-
-    return allChars
-  }, [characters, uploadedCharacter, showHiddenUseCases])
-
   useEffect(() => {
-    if ((OnboardingComplete(onboardingStep) || isCompleted) && currentCharacter) {
+    if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) {
       dispatch(completeOnboarding())
       dispatch(clearCredentials())
       dispatch(clearConnection())
       navigate(`${basePath}/dashboard`)
     } else {
       dispatch(fetchWallets())
-      dispatch(fetchAllCharacters())
+      dispatch(fetchShowcaseBySlug('best-bc-college-OyMDSu'))
       setMounted(true)
     }
   }, [dispatch, showHiddenUseCases])
@@ -72,19 +61,23 @@ export const OnboardingPage: React.FC = () => {
         exit="exit"
         className="container flex flex-col items-center p-4"
       >
-        <Stepper currentCharacter={currentCharacter} onboardingStep={onboardingStep} />
-        <AnimatePresence mode="wait">
-          {mounted && (
-            <OnboardingContainer
-              characters={allCharacters}
-              currentCharacter={currentCharacter}
-              onboardingStep={onboardingStep}
-              connectionId={id}
-              connectionState={state}
-              invitationUrl={invitationUrl}
-            />
-          )}
-        </AnimatePresence>
+        {showcase &&
+          <>
+            <Stepper scenario={showcase.scenarios.find((scenario: any) => scenario.persona.id ===  currentPersona?.id)} onboardingStep={onboardingStep} />
+            <AnimatePresence mode="wait">
+              {mounted && (
+                  <OnboardingContainer
+                      scenarios={showcase.scenarios}
+                      currentPersona={currentPersona}
+                      onboardingStep={onboardingStep}
+                      connectionId={id}
+                      connectionState={state}
+                      invitationUrl={invitationUrl}
+                  />
+              )}
+            </AnimatePresence>
+          </>
+        }
       </motion.div>
     </>
   )

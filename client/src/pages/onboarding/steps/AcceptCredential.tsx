@@ -1,12 +1,10 @@
-import type { Credential, CustomCharacter } from '../../../slices/types'
-
+import type {Credential, Persona} from '../../../slices/types'
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
 import { AnimatePresence, motion } from 'framer-motion'
 import { track } from 'insights-js'
 import { startCase } from 'lodash'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import { fade, fadeX } from '../../../FramerAnimations'
 import { getOrCreateCredDefId } from '../../../api/CredentialApi'
 import { ActionCTA } from '../../../components/ActionCTA'
@@ -26,7 +24,7 @@ import { StepInformation } from '../components/StepInformation'
 export interface Props {
   connectionId: string
   credentials: Credential[]
-  currentCharacter?: CustomCharacter
+  currentPersona?: Persona
   title: string
   text: string
   onCredentialAccepted?: () => void
@@ -35,7 +33,7 @@ export interface Props {
 export const AcceptCredential: React.FC<Props> = ({
   connectionId,
   credentials,
-  currentCharacter,
+  currentPersona,
   title,
   text,
   onCredentialAccepted,
@@ -79,7 +77,7 @@ export const AcceptCredential: React.FC<Props> = ({
       })
       setCredentialsIssued(true)
     }
-  }, [currentCharacter, connectionId])
+  }, [currentPersona, connectionId])
 
   useEffect(() => {
     if (credentialsAccepted && onCredentialAccepted) {
@@ -171,7 +169,7 @@ export const AcceptCredential: React.FC<Props> = ({
               schema: 'iglu:ca.bc.gov.digital/action/jsonschema/1-0-0',
               data: {
                 action: 'cred_not_received',
-                path: currentCharacter?.type.toLowerCase(),
+                path: currentPersona?.role.toLowerCase(),
                 step: title,
               },
             },
