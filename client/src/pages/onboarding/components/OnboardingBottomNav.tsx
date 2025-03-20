@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
+
 import { motion } from 'framer-motion'
+
 import { BackButton } from '../../../components/BackButton'
 import { Button } from '../../../components/Button'
 import { fadeDelay, fadeExit } from '../../../FramerAnimations'
@@ -30,8 +32,8 @@ export const OnboardingBottomNav: React.FC<Props> = ({
   useEffect(() => {
     if (isCompleted) {
       setLabel('FINISH')
-    // } else if (onboardingStep === 'CHOOSE_WALLET') {
-    //   setLabel('SKIP')
+      // } else if (onboardingStep === 'CHOOSE_WALLET') {
+      //   setLabel('SKIP')
     } else {
       setLabel('NEXT')
     }

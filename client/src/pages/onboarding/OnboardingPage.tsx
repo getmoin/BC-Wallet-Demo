@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+
 import { trackPageView } from '@snowplow/browser-tracker'
-import { page } from '../../FramerAnimations'
+import { motion } from 'framer-motion'
+
 import { CustomUpload } from '../../components/CustomUpload'
+import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useShowcases } from '../../slices/showcases/showcasesSelectors'
-import { fetchShowcaseBySlug } from '../../slices/showcases/showcasesThunks'
 import { useConnection } from '../../slices/connection/connectionSelectors'
 import { clearConnection } from '../../slices/connection/connectionSlice'
 import { clearCredentials } from '../../slices/credentials/credentialsSlice'
 import { useOnboarding } from '../../slices/onboarding/onboardingSelectors'
 import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
+import { useShowcases } from '../../slices/showcases/showcasesSelectors'
+import { clearShowcase } from '../../slices/showcases/showcasesSlice'
+import { fetchShowcaseBySlug } from '../../slices/showcases/showcasesThunks'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
-import { OnboardingContainer } from './OnboardingContainer'
-import { Stepper } from './components/Stepper'
+import { SafeAnimatePresence } from '../../utils/Helpers'
 import { useSlug } from '../../utils/SlugUtils'
-import { clearShowcase } from '../../slices/showcases/showcasesSlice'
 import { PageNotFound } from '../PageNotFound'
+import { Stepper } from './components/Stepper'
+import { OnboardingContainer } from './OnboardingContainer'
 
 export const OnboardingPage: React.FC = () => {
   useTitle('Get Started | BC Wallet Self-Sovereign Identity Demo')
@@ -32,7 +35,6 @@ export const OnboardingPage: React.FC = () => {
   const { currentStep, isCompleted, scenario } = useOnboarding()
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled } = usePreferences()
-  const [mounted, setMounted] = useState(false)
   const [currentSlug, setCurrentSlug] = useState<string | null>(null)
 
   useEffect(() => {
@@ -41,12 +43,11 @@ export const OnboardingPage: React.FC = () => {
       dispatch(clearCredentials())
       dispatch(clearConnection())
       navigate(`${basePath}/dashboard`)
-    } else {
+    } else if (!currentSlug || slug !== currentSlug) {
       dispatch(clearShowcase())
       dispatch(fetchWallets())
       dispatch(fetchShowcaseBySlug(slug))
       setCurrentSlug(slug)
-      setMounted(true)
     }
   }, [dispatch, slug, isCompleted, showcase, navigate])
 
@@ -72,20 +73,18 @@ export const OnboardingPage: React.FC = () => {
         exit="exit"
         className="container flex flex-col items-center p-4"
       >
-        {scenario && scenario.steps && (
-          <Stepper steps={scenario.steps} currentStep={currentStep} />
-        )}
+        {scenario && scenario.steps && <Stepper steps={scenario.steps} currentStep={currentStep} />}
         {showcase && (
-            <AnimatePresence mode="wait">
+          <SafeAnimatePresence mode="wait">
             <OnboardingContainer
               scenarios={showcase.scenarios}
               currentPersona={currentPersona}
-                    currentStep={currentStep}
+              currentStep={currentStep}
               connectionId={id}
               connectionState={state}
               invitationUrl={invitationUrl}
             />
-          </AnimatePresence>
+          </SafeAnimatePresence>
         )}
       </motion.div>
     </>

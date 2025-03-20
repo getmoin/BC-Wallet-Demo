@@ -3,7 +3,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 import { topDown } from '../../../FramerAnimations'
-import { Step } from '../../../slices/types'
+import type { Step } from '../../../slices/types'
 import { StepperItem } from './StepperItem'
 
 export interface Props {

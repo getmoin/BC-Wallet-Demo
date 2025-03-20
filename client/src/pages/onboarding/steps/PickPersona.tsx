@@ -9,8 +9,8 @@ import { useAppDispatch } from '../../../hooks/hooks'
 import { useDarkMode } from '../../../hooks/useDarkMode'
 import { setPersona } from '../../../slices/showcases/showcasesSlice'
 import type { CustomCharacter, Persona, TextWithImage } from '../../../slices/types'
-import { StepInformation } from '../components/StepInformation'
 import { setOnboardingProgress } from '../../../utils/OnboardingUtils'
+import { StepInformation } from '../components/StepInformation'
 
 export interface Props {
   currentPersona?: Persona

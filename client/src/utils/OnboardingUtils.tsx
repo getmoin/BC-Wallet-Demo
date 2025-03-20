@@ -88,7 +88,6 @@ import { setOnboardingStep } from '../slices/onboarding/onboardingSlice'
 //   })
 // }
 
-
 export const setOnboardingProgress = (dispatch: Dispatch<any>, step: number): void => {
   dispatch(setOnboardingStep(step))
   track({
