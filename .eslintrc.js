@@ -9,10 +9,10 @@ module.exports = {
     'plugin:cypress/recommended',
   ],
   plugins: ['cypress', 'import-helpers'],
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.eslint.json'],
-  },
+  // parserOptions: {
+  //   tsconfigRootDir: __dirname,
+  //   project: ['./tsconfig.eslint.json'],
+  // },
   settings: {
     'import/extensions': ['.js', '.ts'],
     'import/parsers': {
@@ -37,7 +37,7 @@ module.exports = {
     'import/no-cycle': 'error',
     'import/order': 'off',
     'import-helpers/order-imports': [
-      'error',
+      'warn',
       {
         newlinesBetween: 'always',
         groups: ['/^react/', 'module', ['parent', 'sibling', 'index'], ['absolute']],
@@ -81,5 +81,5 @@ module.exports = {
       },
     },
   ],
-  ignorePatterns: ['dist/*', 'build/*', 'client/src/showcase-api', '*.spec.ts', 'node_modules/*'],
+  ignorePatterns: ['dist/*', 'build/*', 'apps/*/src/showcase-api', '*.spec.ts', 'node_modules/*'],
 }

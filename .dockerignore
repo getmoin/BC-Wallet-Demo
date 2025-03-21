@@ -1,4 +1,9 @@
-node_modules
-client/node_modules
-server/build
-server/node_modules
+*/**/node_modules
+*/**/build
+*/**/dist
+*/**/coverage
+*/**/logs
+*/**/temp
+*/**/
+
+
