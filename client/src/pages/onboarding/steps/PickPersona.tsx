@@ -8,6 +8,7 @@ import { useDarkMode } from '../../../hooks/useDarkMode'
 import { setPersona } from '../../../slices/showcases/showcasesSlice'
 import { StepInformation } from '../components/StepInformation'
 import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
+import {setOnboardingProgress} from '../../../utils/OnboardingUtils';
 
 export interface Props {
   currentPersona?: Persona
@@ -27,6 +28,7 @@ export const PickPersona: React.FC<Props> = ({ currentPersona, personas, title, 
 
   const PersonaClickHandler = (char: CustomCharacter) => {
     dispatch(setPersona(char))
+    setOnboardingProgress(dispatch, 1)
     track({
       id: 'persona-selected', //'character-selected'
       parameters: {
@@ -66,7 +68,7 @@ export const PickPersona: React.FC<Props> = ({ currentPersona, personas, title, 
   })
 
   return (
-    <motion.div variants={fadeX} initial="hidden" animate="show" exit="exit">
+    <motion.div className="h-full" variants={fadeX} initial="hidden" animate="show" exit="exit">
       <StepInformation
         title={titleText === '' ? defaultTitle : titleText}
         text={mainText === '' ? defaultText : mainText}

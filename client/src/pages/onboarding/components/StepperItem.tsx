@@ -3,18 +3,18 @@ import { useDarkMode } from '../../../hooks/useDarkMode'
 import { Step } from '../../../slices/types'
 
 export interface Props {
-  scenario: any
   step: Step
-  currentStep: string
+  currentStep: number
+  maxSteps: number
 }
 
-export const StepperItem: React.FC<Props> = ({ step, currentStep, scenario }) => {
+export const StepperItem: React.FC<Props> = ({ step, currentStep, maxSteps }) => {
   const darkMode = useDarkMode()
-  const stepNames = scenario.steps.map((step: any) => step.screenId)
-  const currentStepIsEqual = step.screenId === currentStep
-  const currentStepIsNotEqual = step.screenId !== currentStep
-  const currentStepIsHigher = stepNames.indexOf(currentStep) > stepNames.indexOf(step.screenId)
-  const currentStepIsLower = stepNames.indexOf(currentStep) < stepNames.indexOf(step.screenId)
+  const currentStepIsEqual = currentStep === step.order
+  const currentStepIsNotEqual = currentStep !== step.order
+  const currentStepIsHigher = currentStep > step.order
+  const currentStepIsLower = currentStep < step.order
+
   return (
     <>
       <div className="flex text-grey dark:text-white relative">
@@ -36,7 +36,7 @@ export const StepperItem: React.FC<Props> = ({ step, currentStep, scenario }) =>
           </div>
         </div>
       </div>
-      {step.screenId !== 'SETUP_COMPLETED' && (
+      {step.order !== maxSteps && (
         <div
           className={`flex-auto  transition duration-300 ease-in-out  ${
             currentStepIsHigher && currentStepIsNotEqual

@@ -2,16 +2,16 @@ import { motion } from 'framer-motion'
 import React from 'react'
 import { topDown } from '../../../FramerAnimations'
 import { StepperItem } from './StepperItem'
-import { Scenario } from '../../../slices/types'
+import { Step } from '../../../slices/types'
 
 export interface Props {
-  onboardingStep: string
-  scenario?: Scenario
+  currentStep: number
+  steps: Step[]
 }
 
-export const Stepper: React.FC<Props> = ({ scenario, onboardingStep }) => {
-  const renderSteps = scenario?.steps?.map((step: any) => {
-    return <StepperItem key={step.title} step={step} currentStep={onboardingStep} scenario={scenario} />
+export const Stepper: React.FC<Props> = ({ steps, currentStep }) => {
+  const renderSteps = steps.map((step: any) => {
+    return <StepperItem key={step.title} step={step} currentStep={currentStep} maxSteps={steps.length} />
   })
 
   return (

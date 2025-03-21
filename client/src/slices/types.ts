@@ -187,7 +187,6 @@ export interface Persona {
 export interface Step {
   title: string,
   description: string,
-  screenId: string,
   asset?: string,
   order: number
 }

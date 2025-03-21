@@ -16,7 +16,6 @@ import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
-import { OnboardingComplete } from '../../utils/OnboardingUtils'
 import { OnboardingContainer } from './OnboardingContainer'
 import { Stepper } from './components/Stepper'
 import { useSlug } from '../../utils/SlugUtils'
@@ -30,15 +29,14 @@ export const OnboardingPage: React.FC = () => {
   const navigate = useNavigate()
   const { showcase, currentPersona } = useShowcases()
   const slug = useSlug()
-
-  const { onboardingStep, isCompleted } = useOnboarding()
+  const { currentStep, isCompleted, scenario } = useOnboarding()
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled, showHiddenUseCases } = usePreferences()
   const [mounted, setMounted] = useState(false)
   const [currentSlug, setCurrentSlug] = useState<string | null>(null)
 
   useEffect(() => {
-    if ((OnboardingComplete(onboardingStep) || isCompleted) && showcase) {
+    if (isCompleted && showcase) {
       dispatch(completeOnboarding())
       dispatch(clearCredentials())
       dispatch(clearConnection())
@@ -50,7 +48,7 @@ export const OnboardingPage: React.FC = () => {
       setCurrentSlug(slug)
       setMounted(true)
     }
-  }, [dispatch, slug, onboardingStep, isCompleted])
+  }, [dispatch, slug, isCompleted])
 
   useEffect(() => {
     trackPageView()
@@ -62,7 +60,9 @@ export const OnboardingPage: React.FC = () => {
 
   return (
     <>
-      {characterUploadEnabled && <CustomUpload />}
+      { characterUploadEnabled &&
+          <CustomUpload />
+      }
       <motion.div
         variants={page}
         initial="hidden"
@@ -70,25 +70,25 @@ export const OnboardingPage: React.FC = () => {
         exit="exit"
         className="container flex flex-col items-center p-4"
       >
-        {showcase &&
-          <>
+        { scenario &&
             <Stepper
-          scenario={showcase.scenarios?.find((scenario: any) => scenario.persona.id === currentPersona?.id)}
-          onboardingStep={onboardingStep}
-        />
-            <AnimatePresence mode="wait">
-          {mounted && showcase && (
-                  <OnboardingContainer
-              scenarios={showcase.scenarios}
-                      currentPersona={currentPersona}
-                      onboardingStep={onboardingStep}
-                      connectionId={id}
-                      connectionState={state}
-                      invitationUrl={invitationUrl}
-                  />
-              )}
-            </AnimatePresence>
-          </>
+                steps={scenario.steps}
+                currentStep={currentStep}
+            />
+        }
+        { showcase &&
+            <>
+              <AnimatePresence mode="wait">
+                <OnboardingContainer
+                    scenarios={showcase.scenarios}
+                    currentPersona={currentPersona}
+                    currentStep={currentStep}
+                    connectionId={id}
+                    connectionState={state}
+                    invitationUrl={invitationUrl}
+                />
+              </AnimatePresence>
+            </>
         }
       </motion.div>
     </>
