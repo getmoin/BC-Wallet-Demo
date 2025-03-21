@@ -1,7 +1,6 @@
-import type { Wallet } from '../types'
-
 import { createSlice } from '@reduxjs/toolkit'
 
+import type { Wallet } from '../types'
 import { fetchWallets } from './walletsThunks'
 
 interface WalletsState {

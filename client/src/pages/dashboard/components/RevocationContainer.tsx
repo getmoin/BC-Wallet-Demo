@@ -1,12 +1,11 @@
-import type { RevocationInfoItem, RevocationRecord } from '../../../slices/types'
+import React, { useState } from 'react'
 
 import { motion } from 'framer-motion'
 import { startCase } from 'lodash'
-import React, { useState } from 'react'
 
-import { dashboardTitle, rowContainer } from '../../../FramerAnimations'
 import { revokeCredential } from '../../../api/RevocationApi'
-
+import { dashboardTitle, rowContainer } from '../../../FramerAnimations'
+import type { RevocationInfoItem, RevocationRecord } from '../../../slices/types'
 import { RevocationItem } from './RevocationItem'
 
 export interface Props {

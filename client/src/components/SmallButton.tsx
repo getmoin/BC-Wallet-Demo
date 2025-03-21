@@ -1,10 +1,9 @@
 import type { MouseEventHandler } from 'react'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 
-import { buttonHover } from '../FramerAnimations'
+import { motion } from 'framer-motion'
 
+import { buttonHover } from '../FramerAnimations'
 import { Loader } from './Loader'
 
 export interface Props {

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { Persona } from './Persona'
+
 /**
  *
  * @export

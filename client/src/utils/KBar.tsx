@@ -1,8 +1,9 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch } from 'kbar'
 import { useEffect, useState } from 'react'
 import Confetti from 'react-confetti'
 import { useNavigate } from 'react-router-dom'
+
+import { motion, AnimatePresence } from 'framer-motion'
+import { KBarAnimator, KBarPortal, KBarPositioner, KBarProvider, KBarSearch } from 'kbar'
 
 import { confettiFade } from '../FramerAnimations'
 import { useAppDispatch } from '../hooks/hooks'
@@ -10,12 +11,11 @@ import { usePreferences } from '../slices/preferences/preferencesSelectors'
 import {
   resetDashboard,
   setDarkMode,
-  toggleRevocation,
   toggleCharacterUpload,
   toggleHiddenUseCases,
+  toggleRevocation,
 } from '../slices/preferences/preferencesSlice'
 import { fetchWallets } from '../slices/wallets/walletsThunks'
-
 import { basePath } from './BasePath'
 import { RenderResults } from './RenderResults'
 

@@ -1,17 +1,17 @@
-import type { ConnectionState } from '../../../slices/connection/connectionSlice'
-import type { UseCaseScreen } from '../../../slices/types'
-
-import { motion } from 'framer-motion'
 import React, { useEffect } from 'react'
 import { isMobile } from 'react-device-detect'
 import { FiExternalLink } from 'react-icons/fi'
 
-import { fade, fadeX } from '../../../FramerAnimations'
+import { motion } from 'framer-motion'
+
 import { QRCode } from '../../../components/QRCode'
+import { fade, fadeX } from '../../../FramerAnimations'
 import { useAppDispatch } from '../../../hooks/hooks'
+import type { ConnectionState } from '../../../slices/connection/connectionSlice'
 import { setConnection, setDeepLink } from '../../../slices/connection/connectionSlice'
 import { createInvitation } from '../../../slices/connection/connectionThunks'
 import { useSocket } from '../../../slices/socket/socketSelector'
+import type { UseCaseScreen } from '../../../slices/types'
 import { nextStep } from '../../../slices/useCases/useCasesSlice'
 import { isConnected } from '../../../utils/Helpers'
 import { prependApiUrl } from '../../../utils/Url'

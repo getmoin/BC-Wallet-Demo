@@ -1,8 +1,10 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
-import { characterFade, fadeExit } from '../../../FramerAnimations'
+
+import { motion, AnimatePresence } from 'framer-motion'
+
 import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
-import { Persona } from '../../../slices/types'
+import { characterFade, fadeExit } from '../../../FramerAnimations'
+import type { Persona } from '../../../slices/types'
 
 export interface Props {
   persona?: Persona
@@ -24,9 +26,13 @@ export const PersonaContent: React.FC<Props> = ({ persona }) => {
             <div className="p-2 bg-bcgov-blue dark:bg-bcgov-gold text-white rounded-l-lg flex px-4 self-end">
               <p>{persona.role}</p>
             </div>
-            {persona.bodyImage &&
-                <img className="h-72" src={`${showcaseServerBaseUrl}/assets/${persona.bodyImage}/file`} alt={persona.name} />
-            }
+            {persona.bodyImage && (
+              <img
+                className="h-72"
+                src={`${showcaseServerBaseUrl}/assets/${persona.bodyImage}/file`}
+                alt={persona.name}
+              />
+            )}
           </motion.div>
         </AnimatePresence>
       ) : (

@@ -11,6 +11,7 @@
  */
 import type { AriesRequestCredentialAttributes } from './AriesRequestCredentialAttributes'
 import type { AriesRequestCredentialPredicates } from './AriesRequestCredentialPredicates'
+
 /**
  *
  * @export

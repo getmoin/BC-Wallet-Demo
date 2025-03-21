@@ -1,10 +1,10 @@
-import type { Wallet } from '../../../slices/types'
-
-import { AnimatePresence, motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { isBrowser } from 'react-device-detect'
 
+import { motion, AnimatePresence } from 'framer-motion'
+
 import { fadeX, rowContainer } from '../../../FramerAnimations'
+import type { Wallet } from '../../../slices/types'
 import { useWallets } from '../../../slices/wallets/walletsSelectors'
 import { StepInformation } from '../components/StepInformation'
 import { WalletItem } from '../components/WalletItem'

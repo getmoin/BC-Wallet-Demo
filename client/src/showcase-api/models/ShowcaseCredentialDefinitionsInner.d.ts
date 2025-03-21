@@ -11,6 +11,7 @@
  */
 import type { CredentialDefinition } from './CredentialDefinition'
 import type { Id } from './Id'
+
 /**
  * @type ShowcaseCredentialDefinitionsInner
  *

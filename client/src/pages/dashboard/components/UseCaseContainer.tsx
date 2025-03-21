@@ -1,12 +1,11 @@
-import type { CustomCharacter } from '../../../slices/types'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { dashboardTitle, rowContainer } from '../../../FramerAnimations'
-import { basePath } from '../../../utils/BasePath'
+import { motion } from 'framer-motion'
 
+import { dashboardTitle, rowContainer } from '../../../FramerAnimations'
+import type { CustomCharacter } from '../../../slices/types'
+import { basePath } from '../../../utils/BasePath'
 import { UseCaseItem } from './UseCaseItem'
 
 export interface Props {

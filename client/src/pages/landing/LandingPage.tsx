@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion'
 import React from 'react'
+
+import { motion } from 'framer-motion'
 
 import { page } from '../../FramerAnimations'
 import { useTitle } from '../../hooks/useTitle'
-
 import { Footer } from './components/Footer'
 import { MainSection } from './components/MainSection'
 import { NavBar } from './components/Navbar'

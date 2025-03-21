@@ -1,6 +1,5 @@
-import type { Socket } from 'socket.io'
-
 import { Body, JsonController, Post, Req } from 'routing-controllers'
+import type { Socket } from 'socket.io'
 import { Service } from 'typedi'
 
 @JsonController('/whook/topic')

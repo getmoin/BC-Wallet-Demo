@@ -11,6 +11,7 @@
  */
 import type { CredentialRepresentation } from './CredentialRepresentation'
 import type { OCARepresentation } from './OCARepresentation'
+
 /**
  * @type ListCredentialRepresentations200ResponseInner
  *

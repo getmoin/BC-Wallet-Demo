@@ -1,7 +1,6 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { dropIn, standardFade } from '../FramerAnimations'
-
 import { SmallButton } from './SmallButton'
 import { SmallButtonText } from './SmallButtonText'
 

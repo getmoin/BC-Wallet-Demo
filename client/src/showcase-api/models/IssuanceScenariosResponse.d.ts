@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IssuanceScenario } from './IssuanceScenario'
+
 /**
  *
  * @export

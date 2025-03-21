@@ -1,13 +1,13 @@
-import type { CustomCharacter } from '../../../slices/types'
+import React, { useState } from 'react'
 
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
 import { motion } from 'framer-motion'
-import React, { useState } from 'react'
 
-import { fade } from '../../../FramerAnimations'
 import { Modal } from '../../../components/Modal'
 import { SmallButtonText } from '../../../components/SmallButtonText'
+import { fade } from '../../../FramerAnimations'
 import { useAppDispatch } from '../../../hooks/hooks'
+import type { CustomCharacter } from '../../../slices/types'
 import { prependApiUrl } from '../../../utils/Url'
 
 export interface Props {

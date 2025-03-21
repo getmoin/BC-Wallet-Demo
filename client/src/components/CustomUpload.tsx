@@ -1,12 +1,10 @@
-import type { CustomCharacter } from '../slices/types'
-
 import { useEffect, useState } from 'react'
 
 import { useAppDispatch } from '../hooks/hooks'
-import { useShowcases } from '../slices/showcases/showcasesSelectors'
-import { uploadShowcase, setUploadingStatus } from '../slices/showcases/showcasesSlice'
 import { toggleCharacterUpload } from '../slices/preferences/preferencesSlice'
-
+import { useShowcases } from '../slices/showcases/showcasesSelectors'
+import { setUploadingStatus, uploadShowcase } from '../slices/showcases/showcasesSlice'
+import type { CustomCharacter, Showcase } from '../slices/types'
 import { Modal } from './Modal'
 
 export const CustomUpload: React.FC = () => {
@@ -23,10 +21,10 @@ export const CustomUpload: React.FC = () => {
     setUploadPressed(true)
     const reader = new FileReader()
     reader.onload = (evt: any) => {
-      const uploadedChar: CustomCharacter = JSON.parse(evt.target.result)
+      const uploadedShowcase: Showcase = JSON.parse(evt.target.result)
       dispatch(
-          uploadShowcase({
-          showcase: uploadedChar,
+        uploadShowcase({
+          showcase: uploadedShowcase,
           callback: () => {
             dispatch(setUploadingStatus(false))
           },

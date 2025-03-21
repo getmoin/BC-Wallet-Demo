@@ -1,8 +1,10 @@
-import { motion } from 'framer-motion'
 import React from 'react'
+
+import { motion } from 'framer-motion'
+
 import { topDown } from '../../../FramerAnimations'
+import type { Step } from '../../../slices/types'
 import { StepperItem } from './StepperItem'
-import { Step } from '../../../slices/types'
 
 export interface Props {
   currentStep: number

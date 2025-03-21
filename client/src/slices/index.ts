@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 
-import showcasesSlice from './showcases/showcasesSlice'
 import connectionSlice from './connection/connectionSlice'
 import credentialsSlice from './credentials/credentialsSlice'
 import onboardingSlice from './onboarding/onboardingSlice'
 import preferencesSlice from './preferences/preferencesSlice'
 import proofSlice from './proof/proofSlice'
 import sectionSlice from './section/sectionSlice'
+import showcasesSlice from './showcases/showcasesSlice'
 import socketSlice from './socket/socketSlice'
 import useCaseSlice from './useCases/useCasesSlice'
 import walletsSlice from './wallets/walletsSlice'

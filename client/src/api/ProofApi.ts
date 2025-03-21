@@ -1,6 +1,6 @@
-import type { ProofRequestData } from '../slices/types'
 import type { AxiosResponse } from 'axios'
 
+import type { ProofRequestData } from '../slices/types'
 import { demoBackendApi } from './BaseUrl'
 
 export const createProofRequest = (data: ProofRequestData): Promise<AxiosResponse> => {

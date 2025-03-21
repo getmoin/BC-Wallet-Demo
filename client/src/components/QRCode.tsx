@@ -1,8 +1,8 @@
-import { track } from 'insights-js'
 import React, { useEffect } from 'react'
 
-import { isConnected } from '../utils/Helpers'
+import { track } from 'insights-js'
 
+import { isConnected } from '../utils/Helpers'
 import { CheckMark } from './Checkmark'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

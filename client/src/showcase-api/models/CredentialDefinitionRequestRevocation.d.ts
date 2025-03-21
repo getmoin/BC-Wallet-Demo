@@ -11,6 +11,7 @@
  */
 import type { AnonCredRevocation } from './AnonCredRevocation'
 import type { RevocationInfo } from './RevocationInfo'
+
 /**
  * @type CredentialDefinitionRequestRevocation
  * Revocation information for the credential

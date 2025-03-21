@@ -1,16 +1,14 @@
-import type { CustomUseCase } from '../../slices/types'
-
-import { trackPageView } from '@snowplow/browser-tracker'
-import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { page } from '../../FramerAnimations'
+import { trackPageView } from '@snowplow/browser-tracker'
+import { motion, AnimatePresence } from 'framer-motion'
+
 import { Loader } from '../../components/Loader'
 import { Modal } from '../../components/Modal'
+import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import { useConnection } from '../../slices/connection/connectionSelectors'
 import { clearConnection } from '../../slices/connection/connectionSlice'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
@@ -19,10 +17,11 @@ import { useProof } from '../../slices/proof/proofSelectors'
 import { clearProof } from '../../slices/proof/proofSlice'
 import { useSection } from '../../slices/section/sectionSelectors'
 import { setSection } from '../../slices/section/sectionSlice'
+import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
+import type { CustomUseCase } from '../../slices/types'
 import { useUseCaseState } from '../../slices/useCases/useCasesSelectors'
 import { nextSection } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
-
 import { Section } from './Section'
 
 export const UseCasePage: React.FC = () => {
@@ -39,11 +38,13 @@ export const UseCasePage: React.FC = () => {
   const navigate = useNavigate()
   useTitle(`${currentUseCase?.name ?? 'Use case'} | BC Wallet Self-Sovereign Identity Demo`)
 
+  /*
   useEffect(() => {
     if (currentCharacter && slug) {
       setCurrentUseCase(currentCharacter.useCases.find((item: any) => item.id === slug))
     }
   }, [])
+*/
 
   useEffect(() => {
     if (currentUseCase) {

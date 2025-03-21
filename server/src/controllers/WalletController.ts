@@ -1,9 +1,8 @@
-import type { Wallet } from '../content/types'
-
 import { Get, JsonController } from 'routing-controllers'
 import { Service } from 'typedi'
 
 import { Wallets } from '../content/misc/Wallets'
+import type { Wallet } from '../content/types'
 
 @JsonController('/wallets')
 @Service()

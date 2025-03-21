@@ -13,6 +13,7 @@ import type { CredentialDefinitionRepresentationsInner } from './CredentialDefin
 import type { CredentialDefinitionRequestRevocation } from './CredentialDefinitionRequestRevocation'
 import type { CredentialType } from './CredentialType'
 import type { IdentifierType } from './IdentifierType'
+
 /**
  *
  * @export

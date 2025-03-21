@@ -1,5 +1,4 @@
 import type { ReactChild, ReactFragment, ReactPortal } from 'react'
-
 import { createContext } from 'react'
 
 import { usePreferences } from '../slices/preferences/preferencesSelectors'

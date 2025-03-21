@@ -1,7 +1,7 @@
 import { Body, Delete, Get, JsonController, Param, Post } from 'routing-controllers'
 import { Service } from 'typedi'
 
-import { tractionBaseUrl, tractionRequest } from '../utils/tractionHelper'
+import { tractionRequest } from '../utils/tractionHelper'
 
 @JsonController('/proofs')
 @Service()

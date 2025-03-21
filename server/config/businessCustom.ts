@@ -1,5 +1,4 @@
 import type { CustomCharacter } from '../src/content/types'
-
 import { getDateInt } from '../src/utils/dateint'
 
 export const businessCustom: CustomCharacter = {
@@ -177,6 +176,6 @@ export const businessCustom: CustomCharacter = {
           image: '/public/student/student-accepted.svg',
         },
       ],
-    }
+    },
   ],
 }

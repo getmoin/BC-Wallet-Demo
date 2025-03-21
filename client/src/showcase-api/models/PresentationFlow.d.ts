@@ -12,6 +12,7 @@
 import type { Persona } from './Persona'
 import type { RelyingParty } from './RelyingParty'
 import type { Step } from './Step'
+
 /**
  * Workflow specialization for credential presentation
  * @export

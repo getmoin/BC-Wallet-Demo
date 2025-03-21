@@ -1,5 +1,7 @@
 import type { Dispatch } from 'react'
+
 import { track } from 'insights-js'
+
 import { setOnboardingStep } from '../slices/onboarding/onboardingSlice'
 
 export const setOnboardingProgress = (dispatch: Dispatch<any>, step: number): void => {

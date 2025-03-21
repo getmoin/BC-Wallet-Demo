@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { Asset } from './Asset'
+
 /**
  *
  * @export

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { StepRequest } from './StepRequest'
+
 /**
  * Scenario specialization for credential issuance
  * @export

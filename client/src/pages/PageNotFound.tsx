@@ -1,6 +1,8 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+
+import { motion } from 'framer-motion'
+
 import { page } from '../FramerAnimations'
 import { basePath } from '../utils/BasePath'
 
@@ -9,10 +11,7 @@ interface PageNotFoundProps {
   resourceName?: string
 }
 
-export const PageNotFound: React.FC<PageNotFoundProps> = ({
-                                                            resourceType,
-                                                            resourceName
-                                                          }) => {
+export const PageNotFound: React.FC<PageNotFoundProps> = ({ resourceType, resourceName }) => {
   const navigate = useNavigate()
 
   // Original simple version when no resourceType/resourceName provided
@@ -21,7 +20,7 @@ export const PageNotFound: React.FC<PageNotFoundProps> = ({
       <div className="flex h-screen">
         <div className="m-auto flex flex-col">
           <p className="text-6xl py-1.5 px-4">404</p>
-          <h2 className="text-2xl font-semibold mb-6">{resourceType || "Page"} Not Found</h2>
+          <h2 className="text-2xl font-semibold mb-6">{resourceType || 'Page'} Not Found</h2>
         </div>
       </div>
     )
@@ -38,9 +37,11 @@ export const PageNotFound: React.FC<PageNotFoundProps> = ({
     >
       <div className="w-full max-w-2xl text-center">
         <h1 className="text-4xl font-bold mb-4">404</h1>
-        <h2 className="text-2xl font-semibold mb-6">{resourceType || "Page"} Not Found</h2>
+        <h2 className="text-2xl font-semibold mb-6">{resourceType || 'Page'} Not Found</h2>
         {resourceName && (
-          <p className="mb-4">A {(resourceType || "page").toLowerCase()} named "{resourceName}" could not be found.</p>
+          <p className="mb-4">
+            A {(resourceType || 'page').toLowerCase()} named "{resourceName}" could not be found.
+          </p>
         )}
         <button
           onClick={() => navigate(`${basePath}/`)}

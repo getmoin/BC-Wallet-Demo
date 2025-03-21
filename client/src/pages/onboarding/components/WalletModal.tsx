@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { dropIn, standardFade } from '../../../FramerAnimations'
 import { demoBackendBaseUrl } from '../../../api/BaseUrl'
 import appStore from '../../../assets/light/app-store-badge.svg'
 import playStore from '../../../assets/light/google-play-badge.png'
 import { SmallButton } from '../../../components/SmallButton'
+import { dropIn, standardFade } from '../../../FramerAnimations'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const QRCode = require('qrcode.react')

@@ -1,9 +1,9 @@
-import type { TextWithImage } from '../../../slices/types'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 
+import { motion } from 'framer-motion'
+
 import { fadeExit } from '../../../FramerAnimations'
+import type { TextWithImage } from '../../../slices/types'
 
 export interface Props {
   title: string

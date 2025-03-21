@@ -1,8 +1,8 @@
 import type { MouseEventHandler } from 'react'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 import { FiArrowLeft } from 'react-icons/fi'
+
+import { motion } from 'framer-motion'
 
 export interface Props {
   disabled?: boolean

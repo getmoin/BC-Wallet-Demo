@@ -1,8 +1,7 @@
-import type { ProofRequestData } from '../types'
-
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import * as Api from '../../api/ProofApi'
+import type { ProofRequestData } from '../types'
 
 export const createProof = createAsyncThunk('proof/createProof', async (data: ProofRequestData) => {
   const response = await Api.createProofRequest(data)

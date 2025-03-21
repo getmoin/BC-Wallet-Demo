@@ -1,23 +1,22 @@
-import { CustomCharacter, CustomUseCase } from '../../slices/types'
-
-import { trackPageView } from '@snowplow/browser-tracker'
-import { AnimatePresence, motion } from 'framer-motion'
-import { track } from 'insights-js'
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { page } from '../../FramerAnimations'
+import { trackPageView } from '@snowplow/browser-tracker'
+import { motion, AnimatePresence } from 'framer-motion'
+import { track } from 'insights-js'
+
 import { Modal } from '../../components/Modal'
+import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useTitle } from '../../hooks/useTitle'
-import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { usePreferences } from '../../slices/preferences/preferencesSelectors'
 import { setDemoCompleted } from '../../slices/preferences/preferencesSlice'
+import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
+import type { CustomCharacter, CustomUseCase } from '../../slices/types'
 import { basePath } from '../../utils/BasePath'
 import { Footer } from '../landing/components/Footer'
 import { NavBar } from '../landing/components/Navbar'
-
 import { DemoCompletedModal } from './components/DemoCompletedModal'
 import { ProfileCard } from './components/ProfileCard'
 import { RevocationContainer } from './components/RevocationContainer'
@@ -42,7 +41,6 @@ export const DashboardPage: React.FC = () => {
       dispatch(setDemoCompleted(true))
     }
   }, [completedUseCaseSlugs])
-
 
   useEffect(() => {
     trackPageView()

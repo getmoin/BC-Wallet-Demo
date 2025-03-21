@@ -1,10 +1,10 @@
-import type { Attribute, CredentialRequest } from '../../../slices/types'
+import React, { useEffect, useState } from 'react'
 
 import { startCase } from 'lodash'
-import React, { useEffect, useState } from 'react'
 
 import { CheckMark } from '../../../components/Checkmark'
 import { Loader } from '../../../components/Loader'
+import type { Attribute, CredentialRequest } from '../../../slices/types'
 import { isDataUrl } from '../../../utils/Helpers'
 import { getAttributesFromProof } from '../../../utils/ProofUtils'
 import { prependApiUrl } from '../../../utils/Url'

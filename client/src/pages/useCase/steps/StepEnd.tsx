@@ -1,9 +1,9 @@
-import type { UseCaseScreen } from '../../../slices/types'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 
+import { motion } from 'framer-motion'
+
 import { fadeX } from '../../../FramerAnimations'
+import type { UseCaseScreen } from '../../../slices/types'
 import { prependApiUrl } from '../../../utils/Url'
 import { StepInfo } from '../components/StepInfo'
 

@@ -1,12 +1,13 @@
-import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { FiArrowRight, FiExternalLink } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 
-import { buttonHover, fade, fadeDelay, landingTitle } from '../../../FramerAnimations'
+import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
+import { motion } from 'framer-motion'
+
 import landingScreen from '../../../assets/light/landing-screen.svg'
+import { buttonHover, fade, fadeDelay, landingTitle } from '../../../FramerAnimations'
 import { basePath } from '../../../utils/BasePath'
 
 export const MainSection: React.FC = () => {

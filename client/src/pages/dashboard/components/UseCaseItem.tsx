@@ -1,13 +1,12 @@
-import type { CustomCharacter } from '../../../slices/types'
+import React from 'react'
 
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
 import { motion } from 'framer-motion'
 import { startCase } from 'lodash'
-import React from 'react'
 
 import { rowFadeX } from '../../../FramerAnimations'
+import type { CustomCharacter } from '../../../slices/types'
 import { prependApiUrl } from '../../../utils/Url'
-
 import { StartButton } from './StartButton'
 
 export interface Props {

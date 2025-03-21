@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
 import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
+
+import { motion } from 'framer-motion'
 
 import { listHover, rowFadeX } from '../../../FramerAnimations'
 import { prependApiUrl } from '../../../utils/Url'

@@ -1,7 +1,6 @@
 import 'reflect-metadata'
 
 import type { Express } from 'express'
-
 import { json, static as stx } from 'express'
 import * as http from 'http'
 import { createExpressServer } from 'routing-controllers'

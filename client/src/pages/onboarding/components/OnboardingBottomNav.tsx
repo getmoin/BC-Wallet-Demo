@@ -1,8 +1,10 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
-import { fadeDelay, fadeExit } from '../../../FramerAnimations'
+
+import { motion, AnimatePresence } from 'framer-motion'
+
 import { BackButton } from '../../../components/BackButton'
 import { Button } from '../../../components/Button'
+import { fadeDelay, fadeExit } from '../../../FramerAnimations'
 
 export interface Props {
   currentStep: number
@@ -29,8 +31,8 @@ export const OnboardingBottomNav: React.FC<Props> = ({
   useEffect(() => {
     if (isCompleted) {
       setLabel('FINISH')
-    // } else if (onboardingStep === 'CHOOSE_WALLET') {
-    //   setLabel('SKIP')
+      // } else if (onboardingStep === 'CHOOSE_WALLET') {
+      //   setLabel('SKIP')
     } else {
       setLabel('NEXT')
     }

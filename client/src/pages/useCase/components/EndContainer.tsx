@@ -1,15 +1,15 @@
-import type { UseCaseScreen } from '../../../slices/types'
-
-import { motion } from 'framer-motion'
-import { track } from 'insights-js'
 import React, { useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { fadeExit } from '../../../FramerAnimations'
+import { motion } from 'framer-motion'
+import { track } from 'insights-js'
+
 import { Button } from '../../../components/Button'
+import { fadeExit } from '../../../FramerAnimations'
 import { useAppDispatch } from '../../../hooks/hooks'
 import { useCaseCompleted } from '../../../slices/preferences/preferencesSlice'
+import type { UseCaseScreen } from '../../../slices/types'
 import { basePath } from '../../../utils/BasePath'
 
 export interface Props {

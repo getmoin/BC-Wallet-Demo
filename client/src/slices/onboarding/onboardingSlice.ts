@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Scenario } from '../types'
+
+import type { Scenario } from '../types'
 
 interface OnboardingState {
   scenario?: Scenario
@@ -33,10 +34,6 @@ const onboardingSlice = createSlice({
   },
 })
 
-export const {
-  completeOnboarding,
-  setOnboardingStep,
-  setScenario,
-} = onboardingSlice.actions
+export const { completeOnboarding, setOnboardingStep, setScenario } = onboardingSlice.actions
 
 export default onboardingSlice.reducer

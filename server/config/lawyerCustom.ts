@@ -1,5 +1,4 @@
 import type { CustomCharacter } from '../src/content/types'
-
 import { getDateInt } from '../src/utils/dateint'
 
 const now = () => Math.floor(new Date().getTime() / 1000)

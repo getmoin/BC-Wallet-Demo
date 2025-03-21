@@ -11,6 +11,7 @@
  */
 import type { IdentifierType } from './IdentifierType'
 import type { IssuerType } from './IssuerType'
+
 /**
  *
  * @export

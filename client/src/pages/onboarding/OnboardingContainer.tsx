@@ -1,26 +1,28 @@
-import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
-import { AnimatePresence, motion } from 'framer-motion'
-import React, {ReactElement, useEffect, useState} from 'react'
+import type { ReactElement } from 'react'
+import React, { useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { FiLogOut } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
-import { fadeDelay, fadeExit } from '../../FramerAnimations'
+
+import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
+import { motion, AnimatePresence } from 'framer-motion'
+
+import { showcaseServerBaseUrl } from '../../api/BaseUrl'
 import { Modal } from '../../components/Modal'
+import { fadeDelay, fadeExit } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
 import { clearConnection } from '../../slices/connection/connectionSlice'
 import { useCredentials } from '../../slices/credentials/credentialsSelectors'
 import { clearCredentials } from '../../slices/credentials/credentialsSlice'
-import { completeOnboarding } from '../../slices/onboarding/onboardingSlice'
+import { completeOnboarding, setScenario } from '../../slices/onboarding/onboardingSlice'
+import type { Persona, Scenario, Step } from '../../slices/types'
 import { basePath } from '../../utils/BasePath'
 import { setOnboardingProgress } from '../../utils/OnboardingUtils'
-import { PersonaContent } from './components/PersonaContent'
 import { OnboardingBottomNav } from './components/OnboardingBottomNav'
+import { PersonaContent } from './components/PersonaContent'
 import { BasicSlide } from './steps/BasicSlide'
 import { PickPersona } from './steps/PickPersona'
 import { SetupCompleted } from './steps/SetupCompleted'
-import { showcaseServerBaseUrl } from '../../api/BaseUrl'
-import { Persona, Scenario, Step } from '../../slices/types'
-import { setScenario } from '../../slices/onboarding/onboardingSlice'
 
 export interface Props {
   scenarios: Scenario[]
@@ -41,7 +43,8 @@ export const OnboardingContainer: React.FC<Props> = ({
 }) => {
   const dispatch = useAppDispatch()
   const { issuedCredentials } = useCredentials()
-  const currentScenario = scenarios.find(scenario => scenario.persona?.id ===  currentPersona?.id) // TODO could be turned into useEffect
+  const currentScenario = scenarios.find((scenario) => scenario.persona?.id === currentPersona?.id)
+  // TODO could be turned into useEffect
 
   useEffect((): void => {
     dispatch(setScenario(currentScenario))
@@ -63,7 +66,7 @@ export const OnboardingContainer: React.FC<Props> = ({
         data: {
           action: 'next',
           path: currentPersona?.role.toLowerCase(),
-          step: currentStep
+          step: currentStep,
         },
       },
     })
@@ -80,7 +83,7 @@ export const OnboardingContainer: React.FC<Props> = ({
         data: {
           action: 'back',
           path: currentPersona?.role.toLowerCase(),
-          step: currentStep
+          step: currentStep,
         },
       },
     })
@@ -97,8 +100,8 @@ export const OnboardingContainer: React.FC<Props> = ({
       return {
         title: stepContent.title,
         text: stepContent.description,
-        credentials: [],//stepContent.credentials,
-        issuer_name: '',//stepContent.issuer_name,
+        credentials: [], //stepContent.credentials,
+        issuer_name: '', //stepContent.issuer_name,
         asset: stepContent.asset,
       }
     }
@@ -106,19 +109,18 @@ export const OnboardingContainer: React.FC<Props> = ({
   }
 
   const getComponentToRender = (step: number): ReactElement => {
-    const {
-      text,
-      title,
-    } = getStepContent(step)
+    const { text, title } = getStepContent(step)
 
     if (step === 0 || step === 1) {
-      return <PickPersona
+      return (
+        <PickPersona
           key={step}
           currentPersona={currentPersona}
           personas={scenarios.map((scenario) => scenario.persona)}
           title={title}
           text={text}
-      />
+        />
+      )
     } else if (currentScenario?.steps.length === step) {
       return <SetupCompleted key={step} title={title} text={text} />
     } else {
@@ -131,8 +133,9 @@ export const OnboardingContainer: React.FC<Props> = ({
 
     if (step === 0 || step === 1) {
       return <PersonaContent key={step} persona={currentPersona} />
-    } else {
-      return <motion.img
+    } else if (asset) {
+      return (
+        <motion.img
           variants={fadeExit}
           initial="hidden"
           animate="show"
@@ -140,7 +143,8 @@ export const OnboardingContainer: React.FC<Props> = ({
           className="p-4"
           key={step}
           src={`${showcaseServerBaseUrl}/assets/${asset}/file`}
-      />
+        />
+      )
     }
   }
 

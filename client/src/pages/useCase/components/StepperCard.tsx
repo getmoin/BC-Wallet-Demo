@@ -1,7 +1,8 @@
-import type { UseCaseScreen } from '../../../slices/types'
+import React from 'react'
 
 import { motion } from 'framer-motion'
-import React from 'react'
+
+import type { UseCaseScreen } from '../../../slices/types'
 
 export interface Props {
   steps: UseCaseScreen[]

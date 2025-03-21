@@ -1,8 +1,8 @@
-import type { CredentialRequest } from '../../../slices/types'
-
-import { motion } from 'framer-motion'
 import React from 'react'
 
+import { motion } from 'framer-motion'
+
+import type { CredentialRequest } from '../../../slices/types'
 import { ActionCard } from './ActionCard'
 
 export interface Props {

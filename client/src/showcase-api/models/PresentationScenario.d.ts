@@ -14,6 +14,7 @@ import type { Persona } from './Persona'
 import type { RelyingParty } from './RelyingParty'
 import type { ScenarioType } from './ScenarioType'
 import type { Step } from './Step'
+
 /**
  * Scenario specialization for credential presentation
  * @export
