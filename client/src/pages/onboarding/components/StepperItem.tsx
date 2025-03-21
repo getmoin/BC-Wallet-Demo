@@ -10,7 +10,6 @@ export interface Props {
 }
 
 export const StepperItem: React.FC<Props> = ({ step, currentStep, maxSteps }) => {
-  const darkMode = useDarkMode()
   const currentStepIsEqual = currentStep === step.order
   const currentStepIsNotEqual = currentStep !== step.order
   const currentStepIsHigher = currentStep > step.order
@@ -30,7 +29,7 @@ export const StepperItem: React.FC<Props> = ({ step, currentStep, maxSteps }) =>
               : ''
           } `}
         >
-          <div className={`flex items-center justify-center h-full text-bcgov-gold`}>{step.order}</div>
+          <div className={`flex items-center justify-center h-full text-bcgov-blue dark:text-bcgov-gold`}>{step.order}</div>
         </div>
       </div>
       {step.order !== maxSteps && (

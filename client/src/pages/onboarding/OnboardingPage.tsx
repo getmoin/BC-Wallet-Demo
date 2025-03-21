@@ -34,7 +34,6 @@ export const OnboardingPage: React.FC = () => {
   const { currentStep, isCompleted, scenario } = useOnboarding()
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled } = usePreferences()
-  const [currentSlug, setCurrentSlug] = useState<string | null>(null)
 
   useEffect(() => {
     if (isCompleted && showcase) {
@@ -46,7 +45,6 @@ export const OnboardingPage: React.FC = () => {
       dispatch(clearShowcase())
       dispatch(fetchWallets())
       dispatch(fetchShowcaseBySlug(slug))
-      setCurrentSlug(slug)
     }
   }, [dispatch, slug, isCompleted])
 
@@ -72,7 +70,7 @@ export const OnboardingPage: React.FC = () => {
         exit="exit"
         className="container flex flex-col items-center p-4"
       >
-        {scenario && scenario.steps && <Stepper steps={scenario.steps} currentStep={currentStep} />}
+        {(scenario?.steps !== undefined && scenario?.steps.length > 0 && currentStep) && <Stepper steps={scenario.steps} currentStep={currentStep} />}
         {showcase && (
           <AnimatePresence mode="wait">
             <OnboardingContainer
