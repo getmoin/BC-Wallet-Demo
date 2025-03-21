@@ -50,7 +50,7 @@ export const OnboardingContainer: React.FC<Props> = ({
   //onst credentials: any[] = [] //currentPersona?.onboarding.find((step: any) => step.screenId === onboardingStep)?.credentials // TODO we need credentials
   //const credentialsAccepted = credentials?.every((cred: any) => issuedCredentials.includes(cred.name))
   const isBackDisabled = currentStep === 0 || currentStep === 1
-  const isForwardDisabled = currentScenario?.steps.length === currentStep || currentStep === 0
+  const isForwardDisabled = currentScenario?.steps.length === currentStep || currentStep === 0 // FIXME we could improve this step 0, as there is no real step 0, maybe it can just be undefined
 
   const nextOnboardingPage = (): void => {
     if (!currentScenario) {
