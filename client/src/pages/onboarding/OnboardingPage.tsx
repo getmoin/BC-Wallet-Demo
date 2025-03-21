@@ -34,7 +34,6 @@ export const OnboardingPage: React.FC = () => {
   const { currentStep, isCompleted, scenario } = useOnboarding()
   const { state, invitationUrl, id } = useConnection()
   const { characterUploadEnabled } = usePreferences()
-  const [currentSlug, setCurrentSlug] = useState<string | null>(null)
 
   useEffect(() => {
     if (isCompleted && showcase) {
@@ -46,7 +45,6 @@ export const OnboardingPage: React.FC = () => {
       dispatch(clearShowcase())
       dispatch(fetchWallets())
       dispatch(fetchShowcaseBySlug(slug))
-      setCurrentSlug(slug)
     }
   }, [dispatch, slug, isCompleted])
 
