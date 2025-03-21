@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import {ActionType} from '../../slices/types';
+
 /**
  *
  * @export
@@ -26,7 +28,7 @@ export interface StepAction {
    * @type {string}
    * @memberof StepAction
    */
-  actionType: string
+  actionType: ActionType // FIXME
   /**
    * Title of the action
    * @type {string}

@@ -189,4 +189,15 @@ export interface Step {
   description: string
   asset?: string
   order: number
+  actions?: StepAction[]
+}
+
+export interface StepAction {
+  actionType: ActionType
+}
+
+export enum ActionType {
+  CONNECT = "CONNECT",
+  CHOOSE_WALLET = "CHOOSE_WALLET",
+  ACCEPT_CREDENTIAL = "ACCEPT_CREDENTIAL",
 }

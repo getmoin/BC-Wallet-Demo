@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { trackPageView } from '@snowplow/browser-tracker'
 import { motion, AnimatePresence } from 'framer-motion'
 
+import { basePath } from '../../utils/BasePath'
 import { CustomUpload } from '../../components/CustomUpload'
 import { page } from '../../FramerAnimations'
 import { useAppDispatch } from '../../hooks/hooks'
@@ -18,7 +19,6 @@ import { useShowcases } from '../../slices/showcases/showcasesSelectors'
 import { clearShowcase } from '../../slices/showcases/showcasesSlice'
 import { fetchShowcaseBySlug } from '../../slices/showcases/showcasesThunks'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
-import { basePath } from '../../utils/BasePath'
 import { useSlug } from '../../utils/SlugUtils'
 import { PageNotFound } from '../PageNotFound'
 import { Stepper } from './components/Stepper'
@@ -71,7 +71,7 @@ export const OnboardingPage: React.FC = () => {
         className="container flex flex-col items-center p-4"
       >
         {scenario?.steps !== undefined && scenario?.steps.length > 0 && currentStep && (
-          <Stepper steps={scenario.steps} currentStep={currentStep} />
+          <Stepper steps={scenario.steps} currentStep={currentStep.order} />
         )}
         {showcase && (
           <AnimatePresence mode="wait">

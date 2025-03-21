@@ -7,7 +7,7 @@ import { Button } from '../../../components/Button'
 import { fadeDelay, fadeExit } from '../../../FramerAnimations'
 
 export interface Props {
-  currentStep: number
+  currentStep?: number
   maxSteps?: number
   addOnboardingStep(): void
   removeOnboardingStep(): void

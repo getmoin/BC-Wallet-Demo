@@ -23,6 +23,20 @@ export const fetchShowcaseBySlug = createAsyncThunk(
           throw new Error('No steps found in scenario')
         }
 
+        const steps = scenario.steps.map((step: Step) => {
+          const actions = step.actions.map(action => ({
+            actionType: action.actionType
+          }))
+
+          return {
+            title: step.title,
+            description: step.description,
+            order: step.order,
+            ...(step.asset && { asset: step.asset.id }),
+            actions
+          }
+        })
+
         return {
           persona: {
             id: scenario.personas[0].id,
@@ -31,12 +45,7 @@ export const fetchShowcaseBySlug = createAsyncThunk(
             ...(scenario.personas[0].headshotImage && { headshotImage: scenario.personas[0].headshotImage?.id }),
             ...(scenario.personas[0].bodyImage && { bodyImage: scenario.personas[0].bodyImage?.id }),
           },
-          steps: scenario.steps.map((step: Step) => ({
-            title: step.title,
-            description: step.description,
-            order: step.order,
-            ...(step.asset && { asset: step.asset.id }),
-          })),
+          steps,
         }
       })
 
