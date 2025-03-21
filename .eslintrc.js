@@ -50,6 +50,7 @@ module.exports = {
         devDependencies: false,
       },
     ],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'cypress/no-assigning-return-values': 'error',
     'cypress/no-unnecessary-waiting': 'error',
     'cypress/assertion-before-screenshot': 'warn',
@@ -76,7 +77,7 @@ module.exports = {
           {
             devDependencies: true,
           },
-        ],
+        ]
       },
     },
   ],
