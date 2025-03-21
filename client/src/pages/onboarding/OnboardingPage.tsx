@@ -70,7 +70,9 @@ export const OnboardingPage: React.FC = () => {
         exit="exit"
         className="container flex flex-col items-center p-4"
       >
-        {(scenario?.steps !== undefined && scenario?.steps.length > 0 && currentStep) && <Stepper steps={scenario.steps} currentStep={currentStep} />}
+        {scenario?.steps !== undefined && scenario?.steps.length > 0 && currentStep && (
+          <Stepper steps={scenario.steps} currentStep={currentStep} />
+        )}
         {showcase && (
           <AnimatePresence mode="wait">
             <OnboardingContainer

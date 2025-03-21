@@ -29,7 +29,9 @@ export const StepperItem: React.FC<Props> = ({ step, currentStep, maxSteps }) =>
               : ''
           } `}
         >
-          <div className={`flex items-center justify-center h-full text-bcgov-blue dark:text-bcgov-gold`}>{step.order}</div>
+          <div className={`flex items-center justify-center h-full text-bcgov-blue dark:text-bcgov-gold`}>
+            {step.order}
+          </div>
         </div>
       </div>
       {step.order !== maxSteps && (
