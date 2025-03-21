@@ -3,7 +3,7 @@ import { isMobile } from 'react-device-detect'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { BackButton } from '../../components/BackButton'
 import { Button } from '../../components/Button'
@@ -17,7 +17,7 @@ import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import type { UseCaseScreen } from '../../slices/types'
 import { nextStep, prevStep, resetStep } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
-import { isConnected, isCredIssued, SafeAnimatePresence } from '../../utils/Helpers'
+import { isConnected, isCredIssued } from '../../utils/Helpers'
 import { EndContainer } from './components/EndContainer'
 import { StartContainer } from './components/StartContainer'
 import { SideView } from './SideView'
@@ -203,7 +203,7 @@ export const Section: React.FC<Props> = ({ connection, section, stepCount, secti
               style={style}
               data-cy="section"
             >
-              <SafeAnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+              <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
                 {step.screenId.startsWith('INFO') && <StepInformation key={step.screenId} step={step} />}
                 {step.screenId.startsWith('CONNECTION') && (
                   <StepConnection newConnection={true} key={step.screenId} step={step} connection={connection} />
@@ -220,7 +220,7 @@ export const Section: React.FC<Props> = ({ connection, section, stepCount, secti
                   />
                 )}
                 {step.screenId.startsWith('STEP_END') && <StepEnd key={step.screenId} step={step} />}
-              </SafeAnimatePresence>
+              </AnimatePresence>
               <div className="flex justify-between items-center">
                 <BackButton
                   onClick={() => {
@@ -271,5 +271,5 @@ export const Section: React.FC<Props> = ({ connection, section, stepCount, secti
     }
   }
 
-  return <SafeAnimatePresence mode="wait">{step && renderStepItem()}</SafeAnimatePresence>
+  return <AnimatePresence mode="wait">{step && renderStepItem()}</AnimatePresence>
 }

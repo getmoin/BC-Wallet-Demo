@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { trackPageView } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { track } from 'insights-js'
 
 import { Modal } from '../../components/Modal'
@@ -15,7 +15,6 @@ import { setDemoCompleted } from '../../slices/preferences/preferencesSlice'
 import { useCurrentPersona } from '../../slices/showcases/showcasesSelectors'
 import type { CustomCharacter, CustomUseCase } from '../../slices/types'
 import { basePath } from '../../utils/BasePath'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 import { Footer } from '../landing/components/Footer'
 import { NavBar } from '../landing/components/Navbar'
 import { DemoCompletedModal } from './components/DemoCompletedModal'
@@ -101,9 +100,9 @@ export const DashboardPage: React.FC = () => {
           </div>
         </>
       ) : (
-        <SafeAnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
           <Modal title={ERROR_TITLE} description={ERROR_DESCRIPTION} onOk={routeError} />
-        </SafeAnimatePresence>
+        </AnimatePresence>
       )}
       {demoCompleted && <DemoCompletedModal action={completeDemo} cancel={cancelCompleteDemo} />}
       <Footer />

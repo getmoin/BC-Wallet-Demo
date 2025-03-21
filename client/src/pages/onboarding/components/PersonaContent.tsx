@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { showcaseServerBaseUrl } from '../../../api/BaseUrl'
 import { characterFade, fadeExit } from '../../../FramerAnimations'
 import type { Persona } from '../../../slices/types'
-import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {
   persona?: Persona
@@ -15,7 +14,7 @@ export const PersonaContent: React.FC<Props> = ({ persona }) => {
   return (
     <motion.div variants={fadeExit} initial="hidden" animate="show" exit="exit" className="h-full">
       {persona ? (
-        <SafeAnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           <motion.div
             key={persona.role}
             variants={characterFade}
@@ -35,7 +34,7 @@ export const PersonaContent: React.FC<Props> = ({ persona }) => {
               />
             )}
           </motion.div>
-        </SafeAnimatePresence>
+        </AnimatePresence>
       ) : (
         <p className="flex h-full items-center justify-center text-grey">SELECT YOUR PERSONA</p>
       )}

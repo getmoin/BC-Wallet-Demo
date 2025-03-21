@@ -5,7 +5,6 @@ import appStore from '../../../assets/light/app-store-badge.svg'
 import playStore from '../../../assets/light/google-play-badge.png'
 import { SmallButton } from '../../../components/SmallButton'
 import { dropIn, standardFade } from '../../../FramerAnimations'
-import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const QRCode = require('qrcode.react')
@@ -31,7 +30,7 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
     return window.innerWidth <= 760
   }
   return (
-    <SafeAnimatePresence>
+    <AnimatePresence>
       {isWalletModalOpen && (
         <motion.div
           variants={standardFade}
@@ -115,6 +114,6 @@ export const WalletModal: React.FC<Props> = ({ isWalletModalOpen, setIsWalletMod
           </div>
         </motion.div>
       )}
-    </SafeAnimatePresence>
+    </AnimatePresence>
   )
 }

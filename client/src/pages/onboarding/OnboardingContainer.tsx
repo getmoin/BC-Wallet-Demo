@@ -5,7 +5,7 @@ import { FiLogOut } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 
 import { trackSelfDescribingEvent } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { showcaseServerBaseUrl } from '../../api/BaseUrl'
 import { Modal } from '../../components/Modal'
@@ -17,7 +17,6 @@ import { clearCredentials } from '../../slices/credentials/credentialsSlice'
 import { completeOnboarding, setScenario } from '../../slices/onboarding/onboardingSlice'
 import type { Persona, Scenario, Step } from '../../slices/types'
 import { basePath } from '../../utils/BasePath'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 import { setOnboardingProgress } from '../../utils/OnboardingUtils'
 import { OnboardingBottomNav } from './components/OnboardingBottomNav'
 import { PersonaContent } from './components/PersonaContent'
@@ -197,7 +196,7 @@ export const OnboardingContainer: React.FC<Props> = ({
             <FiLogOut className="inline h-12 cursor-pointer dark:text-white" />
           </motion.button>
         </div>
-        <SafeAnimatePresence mode="wait">{getComponentToRender(currentStep)}</SafeAnimatePresence>
+        <AnimatePresence mode="wait">{getComponentToRender(currentStep)}</AnimatePresence>
         <OnboardingBottomNav
           currentStep={currentStep}
           maxSteps={currentScenario?.steps.length}
@@ -210,7 +209,7 @@ export const OnboardingContainer: React.FC<Props> = ({
       </div>
       {!isMobile && (
         <div className="bg-bcgov-white dark:bg-bcgov-black hidden lg:flex lg:w-1/3 rounded-r-lg flex-col justify-center h-full select-none">
-          <SafeAnimatePresence mode="wait">{getImageToRender(currentStep)}</SafeAnimatePresence>
+          <AnimatePresence mode="wait">{getImageToRender(currentStep)}</AnimatePresence>
         </div>
       )}
       {leaveModal && (

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Confetti from 'react-confetti'
 import { useNavigate } from 'react-router-dom'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { KBarAnimator, KBarPortal, KBarPositioner, KBarProvider, KBarSearch } from 'kbar'
 
 import { confettiFade } from '../FramerAnimations'
@@ -17,7 +17,6 @@ import {
 } from '../slices/preferences/preferencesSlice'
 import { fetchWallets } from '../slices/wallets/walletsThunks'
 import { basePath } from './BasePath'
-import { SafeAnimatePresence } from './Helpers'
 import { RenderResults } from './RenderResults'
 
 interface Props {
@@ -149,7 +148,7 @@ export const KBar: React.FC<Props> = ({ children }) => {
 
   return (
     <div>
-      <SafeAnimatePresence>
+      <AnimatePresence>
         {confettiPieces > 0 && (
           <motion.div variants={confettiFade} initial="hidden" animate="show" exit="exit">
             <Confetti
@@ -160,7 +159,7 @@ export const KBar: React.FC<Props> = ({ children }) => {
             />
           </motion.div>
         )}
-      </SafeAnimatePresence>
+      </AnimatePresence>
       <KBarProvider actions={actions} options={{ enableHistory: true, disableScrollbarManagement: true }}>
         <KBarPortal>
           <KBarPositioner>

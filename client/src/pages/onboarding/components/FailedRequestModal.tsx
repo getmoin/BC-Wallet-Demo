@@ -1,8 +1,7 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { SmallButton } from '../../../components/SmallButton'
 import { dropIn, standardFade } from '../../../FramerAnimations'
-import { SafeAnimatePresence } from '../../../utils/Helpers'
 
 export interface Props {
   action(): void
@@ -14,7 +13,7 @@ export const FailedRequestModal: React.FC<Props> = ({ action, close, proof }) =>
   const MODAL_TITLE = `That's not what we expected.`
 
   return (
-    <SafeAnimatePresence>
+    <AnimatePresence>
       <motion.div
         variants={standardFade}
         initial="hidden"
@@ -62,6 +61,6 @@ export const FailedRequestModal: React.FC<Props> = ({ action, close, proof }) =>
           </motion.div>
         </div>
       </motion.div>
-    </SafeAnimatePresence>
+    </AnimatePresence>
   )
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { trackPageView } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { Loader } from '../../components/Loader'
 import { Modal } from '../../components/Modal'
@@ -22,7 +22,6 @@ import type { CustomUseCase } from '../../slices/types'
 import { useUseCaseState } from '../../slices/useCases/useCasesSelectors'
 import { nextSection } from '../../slices/useCases/useCasesSlice'
 import { basePath } from '../../utils/BasePath'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 import { Section } from './Section'
 
 export const UseCasePage: React.FC = () => {
@@ -91,7 +90,7 @@ export const UseCasePage: React.FC = () => {
           <Loader />
         </div>
       ) : (
-        <SafeAnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           {currentCharacter && section && currentUseCase ? (
             <motion.div
               key={'sectionDiv' + section.screenId}
@@ -114,7 +113,7 @@ export const UseCasePage: React.FC = () => {
           ) : (
             <Modal key="errorModal" title={ERROR_TITLE} description={ERROR_DESCRIPTION} onOk={routeError} />
           )}
-        </SafeAnimatePresence>
+        </AnimatePresence>
       )}
     </motion.div>
   )

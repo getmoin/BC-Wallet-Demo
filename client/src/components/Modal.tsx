@@ -1,7 +1,6 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { dropIn, standardFade } from '../FramerAnimations'
-import { SafeAnimatePresence } from '../utils/Helpers'
 import { SmallButton } from './SmallButton'
 import { SmallButtonText } from './SmallButtonText'
 
@@ -29,7 +28,7 @@ export const Modal: React.FC<Props> = ({
   loadingText,
 }) => {
   return (
-    <SafeAnimatePresence>
+    <AnimatePresence>
       <motion.div
         variants={standardFade}
         initial="hidden"
@@ -69,6 +68,6 @@ export const Modal: React.FC<Props> = ({
           </motion.div>
         </div>
       </motion.div>
-    </SafeAnimatePresence>
+    </AnimatePresence>
   )
 }

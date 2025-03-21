@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { trackPageView } from '@snowplow/browser-tracker'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { CustomUpload } from '../../components/CustomUpload'
 import { page } from '../../FramerAnimations'
@@ -19,7 +19,6 @@ import { clearShowcase } from '../../slices/showcases/showcasesSlice'
 import { fetchShowcaseBySlug } from '../../slices/showcases/showcasesThunks'
 import { fetchWallets } from '../../slices/wallets/walletsThunks'
 import { basePath } from '../../utils/BasePath'
-import { SafeAnimatePresence } from '../../utils/Helpers'
 import { useSlug } from '../../utils/SlugUtils'
 import { PageNotFound } from '../PageNotFound'
 import { Stepper } from './components/Stepper'
@@ -75,7 +74,7 @@ export const OnboardingPage: React.FC = () => {
       >
         {scenario && scenario.steps && <Stepper steps={scenario.steps} currentStep={currentStep} />}
         {showcase && (
-          <SafeAnimatePresence mode="wait">
+          <AnimatePresence mode="wait">
             <OnboardingContainer
               scenarios={showcase.scenarios}
               currentPersona={currentPersona}
@@ -84,7 +83,7 @@ export const OnboardingPage: React.FC = () => {
               connectionState={state}
               invitationUrl={invitationUrl}
             />
-          </SafeAnimatePresence>
+          </AnimatePresence>
         )}
       </motion.div>
     </>

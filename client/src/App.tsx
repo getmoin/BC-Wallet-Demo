@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
+import { AnimatePresence } from 'framer-motion'
 import type { Socket } from 'socket.io-client'
 import { io } from 'socket.io-client'
 
@@ -19,7 +20,6 @@ import { fetchLastServerReset } from './slices/preferences/preferencesThunks'
 import { setMessage } from './slices/socket/socketSlice'
 import { AuthProvider } from './utils/AuthContext'
 import { basePath } from './utils/BasePath'
-import { SafeAnimatePresence } from './utils/Helpers'
 import { PrivateRoute } from './utils/PrivateRoute'
 import { ThemeProvider } from './utils/ThemeContext'
 
@@ -74,7 +74,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <SafeAnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             {basePath !== '/' && <Route path="/" element={<Navigate to={basePath} />}></Route>}
             <Route path={`${basePath}/`} element={<LandingPage />} />
@@ -97,7 +97,7 @@ function App() {
             />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        </SafeAnimatePresence>
+        </AnimatePresence>
       </AuthProvider>
     </ThemeProvider>
   )
