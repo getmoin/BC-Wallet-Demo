@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import {
-	Download,
 	EllipsisVertical,
-	Eye,
-	RotateCw,
 	Trash2,
 } from "lucide-react";
 
@@ -15,13 +12,13 @@ interface StepHeaderCredentialProps {
 	onActionClick?: (action: "save" | "preview" | "revert" | "delete") => void; // Callback function for actions
 }
 
-const StepHeaderCredential: React.FC<StepHeaderCredentialProps> = ({
+const StepHeaderCredential = ({
 	icon,
 	title,
 	actions,
 	showDropdown = true,
 	onActionClick,
-}) => {
+}: StepHeaderCredentialProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (

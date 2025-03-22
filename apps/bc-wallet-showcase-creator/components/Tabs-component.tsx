@@ -1,12 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 
 export default function TabsComponent({ slug }: { slug: string }) {
   const t = useTranslations();
-  const router = useRouter();
   const pathname = usePathname();
 
   const tabs = [

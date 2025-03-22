@@ -1,10 +1,9 @@
 "use client";
 
-import { CirclePlus, Search, Share2 } from "lucide-react";
+import { Share2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Link } from "@/i18n/routing";
-import { Input } from "@/components/ui/input";
 import ButtonOutline from "@/components/ui/button-outline";
 import { Card } from "@/components/ui/card";
 import { ensureBase64HasPrefix } from "@/lib/utils";

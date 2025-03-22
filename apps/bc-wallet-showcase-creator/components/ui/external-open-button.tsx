@@ -1,20 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ClipboardIcon, ExternalLinkIcon } from "lucide-react"
+import { ExternalLinkIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button, ButtonProps } from "@/components/ui/button"
 
 interface OpenButtonProps extends ButtonProps {
   value: string
-  src?: string
 }
 
 export function OpenButton({
   value,
   className,
-  src,
   variant = "ghost",
   ...props
 }: OpenButtonProps) {

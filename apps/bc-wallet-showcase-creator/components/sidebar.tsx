@@ -1,12 +1,12 @@
 "use client";
 
-import { JSX, useState } from "react";
-import {  ChevronLeft, User, Users, Users2, Users2Icon } from "lucide-react";
+import { useState } from "react";
+import {  ChevronLeft, Users2 } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { LanguageSelector } from "./language-selector";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/routing";
+import { usePathname } from "@/i18n/routing";
 import { DarkModeToggle } from "./dark-mode-toggle";
 
 export default function Sidebar() {

@@ -36,13 +36,13 @@ export default function NewCharacterPage() {
   // Track the selected persona by ID for UI stability
   const [selectedPersonaId, setSelectedPersonaId] = useState<string | null>(null);
   
-  const { setEditMode, editMode, personaState, setStepState } = useShowcaseStore();
+  const { setEditMode, personaState, setStepState } = useShowcaseStore();
 
   // Queries and mutations
   const { data: personasData, isLoading } = usePersonas();
   const { mutateAsync: createPersona } = useCreatePersona();
   const { mutateAsync: updatePersona } = useUpdatePersona();
-  const { mutateAsync: deletePersona, isPending: isDeleting } = useDeletePersona();
+  const { mutateAsync: deletePersona } = useDeletePersona();
 
   // Get selected persona data directly from the personasData list based on ID
   const selectedPersona = personasData?.personas?.find((p: any) => p.id === selectedPersonaId) || null;

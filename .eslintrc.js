@@ -9,10 +9,6 @@ module.exports = {
     'plugin:cypress/recommended',
   ],
   plugins: ['cypress', 'import-helpers'],
-  // parserOptions: {
-  //   tsconfigRootDir: __dirname,
-  //   project: ['./tsconfig.eslint.json'],
-  // },
   settings: {
     'import/extensions': ['.js', '.ts'],
     'import/parsers': {

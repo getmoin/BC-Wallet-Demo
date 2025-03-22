@@ -1,11 +1,7 @@
 import CreateCharacterList from "@/components/character-screen/character-list";
 import TabsComponent from "@/components/Tabs-component";
-import { Pencil } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-export default function CharacterPageMain() {
-  const t = useTranslations();
-  
+export default function CharacterPageMain() {  
   return (
     <div className="flex bg-light-bg dark:bg-dark-bg flex-col h-full w-full">
     <div className="flex flex-col">

@@ -9,7 +9,8 @@ import ButtonOutline from "@/components/ui/button-outline";
 import { ensureBase64HasPrefix } from "@/lib/utils";
 import { usePersonas } from "@/hooks/use-personas";
 import { toast } from "sonner";
-import { Link, useRouter } from "@/i18n/routing";
+import { useRouter } from "@/i18n/routing";
+import { Persona } from "@/openapi-types";
 
 export default function CreateCharacterList() {
   const t = useTranslations();
@@ -68,7 +69,7 @@ export default function CreateCharacterList() {
           <div className="flex-grow overflow-y-auto p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {personasData?.personas &&
-                personasData.personas.map((persona: any) => {
+                personasData.personas.map((persona: Persona) => {
                   const isSelected = selectedPersonaIds.includes(persona.id);
 
                   return (

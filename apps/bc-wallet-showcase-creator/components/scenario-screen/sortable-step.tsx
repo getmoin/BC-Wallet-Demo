@@ -6,7 +6,6 @@ import {
   GripVertical,
 } from "lucide-react";
 import { cn, ensureBase64HasPrefix } from "@/lib/utils";
-import { useOnboarding } from "@/hooks/use-onboarding";
 import { useTranslations } from "next-intl";
 import { produce } from "immer";
 import { useShowcaseStore } from "@/hooks/use-showcase-store";
@@ -27,7 +26,7 @@ export const SortableStep = ({
   totalSteps: number;
 }) => {
   const t = useTranslations();
-  const { setSelectedStep, setStepState, stepState, screens } = usePresentations();
+  const { setSelectedStep, setStepState } = usePresentations();
   const { selectedCharacter } = useShowcaseStore();
 
   const {selectedCredential} = useCredentials()
@@ -49,7 +48,7 @@ export const SortableStep = ({
 
   const handleCopyStep = (index: number) => {
     try {
-      const { screens, selectedStep } = usePresentations.getState();
+      const { screens } = usePresentations.getState();
 
       if (!screens[index]) return;
 

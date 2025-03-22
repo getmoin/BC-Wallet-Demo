@@ -36,7 +36,7 @@
     "ws": "^8.18.0"
   },
   "scripts": {
-    "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
+    "dev": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "cross-env GENERATE_SOURCEMAP=false react-scripts test",
     "eject": "cross-env GENERATE_SOURCEMAP=false react-scripts eject"

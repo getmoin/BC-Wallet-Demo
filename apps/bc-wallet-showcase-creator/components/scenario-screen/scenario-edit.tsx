@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { FormTextInput, FormTextArea } from "@/components/text-input";
-import { LocalFileUpload } from "./local-file-upload";
 import { useScenarios } from "@/hooks/use-scenarios";
 import { scenarioSchema } from "@/schemas/scenario";
 import { ScenarioFormData } from "@/schemas/scenario";

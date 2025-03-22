@@ -24,10 +24,10 @@ export default function CreateOnboardingPage() {
           <div className="w-1/3 bg-[white] dark:bg-dark-bg-secondary border shadow-md rounded-md flex flex-col">
             <div className="p-4 border-b shadow">
               <h2 className="text-base font-bold text-foreground">
-                {"Review and Publish Showcase"}
+                {t("showcases.publish_info_title")}
               </h2>
               <p className="w-full text-xs text-foreground/80">
-                {"Select the character and review their showcase"}
+                {t("showcases.publish_info_subtitle")}
               </p>
             </div>
             <PublishInfo characters={displayShowcase.personas} credentials={displayShowcase.credentialDefinitions}/>

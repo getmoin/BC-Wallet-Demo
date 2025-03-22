@@ -7,13 +7,11 @@ import { cn } from "@/lib/utils"
 import { Button, ButtonProps } from "@/components/ui/button"
 
 interface DeleteButtonProps extends ButtonProps {
-  src?: string
   onClick?: () => void
 }
 
 export function DeleteButton({
   className,
-  src,
   variant = "ghost",
   onClick,
   ...props

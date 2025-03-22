@@ -20,7 +20,6 @@ import DeleteModal from "../delete-modal";
 export const ProofStepEdit = () => {
   const t = useTranslations();
   const { showcaseJSON, selectedCharacter } = useShowcaseStore();
-  const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     scenarios,
@@ -174,7 +173,6 @@ export const ProofStepEdit = () => {
             case "delete":
               console.log("Delete Page clicked");
               setIsModalOpen(true);
-              setIsOpen(false);
               break;
             default:
               console.log("Unknown action");

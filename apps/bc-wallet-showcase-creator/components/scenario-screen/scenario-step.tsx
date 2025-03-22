@@ -3,7 +3,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/lib/utils";
 import { ScenarioStep as ScenarioStepType } from "@/types";
 import { useScenarios } from "@/hooks/use-scenarios";
-import { Copy, GripVertical, Monitor, Trash2 } from "lucide-react";
+import { Copy, GripVertical } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { produce } from "immer";
@@ -14,22 +14,17 @@ export const ScenarioStep = ({
   step,
   stepIndex,
   scenarioIndex,
-  totalSteps,
 }: {
   step: ScenarioStepType;
   stepIndex: number;
   scenarioIndex: number;
-  totalSteps: number;
 }) => {
   const t = useTranslations();
   const {
     selectedStep,
     setSelectedStep,
     setSelectedScenario,
-    selectedScenario,
     setStepState,
-    removeStep,
-    scenarios
   } = useScenarios();
 
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -71,17 +66,6 @@ export const ScenarioStep = ({
       console.log('Error in Copy Step',error)
     }
   }
-
-  const handleDelete = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    removeStep(scenarioIndex, stepIndex);
-  };
-
-  const currentScenario = selectedScenario !== null ? scenarios[selectedScenario] : null;
-  const currentStep = currentScenario && selectedStep !== null 
-    ? currentScenario.steps[selectedStep] 
-    : null;
 
   return (
     <div
@@ -148,7 +132,7 @@ export const ScenarioStep = ({
           {step.id == "testClothesOnlineStep1" && (
             <div className="bg-white dark:bg-dark-bg-secondary p-2 flex">
               <Image
-                src={require(`../../public/assets/NavBar/${"Joyce"}.png`)}
+                src={`/assets/NavBar/Joyce.png`}
                 alt={"Bob"}
                 width={50}
                 height={50}

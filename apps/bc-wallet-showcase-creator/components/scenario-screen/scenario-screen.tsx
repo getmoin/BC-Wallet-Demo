@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -16,134 +15,21 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import ButtonOutline from "../ui/button-outline";
 import { produce } from "immer";
+import { Persona } from "@/openapi-types";
 
 export const ScenarioScreen = () => {
   const t = useTranslations();
-  const { showcaseJSON, selectedCharacter } = useShowcaseStore();
+  const { selectedCharacter } = useShowcaseStore();
   const {
     scenarios,
     setScenarios,
     editScenario,
     removeScenario,
     setStepState,
-    stepState,
     moveStep,
     setSelectedScenario,
     selectedScenario
   } = useScenarios();
-
-  const Data = [
-    {
-        "id": "789e4567-e89b-12d3-a456-434314174123",
-        "name": "Credential Issuance",
-        "description": "This workflow issues credentials to users",
-        "type": "ISSUANCE",
-        "steps": [
-            {
-                "id": "123e4567-e89b-12d3-a456-434314174000",
-                "title": "Verify Identity",
-                "description": "Verify the user's identity",
-                "order": 1,
-                "type": "HUMAN_TASK",
-                "subFlow": "123e4567-e89b-12d3-a456-434314174000",
-                "actions": [
-                    {
-                      "id": "123e4567-ef2d-12d3-abcd-426614174456",
-                      "title": "Download Wallet",
-                      "text": "Download your wallet to continue"
-                  },
-                    {
-                        "id": "123e4567-ef2d-12d3-abcd-426614174451",
-                        "title": "Connect Wallet",
-                        "text": "Connect your wallet to continue"
-                    }
-                ],
-                "asset": {
-                    "id": "123e4567-e89b-12d3-a456-426614174469",
-                    "mediaType": "image/jpeg",
-                    "content": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAADMElEQVR4nOzVwQnAIBQFQYXff81RUkQCOyDj1YOPnbXWPmeTRef+/3O/OyBjzh3CD95BfqICMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMO0TAAD//2Anhf4QtqobAAAAAElFTkSuQmCC",
-                    "fileName": "asset.jpg",
-                    "description": "A beautiful image of a cat"
-                }
-            }
-        ],
-        "personas": [
-            {
-                "id": "123e4567-e89b-12d3-a456-426614174456",
-                "name": "John Doe",
-                "role": "Verifier",
-                "description": "John Doe is a verifier for the system",
-                "headshotImage": {
-                    "id": "123e4567-e89b-12d3-a456-426614174469",
-                    "mediaType": "image/jpeg",
-                    "content": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAADMElEQVR4nOzVwQnAIBQFQYXff81RUkQCOyDj1YOPnbXWPmeTRef+/3O/OyBjzh3CD95BfqICMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMO0TAAD//2Anhf4QtqobAAAAAElFTkSuQmCC",
-                    "fileName": "asset.jpg",
-                    "description": "A beautiful image of a cat"
-                },
-                "bodyImage": {
-                    "id": "123e4567-e89b-12d3-a456-426614174469",
-                    "mediaType": "image/jpeg",
-                    "content": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAADMElEQVR4nOzVwQnAIBQFQYXff81RUkQCOyDj1YOPnbXWPmeTRef+/3O/OyBjzh3CD95BfqICMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMO0TAAD//2Anhf4QtqobAAAAAElFTkSuQmCC",
-                    "fileName": "asset.jpg",
-                    "description": "A beautiful image of a cat"
-                }
-            }
-        ],
-        "relyingParty": {
-            "id": "76543210-e89b-12d3-a456-426614174469",
-            "name": "Relying Party Name",
-            "description": "This relying party verifies credentials from issuers",
-            "type": "ARIES",
-            "organization": "Acme Corporation",
-            "logo": {
-                "id": "123e4567-e89b-12d3-a456-426614174469",
-                "mediaType": "image/jpeg",
-                "content": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAADMElEQVR4nOzVwQnAIBQFQYXff81RUkQCOyDj1YOPnbXWPmeTRef+/3O/OyBjzh3CD95BfqICMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMO0TAAD//2Anhf4QtqobAAAAAElFTkSuQmCC",
-                "fileName": "asset.jpg",
-                "description": "A beautiful image of a cat"
-            },
-            "credentialDefinitions": [
-                {
-                    "id": "123e4567-e89b-12d3-a456-426614174123",
-                    "name": "Credential Definition Name",
-                    "version": "1.0",
-                    "type": "ANONCRED",
-                    "attributes": [
-                        {
-                            "id": "890e4567-e89b-12d3-a456-426614174123",
-                            "name": "name",
-                            "value": "John Doe",
-                            "type": "STRING"
-                        }
-                    ],
-                    "representations": [
-                        {
-                            "id": "123e4567-e89b-12d3-abcd-426614174456"
-                        },
-                        {
-                            "id": "123e4567-e89b-12d3-abcd-426614174456",
-                            "credDefId": "123e4567-e89b-12d3-a456-426614174123",
-                            "schemaId": "123e4567-e89b-12d3-a456-426614174123",
-                            "ocaBundleUrl": "https://example.com/ocaBundle.json"
-                        }
-                    ],
-                    "revocation": {
-                        "id": "abcd4567-e89b-12d3-a456-426614174123",
-                        "title": "Revocation Information",
-                        "description": "This credential is revocable"
-                    },
-                    "icon": {
-                        "id": "123e4567-e89b-12d3-a456-426614174469",
-                        "mediaType": "image/jpeg",
-                        "content": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAADMElEQVR4nOzVwQnAIBQFQYXff81RUkQCOyDj1YOPnbXWPmeTRef+/3O/OyBjzh3CD95BfqICMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMO0TAAD//2Anhf4QtqobAAAAAElFTkSuQmCC",
-                        "fileName": "asset.jpg",
-                        "description": "A beautiful image of a cat"
-                    }
-                }
-            ]
-        }
-    }
-]
 
 const Showcases = {
   "showcase": {
@@ -380,11 +266,9 @@ const Showcases = {
   console.log("Scenario Data:", scenarioData);
 
   // Extract personas
-  const personas = scenarioData.flatMap((scenario) => scenario.personas);
-  console.log("Personas:", personas);
+  const personas = [] as Persona[]
 
-  let intialId = personas[0]?.id || ""
-  const [selectedPersonaId, setSelectedPersonaId] = useState(intialId);
+  const [selectedPersonaId, setSelectedPersonaId] = useState();
 
   // Find the selected persona
   const selectedPersona = personas.find((p) => p.id === selectedPersonaId);
@@ -398,16 +282,6 @@ const Showcases = {
   console.log('SelectedScenario ',SelectedScenario);
 
   const Steps = SelectedScenario ? SelectedScenario.steps : []
-  console.log('Stepss',Steps);
-
-  // Extract actions from steps in the selected scenario
-  const actions = SelectedScenario ? SelectedScenario.steps.flatMap((step) => step.actions) : [];
-
-  console.log('Actions',actions)
-
-  // let STeps = Data;
-  let Personas = personas
-  // let Issuer = Data[0].relyingParty;
 
   // console.log('Showcase JSON', showcaseJSON.personas[selectedCharacter].scenarios);
 
@@ -501,9 +375,9 @@ const Showcases = {
     };
     
     const handleDragStart = (event: DragStartEvent) => {
-      const index = scenarios.findIndex(
-        (screen) => screen.id === event.active.id
-      );
+      // const index = scenarios.findIndex(
+      //   (screen) => screen.id === event.active.id
+      // );
 
       // Find index inside nested `steps`
       const nestedIndex = scenarios.findIndex((sce) =>
@@ -517,9 +391,10 @@ const Showcases = {
   return (
     <div className="bg-white dark:bg-dark-bg-secondary text-light-text dark:text-dark-text min-h-screen flex flex-col">
       <div className="flex bg-gray-100 rounded-md border-b">
-        {Personas && Personas.map((char: any, index: number) => (
+        {personas && (personas || []).map((char: Persona, index: number) => (
           <div
             key={char.id}
+            // @ts-expect-error: TODO: fix this
             onClick={() => setSelectedPersonaId(char.id)}
             className={`w-1/2 p-4 text-center border ${
               index === 0 ? "bg-white dark:bg-dark-bg shadow-md" : "bg-gray-200"
@@ -531,7 +406,7 @@ const Showcases = {
                 <Image
                   // src={char.headshotImage.content}
                   src={
-                    char.headshotImage?.content ||
+                    char.headshotImage ||
                     "/assets/NavBar/Joyce.png"
                   }
                   alt={char.name}
@@ -604,7 +479,8 @@ const Showcases = {
                             key={step.id} // Ensure each action has a unique key
                             step={step} // Pass action directly
                             stepIndex={stepIndex}
-                            actionIndex={stepIndex} // Optional if needed
+                            // @ts-expect-error: TODO: fix this
+                            actionIndex={stepIndex as unknown as number} // Optional if needed
                             scenarioIndex={index}
                             totalSteps={scenario.steps.length}
                           />
@@ -663,3 +539,4 @@ const Showcases = {
     </div>
   );
 };
+

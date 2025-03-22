@@ -18,7 +18,7 @@ export const convertBase64 = (file: File) => {
   });
 };
 
-export function ensureBase64HasPrefix(base64String: any) {
+export function ensureBase64HasPrefix(base64String: string) {
   if (!base64String) return ""; // Return empty if it's undefined or null
 
   // Check if it already contains the data URI prefix

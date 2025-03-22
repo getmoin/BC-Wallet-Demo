@@ -8,7 +8,7 @@ class ApiService {
   private async request<T>(
     method: string,
     url: string,
-    data?: any
+    data?: Record<string, unknown>
   ): Promise<T | void> {
     const fullUrl = `${this.baseUrl}${url}`;
     const options: RequestInit = {
@@ -48,18 +48,18 @@ class ApiService {
     }
   }
 
-  get<T>(url: string, params?: Record<string, any>): Promise<T | void> {
+  get<T>(url: string, params?: Record<string, string>): Promise<T | void> {
     const queryString = params
       ? "?" + new URLSearchParams(params).toString()
       : "";
     return this.request<T>("GET", `${url}${queryString}`);
   }
 
-  post<T>(url: string, data?: any): Promise<T | void> {
+  post<T>(url: string, data?: Record<string, unknown>): Promise<T | void> {
     return this.request<T>("POST", url, data);
   }
 
-  put<T>(url: string, data?: any): Promise<T | void> {
+  put<T>(url: string, data?: Record<string, unknown>): Promise<T | void> {
     return this.request<T>("PUT", url, data);
   }
 
