@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.build.json",
 
-  "include": ["apps/*", "packages/*", "./.eslintrc.js", "apps/*/config/*", "apps/*/src/*"],
+  "include": ["apps/*", "packages/*",
+    "./eslint.config.js", "apps/*/config/*", "apps/*/src/*"],
   "exclude": ["node_modules", "build"]
 }
