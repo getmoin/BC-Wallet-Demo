@@ -1,46 +1,40 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@/components/ui/form";
-import { FormTextInput, FormTextArea } from "@/components/text-input";
-import { DisplaySearchResults } from "../onboarding-screen/display-search-results";
-import { DisplayStepCredentials } from "./display-step-credentials";
-import { useScenarios } from "@/hooks/use-scenarios";
-import { useShowcaseStore } from "@/hooks/use-showcase-store";
-import { proofStepSchema, ProofStepFormData } from "@/schemas/scenario";
-import { RequestType, ScenarioStep, StepType } from "@/types";
-import { Monitor } from "lucide-react";
-import { useTranslations } from "next-intl";
-import StepHeader from "../step-header";
-import ButtonOutline from "../ui/button-outline";
-import DeleteModal from "../delete-modal";
+import { useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { FormTextInput, FormTextArea } from '@/components/text-input'
+import { Form } from '@/components/ui/form'
+import { useScenarios } from '@/hooks/use-scenarios'
+import { useShowcaseStore } from '@/hooks/use-showcase-store'
+import type { ProofStepFormData } from '@/schemas/scenario'
+import { proofStepSchema } from '@/schemas/scenario'
+import type { ScenarioStep } from '@/types'
+import { RequestType, StepType } from '@/types'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Monitor } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+
+import DeleteModal from '../delete-modal'
+import { DisplaySearchResults } from '../onboarding-screen/display-search-results'
+import StepHeader from '../step-header'
+import ButtonOutline from '../ui/button-outline'
+import { DisplayStepCredentials } from './display-step-credentials'
 
 export const ProofStepEdit = () => {
-  const t = useTranslations();
-  const { showcaseJSON, selectedCharacter } = useShowcaseStore();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const {
-    scenarios,
-    selectedScenario,
-    selectedStep,
-    setStepState,
-    updateStep,
-  } = useScenarios();
-  const [searchResults, setSearchResults] = useState<string[]>([]);
+  const t = useTranslations()
+  const { showcaseJSON, selectedCharacter } = useShowcaseStore()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { scenarios, selectedScenario, selectedStep, setStepState, updateStep } = useScenarios()
+  const [searchResults, setSearchResults] = useState<string[]>([])
 
-  const currentScenario =
-    selectedScenario !== null ? scenarios[selectedScenario] : null;
-  const currentStep =
-    currentScenario && selectedStep !== null
-      ? currentScenario.steps[selectedStep]
-      : null;
+  const currentScenario = selectedScenario !== null ? scenarios[selectedScenario] : null
+  const currentStep = currentScenario && selectedStep !== null ? currentScenario.steps[selectedStep] : null
 
   const form = useForm<ProofStepFormData>({
     resolver: zodResolver(proofStepSchema),
-    mode: "onChange",
-  });
+    mode: 'onChange',
+  })
 
   useEffect(() => {
     if (currentStep && currentStep.type === StepType.CONNECT_AND_VERIFY) {
@@ -49,43 +43,38 @@ export const ProofStepEdit = () => {
         requestOptions: {
           ...currentStep.requestOptions,
           proofRequest: {
-            attributes:
-              currentStep.requestOptions.proofRequest.attributes || {},
-            predicates:
-              currentStep.requestOptions.proofRequest.predicates || {},
+            attributes: currentStep.requestOptions.proofRequest.attributes || {},
+            predicates: currentStep.requestOptions.proofRequest.predicates || {},
           },
         },
-      } as ProofStepFormData;
+      } as ProofStepFormData
 
-      form.reset(proofStep);
+      form.reset(proofStep)
     }
-  }, [currentStep, form.reset]);
+  }, [currentStep, form.reset])
 
   const searchCredential = (value: string) => {
-    setSearchResults([]);
-    if (!value) return;
+    setSearchResults([])
+    if (!value) return
 
-    const credentials = showcaseJSON.personas[selectedCharacter].credentials;
-    const search = value.toUpperCase();
+    const credentials = showcaseJSON.personas[selectedCharacter].credentials
+    const search = value.toUpperCase()
 
     const results = Object.keys(credentials).filter(
       (credentialId) =>
         credentials[credentialId].issuer_name.toUpperCase().includes(search) ||
         credentials[credentialId].name.toUpperCase().includes(search)
-    );
+    )
 
-    setSearchResults(results);
-  };
+    setSearchResults(results)
+  }
 
   const addCredential = (credentialId: string) => {
-    setSearchResults([]);
-    const currentAttributes = form.getValues(
-      "requestOptions.proofRequest.attributes"
-    );
+    setSearchResults([])
+    const currentAttributes = form.getValues('requestOptions.proofRequest.attributes')
 
     if (!currentAttributes[credentialId]) {
-      const credential =
-        showcaseJSON.personas[selectedCharacter].credentials[credentialId];
+      const credential = showcaseJSON.personas[selectedCharacter].credentials[credentialId]
       form.setValue(
         `requestOptions.proofRequest.attributes.${credentialId}`,
         {
@@ -96,44 +85,44 @@ export const ProofStepEdit = () => {
           shouldTouch: true,
           shouldValidate: true,
         }
-      );
+      )
     }
-  };
+  }
 
   const removeCredential = (credentialId: string) => {
-    const formValues = form.getValues();
+    const formValues = form.getValues()
     const newAttributes = {
       ...formValues.requestOptions.proofRequest.attributes,
-    };
-    delete newAttributes[credentialId];
+    }
+    delete newAttributes[credentialId]
 
-    form.setValue("requestOptions.proofRequest.attributes", newAttributes, {
+    form.setValue('requestOptions.proofRequest.attributes', newAttributes, {
       shouldDirty: true,
       shouldTouch: true,
       shouldValidate: true,
-    });
+    })
 
     // Remove any predicates that reference this credential
     if (formValues.requestOptions.proofRequest.predicates) {
       const newPredicates = {
         ...formValues.requestOptions.proofRequest.predicates,
-      };
+      }
       Object.entries(newPredicates).forEach(([key, predicate]) => {
         if (predicate.restrictions[0] === credentialId) {
-          delete newPredicates[key];
+          delete newPredicates[key]
         }
-      });
+      })
 
-      form.setValue("requestOptions.proofRequest.predicates", newPredicates, {
+      form.setValue('requestOptions.proofRequest.predicates', newPredicates, {
         shouldDirty: true,
         shouldTouch: true,
         shouldValidate: true,
-      });
+      })
     }
-  };
+  }
 
   const onSubmit = (data: ProofStepFormData) => {
-    if (selectedScenario === null || selectedStep === null) return;
+    if (selectedScenario === null || selectedStep === null) return
 
     const updatedStep: ScenarioStep = {
       ...data,
@@ -146,36 +135,36 @@ export const ProofStepEdit = () => {
           predicates: data.requestOptions.proofRequest.predicates || {},
         },
       },
-    };
+    }
 
-    updateStep(selectedScenario, selectedStep, updatedStep);
-    setStepState("none-selected");
-  };
+    updateStep(selectedScenario, selectedStep, updatedStep)
+    setStepState('none-selected')
+  }
 
-  if (!currentStep) return null;
+  if (!currentStep) return null
 
   return (
     <>
       <StepHeader
         icon={<Monitor strokeWidth={3} />}
-        title={"Edit Proof Step"}
+        title={'Edit Proof Step'}
         onActionClick={(action) => {
           switch (action) {
-            case "save":
-              console.log("Save Draft clicked");
-              break;
-            case "preview":
-              console.log("Preview clicked");
-              break;
-            case "revert":
-              console.log("Revert Changes clicked");
-              break;
-            case "delete":
-              console.log("Delete Page clicked");
-              setIsModalOpen(true);
-              break;
+            case 'save':
+              console.log('Save Draft clicked')
+              break
+            case 'preview':
+              console.log('Preview clicked')
+              break
+            case 'revert':
+              console.log('Revert Changes clicked')
+              break
+            case 'delete':
+              console.log('Delete Page clicked')
+              setIsModalOpen(true)
+              break
             default:
-              console.log("Unknown action");
+              console.log('Unknown action')
           }
         }}
       />
@@ -235,10 +224,7 @@ export const ProofStepEdit = () => {
                   </div>
                 </div>
 
-                <DisplaySearchResults
-                  searchResults={searchResults}
-                  addCredential={addCredential}
-                />
+                <DisplaySearchResults searchResults={searchResults} addCredential={addCredential} />
 
                 {currentScenario && (
                   <DisplayStepCredentials
@@ -254,13 +240,9 @@ export const ProofStepEdit = () => {
             </div>
           </div>
           <div className="mt-auto pt-4 border-t flex justify-end gap-3">
-            <ButtonOutline onClick={() => setStepState("none-selected")}>
-              {t("action.cancel_label")}
-            </ButtonOutline>
+            <ButtonOutline onClick={() => setStepState('none-selected')}>{t('action.cancel_label')}</ButtonOutline>
 
-            <ButtonOutline disabled={!form.formState.isDirty}>
-              {t("action.next_label")}
-            </ButtonOutline>
+            <ButtonOutline disabled={!form.formState.isDirty}>{t('action.next_label')}</ButtonOutline>
           </div>
         </form>
       </Form>
@@ -270,8 +252,8 @@ export const ProofStepEdit = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onDelete={() => {
-          console.log("Item Deleted");
-          setIsModalOpen(false);
+          console.log('Item Deleted')
+          setIsModalOpen(false)
         }}
         header="Are you sure you want to delete this page?"
         description="Are you sure you want to delete this page?"
@@ -280,5 +262,5 @@ export const ProofStepEdit = () => {
         deleteText="DELETE"
       />
     </>
-  );
-};
+  )
+}

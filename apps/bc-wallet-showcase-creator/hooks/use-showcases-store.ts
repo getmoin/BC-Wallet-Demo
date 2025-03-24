@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { ShowcaseRequestType, PersonaRequestType } from "@/openapi-types";
+import type { ShowcaseRequestType, PersonaRequestType } from "@/openapi-types";
 
 interface ShowcaseStore {
   showcase: ShowcaseRequestType;  

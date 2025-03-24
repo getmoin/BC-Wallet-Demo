@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { useShowcaseStore } from "@/hooks/use-showcases-store";
-import { 
+import type { 
   Persona, 
   ScenarioRequestType, 
   StepRequestType,

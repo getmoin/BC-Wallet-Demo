@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useOnboarding } from "@/hooks/use-onboarding";
 import { useShowcaseCreation } from "@/hooks/use-showcase-creation";
-import { Persona, ShowcaseRequestType, StepRequestType } from "@/openapi-types";
+import type { Persona, ShowcaseRequestType, StepRequestType } from "@/openapi-types";
 import { createDefaultStep } from "@/lib/steps";
 import { useShowcaseStore } from "@/hooks/use-showcases-store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

@@ -1,4 +1,5 @@
-import { LogEvent, pino, type Logger } from "pino";
+import type { LogEvent } from 'pino'
+import { pino, type Logger } from 'pino'
 
 /**
  * Application configuration object
@@ -7,9 +8,9 @@ import { LogEvent, pino, type Logger } from "pino";
  * @property {string} publicUrl - Base URL for public assets
  */
 const config = {
-    serverUrl: process.env.REACT_APP_API_PATH || 'http://localhost:3000',
-    env: process.env.NODE_ENV,
-    publicUrl: process.env.PUBLIC_URL,
+  serverUrl: process.env.REACT_APP_API_PATH || 'http://localhost:3000',
+  env: process.env.NODE_ENV,
+  publicUrl: process.env.PUBLIC_URL,
 }
 
 /**
@@ -21,31 +22,30 @@ const config = {
  */
 const logger: Logger = pino({
   transport: {
-    target: "pino-pretty",
+    target: 'pino-pretty',
     options: {
       colorize: true,
     },
   },
-  level: process.env.PINO_LOG_LEVEL || "info",
+  level: process.env.PINO_LOG_LEVEL || 'info',
   redact: [], // prevent logging of sensitive data
   browser: {
     asObject: true,
     serialize: true,
     transmit: {
-      level: "info",
+      level: 'info',
       /**
        * Sends log events to the server using navigator.sendBeacon
        * @param {string} _level - Log level (unused parameter)
        * @param {LogEvent} logEvent - The log event to be transmitted
        */
       send: (_level: string, logEvent: LogEvent) => {
-        if (typeof window !== "undefined") {
+        if (typeof window !== 'undefined') {
           const headers = {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "Origin, X-Requested-With, Content-Type, Accept",
-            type: "application/json",
-          };
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+            type: 'application/json',
+          }
           const blob = new Blob(
             [
               JSON.stringify({
@@ -56,15 +56,15 @@ const logger: Logger = pino({
               }),
             ],
             headers
-          );
+          )
           if (config.serverUrl) {
             navigator.sendBeacon(`${config.serverUrl}/log`, blob)
           }
         }
       },
-    }
+    },
   },
-});
+})
 
 /**
  * Creates a new logger instance with additional context
@@ -108,13 +108,13 @@ export const formatLogContext = ({ action, details, error }: LogContext) => {
   return {
     ...(action && { action }),
     ...(details && { details }),
-    ...(error && { 
+    ...(error && {
       error: {
         message: error.message,
         stack: error.stack,
-        name: error.name
-      }
-    })
+        name: error.name,
+      },
+    }),
   }
 }
 
@@ -124,6 +124,6 @@ export const formatLogContext = ({ action, details, error }: LogContext) => {
  * @example
  * log('Application started');
  */
-export const log = (msg: string) => logger.info(msg);
+export const log = (msg: string) => logger.info(msg)
 
-export default logger;
+export default logger

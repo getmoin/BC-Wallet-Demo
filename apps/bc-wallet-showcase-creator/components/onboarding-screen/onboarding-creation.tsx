@@ -1,62 +1,46 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import {
-  DndContext,
-  closestCenter,
-  DragOverlay,
-  DragEndEvent,
-  DragStartEvent,
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { useTranslations } from "next-intl";
-import { SortableStep } from "@/components/onboarding-screen/sortable-step";
-import Image from "next/image";
-import { ensureBase64HasPrefix } from "@/lib/utils";
-import { Persona } from "@/openapi-types";
-import { Button } from "../ui/button";
-import { useOnboardingAdapter } from "@/hooks/use-onboarding-adapter";
+import { useState } from 'react'
+
+import { SortableStep } from '@/components/onboarding-screen/sortable-step'
+import { useOnboardingAdapter } from '@/hooks/use-onboarding-adapter'
+import { ensureBase64HasPrefix } from '@/lib/utils'
+import type { Persona } from '@/openapi-types'
+import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
+import { DndContext, closestCenter, DragOverlay } from '@dnd-kit/core'
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+
+import { Button } from '../ui/button'
 
 export const CreateOnboardingScreen = () => {
-  const t = useTranslations();
-  const {
-    steps,
-    selectedStep,
-    moveStep,
-    setStepState,
-    personas,
-    activePersonaId,
-    setActivePersonaId,
-    activePersona,
-  } = useOnboardingAdapter();
+  const t = useTranslations()
+  const { steps, selectedStep, moveStep, setStepState, personas, activePersonaId, setActivePersonaId, activePersona } =
+    useOnboardingAdapter()
 
   const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (!over) return;
+    const { active, over } = event
+    if (!over) return
 
-    const oldIndex = steps.findIndex((step) => step.id === active.id);
-    const newIndex = steps.findIndex((step) => step.id === over.id);
+    const oldIndex = steps.findIndex((step) => step.id === active.id)
+    const newIndex = steps.findIndex((step) => step.id === over.id)
 
     if (oldIndex !== newIndex) {
-      moveStep(oldIndex, newIndex);
+      moveStep(oldIndex, newIndex)
     }
-  };
+  }
 
   const handleDragStart = (event: DragStartEvent) => {
     // Handle drag start if needed
-  };
+  }
 
   return (
     <div className="bg-white dark:bg-dark-bg-secondary text-light-text dark:text-dark-text rounded-md border shadow-sm">
       {personas.length === 0 ? (
         <div className="p-6 text-center">
           <h3 className="text-lg font-semibold mb-4">No personas selected</h3>
-          <p className="mb-4">
-            You need to select personas before creating onboarding steps.
-          </p>
+          <p className="mb-4">You need to select personas before creating onboarding steps.</p>
           <Button variant="outlineAction" onClick={() => window.history.back()}>
             Go Back to Select Personas
           </Button>
@@ -70,8 +54,8 @@ export const CreateOnboardingScreen = () => {
                 onClick={() => setActivePersonaId(persona.id)}
                 className={`w-full p-4 text-center cursor-pointer transition-colors duration-200 ${
                   activePersonaId === persona.id
-                    ? "bg-white dark:bg-dark-bg shadow-md"
-                    : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    ? 'bg-white dark:bg-dark-bg shadow-md'
+                    : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600'
                 }`}
               >
                 <div className="flex flex-col items-center">
@@ -80,7 +64,7 @@ export const CreateOnboardingScreen = () => {
                       src={
                         persona.headshotImage?.content
                           ? ensureBase64HasPrefix(persona.headshotImage.content)
-                          : "/assets/NavBar/Joyce.png"
+                          : '/assets/NavBar/Joyce.png'
                       }
                       alt={`${persona.name} Headshot`}
                       width={50}
@@ -97,31 +81,18 @@ export const CreateOnboardingScreen = () => {
 
           <div className="border-b w-full light-border dark:dark-border">
             <div className="p-4">
-              <h2 className="text-base font-bold">
-                {activePersona?.name || "Persona"}'s Journey
-              </h2>
+              <h2 className="text-base font-bold">{activePersona?.name || 'Persona'}'s Journey</h2>
               <p className="text-xs">
-                {t("onboarding.editing_steps_message") ||
-                  "Configure the onboarding experience for this persona"}
+                {t('onboarding.editing_steps_message') || 'Configure the onboarding experience for this persona'}
               </p>
             </div>
           </div>
 
-          <DndContext
-            collisionDetection={closestCenter}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-          >
-            <SortableContext
-              items={steps.map((step) => step.id)}
-              strategy={verticalListSortingStrategy}
-            >
+          <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+            <SortableContext items={steps.map((step) => step.id)} strategy={verticalListSortingStrategy}>
               {steps.length === 0 ? (
                 <div className="text-center text-gray-500 p-4">
-                  <p>
-                    No steps created yet. Click the button below to add your
-                    first step.
-                  </p>
+                  <p>No steps created yet. Click the button below to add your first step.</p>
                 </div>
               ) : (
                 steps.map((step, index) => (
@@ -141,9 +112,7 @@ export const CreateOnboardingScreen = () => {
                   <div className="top-1">
                     <p>{steps[selectedStep].title}</p>
                     <div className="highlight-container w-full flex flex-row justify-items-center items-center rounded p-3 unselected-item backdrop-blur">
-                      <p className="text-sm">
-                        {steps[selectedStep].description}
-                      </p>
+                      <p className="text-sm">{steps[selectedStep].description}</p>
                     </div>
                   </div>
                 )}
@@ -153,16 +122,16 @@ export const CreateOnboardingScreen = () => {
 
           <div className="p-4 mt-auto border-t">
             <Button
-              onClick={() => setStepState("creating-new")}
+              onClick={() => setStepState('creating-new')}
               className="w-full"
               variant="outlineAction"
               disabled={activePersonaId === null}
             >
-              {t("onboarding.add_step_label") || "Add Step"}
+              {t('onboarding.add_step_label') || 'Add Step'}
             </Button>
           </div>
         </>
       )}
     </div>
-  );
-};
+  )
+}

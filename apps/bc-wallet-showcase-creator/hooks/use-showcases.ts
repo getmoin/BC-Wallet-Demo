@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import apiClient from "@/lib/apiService";
-import { ShowcaseRequest, ShowcaseResponse, ShowcasesResponse } from "@/openapi-types";
+import type { ShowcaseRequest, ShowcaseResponse, ShowcasesResponse } from "@/openapi-types";
 
 const staleTime = 1000 * 60 * 5; // 5 minutes
 

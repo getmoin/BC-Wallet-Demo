@@ -1,35 +1,32 @@
-import { ScenarioFormData } from '@/schemas/scenario';
-import { 
-  Scenario,
-  ScenarioStep,
-  StepType,
-  RequestType,
-  ProofRequestPredicates
-} from '@/types';
+import type { ScenarioFormData } from '@/schemas/scenario'
+import type { Scenario, ScenarioStep, ProofRequestPredicates } from '@/types'
+import { StepType, RequestType } from '@/types'
 
-type PredicateType = ">=" | "<=" | "=" | "none";
+type PredicateType = '>=' | '<=' | '=' | 'none'
 
-const transformPredicate = (predicate: ProofRequestPredicates): {
-  name: string;
-  value: number;
-  type: PredicateType;
-  restrictions: string[];
+const transformPredicate = (
+  predicate: ProofRequestPredicates
+): {
+  name: string
+  value: number
+  type: PredicateType
+  restrictions: string[]
 } => {
   return {
     name: predicate.name,
     value: predicate.value,
-    type: (predicate.type as PredicateType) || "none",
-    restrictions: predicate.restrictions
-  };
-};
+    type: (predicate.type as PredicateType) || 'none',
+    restrictions: predicate.restrictions,
+  }
+}
 
 const transformStep = (step: ScenarioStep): ScenarioFormData['steps'][number] => {
   if (step.type === StepType.CONNECT_AND_VERIFY) {
-    const transformedPredicates: Record<string, ReturnType<typeof transformPredicate>> = {};
-        
+    const transformedPredicates: Record<string, ReturnType<typeof transformPredicate>> = {}
+
     Object.entries(step.requestOptions.proofRequest.predicates).forEach(([key, value]) => {
-      transformedPredicates[key] = transformPredicate(value);
-    });
+      transformedPredicates[key] = transformPredicate(value)
+    })
 
     return {
       id: step.id,
@@ -42,12 +39,12 @@ const transformStep = (step: ScenarioStep): ScenarioFormData['steps'][number] =>
         type: RequestType.OOB as const,
         proofRequest: {
           attributes: step.requestOptions.proofRequest.attributes,
-          predicates: transformedPredicates
-        }
-      }
-    };
+          predicates: transformedPredicates,
+        },
+      },
+    }
   }
-  
+
   return {
     id: step.id,
     title: step.title,
@@ -59,11 +56,11 @@ const transformStep = (step: ScenarioStep): ScenarioFormData['steps'][number] =>
       type: RequestType.BASIC as const,
       proofRequest: {
         attributes: {},
-        predicates: {}
-      }
-    }
-  };
-};
+        predicates: {},
+      },
+    },
+  }
+}
 
 export const scenarioToFormData = (scenario: Scenario): ScenarioFormData => ({
   id: scenario.id,
@@ -79,5 +76,5 @@ export const scenarioToFormData = (scenario: Scenario): ScenarioFormData => ({
     text: scenario?.summary?.text ?? '',
     image: scenario?.summary?.image || '',
   },
-  steps: scenario.steps.map(transformStep)
-});
+  steps: scenario.steps.map(transformStep),
+})

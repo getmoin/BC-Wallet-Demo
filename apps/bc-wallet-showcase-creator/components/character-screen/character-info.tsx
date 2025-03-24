@@ -1,33 +1,24 @@
-import Image from "next/image";
-import { useShowcaseStore } from "@/hooks/use-showcase-store";
-import { Button } from '@/components/ui/button';
-import { User } from "lucide-react";
-import { useTranslations } from 'next-intl';
+import { Button } from '@/components/ui/button'
+import { useShowcaseStore } from '@/hooks/use-showcase-store'
+import { User } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 
 export const CharacterInfo = () => {
   const t = useTranslations()
-  const {
-    showcaseJSON,
-    selectedCharacter,
-    setEditMode,
-    removeCharacter
-  } = useShowcaseStore();
+  const { showcaseJSON, selectedCharacter, setEditMode, removeCharacter } = useShowcaseStore()
 
-  const handleRemoveCharacter = (
-    i: number
-  ) => {
-    if (showcaseJSON.personas.length === 1) return;
-    removeCharacter(i);
-  };
+  const handleRemoveCharacter = (i: number) => {
+    if (showcaseJSON.personas.length === 1) return
+    removeCharacter(i)
+  }
 
   return (
     <>
       <div className="flex ">
         <div className="m-3">
           <p className="text-foreground text-sm">{t('character.section_title')}</p>
-          <h3 className="text-2xl font-bold text-foreground">
-            {t('character.info_header_title')}
-          </h3>
+          <h3 className="text-2xl font-bold text-foreground">{t('character.info_header_title')}</h3>
         </div>
 
         <div className="ml-auto">
@@ -41,7 +32,7 @@ export const CharacterInfo = () => {
                 className="p-1 w-20 m-1 button-dark hover:bg-neutral-600"
                 onClick={(event) => {
                   event.preventDefault()
-                 handleRemoveCharacter(selectedCharacter)
+                  handleRemoveCharacter(selectedCharacter)
                 }}
               >
                 {t('action.delete_label')}
@@ -53,15 +44,15 @@ export const CharacterInfo = () => {
 
       <div className="p-3 m-3 bg-light-bg dark:bg-dark-bg rounded">
         <p>
-          <span className="font-bold">{t('character.info_name_label')}</span>{" "}
-          {showcaseJSON["personas"][selectedCharacter].name}
+          <span className="font-bold">{t('character.info_name_label')}</span>{' '}
+          {showcaseJSON['personas'][selectedCharacter].name}
         </p>
         <p>
-          <span className="font-bold">{t('character.info_role_label')}</span>{" "}
-          {showcaseJSON["personas"][selectedCharacter].type}
+          <span className="font-bold">{t('character.info_role_label')}</span>{' '}
+          {showcaseJSON['personas'][selectedCharacter].type}
         </p>
         <p className="font-bold mt-6">{t('character.info_description_label')}</p>
-        <p>{showcaseJSON["personas"][selectedCharacter].description}</p>
+        <p>{showcaseJSON['personas'][selectedCharacter].description}</p>
       </div>
 
       <div className="grid grid-cols-2">
@@ -98,5 +89,5 @@ export const CharacterInfo = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

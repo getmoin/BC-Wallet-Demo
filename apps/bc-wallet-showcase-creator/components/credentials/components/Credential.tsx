@@ -1,6 +1,6 @@
-import { Credentials, ShowcaseJSON } from "@/types";
-import { Trash2 } from "lucide-react";
-import { useTranslations } from 'next-intl';
+import type { Credentials, ShowcaseJSON } from '@/types'
+import { Trash2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export const Credential = ({
   issuerName,
@@ -12,32 +12,25 @@ export const Credential = ({
   handleCredentialRemoval,
   showcaseJSON,
 }: {
-  issuerName: string;
-  credentialName: string;
-  attributeCount: number;
-  index: keyof Credentials;
-  handleClick: (index: keyof Credentials) => void;
-  selectedCredential: keyof Credentials | null;
-  handleCredentialRemoval: () => void;
-  showcaseJSON: ShowcaseJSON;
+  issuerName: string
+  credentialName: string
+  attributeCount: number
+  index: keyof Credentials
+  handleClick: (index: keyof Credentials) => void
+  selectedCredential: keyof Credentials | null
+  handleCredentialRemoval: () => void
+  showcaseJSON: ShowcaseJSON
 }) => {
   const t = useTranslations()
-  const isSingleCredential =
-    Object.keys(showcaseJSON.personas[0].credentials).length === 1;
+  const isSingleCredential = Object.keys(showcaseJSON.personas[0].credentials).length === 1
 
   return (
     <>
       <div className="flex flex-row">
-        <div
-          className="w-full"
-          data-cred-id={index}
-          onClick={(e) => handleClick(index)}
-        >
+        <div className="w-full" data-cred-id={index} onClick={(e) => handleClick(index)}>
           <div
             className={`credential  dark:hover:bg-dark-input hover:bg-light-btn-hover hover:cursor-pointer rounded p-3 mt-3 ${
-              selectedCredential === index
-                ? "border-2 border-primary"
-                : "border-2 border-transparent"
+              selectedCredential === index ? 'border-2 border-primary' : 'border-2 border-transparent'
             }`}
           >
             <div className="grid grid-cols-3">
@@ -59,15 +52,13 @@ export const Credential = ({
         </div>
         <div
           className={`remove text-xl flex items-center justify-center w-1/5 ${
-            isSingleCredential ? "hidden" : "trash-button"
+            isSingleCredential ? 'hidden' : 'trash-button'
           }`}
-          onClick={() =>
-            selectedCredential !== null && handleCredentialRemoval()
-          }
+          onClick={() => selectedCredential !== null && handleCredentialRemoval()}
         >
-          <Trash2 className="cursor-pointer"/>
+          <Trash2 className="cursor-pointer" />
         </div>
       </div>
     </>
-  );
+  )
 }

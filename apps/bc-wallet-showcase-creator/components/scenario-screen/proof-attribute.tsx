@@ -1,25 +1,19 @@
-import { Attribute } from "@/types";
-import { Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { PREDICATE_OPTIONS } from "@/schemas/scenario";
-import { useTranslations } from "next-intl";
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { PREDICATE_OPTIONS } from '@/schemas/scenario'
+import type { Attribute } from '@/types'
+import { Trash2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 interface ProofAttributeProps {
-  index: number;
-  attribute: string;
-  availableAttributes: Attribute[];
-  currentValue: string;
-  onAttributeChange: (index: number, value: string) => void;
-  onConditionTypeChange: (index: number, value: string) => void;
-  onRemove: (index: number) => void;
+  index: number
+  attribute: string
+  availableAttributes: Attribute[]
+  currentValue: string
+  onAttributeChange: (index: number, value: string) => void
+  onConditionTypeChange: (index: number, value: string) => void
+  onRemove: (index: number) => void
 }
 
 export const ProofAttribute = ({
@@ -31,21 +25,19 @@ export const ProofAttribute = ({
   onConditionTypeChange,
   onRemove,
 }: ProofAttributeProps) => {
-  const t = useTranslations();
+  const t = useTranslations()
   return (
     <div className="grid grid-cols-5 gap-4 items-end">
       <div className="space-y-2">
         <label className="text-sm font-medium">Attribute</label>
         <Select
           onValueChange={(value) => {
-            onAttributeChange(index, value as any);
+            onAttributeChange(index, value as any)
           }}
           defaultValue={attribute}
         >
           <SelectTrigger>
-            <SelectValue
-              placeholder={t("scenario.proof_attribute_placeholder")}
-            />
+            <SelectValue placeholder={t('scenario.proof_attribute_placeholder')} />
           </SelectTrigger>
           <SelectContent>
             {availableAttributes.map((attr) => (
@@ -64,14 +56,9 @@ export const ProofAttribute = ({
 
       <div className="space-y-2">
         <label className="text-sm font-medium">Condition</label>
-        <Select
-          value="none"
-          onValueChange={(value) => onConditionTypeChange(index, value)}
-        >
+        <Select value="none" onValueChange={(value) => onConditionTypeChange(index, value)}>
           <SelectTrigger>
-            <SelectValue
-              placeholder={t("scenario.proof_attribute_placeholder")}
-            />
+            <SelectValue placeholder={t('scenario.proof_attribute_placeholder')} />
           </SelectTrigger>
           <SelectContent>
             {PREDICATE_OPTIONS.map((option) => (
@@ -98,5 +85,5 @@ export const ProofAttribute = ({
         <Trash2 className="h-4 w-4" />
       </Button>
     </div>
-  );
-};
+  )
+}

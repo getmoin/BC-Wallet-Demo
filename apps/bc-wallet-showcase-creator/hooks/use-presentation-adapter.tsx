@@ -1,7 +1,7 @@
 // hooks/use-onboarding-adapter.tsx
 import { useEffect, useState, useCallback } from "react";
 import { usePresentations } from "@/hooks/use-presentation";
-import { Persona, ShowcaseRequestType, StepRequestType } from "@/openapi-types";
+import type { Persona, ShowcaseRequestType, StepRequestType } from "@/openapi-types";
 import { createDefaultStep } from "@/lib/steps";
 import { useShowcaseStore } from "@/hooks/use-showcases-store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

@@ -1,31 +1,24 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { saveAs } from "file-saver";
-import { useShowcaseStore } from "@/hooks/use-showcase-store";
-import { useTranslations } from 'next-intl';
+import { useState } from 'react'
 
-export const SaveModal = ({
-  setShowModal,
-}: {
-  setShowModal: (showModal: boolean) => void;
-}) => {
+import { useShowcaseStore } from '@/hooks/use-showcase-store'
+import { saveAs } from 'file-saver'
+import { useTranslations } from 'next-intl'
+
+export const SaveModal = ({ setShowModal }: { setShowModal: (showModal: boolean) => void }) => {
   const t = useTranslations()
-  const [ filename, setFilename ] = useState("");
-  const { showcaseJSON } = useShowcaseStore();
-
+  const [filename, setFilename] = useState('')
+  const { showcaseJSON } = useShowcaseStore()
 
   function saveJSON() {
-    const cDate = new Date();
+    const cDate = new Date()
     const blob = new Blob([JSON.stringify(showcaseJSON.personas)], {
-      type: "text/plain;charset=utf-8",
-    });
-    saveAs(
-      blob,
-      `${filename}_(${cDate.getMonth()}-${cDate.getDate()}-${cDate.getFullYear()}).json`
-    );
+      type: 'text/plain;charset=utf-8',
+    })
+    saveAs(blob, `${filename}_(${cDate.getMonth()}-${cDate.getDate()}-${cDate.getFullYear()}).json`)
 
-    setShowModal(false);
+    setShowModal(false)
   }
 
   return (
@@ -35,17 +28,16 @@ export const SaveModal = ({
           <div className="border dark:bg-dark-bg-secondary rounded-lg shadow-xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
             <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 dark:border-gray-600 rounded-t">
-              <h3 className="text-3xl font-semibold text-gray-900 dark:text-gray-100">
-                {t('showcase.header_title')}
-              </h3>
+              <h3 className="text-3xl font-semibold text-gray-900 dark:text-gray-100">{t('showcase.header_title')}</h3>
             </div>
 
             {/*body*/}
             <div className="relative p-6 flex-auto">
               <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed">
-                {t('showcase.title')}<br />
+                {t('showcase.title')}
+                <br />
               </p>
-              <p className="italic text-gray-500 dark:text-gray-400 mb-4" style={{whiteSpace: 'pre-wrap'}}>
+              <p className="italic text-gray-500 dark:text-gray-400 mb-4" style={{ whiteSpace: 'pre-wrap' }}>
                 {t('showcase.subtitle')}
               </p>
               <input
@@ -54,7 +46,7 @@ export const SaveModal = ({
                 placeholder="MyShowcase_v3"
                 value={filename}
                 onChange={(e) => {
-                  setFilename(e.target.value.replace(/\s/g, ""));
+                  setFilename(e.target.value.replace(/\s/g, ''))
                 }}
               />
             </div>
@@ -82,5 +74,5 @@ export const SaveModal = ({
       </div>
       <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
     </>
-  );
+  )
 }

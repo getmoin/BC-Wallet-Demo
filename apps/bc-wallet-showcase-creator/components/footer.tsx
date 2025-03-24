@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 export const Footer = () => {
   const t = useTranslations()
@@ -8,5 +8,5 @@ export const Footer = () => {
         &copy; {new Date().getFullYear()} {t('footer.copyright_label')}
       </p>
     </footer>
-  );
-};
+  )
+}

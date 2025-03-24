@@ -1,9 +1,11 @@
-import { Input } from "./ui/input"
-import { Textarea } from "./ui/textarea"
-import { Label } from "./ui/label"
-import { UseFormRegister, FieldValues, Path, RegisterOptions } from "react-hook-form"
-import { cn } from "@/lib/utils"
-import { FormMessage } from "./ui/form"
+import type { UseFormRegister, FieldValues, Path, RegisterOptions } from 'react-hook-form'
+
+import { cn } from '@/lib/utils'
+
+import { FormMessage } from './ui/form'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
+import { Textarea } from './ui/textarea'
 
 interface FormInputProps<T extends FieldValues> {
   label: string
@@ -15,20 +17,17 @@ interface FormInputProps<T extends FieldValues> {
   rules?: RegisterOptions
 }
 
-export const FormTextInput = <T extends FieldValues>({ 
-  label, 
-  name, 
-  register, 
-  error, 
+export const FormTextInput = <T extends FieldValues>({
+  label,
+  name,
+  register,
+  error,
   placeholder,
   className,
 }: FormInputProps<T>) => {
   return (
-    <div className={cn("space-y-2", className)}>
-      <Label
-        className="text-md font-bold text-foreground/80"
-        htmlFor={name}
-      >
+    <div className={cn('space-y-2', className)}>
+      <Label className="text-md font-bold text-foreground/80" htmlFor={name}>
         {label}
       </Label>
       <Input
@@ -38,29 +37,22 @@ export const FormTextInput = <T extends FieldValues>({
         placeholder={placeholder}
         {...register(name)}
       />
-      {error && (
-        <FormMessage className="text-red-500 text-sm">
-          {error}
-        </FormMessage>
-      )}
+      {error && <FormMessage className="text-red-500 text-sm">{error}</FormMessage>}
     </div>
   )
 }
 
-export const FormTextArea = <T extends FieldValues>({ 
-  label, 
-  name, 
-  register, 
-  error, 
+export const FormTextArea = <T extends FieldValues>({
+  label,
+  name,
+  register,
+  error,
   placeholder,
   className,
 }: FormInputProps<T>) => {
   return (
-    <div className={cn("space-y-2", className)}>
-      <Label
-        className="text-md font-bold text-foreground/80"
-        htmlFor={name}
-      >
+    <div className={cn('space-y-2', className)}>
+      <Label className="text-md font-bold text-foreground/80" htmlFor={name}>
         {label}
       </Label>
       <Textarea
@@ -70,11 +62,7 @@ export const FormTextArea = <T extends FieldValues>({
         placeholder={placeholder}
         {...register(name)}
       />
-      {error && (
-        <FormMessage className="text-red-500 text-sm">
-          {error}
-        </FormMessage>
-      )}
+      {error && <FormMessage className="text-red-500 text-sm">{error}</FormMessage>}
     </div>
   )
 }

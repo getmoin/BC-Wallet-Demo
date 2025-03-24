@@ -12,16 +12,18 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import {
+import type {
   IssuanceScenarioResponse,
-  ScenarioRequest,
   ScenarioRequestType,
   ScenarioTypeEnum,
-  StepRequest,
   StepRequestType,
   StepResponse,
   StepTypeEnum,
   StepType
+} from "@/openapi-types";
+import {
+  ScenarioRequest,
+  StepRequest
 } from "@/openapi-types";
 import apiClient from "@/lib/apiService";
 
