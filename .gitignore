@@ -108,5 +108,5 @@ apps/*/logs.txt
 build
 
 .idea
-
+.vscode
 .turbo
