@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import apiClient from "@/lib/apiService";
-import {
+import type {
 	CredentialDefinitionRequest,
 	IssuersResponse,
 	IssuerResponse,

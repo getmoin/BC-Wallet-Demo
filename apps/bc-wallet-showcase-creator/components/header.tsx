@@ -1,36 +1,37 @@
-import { Search, CirclePlus } from "lucide-react";
-import { Input } from "../components/ui/input";
-import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { Link } from '@/i18n/routing'
+import { cn } from '@/lib/utils'
+import { Search, CirclePlus } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+
+import { Input } from '../components/ui/input'
+import { Button } from './ui/button'
 
 interface HeaderProps {
-  title: string;
-  showSearch?: boolean;
-  searchTerm: string;
-  setSearchTerm: (value: string) => void;
-  buttonLabel?: string;
-  buttonLink?: string | ((event: React.MouseEvent<HTMLButtonElement>) => void);
-  buttonBgColor?: string;
-  buttonTextColor?: string;
-  showIcon?: boolean;
-  buttonClasses?: string;
+  title: string
+  showSearch?: boolean
+  searchTerm: string
+  setSearchTerm: (value: string) => void
+  buttonLabel?: string
+  buttonLink?: string | ((event: React.MouseEvent<HTMLButtonElement>) => void)
+  buttonBgColor?: string
+  buttonTextColor?: string
+  showIcon?: boolean
+  buttonClasses?: string
 }
 
 const Header: React.FC<HeaderProps> = ({
   title,
   showSearch = true,
-  searchTerm = "",
+  searchTerm = '',
   setSearchTerm,
   buttonLabel,
   buttonLink,
-  buttonBgColor = "bg-yellow-500 hover:bg-yellow-600",
-  buttonTextColor = "text-black",
+  buttonBgColor = 'bg-yellow-500 hover:bg-yellow-600',
+  buttonTextColor = 'text-black',
   showIcon = true,
-  buttonClasses = "",
+  buttonClasses = '',
 }) => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   return (
     <section className="w-full px-0 pt-2 bg-cover bg-center dark:bg-dark-bg">
@@ -41,13 +42,10 @@ const Header: React.FC<HeaderProps> = ({
         <div className="relative w-full max-w-lg sm:max-w-lg">
           {showSearch && (
             <>
-              <Search
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                size={22}
-              />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={22} />
               <Input
                 type="text"
-                placeholder={t("action.search_label")}
+                placeholder={t('action.search_label')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-3 border border-foreground/50 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-100"
@@ -56,16 +54,17 @@ const Header: React.FC<HeaderProps> = ({
           )}
         </div>
 
-        {buttonLabel && buttonLink && (
-          typeof buttonLink === "string" ? (
+        {buttonLabel &&
+          buttonLink &&
+          (typeof buttonLink === 'string' ? (
             <Link href={buttonLink}>
               <Button
                 className={cn(
-                  "font-bold flex items-center gap-4 shadow-md",
+                  'font-bold flex items-center gap-4 shadow-md',
                   buttonBgColor,
                   buttonTextColor,
                   buttonClasses,
-                  "bg-transparent border-2 dark:border-yellow-500 border-amber-500 text-amber-500 dark:text-yellow-500 hover:bg-amber-500 dark:hover:bg-yellow-500 hover:text-background dark:hover:text-background"
+                  'bg-transparent border-2 dark:border-yellow-500 border-amber-500 text-amber-500 dark:text-yellow-500 hover:bg-amber-500 dark:hover:bg-yellow-500 hover:text-background dark:hover:text-background'
                 )}
                 variant="outline"
               >
@@ -76,20 +75,18 @@ const Header: React.FC<HeaderProps> = ({
             <Button
               onClick={buttonLink}
               className={cn(
-                "font-bold flex items-center gap-4 shadow-md",
+                'font-bold flex items-center gap-4 shadow-md',
                 buttonBgColor,
                 buttonTextColor,
-                buttonClasses,
-                
+                buttonClasses
               )}
             >
               {buttonLabel} {showIcon && <CirclePlus size={22} />}
             </Button>
-          )
-        )}
+          ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

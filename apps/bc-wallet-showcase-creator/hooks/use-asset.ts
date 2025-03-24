@@ -1,5 +1,5 @@
 import apiClient from "@/lib/apiService";
-import { AssetRequestType } from "@/openapi-types";
+import type { AssetRequestType } from "@/openapi-types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useAsset = () => {

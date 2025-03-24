@@ -1,14 +1,15 @@
-import { DarkModeToggle } from "./dark-mode-toggle";
-import { SaveButton } from "./save-button";
-import { JSONUploadButton } from "./json-uploader";
-import { NavBarButton } from "./navbar-button";
-import { Link } from '@/i18n/routing';
-import { LanguageSelector } from "./language-selector";
-import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
+
+import { DarkModeToggle } from './dark-mode-toggle'
+import { JSONUploadButton } from './json-uploader'
+import { LanguageSelector } from './language-selector'
+import { NavBarButton } from './navbar-button'
+import { SaveButton } from './save-button'
 
 export const NavBar = () => {
-  const t = useTranslations();
-  
+  const t = useTranslations()
+
   return (
     <div className="w-full px-4 py-2 dark:text-dark-text">
       <div className="grid grid-cols-3 gap-4 items-center">
@@ -21,26 +22,14 @@ export const NavBar = () => {
         {/* Center Column */}
         <div className="flex justify-center">
           <div className="flex gap-4 px-6 py-2 shadow-md button-dark bg-light-bg-secondary dark:bg-dark-bg-secondary rounded-lg">
-            <NavBarButton
-              title={t('navigation.character_label')}
-              src="/assets/NavBar/character.svg"
-              page="/"
-            />
+            <NavBarButton title={t('navigation.character_label')} src="/assets/NavBar/character.svg" page="/" />
             <NavBarButton
               title={t('navigation.credentials_label')}
               src="/assets/NavBar/credentials.svg"
               page="/credentials"
             />
-            <NavBarButton
-              title={t('navigation.onboarding_label')}
-              src="/assets/NavBar/setup.svg"
-              page="/onboarding"
-            />
-            <NavBarButton
-              title={t('navigation.scenario_label')}
-              src="/assets/NavBar/scenario.svg"
-              page="/scenarios"
-            />
+            <NavBarButton title={t('navigation.onboarding_label')} src="/assets/NavBar/setup.svg" page="/onboarding" />
+            <NavBarButton title={t('navigation.scenario_label')} src="/assets/NavBar/scenario.svg" page="/scenarios" />
           </div>
         </div>
 
@@ -59,5 +48,5 @@ export const NavBar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

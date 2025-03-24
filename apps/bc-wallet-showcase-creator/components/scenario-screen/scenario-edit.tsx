@@ -1,86 +1,86 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { FormTextInput, FormTextArea } from "@/components/text-input";
-import { useScenarios } from "@/hooks/use-scenarios";
-import { scenarioSchema } from "@/schemas/scenario";
-import { ScenarioFormData } from "@/schemas/scenario";
-import { Scenario } from "@/types";
-import { scenarioToFormData } from "@/lib/scenario-transformers";
-import { useTranslations } from "next-intl";
-import ButtonOutline from "../ui/button-outline";
-import StepHeader from "../step-header";
-import { Monitor } from "lucide-react";
-import DeleteModal from "../delete-modal";
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { FormTextInput, FormTextArea } from '@/components/text-input'
+import { Button } from '@/components/ui/button'
+import { Form } from '@/components/ui/form'
+import { useScenarios } from '@/hooks/use-scenarios'
+import { scenarioToFormData } from '@/lib/scenario-transformers'
+import { scenarioSchema } from '@/schemas/scenario'
+import type { ScenarioFormData } from '@/schemas/scenario'
+import type { Scenario } from '@/types'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Monitor } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+
+import DeleteModal from '../delete-modal'
+import StepHeader from '../step-header'
+import ButtonOutline from '../ui/button-outline'
 
 export const ScenarioEdit = () => {
-  const t = useTranslations();
-  const { scenarios, selectedScenario, updateScenario, setStepState,removeScenario } =
-    useScenarios();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const currentScenario =
-    selectedScenario !== null ? scenarios[selectedScenario] : null;
+  const t = useTranslations()
+  const { scenarios, selectedScenario, updateScenario, setStepState, removeScenario } = useScenarios()
+  const [isOpen, setIsOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const currentScenario = selectedScenario !== null ? scenarios[selectedScenario] : null
 
   const form = useForm<ScenarioFormData>({
     resolver: zodResolver(scenarioSchema),
-    mode: "onChange",
-  });
+    mode: 'onChange',
+  })
 
   useEffect(() => {
     if (currentScenario) {
-      const formData = scenarioToFormData(currentScenario);
-      form.reset(formData);
+      const formData = scenarioToFormData(currentScenario)
+      form.reset(formData)
     }
-  }, [currentScenario, form.reset]);
+  }, [currentScenario, form.reset])
   const onSubmit = (data: ScenarioFormData) => {
-    if (selectedScenario === null) return;
+    if (selectedScenario === null) return
     const updatedScenario: Scenario = {
       ...data,
       overview: {
         ...data.overview,
-        image: data.overview.image ?? "",
+        image: data.overview.image ?? '',
       },
       summary: {
         ...data.summary,
-        image: data.summary.image ?? "",
+        image: data.summary.image ?? '',
       },
       steps: currentScenario?.steps || [],
-    };
+    }
 
-    updateScenario(selectedScenario, updatedScenario);
-    setStepState("none-selected");
-  };
+    updateScenario(selectedScenario, updatedScenario)
+    setStepState('none-selected')
+  }
 
-  if (!currentScenario) return null;
+  if (!currentScenario) return null
 
   return (
     <>
       <StepHeader
         icon={<Monitor strokeWidth={3} />}
-        title={t("scenario.edit_header_title")}
+        title={t('scenario.edit_header_title')}
         onActionClick={(action) => {
           switch (action) {
-            case "save":
-              console.log("Save Draft clicked");
-              break;
-            case "preview":
-              console.log("Preview clicked");
-              break;
-            case "revert":
-              console.log("Revert Changes clicked");
-              break;
-            case "delete":
-              console.log("Delete Page clicked");
-              setIsModalOpen(true);
-              setIsOpen(false);
-              break;
+            case 'save':
+              console.log('Save Draft clicked')
+              break
+            case 'preview':
+              console.log('Preview clicked')
+              break
+            case 'revert':
+              console.log('Revert Changes clicked')
+              break
+            case 'delete':
+              console.log('Delete Page clicked')
+              setIsModalOpen(true)
+              setIsOpen(false)
+              break
             default:
-              console.log("Unknown action");
+              console.log('Unknown action')
           }
         }}
       />
@@ -93,24 +93,22 @@ export const ScenarioEdit = () => {
         <hr /> */}
 
           <div className="space-y-6">
-            <h4 className="text-xl font-bold">
-              {t("scenario.edit_overview_label")}
-            </h4>
+            <h4 className="text-xl font-bold">{t('scenario.edit_overview_label')}</h4>
 
             <FormTextInput
-              label={t("scenario.edit_name_label")}
+              label={t('scenario.edit_name_label')}
               name="name"
               register={form.register}
               error={form.formState.errors.name?.message}
-              placeholder={t("scenario.edit_name_placeholder")}
+              placeholder={t('scenario.edit_name_placeholder')}
             />
 
             <FormTextInput
-              label={t("scenario.scenario_description")}
+              label={t('scenario.scenario_description')}
               name="overview.title"
               register={form.register}
               error={form.formState.errors.overview?.title?.message}
-              placeholder={t("scenario.edit_page_title_placeholder")}
+              placeholder={t('scenario.edit_page_title_placeholder')}
             />
             {/* 
           <FormTextArea
@@ -207,24 +205,18 @@ export const ScenarioEdit = () => {
           >
             {t('action.cancel_label')}
           </Button> */}
-            <ButtonOutline
-              type="button"
-              onClick={() => setStepState("none-selected")}
-            >
-              {t("action.cancel_label")}
+            <ButtonOutline type="button" onClick={() => setStepState('none-selected')}>
+              {t('action.cancel_label')}
             </ButtonOutline>
             <ButtonOutline
               type="submit"
               // disabled={!form.formState.isDirty || !form.formState.isValid}
             >
-              {t("action.save_label")}
-            </ButtonOutline> 
-            <Button
-            type="submit"
-            disabled={!form.formState.isDirty || !form.formState.isValid}
-          >
-            {t('action.save_label')}
-          </Button> 
+              {t('action.save_label')}
+            </ButtonOutline>
+            <Button type="submit" disabled={!form.formState.isDirty || !form.formState.isValid}>
+              {t('action.save_label')}
+            </Button>
           </div>
         </form>
       </Form>
@@ -233,8 +225,8 @@ export const ScenarioEdit = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onDelete={() => {
-          console.log("Item Deleted");
-          setIsModalOpen(false);
+          console.log('Item Deleted')
+          setIsModalOpen(false)
           removeScenario(0)
         }}
         header="Are you sure you want to delete this scenario?"
@@ -244,5 +236,5 @@ export const ScenarioEdit = () => {
         deleteText="DELETE"
       />
     </>
-  );
-};
+  )
+}

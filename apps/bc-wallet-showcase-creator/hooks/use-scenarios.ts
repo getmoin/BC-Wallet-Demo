@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { RequestType, Scenario, ScenarioStep, StepType } from '@/types';
+import type { Scenario, ScenarioStep} from '@/types';
+import { RequestType, StepType } from '@/types';
 import { useShowcaseStore } from './use-showcase-store';
 import { produce } from 'immer';
 

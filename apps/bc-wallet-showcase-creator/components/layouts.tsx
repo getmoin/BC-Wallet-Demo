@@ -1,4 +1,4 @@
-import { Trash2 } from "lucide-react";
+import { Trash2 } from 'lucide-react'
 
 export const Layouts = () => {
   return (
@@ -31,12 +31,8 @@ export const Layouts = () => {
         <div className="w-3/5 bg-gray-300 px-16 py-10 rounded-md right-col ">
           <div className="flex justify-between mt-3">
             <div>
-              <p className="text-slate-100 text-sm">
-                Creating a new credential
-              </p>
-              <h3 className="text-3xl font-bold text-slate-50">
-                Add Credential
-              </h3>
+              <p className="text-slate-100 text-sm">Creating a new credential</p>
+              <h3 className="text-3xl font-bold text-slate-50">Add Credential</h3>
             </div>
           </div>
           <hr className="mb-6"></hr>
@@ -44,13 +40,7 @@ export const Layouts = () => {
             Credential Name
           </label>
           <br />
-          <input
-            type="text"
-            id="cred_name"
-            name="cred_name"
-            placeholder="Credential Name"
-            value="Person Card"
-          />
+          <input type="text" id="cred_name" name="cred_name" placeholder="Credential Name" value="Person Card" />
           <br />
           <label className="text-slate-50" htmlFor="issuer_name">
             Issuer Name
@@ -70,5 +60,5 @@ export const Layouts = () => {
         {/* End of col 2  */}
       </div>
     </>
-  );
-};
+  )
+}

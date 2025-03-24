@@ -1,8 +1,9 @@
-"use client";
+'use client'
 
-import { PageParams } from "@/types";
-import { PublishEdit } from "./publish-edit";
-import { PublishInfo } from "./publish-info";
+import type { PageParams } from '@/types'
+
+import { PublishEdit } from './publish-edit'
+import { PublishInfo } from './publish-info'
 
 export default function PublishMain({ params }: { params: PageParams }) {
   return (
@@ -11,12 +12,8 @@ export default function PublishMain({ params }: { params: PageParams }) {
         <div className="flex gap-4 p-4 h-full">
           <div className="w-1/3 bg-[white] dark:bg-dark-bg-secondary border shadow-md rounded-md flex flex-col">
             <div className="p-4 border-b shadow">
-              <h2 className="text-base font-bold text-foreground">
-                Review and Publish Showcase
-              </h2>
-              <p className="w-full text-xs text-foreground/80">
-                {"Select the character and review their showcase"}
-              </p>
+              <h2 className="text-base font-bold text-foreground">Review and Publish Showcase</h2>
+              <p className="w-full text-xs text-foreground/80">{'Select the character and review their showcase'}</p>
             </div>
             <PublishInfo characters={[]} credentials={[]} />
           </div>
@@ -26,5 +23,5 @@ export default function PublishMain({ params }: { params: PageParams }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

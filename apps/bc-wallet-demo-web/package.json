@@ -15,11 +15,12 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.8.3",
     "axios-cache-interceptor": "^1.7.0",
-    "eslint-plugin-cypress": "^3.5.0",
+    "eslint-plugin-cypress": "^4.2.0",
     "framer-motion": "^12.5.0",
     "insights-js": "^1.2.10",
     "js-base64": "^3.7.2",
     "kbar": "^0.1.0-beta.45",
+    "lodash": "^4.17.21",
     "qrcode.react": "^1.0.1",
     "react": "^18.3.1",
     "react-confetti": "^6.0.1",
@@ -36,8 +37,8 @@
     "ws": "^8.18.0"
   },
   "scripts": {
-    "dev": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
-    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "dev": "cross-env DISABLE_ESLINT_PLUGIN=true GGENERATE_SOURCEMAP=false react-scripts start",
+    "build": "cross-env DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false react-scripts build",
     "test": "cross-env GENERATE_SOURCEMAP=false react-scripts test",
     "eject": "cross-env GENERATE_SOURCEMAP=false react-scripts eject"
   },

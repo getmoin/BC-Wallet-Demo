@@ -1,41 +1,39 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { Search } from "lucide-react";
-import { Input } from "../ui/input";
-import { useTranslations } from "next-intl";
-import ButtonOutline from "../ui/button-outline";
-import { Card } from "../ui/card";
-import { Share2 } from "lucide-react";
-import { ensureBase64HasPrefix } from "@/lib/utils";
-import { useShowcases } from "@/hooks/use-showcases";
-import { Showcase } from "@/openapi-types";
-import { SidebarTrigger } from "../ui/sidebar";
-import Image from "next/image";
-import Header from "../header";
-import { CopyButton } from "../ui/copy-button";
-import { DeleteButton } from "../ui/delete-button";
-import { OpenButton } from "../ui/external-open-button";
+import React, { useState } from 'react'
+
+import { useShowcases } from '@/hooks/use-showcases'
+import { ensureBase64HasPrefix } from '@/lib/utils'
+import type { Showcase } from '@/openapi-types'
+import { Share2 } from 'lucide-react'
+import { Search } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+
+import Header from '../header'
+import ButtonOutline from '../ui/button-outline'
+import { Card } from '../ui/card'
+import { CopyButton } from '../ui/copy-button'
+import { DeleteButton } from '../ui/delete-button'
+import { OpenButton } from '../ui/external-open-button'
+import { Input } from '../ui/input'
+import { SidebarTrigger } from '../ui/sidebar'
 
 export const LandingPage = () => {
-  const t = useTranslations();
-  const [searchTerm, setSearchTerm] = useState("");
-  const { data, isLoading } = useShowcases();
+  const t = useTranslations()
+  const [searchTerm, setSearchTerm] = useState('')
+  const { data, isLoading } = useShowcases()
 
   const searchFilter = (showcase: Showcase) => {
-    if (searchTerm === "") {
-      return true;
+    if (searchTerm === '') {
+      return true
     }
-    return showcase.name.toLowerCase().includes(searchTerm.toLowerCase());
-  };
+    return showcase.name.toLowerCase().includes(searchTerm.toLowerCase())
+  }
 
   return (
     <>
-      <Header
-        title={t("home.header_title")}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
+      <Header title={t('home.header_title')} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       {/* {!isLoading && (
         <div className="container mx-auto px-5 mt-2">
@@ -63,7 +61,7 @@ export const LandingPage = () => {
       {isLoading && (
         <div className="flex flex-col items-center">
           <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
-          {t("showcases.loading_label")}
+          {t('showcases.loading_label')}
         </div>
       )}
       <section className="mx-auto p-4">
@@ -78,40 +76,26 @@ export const LandingPage = () => {
                   className="relative min-h-[15rem] h-auto flex items-center justify-center bg-cover bg-center"
                   style={{
                     backgroundImage: `url('${
-                      showcase?.bannerImage?.content
-                        ? showcase.bannerImage.content
-                        : "/assets/NavBar/Showcase.jpeg"
+                      showcase?.bannerImage?.content ? showcase.bannerImage.content : '/assets/NavBar/Showcase.jpeg'
                     }')`,
                   }}
                 >
                   <div className="absolute bg-black bottom-0 left-0 right-0 bg-opacity-70 p-3">
                     <p className="text-xs text-gray-300 break-words">
-                      {t("showcases.created_by_label", {
-                        name: "Test college",
+                      {t('showcases.created_by_label', {
+                        name: 'Test college',
                       })}
                     </p>
                     <div className="flex justify-between">
-                      <h2 className="text-lg font-bold text-white break-words">
-                        {showcase?.name}
-                      </h2>
+                      <h2 className="text-lg font-bold text-white break-words">{showcase?.name}</h2>
                       <div className="flex-shrink-0">
                         <DeleteButton
                           onClick={() => {
-                            console.log("delete", showcase.id);
+                            console.log('delete', showcase.id)
                           }}
                         />
-                        <CopyButton
-                          value={
-                            "http://localhost:3000/digital-trust/showcase/" +
-                            showcase.slug
-                          }
-                        />
-                        <OpenButton
-                          value={
-                            "http://localhost:3000/digital-trust/showcase/" +
-                            showcase.slug
-                          }
-                        />
+                        <CopyButton value={'http://localhost:3000/digital-trust/showcase/' + showcase.slug} />
+                        <OpenButton value={'http://localhost:3000/digital-trust/showcase/' + showcase.slug} />
                       </div>
                     </div>
                   </div>
@@ -119,20 +103,16 @@ export const LandingPage = () => {
 
                 <div className="p-5 flex flex-col flex-grow">
                   <h3 className="text-sm font-semibold text-light-text dark:text-dark-text">
-                    {t("showcases.description_label")}
+                    {t('showcases.description_label')}
                   </h3>
-                  <p className="text-light-text dark:text-dark-text text-xs">
-                    {showcase?.description}
-                  </p>
+                  <p className="text-light-text dark:text-dark-text text-xs">{showcase?.description}</p>
                   <h3 className="text-sm font-semibold text-light-text dark:text-dark-text mt-2">
-                    {t("showcases.description_version")}
+                    {t('showcases.description_version')}
                   </h3>
-                  <p className="text-light-text dark:text-dark-text text-xs">
-                    {"1.0"}
-                  </p>
+                  <p className="text-light-text dark:text-dark-text text-xs">{'1.0'}</p>
                   <div className="mt-4 flex-grow mb-4">
                     <h4 className="text-sm font-semibold text-light-text dark:text-dark-text">
-                      {t("showcases.character_label")}
+                      {t('showcases.character_label')}
                     </h4>
                     <div className="mt-2 space-y-3">
                       {showcase?.personas?.map((persona: any) => (
@@ -141,23 +121,15 @@ export const LandingPage = () => {
                           className="border-[1px] border-dark-border dark:border-light-border flex items-center gap-3 p-3 rounded-md"
                         >
                           <Image
-                            src={
-                              ensureBase64HasPrefix(
-                                persona.headshotImage?.content
-                              ) || "/assets/NavBar/Joyce.png"
-                            }
+                            src={ensureBase64HasPrefix(persona.headshotImage?.content) || '/assets/NavBar/Joyce.png'}
                             alt={persona.name}
                             width={44}
                             height={44}
                             className="rounded-full w-[44px] h-[44px]"
                           />
                           <div>
-                            <p className="text-base text-foreground font-semibold">
-                              {persona.name}
-                            </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                              {persona.role}
-                            </p>
+                            <p className="text-base text-foreground font-semibold">{persona.name}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{persona.role}</p>
                           </div>
                         </div>
                       ))}
@@ -165,12 +137,8 @@ export const LandingPage = () => {
                   </div>
 
                   <div className="flex gap-4 mt-auto">
-                    <ButtonOutline className="w-1/2">
-                      {t("action.preview_label")}
-                    </ButtonOutline>
-                    <ButtonOutline className="w-1/2">
-                      {t("action.create_copy_label")}
-                    </ButtonOutline>
+                    <ButtonOutline className="w-1/2">{t('action.preview_label')}</ButtonOutline>
+                    <ButtonOutline className="w-1/2">{t('action.create_copy_label')}</ButtonOutline>
                   </div>
                 </div>
               </div>
@@ -179,7 +147,7 @@ export const LandingPage = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage

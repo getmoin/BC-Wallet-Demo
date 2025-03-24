@@ -1,12 +1,14 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { SaveModal } from "./save-modal";
-import { useTranslations } from 'next-intl';
+import { useState } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
+
+import { SaveModal } from './save-modal'
 
 export const SaveButton = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
   const t = useTranslations()
 
   return (
@@ -21,5 +23,5 @@ export const SaveButton = () => {
 
       {showModal ? <SaveModal setShowModal={setShowModal} /> : null}
     </>
-  );
-};
+  )
+}

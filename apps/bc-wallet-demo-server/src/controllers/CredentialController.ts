@@ -1,7 +1,7 @@
 import { Body, Get, JsonController, Param, Post } from 'routing-controllers'
 import { Service } from 'typedi'
 
-import { Credential } from '../content/types'
+import type { Credential } from '../content/types'
 import { tractionRequest } from '../utils/tractionHelper'
 
 @JsonController('/credentials')

@@ -1,86 +1,66 @@
 // @ts-nocheck
-"use client";
+'use client'
 
-import { useEffect, useMemo, useState } from "react";
-import {
-  DndContext,
-  closestCenter,
-  DragOverlay,
-  DragEndEvent,
-  DragStartEvent,
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { useTranslations } from "next-intl";
-import { SortableStep } from "@/components/onboarding-screen/sortable-step";
-import { useIssuanceStep, useOnboarding } from "@/hooks/use-onboarding";
-import Image from "next/image";
-import ButtonOutline from "@/components/ui/button-outline";
-import { ErrorModal } from "@/components/error-modal";
-import { ensureBase64HasPrefix } from "@/lib/utils";
-import { useShowcaseStore } from "@/hooks/use-showcases-store";
+import { useEffect, useMemo, useState } from 'react'
+
+import { ErrorModal } from '@/components/error-modal'
+import { SortableStep } from '@/components/onboarding-screen/sortable-step'
+import ButtonOutline from '@/components/ui/button-outline'
+import { useIssuanceStep, useOnboarding } from '@/hooks/use-onboarding'
+import { useShowcaseStore } from '@/hooks/use-showcases-store'
+import { ensureBase64HasPrefix } from '@/lib/utils'
+import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core'
+import { DndContext, closestCenter, DragOverlay } from '@dnd-kit/core'
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 
 export const OnboardingScreen = ({ slug }: { slug: string }) => {
-  const t = useTranslations();
-  const {
-    screens,
-    selectedStep,
-    initializeScreens,
-    setSelectedStep,
-    moveStep,
-    setStepState,
-  } = useOnboarding();
+  const t = useTranslations()
+  const { screens, selectedStep, initializeScreens, setSelectedStep, moveStep, setStepState } = useOnboarding()
 
-  const { displayShowcase } = useShowcaseStore();
-  const personas = displayShowcase.personas || [];
-  const { data, isLoading } = useIssuanceStep(slug);
-  const [showErrorModal, setErrorModal] = useState(false);
-  let InitialId = personas.length > 0 ? personas[0]?.id : "";
-  const [ selectedPersonaId, setSelectedPersonaId ] = useState(InitialId);
+  const { displayShowcase } = useShowcaseStore()
+  const personas = displayShowcase.personas || []
+  const { data, isLoading } = useIssuanceStep(slug)
+  const [showErrorModal, setErrorModal] = useState(false)
+  let InitialId = personas.length > 0 ? personas[0]?.id : ''
+  const [selectedPersonaId, setSelectedPersonaId] = useState(InitialId)
 
   // Find the selected persona
-  const selectedPersona =
-    personas.find((p: any) => p.id === selectedPersonaId) || null;
+  const selectedPersona = personas.find((p: any) => p.id === selectedPersonaId) || null
 
   // const Steps = data ? data?.steps : [];
-  const Steps = [];
+  const Steps = []
 
   const initialScreens = useMemo(() => {
-    return JSON.parse(JSON.stringify(Steps));
-  }, [data]);
+    return JSON.parse(JSON.stringify(Steps))
+  }, [data])
 
   useEffect(() => {
-    initializeScreens(JSON.parse(JSON.stringify(Steps)));
-  }, [initialScreens, initializeScreens]);
+    initializeScreens(JSON.parse(JSON.stringify(Steps)))
+  }, [initialScreens, initializeScreens])
 
   const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (!over) return;
+    const { active, over } = event
+    if (!over) return
 
-    const oldIndex = screens.findIndex((screen) => screen.id === active.id);
-    const newIndex = screens.findIndex((screen) => screen.id === over.id);
+    const oldIndex = screens.findIndex((screen) => screen.id === active.id)
+    const newIndex = screens.findIndex((screen) => screen.id === over.id)
 
     if (oldIndex !== newIndex) {
-      moveStep(oldIndex, newIndex);
-      setSelectedStep(newIndex);
+      moveStep(oldIndex, newIndex)
+      setSelectedStep(newIndex)
     }
-  };
+  }
 
   const handleDragStart = (event: DragStartEvent) => {
-    const index = screens.findIndex((screen) => screen.id === event.active.id);
-    setSelectedStep(index);
-  };
+    const index = screens.findIndex((screen) => screen.id === event.active.id)
+    setSelectedStep(index)
+  }
 
   return (
     <>
-      {showErrorModal && (
-        <ErrorModal
-          errorText="Unknown error occurred"
-          setShowModal={setErrorModal}
-        />
-      )}
+      {showErrorModal && <ErrorModal errorText="Unknown error occurred" setShowModal={setErrorModal} />}
       <>
         {isLoading && (
           <div className="flex flex-col items-center">
@@ -97,19 +77,14 @@ export const OnboardingScreen = ({ slug }: { slug: string }) => {
                   key={char.id}
                   onClick={() => setSelectedPersonaId(char.id)}
                   className={`w-full p-4 text-center border ${
-                    index === 0
-                      ? "bg-white dark:bg-dark-bg shadow-md"
-                      : "bg-gray-200"
+                    index === 0 ? 'bg-white dark:bg-dark-bg shadow-md' : 'bg-gray-200'
                   }`}
                 >
                   <div className="flex flex-col items-center">
                     <div className="w-12 h-12 bg-gray-300 rounded-full mb-2">
                       <Image
                         // src={char.headshotImage.content}
-                        src={
-                          ensureBase64HasPrefix(char.headshotImage?.content) ||
-                          "/assets/NavBar/Joyce.png"
-                        }
+                        src={ensureBase64HasPrefix(char.headshotImage?.content) || '/assets/NavBar/Joyce.png'}
                         alt={char.name}
                         width={50}
                         height={50}
@@ -134,27 +109,18 @@ export const OnboardingScreen = ({ slug }: { slug: string }) => {
             <div className="border-b w-full light-border dark:dark-border">
               <div className="p-4">
                 <h2 className="text-base font-bold">
-                  {t("onboarding.editing_steps_label", {
+                  {t('onboarding.editing_steps_label', {
                     name: selectedPersona?.name,
                   })}
                   {/* {t("onboarding.editing_steps_label", { name: "Ana" })} */}
                 </h2>
-                <p className="text-xs">
-                  {t("onboarding.editing_steps_message")}
-                </p>
+                <p className="text-xs">{t('onboarding.editing_steps_message')}</p>
               </div>
             </div>
           </div>
 
-          <DndContext
-            collisionDetection={closestCenter}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-          >
-            <SortableContext
-              items={screens.map((screen) => screen.id)}
-              strategy={verticalListSortingStrategy}
-            >
+          <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+            <SortableContext items={screens.map((screen) => screen.id)} strategy={verticalListSortingStrategy}>
               {screens.map((screen, index) => (
                 <div key={screen.id} className="flex flex-row">
                   <SortableStep
@@ -171,9 +137,7 @@ export const OnboardingScreen = ({ slug }: { slug: string }) => {
                   <div className="top-1">
                     <p>{Steps[selectedStep].title}</p>
                     <div className="highlight-container w-full flex flex-row justify-items-center items-center rounded p-3 unselected-item backdrop-blur">
-                      <p className="text-sm">
-                        {Steps[selectedStep].description}
-                      </p>
+                      <p className="text-sm">{Steps[selectedStep].description}</p>
                     </div>
                   </div>
                 )}
@@ -185,15 +149,15 @@ export const OnboardingScreen = ({ slug }: { slug: string }) => {
         <div className="p-4 mt-auto pt-10">
           <ButtonOutline
             onClick={() => {
-              setStepState("creating-new");
-              window.scrollTo({ top: 200, behavior: "smooth" });
+              setStepState('creating-new')
+              window.scrollTo({ top: 200, behavior: 'smooth' })
             }}
             className="w-full"
           >
-            {t("onboarding.add_step_label")}
+            {t('onboarding.add_step_label')}
           </ButtonOutline>
         </div>
       </>
     </>
-  );
-};
+  )
+}

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { WritableDraft } from "immer";
-import { Credential } from "@/openapi-types";
+import type { WritableDraft } from "immer";
+import type { Credential } from "@/openapi-types";
 
 type Mode = "create" | "import" | "view";
 
