@@ -34,7 +34,7 @@ jobs:
   #   if: ${{ always() && fromJSON(needs.ready.outputs.deploy) == true }}
   #   uses: ./.github/workflows/test.yaml
   #   with:
-  #     package_name: "credential-showcase-api-server"
+  #     package_name: "bc-wallet-api-server"
 
   # test_traction_adapter:
   #   name: "Test Traction Adapter"
@@ -42,7 +42,7 @@ jobs:
   #   if: ${{ always() && fromJSON(needs.ready.outputs.deploy) == true }}
   #   uses: ./.github/workflows/test.yaml
   #   with:
-  #     package_name: "credential-showcase-traction-adapter"
+  #     package_name: "bc-wallet-traction-adapter"
           
   build_api_server:
     name: "Build API Server"
@@ -215,17 +215,17 @@ jobs:
 
   #     - name: Deploy PR Environment with Helm
   #       run: |
-  #         cd charts/credential-showcase
+  #         cd charts/bc-wallet
 
   #         # Deploy with Helm
   #         helm dependency update
-  #         helm upgrade --install pr-${{ github.event.number }}-credential-showcase \
+  #         helm upgrade --install pr-${{ github.event.number }}-bc-wallet \
   #           --namespace ${{ secrets.OPENSHIFT_NAMESPACE }} -f ./values.yaml --set api_server.image.tag=${{ needs.build_api_server.outputs.image_tag }} --set traction_adapter.image.tag=${{ needs.build_traction_adapter.outputs.image_tag }} . --wait
 
   #     - name: Restart PR Deployments
   #       run: |
-  #         oc rollout restart deployment/pr-${{ github.event.number }}-credential-showcase-credential-showcase-api-server
-  #         oc rollout restart deployment/pr-${{ github.event.number }}-credential-showcase-credential-showcase-traction-adapter
+  #         oc rollout restart deployment/pr-${{ github.event.number }}-bc-wallet-bc-wallet-api-server
+  #         oc rollout restart deployment/pr-${{ github.event.number }}-bc-wallet-bc-wallet-traction-adapter
 
   # deploymenturls:
   #   name: PR Deployment URLs comment

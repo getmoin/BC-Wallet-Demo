@@ -1,5 +1,5 @@
 nameOverride: ""
-fullnameOverride: "credential-showcase"
+fullnameOverride: "bc-wallet"
 
 ingress:
   enabled: true
@@ -8,12 +8,12 @@ ingress:
     kubernetes.io/ingress.class: openshift-default
     route.openshift.io/termination: edge
   hosts:
-    - host: credential-showcase-api-dev.apps.silver.devops.gov.bc.ca
+    - host: bc-wallet-api-dev.apps.silver.devops.gov.bc.ca
       paths:
         - path: /
           pathType: Prefix
           service: api-server
-    - host: credential-showcase-traction-adapter-dev.apps.silver.devops.gov.bc.ca
+    - host: bc-wallet-traction-adapter-dev.apps.silver.devops.gov.bc.ca
       paths:
         - path: /
           pathType: Prefix
@@ -21,9 +21,9 @@ ingress:
   tls: []
 
 api_server:
-  name: credential-showcase-api-server
+  name: bc-wallet-api-server
   image:
-    repository: public.ecr.aws/k8o4d9r5/bcshowcase/credential-showcase-api-server
+    repository: public.ecr.aws/k8o4d9r5/bcshowcase/bc-wallet-api-server
     pullPolicy: IfNotPresent
     pullSecrets: []
     tag: "latest"
@@ -32,9 +32,9 @@ api_server:
   port: 3000
   path: /
   env:
-    APP_NAME: credential-showcase-api
+    APP_NAME: bc-wallet-api
     LOG_LEVEL: debug
-    DB_HOST: credential-showcase-postgresql
+    DB_HOST: bc-wallet-postgresql
     DB_PORT: "5432"
     DB_NAME: showcase-db
     DB_USERNAME: showcase-user
@@ -92,9 +92,9 @@ api_server:
     stabilizationWindowSeconds: 300
 
 traction_adapter:
-  name: credential-showcase-traction-adapter
+  name: bc-wallet-traction-adapter
   image:
-    repository: public.ecr.aws/k8o4d9r5/bcshowcase/credential-showcase-traction-adapter
+    repository: public.ecr.aws/k8o4d9r5/bcshowcase/bc-wallet-traction-adapter
     pullPolicy: IfNotPresent
     pullSecrets: []
     tag: "latest"
@@ -110,7 +110,7 @@ traction_adapter:
   port: 3000
   path: /traction
   env:
-    APP_NAME: credential-showcase-traction-adapter
+    APP_NAME: bc-wallet-traction-adapter
     LOG_LEVEL: debug
     NODE_PORT: 3000
     RABBITMQ_HOST: rabbitmq
