@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 RUN apk add --no-cache libc6-compat
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 RUN npm run build
@@ -23,6 +23,4 @@ COPY --from=builder /app/.next/static ./.next/static
 RUN chown -R nextjs:nodejs /app
 USER nextjs
 EXPOSE 3050
-#EXPOSE ${PORT}
-#ENV HOSTNAME "0.0.0.0"
 CMD ["node", "server.js"]
