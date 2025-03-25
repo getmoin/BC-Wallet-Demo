@@ -1,4 +1,4 @@
 {
   "files": [],
-  "references": [{ "path": "bc-wallet-api-server" }]
+  "references": [{ "path": "credential-showcase-api-server" }]
 }
