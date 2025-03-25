@@ -11,12 +11,16 @@ RUN apt-get update && \
     apt-get install -y maven build-essential python3 make g++ openjdk-17-jdk && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-RUN pnpm install -g drizzle-kit
 WORKDIR /build
-COPY . /build
-RUN rm -rf $(pnpm store path) && pnpm install -g rimraf typescript tslib
-RUN pnpm install
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json tsconfig.json tsconfig.build.json tsconfig.eslint.json ./
+COPY packages/tsconfig-base.json packages/
+COPY apps/tsconfig-base.json apps/
+COPY apps/bc-wallet-api-server apps/bc-wallet-api-server
+COPY packages/bc-wallet-openapi packages/bc-wallet-openapi
+RUN rm -rf $(pnpm store path) && pnpm install -g rimraf typescript tslib drizzle-kit
 RUN cd packages/bc-wallet-openapi && mvn -U clean install && cd ../..
+RUN pnpm install
+RUN cd packages/bc-wallet-openapi && pnpm build && cd ../..
 RUN pnpm build
 RUN pnpm deploy /deploy --filter bc-wallet-api-server --prod --no-optional
 
@@ -28,8 +32,8 @@ COPY --from=builder /build/apps/bc-wallet-api-server/src/database/migrations /ap
 ENV NODE_ENV=production
 RUN echo PORT=3000  > .env
 
-#USE THIS SCRIPT IF YOU ARE USING DOCKER-COMPOSE. SINCE APP IS STARTING BEFORE DATABASE IS READY.
-RUN echo '#!/bin/sh\necho "Waiting for database to start..."\nsleep 10\necho "Starting application..."\nexec node dist/index.js' > /start.sh && \
-    chmod +x /start.sh
+# RUN echo '#!/bin/sh\necho "Waiting for database to start..."\nsleep 10\necho "Starting application..."\nexec node dist/index.js' > /start.sh && \
+#     chmod +x /start.sh
+# CMD ["/start.sh"]
 
-CMD ["/start.sh"]
+RUN node dist/index.js
