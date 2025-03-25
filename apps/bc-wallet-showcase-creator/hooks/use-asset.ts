@@ -1,5 +1,5 @@
 import apiClient from "@/lib/apiService";
-import type { AssetRequestType } from "@/openapi-types";
+import { AssetRequestType } from "@/openapi-types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useAsset = () => {
@@ -13,6 +13,9 @@ export const useAssetById = (id: string) => {
   return useQuery({
     queryKey: ['assets', id],
     queryFn: () => apiClient.get(`/assets/${id}`),
+    enabled: !!id, // Only fetch if id is valid
+    // refetchOnMount: true, // Fetch when component mounts
+    refetchOnWindowFocus: true, // Fetch when window is focused
   });
 };
 
