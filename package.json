@@ -19,10 +19,12 @@
     "format": "yarn prettier --write",
     "prepare": "husky install",
     "dev": "turbo run dev",
-    "test": "yarn run cypress open",
     "build": "turbo run build",
+    "clean": "turbo run clean",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose --config=jest.json --coverage=true --detectOpenHandles",
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "generate:models": "pnpm -r --if-present --stream run generate:models"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.27.0",
@@ -38,10 +40,20 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-import-helpers": "^2.0.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.1",
-    "prettier": "^2.6.1",
+    "turbo": "latest",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.1",
+    "@types/supertest": "^6.0.2",
+    "husky": "^9.1.7",
     "rimraf": "^6.0.1",
-    "turbo": "latest"
+    "jest": "^29.7.0",
+    "jest-environment-node": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3",
+    "prettier": "^3.4.2",
+    "ts-jest": "^29.2.5",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "5.7.3"
   },
   "packageManager": "pnpm@9.12.3",
   "resolutions": {
