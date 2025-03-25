@@ -2,14 +2,20 @@ import { eq, inArray } from 'drizzle-orm'
 import { Service } from 'typedi'
 import { BadRequestError } from 'routing-controllers'
 import DatabaseService from '../../services/DatabaseService'
-import CredentialDefinitionRepository from './CredentialDefinitionRepository'
 import PersonaRepository from './PersonaRepository'
 import ScenarioRepository from './ScenarioRepository'
 import AssetRepository from './AssetRepository'
 import { sortSteps } from '../../utils/sort'
 import { generateSlug } from '../../utils/slug'
 import { NotFoundError } from '../../errors'
-import { personas, scenarios, showcases, showcasesToCredentialDefinitions, showcasesToPersonas, showcasesToScenarios } from '../schema'
+import {
+  personas,
+  scenarios,
+  showcases,
+  showcasesToCredentialDefinitions,
+  showcasesToPersonas,
+  showcasesToScenarios,
+} from '../schema'
 import { NewShowcase, RepositoryDefinition, Showcase } from '../../types'
 import UserRepository from './UserRepository'
 
@@ -18,7 +24,6 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
   constructor(
     private readonly databaseService: DatabaseService,
     private readonly personaRepository: PersonaRepository,
-    private readonly credentialDefinitionRepository: CredentialDefinitionRepository,
     private readonly scenarioRepository: ScenarioRepository,
     private readonly assetRepository: AssetRepository,
     private readonly userRepository: UserRepository,
@@ -28,9 +33,6 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
     if (showcase.personas.length === 0) {
       return Promise.reject(new BadRequestError('At least one persona is required'))
     }
-    if (showcase.credentialDefinitions.length === 0) {
-      return Promise.reject(new BadRequestError('At least one credential definition is required'))
-    }
     if (showcase.scenarios.length === 0) {
       return Promise.reject(new BadRequestError('At least one scenario is required'))
     }
@@ -38,10 +40,6 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
     const bannerImageResult = showcase.bannerImage ? await this.assetRepository.findById(showcase.bannerImage) : null
     const personaPromises = showcase.personas.map(async (persona) => await this.personaRepository.findById(persona))
     await Promise.all(personaPromises)
-    const credentialDefinitionPromises = showcase.credentialDefinitions.map(
-      async (credentialDefinition) => await this.credentialDefinitionRepository.findById(credentialDefinition),
-    )
-    await Promise.all(credentialDefinitionPromises)
     const scenarioPromises = showcase.scenarios.map(async (scenario) => this.scenarioRepository.findById(scenario))
     await Promise.all(scenarioPromises)
 
@@ -181,7 +179,9 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
           ...(scenario.relyingParty && {
             relyingParty: {
               ...(scenario.relyingParty as any), // TODO check this typing issue at a later point in time
-              credentialDefinitions: scenario.relyingParty!.cds.map((credentialDefinition: any) => credentialDefinition.cd),
+              credentialDefinitions: scenario.relyingParty!.cds.map(
+                (credentialDefinition: any) => credentialDefinition.cd,
+              ),
             },
           }),
           ...(scenario.issuer && {
@@ -210,9 +210,6 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
     if (showcase.personas.length === 0) {
       return Promise.reject(new BadRequestError('At least one persona is required'))
     }
-    if (showcase.credentialDefinitions.length === 0) {
-      return Promise.reject(new BadRequestError('At least one credential definition is required'))
-    }
     if (showcase.scenarios.length === 0) {
       return Promise.reject(new BadRequestError('At least one scenario is required'))
     }
@@ -222,10 +219,6 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
 
     const personaPromises = showcase.personas.map(async (persona) => await this.personaRepository.findById(persona))
     await Promise.all(personaPromises)
-    const credentialDefinitionPromises = showcase.credentialDefinitions.map(
-      async (credentialDefinition) => await this.credentialDefinitionRepository.findById(credentialDefinition),
-    )
-    await Promise.all(credentialDefinitionPromises)
     const scenarioPromises = showcase.scenarios.map(async (scenario) => this.scenarioRepository.findById(scenario))
     await Promise.all(scenarioPromises)
 
@@ -247,7 +240,6 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
         .where(eq(showcases.id, id))
         .returning()
 
-      await tx.delete(showcasesToCredentialDefinitions).where(eq(showcasesToCredentialDefinitions.showcase, id))
       await tx.delete(showcasesToPersonas).where(eq(showcasesToPersonas.showcase, id))
       await tx.delete(showcasesToScenarios).where(eq(showcasesToScenarios.showcase, id))
 
@@ -371,13 +363,12 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
           ...(scenario.relyingParty && {
             relyingParty: {
               ...(scenario.relyingParty as any), // TODO check this typing issue at a later point in time
-              credentialDefinitions: scenario.relyingParty!.cds.map((credentialDefinition: any) => credentialDefinition.cd),
             },
           }),
           ...(scenario.issuer && {
             issuer: {
               ...(scenario.issuer as any), // TODO check this typing issue at a later point in time
-              credentialDefinitions: scenario.issuer!.cds.map((credentialDefinition: any) => credentialDefinition.cd),
+              credentialDefinitions: scenario.issuer!.cds.map((credentialDef: any) => credentialDef.cd),
               credentialSchemas: scenario.issuer!.css.map((credentialSchema: any) => credentialSchema.cs),
             },
           }),
@@ -504,13 +495,14 @@ class ShowcaseRepository implements RepositoryDefinition<Showcase, NewShowcase> 
         ...(scenario.scenario.relyingParty && {
           relyingParty: {
             ...(scenario.scenario.relyingParty as any), // TODO check this typing issue at a later point in time
-            credentialDefinitions: scenario.scenario.relyingParty!.cds.map((credentialDefinition: any) => credentialDefinition.cd),
           },
         }),
         ...(scenario.scenario.issuer && {
           issuer: {
             ...(scenario.scenario.issuer as any), // TODO check this typing issue at a later point in time
-            credentialDefinitions: scenario.scenario.issuer!.cds.map((credentialDefinition: any) => credentialDefinition.cd),
+            credentialDefinitions: scenario.scenario.issuer!.cds.map(
+              (credentialDefinition: any) => credentialDefinition.cd,
+            ),
             credentialSchemas: scenario.scenario.issuer!.css.map((credentialSchema: any) => credentialSchema.cs),
           },
         }),

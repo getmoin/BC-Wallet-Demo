@@ -41,6 +41,9 @@
     "**/*.spec.*",
     "!dist/*"
   ],
+  "testPathIgnorePatterns": [
+    "apps/bc-wallet-showcase-creator"
+  ],
   "testEnvironment": "node",
   "automock": false,
   "verbose": true
