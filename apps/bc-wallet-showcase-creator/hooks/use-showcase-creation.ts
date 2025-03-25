@@ -12,7 +12,6 @@ import { useHelpersStore } from "@/hooks/use-helpers-store";
 import { usePersonas } from "@/hooks/use-personas";
 export const useShowcaseCreation = () => {
   const { 
-    displayShowcase, 
     selectedPersonaIds,
   } = useShowcaseStore();
   const { data: personasData } = usePersonas();
