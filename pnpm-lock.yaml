@@ -88,7 +88,7 @@ importers:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.13.13)(typescript@5.7.3)
       turbo:
-        specifier: ^2.4.0
+        specifier: latest
         version: 2.4.4
       typescript:
         specifier: 5.7.3

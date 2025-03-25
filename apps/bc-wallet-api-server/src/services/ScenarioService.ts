@@ -1,6 +1,6 @@
 import { Service } from 'typedi'
 import ScenarioRepository from '../database/repositories/ScenarioRepository'
-import { NewScenario, NewStep, NewStepActionTypes, Scenario, ScenarioFindAllArgs, Step, StepActionTypes } from '../types'
+import { AriesOOBAction, Scenario, NewAriesOOBAction, NewScenario, NewStep, Step, ScenarioFindAllArgs } from '../types'
 
 @Service()
 class ScenarioService {
@@ -46,15 +46,15 @@ class ScenarioService {
     return this.scenarioRepository.deleteStep(scenarioId, stepId)
   }
 
-  public getScenarioStepActions = async (scenarioId: string, stepId: string): Promise<StepActionTypes[]> => {
+  public getScenarioStepActions = async (scenarioId: string, stepId: string): Promise<AriesOOBAction[]> => {
     return this.scenarioRepository.findAllStepActions(scenarioId, stepId)
   }
 
-  public getScenarioStepAction = async (scenarioId: string, stepId: string, actionId: string): Promise<StepActionTypes> => {
+  public getScenarioStepAction = async (scenarioId: string, stepId: string, actionId: string): Promise<AriesOOBAction> => {
     return this.scenarioRepository.findByStepActionId(scenarioId, stepId, actionId)
   }
 
-  public createScenarioStepAction = async (scenarioId: string, stepId: string, action: NewStepActionTypes): Promise<StepActionTypes> => {
+  public createScenarioStepAction = async (scenarioId: string, stepId: string, action: NewAriesOOBAction): Promise<AriesOOBAction> => {
     return this.scenarioRepository.createStepAction(scenarioId, stepId, action)
   }
 
@@ -62,8 +62,8 @@ class ScenarioService {
     scenarioId: string,
     stepId: string,
     actionId: string,
-    action: NewStepActionTypes,
-  ): Promise<StepActionTypes> => {
+    action: NewAriesOOBAction,
+  ): Promise<AriesOOBAction> => {
     return this.scenarioRepository.updateStepAction(scenarioId, stepId, actionId, action)
   }
 
