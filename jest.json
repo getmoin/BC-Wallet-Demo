@@ -10,6 +10,7 @@
   "collectCoverage": true,
   "collectCoverageFrom": [
     "packages/**/src/**/*.ts",
+    "apps/**/src/**/*.ts",
     "!**/examples/**",
     "!packages/cli/**",
     "!**/types/**",
@@ -18,7 +19,7 @@
     "!**/packages/**/index.ts"
   ],
   "coveragePathIgnorePatterns": [
-    "packages/bc-wallet-showcase-openapi"
+    "packages/bc-wallet-openapi"
   ],
   "coverageReporters": [
     "text",
@@ -37,7 +38,11 @@
   },
   "testMatch": [
     "**/__tests__/**/*.test.*",
+    "**/*.spec.*",
     "!dist/*"
+  ],
+  "testPathIgnorePatterns": [
+    "apps/bc-wallet-showcase-creator"
   ],
   "testEnvironment": "node",
   "automock": false,
