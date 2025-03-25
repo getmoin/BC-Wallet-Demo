@@ -1,8 +1,3 @@
-import type { PropsWithChildren } from 'react'
-
-import type { AnimatePresenceProps } from 'framer-motion'
-import { AnimatePresence } from 'framer-motion'
-
 export const isConnected = (state: string) => {
   return state === 'complete' || state === 'response' || state === 'active'
 }
