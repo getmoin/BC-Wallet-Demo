@@ -3,46 +3,47 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { FormTextArea, FormTextInput } from '@/components/text-input'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
-import { useHelpersStore } from '@/hooks/use-helpers-store'
-import { useOnboarding, useCreateScenario } from '@/hooks/use-onboarding'
-import { useShowcaseStore } from '@/hooks/use-showcases-store'
-import { useRouter } from '@/i18n/routing'
-import { sampleAction } from '@/lib/steps'
-import type { IssuanceScenarioResponseType } from '@/openapi-types'
-import type { BasicStepFormData } from '@/schemas/onboarding'
-import { zodResolver } from "@hookform/resolvers/zod";
-import { debounce } from 'lodash'
+import { FormTextArea, FormTextInput } from '@/components/text-input'
 import { Edit, Monitor } from 'lucide-react'
+import { useOnboarding, useCreateScenario } from '@/hooks/use-onboarding'
+import { BasicStepFormData } from '@/schemas/onboarding'
 import { basicStepSchema } from '@/schemas/onboarding'
+import { LocalFileUpload } from './local-file-upload'
 import { useTranslations } from 'next-intl'
-
-import { toast } from 'sonner'
-import { ErrorModal } from '../error-modal'
-import StepHeader from '../step-header'
-import { LocalFileUpload } from "./local-file-upload";
+import StepHeader from '../step-header';
 import ButtonOutline from '../ui/button-outline'
-
-
-import Loader from '../loader'
-
+import { useRouter } from '@/i18n/routing'
+import { ErrorModal } from '../error-modal'
+import Loader from '../loader';
+import { IssuanceScenarioResponseType } from '@/openapi-types';
+import { useShowcaseStore } from '@/hooks/use-showcases-store';
+import { toast } from 'sonner';
+import { sampleAction } from '@/lib/steps'
 import { sampleScenario } from '@/lib/steps'
-
 import { NoSelection } from '../credentials/no-selection'
-
+import { debounce } from 'lodash';
+import { useHelpersStore } from '@/hooks/use-helpers-store';
 export const BasicStepAdd = () => {
   const t = useTranslations()
 
-  const { screens, selectedStep, setSelectedStep, setStepState, stepState, updateStep } = useOnboarding()
+  const {
+    screens,
+    selectedStep,
+    setSelectedStep,
+    setStepState,
+    stepState,
+    updateStep,
+  } = useOnboarding();
 
-  const router = useRouter()
-  const { mutateAsync, isPending } = useCreateScenario()
-  const currentStep = selectedStep !== null ? screens[selectedStep] : null
-  const { showcase, setScenarioIds } = useShowcaseStore()
-  const { issuerId } = useHelpersStore()
-  const personas = showcase.personas || []
+  const router = useRouter();
+  const { mutateAsync, isPending } = useCreateScenario();
+  const currentStep = selectedStep !== null ? screens[selectedStep] : null;
+  const { showcase, setScenarioIds } = useShowcaseStore();
+  const { issuerId } = useHelpersStore();
+  const personas = showcase.personas || [];
 
   const isEditMode = stepState === 'editing-basic'
   const [showErrorModal, setErrorModal] = useState(false)
