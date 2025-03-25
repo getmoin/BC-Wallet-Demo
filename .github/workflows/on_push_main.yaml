@@ -259,12 +259,12 @@ jobs:
           scan-type: 'image'
           scan-ref: 'ghcr.io/${{ github.repository_owner }}/bc-wallet-api-server:${{ needs.build_api_server.outputs.image_tag }}'
           scan-title: 'Docker Image Scan Results for bc-wallet-api-server'
-      # - name: Scan Traction Adapter Docker Image
-      #   uses: ./.github/actions/trivy-scan
-      #   with:
-      #     scan-type: 'image'
-      #     scan-ref: 'ghcr.io/${{ github.repository_owner }}/bc-wallet-traction-adapter:${{ needs.build_traction_adapter.outputs.image_tag }}'
-      #     scan-title: 'Docker Image Scan Results for bc-wallet-traction-adapter'
+      - name: Scan Traction Adapter Docker Image
+        uses: ./.github/actions/trivy-scan
+        with:
+          scan-type: 'image'
+          scan-ref: 'ghcr.io/${{ github.repository_owner }}/bc-wallet-traction-adapter:${{ needs.build_traction_adapter.outputs.image_tag }}'
+          scan-title: 'Docker Image Scan Results for bc-wallet-traction-adapter'
       # - name: Scan API Server Docker Image
       #   uses: ./.github/actions/trivy-scan
       #   with:
