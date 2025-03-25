@@ -1,4 +1,6 @@
+.openapi-generator-ignore
 index.ts
+models/AcceptCredentialAction.ts
 models/AnonCredRevocation.ts
 models/AriesOOBAction.ts
 models/AriesOOBActionRequest.ts
@@ -10,6 +12,8 @@ models/Asset.ts
 models/AssetRequest.ts
 models/AssetResponse.ts
 models/AssetsResponse.ts
+models/ButtonAction.ts
+models/ChooseWalletAction.ts
 models/CredentialAttribute.ts
 models/CredentialAttributeRequest.ts
 models/CredentialAttributeType.ts
@@ -60,6 +64,8 @@ models/RevocationInfo.ts
 models/Scenario.ts
 models/ScenarioRequest.ts
 models/ScenarioType.ts
+models/SetupConnectionAction.ts
+models/ShareCredentialAction.ts
 models/Showcase.ts
 models/ShowcaseRequest.ts
 models/ShowcaseResponse.ts
@@ -76,5 +82,6 @@ models/StepRequestActionsInner.ts
 models/StepResponse.ts
 models/StepType.ts
 models/StepsResponse.ts
+models/User.ts
 models/index.ts
 runtime.ts

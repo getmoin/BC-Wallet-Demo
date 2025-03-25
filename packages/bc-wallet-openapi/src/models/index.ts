@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+export * from './AcceptCredentialAction';
 export * from './AnonCredRevocation';
 export * from './AriesOOBAction';
 export * from './AriesOOBActionRequest';
@@ -11,6 +12,8 @@ export * from './Asset';
 export * from './AssetRequest';
 export * from './AssetResponse';
 export * from './AssetsResponse';
+export * from './ButtonAction';
+export * from './ChooseWalletAction';
 export * from './CredentialAttribute';
 export * from './CredentialAttributeRequest';
 export * from './CredentialAttributeType';
@@ -61,6 +64,8 @@ export * from './RevocationInfo';
 export * from './Scenario';
 export * from './ScenarioRequest';
 export * from './ScenarioType';
+export * from './SetupConnectionAction';
+export * from './ShareCredentialAction';
 export * from './Showcase';
 export * from './ShowcaseRequest';
 export * from './ShowcaseResponse';
@@ -77,3 +82,4 @@ export * from './StepRequestActionsInner';
 export * from './StepResponse';
 export * from './StepType';
 export * from './StepsResponse';
+export * from './User';
