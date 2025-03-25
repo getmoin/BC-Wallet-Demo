@@ -31,9 +31,8 @@ COPY --from=builder /deploy /app
 COPY --from=builder /build/apps/bc-wallet-api-server/src/database/migrations /app/dist/database/migrations
 ENV NODE_ENV=production
 RUN echo PORT=3000  > .env
+EXPOSE 3000
 
-# RUN echo '#!/bin/sh\necho "Waiting for database to start..."\nsleep 10\necho "Starting application..."\nexec node dist/index.js' > /start.sh && \
-#     chmod +x /start.sh
-# CMD ["/start.sh"]
-
-RUN node dist/index.js
+RUN echo '#!/bin/sh\necho "Connecting with database to start..."\nsleep 10\necho "Starting application..."\nexec node dist/index.js' > /start.sh && \
+    chmod +x /start.sh
+CMD ["/start.sh"]
