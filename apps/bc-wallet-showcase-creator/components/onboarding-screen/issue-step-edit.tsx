@@ -327,6 +327,7 @@ export const IssuanceStepAdd = () => {
         <div className="space-y-6">
           <FormTextInput
             label={t('onboarding.page_title_label')}
+            control={form.control}
             name="title"
             register={form.register}
             error={form.formState.errors.title?.message}
@@ -336,6 +337,7 @@ export const IssuanceStepAdd = () => {
           <div className="space-y-2">
             <FormTextArea
               label={t('onboarding.page_description_label')}
+              control={form.control}
               name="description"
               register={form.register}
               error={form.formState.errors.description?.message}

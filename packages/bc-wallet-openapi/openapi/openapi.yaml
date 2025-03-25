@@ -3012,7 +3012,7 @@ components:
         slug:
           type: string
           description: URL-friendly identifier for the showcase
-          example: credential-showcase-bcgov
+          example: bc-wallet-bcgov
         description:
           type: string
           description: Description of the showcase

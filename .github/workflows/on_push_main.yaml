@@ -30,13 +30,13 @@ jobs:
   #   name: "Test API Server"
   #   uses: ./.github/workflows/test.yaml
   #   with:
-  #     package_name: "credential-showcase-api-server"
+  #     package_name: "bc-wallet-api-server"
 
   # test_traction_adapter:
   #   name: "Test Traction Adapter"
   #   uses: ./.github/workflows/test.yaml
   #   with:
-  #     package_name: "credential-showcase-traction-adapter"
+  #     package_name: "bc-wallet-traction-adapter"
 
   build_api_server:
     name: "Build API Server"
@@ -174,16 +174,16 @@ jobs:
      
       - name: Deploy to OpenShift with Helm
         run: |
-          cd charts/credential-showcase
+          cd charts/bc-wallet
           
           helm dependency update
-          helm upgrade --install credential-showcase \
+          helm upgrade --install bc-wallet \
             --namespace ${{ secrets.OPENSHIFT_NAMESPACE }} -f ./values.yaml --set api_server.image.tag=${{ needs.build_api_server.outputs.image_tag }} --set traction_adapter.image.tag=${{ needs.build_traction_adapter.outputs.image_tag }} . --wait
       
       - name: Restart Deployments
         run: |
-          oc rollout restart deployment/credential-showcase-credential-showcase-api-server
-          oc rollout restart deployment/credential-showcase-credential-showcase-traction-adapter
+          oc rollout restart deployment/bc-wallet-bc-wallet-api-server
+          oc rollout restart deployment/bc-wallet-bc-wallet-traction-adapter
 
   # deploy_uat:
   #   name: Deploy to UAT
@@ -208,16 +208,16 @@ jobs:
      
   #     - name: Deploy to OpenShift with Helm
   #       run: |
-  #         cd charts/credential-showcase
+  #         cd charts/bc-wallet
           
   #         helm dependency update
-  #         helm upgrade --install credential-showcase \
+  #         helm upgrade --install bc-wallet \
   #           --namespace ${{ secrets.OPENSHIFT_UAT_NAMESPACE }} -f ./values.yaml -f ./values-uat.yaml --set api_server.image.tag=${{ needs.build_api_server.outputs.image_tag }} --set traction_adapter.image.tag=${{ needs.build_traction_adapter.outputs.image_tag }} . --wait
       
   #     - name: Restart Deployments
   #       run: |
-  #         oc rollout restart deployment/credential-showcase-credential-showcase-api-server
-  #         oc rollout restart deployment/credential-showcase-credential-showcase-traction-adapter
+  #         oc rollout restart deployment/bc-wallet-bc-wallet-api-server
+  #         oc rollout restart deployment/bc-wallet-bc-wallet-traction-adapter
 
   # deploy_prod:
   #   name: Deploy to Production
@@ -242,16 +242,16 @@ jobs:
      
   #     - name: Deploy to OpenShift with Helm
   #       run: |
-  #         cd charts/credential-showcase
+  #         cd charts/bc-wallet
           
   #         helm dependency update
-  #         helm upgrade --install credential-showcase \
+  #         helm upgrade --install bc-wallet \
   #           --namespace ${{ secrets.OPENSHIFT_PROD_NAMESPACE }} -f ./values.yaml -f ./values-prod.yaml --set api_server.image.tag=${{ needs.build_api_server.outputs.image_tag }} --set traction_adapter.image.tag=${{ needs.build_traction_adapter.outputs.image_tag }} . --wait
       
   #     - name: Restart Deployments
   #       run: |
-  #         oc rollout restart deployment/credential-showcase-credential-showcase-api-server
-  #         oc rollout restart deployment/credential-showcase-credential-showcase-traction-adapter
+  #         oc rollout restart deployment/bc-wallet-bc-wallet-api-server
+  #         oc rollout restart deployment/bc-wallet-bc-wallet-traction-adapter
 
 
 

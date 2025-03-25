@@ -250,6 +250,7 @@ export const BasicStepAdd = () => {
         />
         <div className="space-y-6">
           <FormTextInput
+            control={form.control}
             label={t('onboarding.page_title_label')}
             name="title"
             register={form.register}
@@ -259,6 +260,7 @@ export const BasicStepAdd = () => {
 
           <div className="space-y-2">
             <FormTextArea
+              control={form.control}
               label={t('onboarding.page_description_label')}
               name="description"
               register={form.register}

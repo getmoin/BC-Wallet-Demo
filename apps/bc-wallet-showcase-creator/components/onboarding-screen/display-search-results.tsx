@@ -7,7 +7,8 @@ import { ensureBase64HasPrefix } from "@/lib/utils";
 import { CredentialDefinition } from "@/openapi-types";
 
 interface DisplaySearchResultsProps {
-  searchResults: typeof CredentialDefinition._type[];
+  searchResults: any;
+  // searchResults: typeof CredentialDefinition._type[];
   addCredential: (credentialId: string) => void;
 }
 

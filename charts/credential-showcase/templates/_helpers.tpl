@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "credential-showcase.name" -}}
+{{- define "bc-wallet.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "credential-showcase.fullname" -}}
+{{- define "bc-wallet.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "credential-showcase.chart" -}}
+{{- define "bc-wallet.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "credential-showcase.labels" -}}
-helm.sh/chart: {{ include "credential-showcase.chart" . }}
-{{ include "credential-showcase.selectorLabels" . }}
+{{- define "bc-wallet.labels" -}}
+helm.sh/chart: {{ include "bc-wallet.chart" . }}
+{{ include "bc-wallet.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,8 +45,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "credential-showcase.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "credential-showcase.name" . }}
+{{- define "bc-wallet.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "bc-wallet.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
@@ -69,7 +69,7 @@ it randomly.
 {{/*
 Define database secret name - used to reference PostgreSQL generated secret
 */}}
-{{- define "credential-showcase.database.secret.name" -}}
+{{- define "bc-wallet.database.secret.name" -}}
 {{- if .Values.postgresql.auth.existingSecret -}}
     {{- .Values.postgresql.auth.existingSecret -}}
 {{- else -}}
@@ -80,7 +80,7 @@ Define database secret name - used to reference PostgreSQL generated secret
 {{/*
 Get the admin-password key.
 */}}
-{{- define "credential-showcase.database.adminPasswordKey" -}}
+{{- define "bc-wallet.database.adminPasswordKey" -}}
 {{- if .Values.postgresql.auth.secretKeys.adminPasswordKey -}}
     {{- printf "%s" (tpl .Values.postgresql.auth.secretKeys.adminPasswordKey $) -}}
 {{- else -}}
@@ -91,7 +91,7 @@ Get the admin-password key.
 {{/*
 Get the user-password key.
 */}}
-{{- define "credential-showcase.database.userPasswordKey" -}}
+{{- define "bc-wallet.database.userPasswordKey" -}}
 {{- if .Values.postgresql.auth.secretKeys.userPasswordKey -}}
     {{- printf "%s" (tpl .Values.postgresql.auth.secretKeys.userPasswordKey $) -}}
 {{- else -}}
@@ -102,14 +102,14 @@ Get the user-password key.
 {{/*
 Create a default fully qualified rabbitmq name.
 */}}
-{{- define "credential-showcase.rabbitmq.secret.name" -}}
+{{- define "bc-wallet.rabbitmq.secret.name" -}}
 {{- printf "%s-rabbitmq" .Release.Name -}}
 {{- end -}}
 
 {{/*
 Get the rabbitmq password key.
 */}}
-{{- define "credential-showcase.rabbitmq.passwordKey" -}}
+{{- define "bc-wallet.rabbitmq.passwordKey" -}}
 {{- if .Values.rabbitmq.auth.secretKeys.passwordKey -}}
 {{- printf "%s" .Values.rabbitmq.auth.secretKeys.passwordKey -}}
 {{- else -}}
@@ -120,7 +120,7 @@ rabbitmq-password
 {{/*
 Get the rabbitmq erlang cookie key.
 */}}
-{{- define "credential-showcase.rabbitmq.erlangCookieKey" -}}
+{{- define "bc-wallet.rabbitmq.erlangCookieKey" -}}
 {{- if .Values.rabbitmq.auth.secretKeys.erlangCookieKey -}}
 {{- printf "%s" .Values.rabbitmq.auth.secretKeys.erlangCookieKey -}}
 {{- else -}}
@@ -131,14 +131,14 @@ rabbitmq-erlang-cookie
 {{/*
 Define a FIXED auth token secret name that can be shared between frontend and backend
 */}}
-{{- define "credential-showcase.authtoken.secret.name" -}}
+{{- define "bc-wallet.authtoken.secret.name" -}}
 showcase-authtoken
 {{- end -}}
 
 {{/* 
 Generate api-server openshift route tls config
 */}}
-{{- define "credential-showcase.api-server.openshift.route.tls" -}}
+{{- define "bc-wallet.api-server.openshift.route.tls" -}}
 {{- if (.Values.api_server.openshift.route.tls.enabled) -}}
 tls:
   insecureEdgeTerminationPolicy: {{ .Values.api_server.openshift.route.tls.insecureEdgeTerminationPolicy }}
@@ -149,7 +149,7 @@ tls:
 {{/*
 Generate traction-adapter openshift route tls config
 */}}
-{{- define "credential-showcase.traction-adapter.openshift.route.tls" -}}
+{{- define "bc-wallet.traction-adapter.openshift.route.tls" -}}
 {{- if (.Values.traction_adapter.openshift.route.tls.enabled) -}}
 tls:
   insecureEdgeTerminationPolicy: {{ .Values.traction_adapter.openshift.route.tls.insecureEdgeTerminationPolicy }}
@@ -160,7 +160,7 @@ tls:
 {{/*
 API Server Route Host
 */}}
-{{- define "credential-showcase.api-server.host" -}}
+{{- define "bc-wallet.api-server.host" -}}
 {{- if .Values.api_server.openshift.route.host -}}
 {{- .Values.api_server.openshift.route.host -}}
 {{- else -}}
@@ -175,7 +175,7 @@ API Server Route Host
 {{/*
 Traction Adapter Route Host
 */}}
-{{- define "credential-showcase.traction-adapter.host" -}}
+{{- define "bc-wallet.traction-adapter.host" -}}
 {{- if .Values.traction_adapter.openshift.route.host -}}
 {{- .Values.traction_adapter.openshift.route.host -}}
 {{- else -}}
