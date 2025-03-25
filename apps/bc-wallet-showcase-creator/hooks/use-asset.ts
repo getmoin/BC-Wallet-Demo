@@ -14,7 +14,6 @@ export const useAssetById = (id: string) => {
     queryKey: ['assets', id],
     queryFn: () => apiClient.get(`/assets/${id}`),
     enabled: !!id, // Only fetch if id is valid
-    // refetchOnMount: true, // Fetch when component mounts
     refetchOnWindowFocus: true, // Fetch when window is focused
   });
 };

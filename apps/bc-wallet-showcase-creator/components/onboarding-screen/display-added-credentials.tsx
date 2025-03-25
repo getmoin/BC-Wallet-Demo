@@ -28,48 +28,6 @@ export const DisplayAddedCredentials = ({
     [key: string]: Array<CredentialAttributeType & { value: string }>
   }>({});
 
-  // const handleAttributeChange = (credentialId: string, attrIndex: number, newValue: string) => {
-  //   // setLocalAttributes((prev: { [key: string]: Array<CredentialAttributeType & { value: string }> }) => ({
-  //   //   ...prev,
-  //   //   [credentialId]: prev[credentialId]?.map((attr, i) =>
-  //   //     i === attrIndex ? { ...attr, value: newValue } : { ...attr }
-  //   //   ) || [],
-  //   // }));
-  //   setLocalAttributes((prev: { [key: string]: Array<CredentialAttributeType & { value: string }> }) => {
-  //     const updatedAttributes = {
-  //       ...prev,
-  //       [credentialId]: prev[credentialId]?.map((attr, i) =>
-  //         i === attrIndex ? { ...attr, value: newValue } : { ...attr }
-  //       ) || [],
-  //     };
-      
-  //     // After updating local state, propagate changes to parent component
-  //     if (updateCredentials) {
-  //       const updatedCredentials = credentials.map(credential => {
-  //         if (credential.id === credentialId && credential.credentialSchema?.attributes) {
-  //           // Create a deep copy of the credential
-  //           const updatedCredential = { ...credential };
-            
-  //           // Update the attributes with the new values
-  //           updatedCredential.credentialSchema = {
-  //             ...updatedCredential.credentialSchema,
-  //             attributes: updatedAttributes[credentialId].map(attr => ({
-  //               ...attr
-  //             }))
-  //           };
-            
-  //           return updatedCredential;
-  //         }
-  //         return credential;
-  //       });
-  //       console.log('updatedCredentials',updatedCredentials);
-  //       // Send the updated credentials back to parent
-  //       updateCredentials(updatedCredentials);
-  //     }
-      
-  //     return updatedAttributes;
-  //   });
-  // };
 
   const handleAttributeChange = (credentialId: string, attrIndex: number, newValue: string) => {
     setLocalAttributes((prev) => {
