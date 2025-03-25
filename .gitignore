@@ -120,3 +120,15 @@ packages/**/dist
 packages/**/target
 /packages/*/dist
 /apps/*/dist
+
+
+# Ignore Open API generated packages
+packages/bc-wallet-showcase-openapi/src
+packages/**/dist
+packages/**/target
+/packages/*/dist
+/apps/*/dist
+
+**/.env
+**/.env.*
+!**/.env.example
