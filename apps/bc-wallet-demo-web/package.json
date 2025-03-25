@@ -8,6 +8,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
+    "bc-wallet-openapi": "workspace:*",
     "@reduxjs/toolkit": "^1.7.2",
     "@snowplow/browser-tracker": "^3.14.0",
     "@types/lodash": "^4.14.194",
@@ -34,11 +35,13 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "socket.io-client": "^4.7.5",
-    "ws": "^8.18.0"
+    "ws": "^8.18.0",
+    "cross-env": "^7.0.3"
   },
   "scripts": {
     "dev": "cross-env DISABLE_ESLINT_PLUGIN=true GGENERATE_SOURCEMAP=false react-scripts start",
     "build": "cross-env DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false react-scripts build",
+    "build:clean": "rimraf build && cross-env DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false react-scripts build",
     "test": "cross-env GENERATE_SOURCEMAP=false react-scripts test",
     "eject": "cross-env GENERATE_SOURCEMAP=false react-scripts eject"
   },
