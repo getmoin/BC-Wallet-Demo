@@ -42,6 +42,6 @@ it randomly.
 {{/*
 Define auth token secret name - using the same helper template name as backend
 */}}
-{{- define "credential-showcase.authtoken.secret.name" -}}
+{{- define "bc-wallet.authtoken.secret.name" -}}
 showcase-authtoken
 {{- end -}} 

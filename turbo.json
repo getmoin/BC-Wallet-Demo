@@ -17,6 +17,12 @@
     },
     "clean": {
       "cache": false
+    },
+    "generate:models": {
+      "dependsOn": ["^generate:models"],
+      "outputs": [
+        "src/**"
+      ]
     }
   }
 }
