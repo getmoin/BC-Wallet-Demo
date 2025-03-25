@@ -6,9 +6,5 @@ export default async function CharacterPageMain({ params }: { params: PageParams
   const { locale } = await params
   setRequestLocale(locale)
 
-  return (
-    <div>
-      <CharactersPage />
-    </div>
-  )
+  return <CharactersPage />
 }

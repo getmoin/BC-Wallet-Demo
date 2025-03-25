@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import { SortableStep } from '@/components/onboarding-screen/sortable-step'
 import { useOnboardingAdapter } from '@/hooks/use-onboarding-adapter'
 import { ensureBase64HasPrefix } from '@/lib/utils'
@@ -11,6 +9,7 @@ import { DndContext, closestCenter, DragOverlay } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useRouter } from '@/i18n/routing'
 
 import { Button } from '../ui/button'
 
@@ -18,6 +17,7 @@ export const CreateOnboardingScreen = () => {
   const t = useTranslations()
   const { steps, selectedStep, moveStep, setStepState, personas, activePersonaId, setActivePersonaId, activePersona } =
     useOnboardingAdapter()
+  const router = useRouter()
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event
@@ -41,8 +41,8 @@ export const CreateOnboardingScreen = () => {
         <div className="p-6 text-center">
           <h3 className="text-lg font-semibold mb-4">No personas selected</h3>
           <p className="mb-4">You need to select personas before creating onboarding steps.</p>
-          <Button variant="outlineAction" onClick={() => window.history.back()}>
-            Go Back to Select Personas
+          <Button variant="outlineAction" onClick={() => router.push('/showcases/create')}>
+            {t('onboarding.go_back_to_select_personas')}
           </Button>
         </div>
       ) : (
