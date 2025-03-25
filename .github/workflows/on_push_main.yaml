@@ -14,6 +14,18 @@ on:
         - "charts/**"
 
 jobs:
+  ready:
+    name: "Check if PR is ready for review"
+    runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.ready_for_review.outputs.true_false }}
+      build: ${{ steps.ready_for_review.outputs.owner_true_false }}
+    steps:
+      - id: ready_for_review
+        run: |
+          echo "true_false=${{ toJSON(github.event.pull_request.draft != true && github.repository_owner == 'getmoin') }}" >> $GITHUB_OUTPUT #should change to bcgov
+          echo "owner_true_false=${{ toJSON(github.repository_owner == 'getmoin') }}" >> $GITHUB_OUTPUT
+          
   # test_api_server:
   #   name: "Test API Server"
   #   uses: ./.github/workflows/test.yaml
