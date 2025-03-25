@@ -9,69 +9,25 @@ import { Input } from "../ui/input";
 import ButtonOutline from "../ui/button-outline";
 import apiClient from "@/lib/apiService";
 import { toast } from "sonner";
-import { CredentialAttributeType, CredentialDefinition, CredentialDefinitionType } from "@/openapi-types";
+import { CredentialAttributeType, CredentialDefinitionType } from "@/openapi-types";
+import { Control, Controller, Path } from "react-hook-form";
+import { FormControl } from "../ui/form";
+import { IssueStepFormData } from "@/schemas/onboarding";
 
 interface DisplayAddedCredentialsProps {
-  credentials: typeof CredentialDefinition._type[];
+  credentials: CredentialDefinitionType[];
   removeCredential: (credentialId: string) => void;
-  updateCredentials?: (updatedCredentials: typeof CredentialDefinition._type[]) => void;
+  updateCredentials?: (updatedCredentials: CredentialDefinitionType[]) => void;
+  control: Control<IssueStepFormData>
 }
 
 export const DisplayAddedCredentials = ({
   credentials,
   removeCredential,
-  updateCredentials
+  updateCredentials,
+  control
 }: DisplayAddedCredentialsProps) => {
   const t = useTranslations();
-  // PLEASE FIX ME
-  const [localAttributes, setLocalAttributes] = useState<{
-    [key: string]: Array<CredentialAttributeType & { value: string }>
-  }>({});
-
-
-  const handleAttributeChange = (credentialId: string, attrIndex: number, newValue: string) => {
-    setLocalAttributes((prev) => {
-      const updatedAttributes = {
-        ...prev,
-        [credentialId]: prev[credentialId]?.map((attr, i) =>
-          i === attrIndex ? { ...attr, value: newValue } : attr
-        ) || [],
-      };
-  
-      if (updateCredentials) {
-        const updatedCredentials = credentials.map((credential) => {
-          if (credential.id === credentialId && credential.credentialSchema?.attributes) {
-            return {
-              ...credential,
-              credentialSchema: {
-                ...credential.credentialSchema,
-                attributes: updatedAttributes[credentialId],
-              },
-            };
-          }
-          return credential;
-        });
-  
-        console.log("Updated Credentials:", updatedCredentials);
-        updateCredentials(updatedCredentials);
-      }
-  
-      return updatedAttributes;
-    });
-  };
-  
-
-  useEffect(() => {
-    const initialAttributes: { [key: string]: Array<CredentialAttributeType & { value: string }> } = {};
-    credentials.forEach((credential: typeof CredentialDefinition._type) => {
-      initialAttributes[credential.id] = credential?.credentialSchema?.attributes?.map((attr: CredentialAttributeType) => ({
-        ...attr,
-        value: attr.value || "",
-      })) || [];
-    });
-    setLocalAttributes(initialAttributes);
-  }, [credentials]);
-
   const hasCredentials = credentials.length > 0;
   const [isEditing, setIsEditing] = useState(false);
   if (!hasCredentials) {
@@ -82,32 +38,65 @@ export const DisplayAddedCredentials = ({
     );
   }
 
-    const updateCredentialSchema = async (credentialData: typeof CredentialDefinition._type) => {
-      try {
-        const { credentialSchema: { id: credentialSchemaId } } = credentialData
-        const cleanedAttributes = Object.values(localAttributes).flatMap((attributes) =>
-          attributes.map(({ id, createdAt, updatedAt, ...rest }) => rest)
-        );
-
-        const payload = {
-          "name": credentialData?.name,
-          "version": credentialData?.version,
-          "identifierType": credentialData?.identifierType,
-          "identifier": credentialData?.identifier,
-          "attributes": cleanedAttributes
+  const handleAttributeChange = (credentialId: string, attrIndex: number, newValue: string) => {
+    if (updateCredentials) {
+      const updatedCredentials = credentials.map((credential: CredentialDefinitionType) => {
+        if (credential.id === credentialId) {
+          if (!credential.credentialSchema || !credential.credentialSchema.attributes) {
+            return credential;
+          }
+  
+          return {
+            ...credential,
+            credentialSchema: {
+              ...credential.credentialSchema,
+              attributes: credential.credentialSchema.attributes.map((attr, i) =>
+                i === attrIndex ? { ...attr, value: newValue } : attr
+              ),
+            },
+          };
         }
-        console.log('cleanedAttributes',cleanedAttributes);
-        // const response: any = await apiClient.put(`/credentials/schemas/${credentialSchemaId}`, payload);
-        setIsEditing(false);
-        // return response;
-      } catch (error) {
-        toast.error("Error updating credential schema");
-        throw error;
+        return credential;
+      });
+
+      updateCredentials(updatedCredentials);
+    }
+  };
+
+  const handleSaveAttributes = (credentialId: string) => {
+    if (!updateCredentials) return;
+  
+    const updatedCredentials = credentials.map((cred: CredentialDefinitionType) => {
+      if (cred.id === credentialId) {
+        if (!cred.credentialSchema || !cred.credentialSchema.attributes) {
+          return cred;
+        }
+  
+        return {
+          ...cred,
+          credentialSchema: {
+            ...cred.credentialSchema,
+            attributes: cred.credentialSchema.attributes.map(attr => ({
+              id: attr.id,
+              name: attr.name,
+              type: attr.type,
+              createdAt: attr.createdAt,
+              updatedAt: attr.updatedAt,
+              value: attr.value,
+            })),
+          },
+        };
       }
-    };
+      return cred;
+    });
+  
+    updateCredentials(updatedCredentials);
+    setIsEditing(false);
+  };
+  
 
   return (
-    <div className="">
+    <div>
       <p className="text-md font-bold mt-2">
         {t("credentials.credential_added_label")} {credentials.length}
       </p>
@@ -150,9 +139,9 @@ export const DisplayAddedCredentials = ({
                 </div>
 
                 {/* Center Section - Attributes */}
-                <div className=" flex flex-col justify-center items-start">
-                  <p className="font-semibold">{t('credentials.attributes_label')}</p>
-                  <p className="">{credential?.credentialSchema?.attributes?.length}</p>
+                <div className="flex flex-col justify-center items-start">
+                  <p className="font-semibold">{t("credentials.attributes_label")}</p>
+                  <p>{credential?.credentialSchema?.attributes?.length}</p>
                 </div>
 
                 {/* Right Section - Delete Button */}
@@ -174,11 +163,7 @@ export const DisplayAddedCredentials = ({
                 <Button
                   variant="ghost"
                   className="text-xs font-semibold hover:bg-transparent hover:underline p-1"
-                  onClick={(e) => {
-                    setIsEditing(true);
-                    e.preventDefault();
-                    // setEditingCredentials([...editingCredentials, index]);
-                  }}
+                  onClick={() => setIsEditing(true)}
                 >
                   ADD ATTRIBUTE VALUES
                 </Button>
@@ -186,47 +171,50 @@ export const DisplayAddedCredentials = ({
               {/* Proof Request Section */}
               {isEditing && (
                 <>
-                <div className="p-3 rounded-b-lg bg-white dark:bg-dark-bg">
-                  {localAttributes[credential.id]?.map((attr, attrIndex) => (
-                    <div key={attr.id || attrIndex} className="grid grid-cols-2 gap-4">
-                      {/* Attribute Column */}
-                      <div className="space-y-2 flex flex-col justify-center p-4">
-                        <label className="text-sm font-bold">Attribute</label>
-                        <Input
-                          className="text-light-text dark:text-dark-text border border-dark-border dark:border-light-border"
-                          value={attr.name}
-                          disabled
-                        />
+                  <div className="p-3 rounded-b-lg bg-white dark:bg-dark-bg">
+                    {credential.credentialSchema?.attributes?.map((attr:CredentialAttributeType, attrIndex: number) => (
+                      <div key={attr.id || attrIndex} className="grid grid-cols-2 gap-4">
+                        {/* Attribute Column */}
+                        <div className="space-y-2 flex flex-col justify-center p-4">
+                          <label className="text-sm font-bold">{t('credentials.attribute_label')}</label>
+                          <Input
+                            className="text-light-text dark:text-dark-text border border-dark-border dark:border-light-border"
+                            value={attr.name}
+                            disabled
+                          />
+                        </div>
+
+                        <div className="space-y-2 flex flex-col justify-center p-4">
+                          <label className="text-sm font-bold">{t('credentials.attribute_value_placeholder')}</label>
+                          <Controller
+                            name={`credentials.${index}.credentialSchema.attributes.${attrIndex}.value` as unknown as Path<IssueStepFormData>} // TODO: fix type issue here
+                            control={control}
+                            render={({ field }) => (
+                              <FormControl>
+                                <Input
+                                  className="border border-dark-border dark:border-light-border"
+                                  {...field}
+                                  onChange={(e) => {
+                                    field.onChange(e);
+                                    handleAttributeChange(credential.id, attrIndex, e.target.value);
+                                  }}
+                                />
+                              </FormControl>
+                            )}
+                          />
+                        </div>
                       </div>
-    
-                      {/* Attribute Value Column */}
-                      <div className="space-y-2 flex flex-col justify-center p-4">
-                        <label className="text-sm font-bold">Attribute Value</label>
-                        <Input
-                          className="border border-dark-border dark:border-light-border"
-                          value={attr.value}
-                          onChange={(e) =>
-                            handleAttributeChange(credential.id, attrIndex, e.target.value)
-                          }
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-    
-                <div className="justify-self-center mb-2">
-                  <ButtonOutline
-                     onClick={() =>
-                      updateCredentialSchema({
-                        ...credential,
-                        attributes: localAttributes[credential.id]?.map(({ id, ...rest }) => rest) || [],
-                      })
-                    }
-                  >
-                    {t("action.save_label")}
-                  </ButtonOutline>
-                </div>
-              </>
+                    ))}
+                  </div>
+
+                  <div className="justify-self-center mb-2">
+                    <ButtonOutline
+                     onClick={() => handleSaveAttributes(credential.id)}               
+                    >
+                      {t("action.save_label")}
+                    </ButtonOutline>
+                  </div>
+                </>
               )}
             </div>
           </div>

@@ -74,6 +74,7 @@
     "version_label": "Version",
     "version_placeholder": "Entrez la version",
     "attributes_label": "Attributs",
+    "attribute_label": "Attribute",
     "attributes_add_attribute_label": "Ajouter un attribut",
     "attribute_name_label": "Nom",
     "attribute_name_placeholder": "Nom de l'attribut",

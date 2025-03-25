@@ -96,6 +96,8 @@ export const IssuanceStepAdd = () => {
       credentials: data.credentials || [],
       type: currentStep.type || "HUMAN_TASK",
       order: currentStep.order || 0,
+      credentialDefinitionIdentifierType: currentStep.credentialDefinitionIdentifierType || 'DID',
+      credentialDefinitionIdentifier: currentStep.credentialDefinitionIdentifier || 'did:sov:XUeUZauFLeBNofY3NhaZCB',
       actions: currentStep.actions || [sampleAction],
     };
 
@@ -156,6 +158,8 @@ export const IssuanceStepAdd = () => {
         credentials: updatedCredentials,
         type: currentStep.type || "HUMAN_TASK",
         order: currentStep.order || 0,
+        credentialDefinitionIdentifierType: currentStep.credentialDefinitionIdentifierType || 'DID',
+        credentialDefinitionIdentifier: currentStep.credentialDefinitionIdentifier || 'did:sov:XUeUZauFLeBNofY3NhaZCB',
         actions: currentStep.actions || [sampleAction],
       };
 
@@ -179,6 +183,8 @@ export const IssuanceStepAdd = () => {
           asset: screen.asset || undefined,
           type: screen.type || 'HUMAN_TASK',
           order: index,
+          credentialDefinitionIdentifierType: screen.credentialDefinitionIdentifierType || 'DID',
+          credentialDefinitionIdentifier: screen.credentialDefinitionIdentifier || 'did:sov:XUeUZauFLeBNofY3NhaZCB',
           actions: screen.actions || [sampleAction],
         })),
       ]
@@ -194,6 +200,8 @@ export const IssuanceStepAdd = () => {
           asset: data.asset || undefined,
           type: 'HUMAN_TASK',
           order: currentStep?.order || scenarioForPersona.steps.length,
+          credentialDefinitionIdentifierType: currentStep?.credentialDefinitionIdentifierType || 'DID',
+          credentialDefinitionIdentifier: currentStep?.credentialDefinitionIdentifier || 'did:sov:XUeUZauFLeBNofY3NhaZCB',
           actions: [sampleAction],
         })
       }
@@ -395,7 +403,8 @@ export const IssuanceStepAdd = () => {
             <DisplayAddedCredentials
               credentials={form.getValues().credentials as unknown as CredentialDefinitionType[]}
               removeCredential={removeCredential}
-              updateCredentials={updateCredentials}
+              control={form.control}
+              updateCredentials={(updatedCredentials) => form.setValue("credentials", updatedCredentials as unknown as string[])}
             /> 
           
 
