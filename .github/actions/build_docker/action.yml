@@ -58,17 +58,3 @@ runs:
         file: ${{ inputs.dockerfile }}
         push: true
         tags: ${{ inputs.registry }}/${{ inputs.image_name }}:${{ steps.docker_build.outputs.image_tag }}
-
-    - name: Set package visibility
-      if: inputs.registry == 'ghcr.io' && inputs.visibility == 'public'
-      shell: bash
-      run: |
-        # Get the package name from the image name
-        PACKAGE_NAME=$(echo "${{ inputs.image_name }}" | tr '/' '_')
-        
-        # Use GitHub API to set package visibility to public
-        curl -X PATCH \
-          -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ inputs.registry_password }}" \
-          -d '{"visibility":"public"}' \
-          "https://api.github.com/user/packages/container/$PACKAGE_NAME"

@@ -1,13 +1,13 @@
 FROM node:18-alpine as base
 
 WORKDIR /app
+
 COPY . .
-RUN npm install -g typescript
-RUN npm install -g ts-node
-RUN yarn install
 
-WORKDIR /app/server
+RUN npm install -g typescript ts-node
+RUN npm install --legacy-peer-deps
 
-EXPOSE 5000
+EXPOSE 3000
 
-ENTRYPOINT [ "ts-node", "src/index.ts"]
+# Run the application
+CMD ["npm", "start"]
